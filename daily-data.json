@@ -3391,6 +3391,326 @@
                     "https://www.facebook.com/permalink.php?story_fbid=3896635500351227&id=170310842983730"
                 ]
             }
+        },
+        "2020-09": {
+            "2020-09-01": {
+                "new_cases": {
+                    "west_plains": 7,
+                    "willow_springs": 1,
+                    "mountain_view": 2,
+                    "other": 1,
+                    "unknown": 0
+                },
+                "active_cases": 95,
+                "hospitalizations": 4,
+                "deaths": 3,
+                "tests": 4170,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3899798863368224&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3899734676707976&id=170310842983730"
+                ]
+            },
+            "2020-09-02": {
+                "new_cases": {
+                    "west_plains": 5,
+                    "willow_springs": 1,
+                    "mountain_view": 1,
+                    "other": 1,
+                    "unknown": 0
+                },
+                "active_cases": 93,
+                "hospitalizations": 5,
+                "deaths": 3,
+                "tests": 4272,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3902974086384035&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3903587376322706&id=170310842983730"
+                ]
+            },
+            "2020-09-03": {
+                "new_cases": {
+                    "west_plains": 17,
+                    "willow_springs": 6,
+                    "mountain_view": 1,
+                    "other": 5,
+                    "unknown": 0
+                },
+                "active_cases": 97,
+                "hospitalizations": 7,
+                "deaths": 3,
+                "tests": 4350,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3906670429347734&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3908264299188347&id=170310842983730"
+                ]
+            },
+            "2020-09-04": {
+                "new_cases": {
+                    "west_plains": 8,
+                    "willow_springs": 1,
+                    "mountain_view": 1,
+                    "other": 0,
+                    "unknown": 0
+                },
+                "active_cases": 102,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4410,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3909753972372713&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3909860359028741&id=170310842983730"
+                ]
+            },
+            "2020-09-05": {
+                "new_cases": {
+                    "west_plains": 6,
+                    "willow_springs": 1,
+                    "mountain_view": 0,
+                    "other": 0,
+                    "unknown": 0
+                },
+                "active_cases": 103,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4449,
+                "estimates": {
+                    "cases": true,
+                    "active": true,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": true
+                },
+                "sources": null
+            },
+            "2020-09-06": {
+                "new_cases": {
+                    "west_plains": 6,
+                    "willow_springs": 1,
+                    "mountain_view": 0,
+                    "other": 0,
+                    "unknown": 0
+                },
+                "active_cases": 104,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4488,
+                "estimates": {
+                    "cases": true,
+                    "active": true,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": true
+                },
+                "sources": null
+            },
+            "2020-09-07": {
+                "new_cases": {
+                    "west_plains": 6,
+                    "willow_springs": 1,
+                    "mountain_view": 0,
+                    "other": 1,
+                    "unknown": 0
+                },
+                "active_cases": 105,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4527,
+                "estimates": {
+                    "cases": true,
+                    "active": true,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": true
+                },
+                "sources": null
+            },
+            "2020-09-08": {
+                "new_cases": {
+                    "west_plains": 6,
+                    "willow_springs": 1,
+                    "mountain_view": 0,
+                    "other": 0,
+                    "unknown": 0
+                },
+                "active_cases": 105,
+                "hospitalizations": 7,
+                "deaths": 3,
+                "tests": 4567,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3924502074231236&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3924487564232687&id=170310842983730"
+                ]
+            },
+            "2020-09-09": {
+                "new_cases": {
+                    "west_plains": 18,
+                    "willow_springs": 4,
+                    "mountain_view": 3,
+                    "other": 3,
+                    "unknown": 0
+                },
+                "active_cases": 120,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4662,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3927748733906570&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3927811557233621&id=170310842983730"
+                ]
+            },
+            "2020-09-10": {
+                "new_cases": {
+                    "west_plains": 10,
+                    "willow_springs": 2,
+                    "mountain_view": 0,
+                    "other": 0,
+                    "unknown": 0
+                },
+                "active_cases": 105,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4683,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3931061293575314&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3931109143570529&id=170310842983730"
+                ]
+            },
+            "2020-09-11": {
+                "new_cases": {
+                    "west_plains": 11,
+                    "willow_springs": 1,
+                    "mountain_view": 1,
+                    "other": 2,
+                    "unknown": 0
+                },
+                "active_cases": 116,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4744,
+                "estimates": {
+                    "cases": true,
+                    "active": true,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": true
+                },
+                "sources": null
+            },
+            "2020-09-12": {
+                "new_cases": {
+                    "west_plains": 11,
+                    "willow_springs": 1,
+                    "mountain_view": 2,
+                    "other": 2,
+                    "unknown": 0
+                },
+                "active_cases": 127,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4805,
+                "estimates": {
+                    "cases": true,
+                    "active": true,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": true
+                },
+                "sources": null
+            },
+            "2020-09-13": {
+                "new_cases": {
+                    "west_plains": 11,
+                    "willow_springs": 2,
+                    "mountain_view": 2,
+                    "other": 2,
+                    "unknown": 0
+                },
+                "active_cases": 138,
+                "hospitalizations": 6,
+                "deaths": 3,
+                "tests": 4866,
+                "estimates": {
+                    "cases": true,
+                    "active": true,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": true
+                },
+                "sources": null
+            },
+            "2020-09-14": {
+                "new_cases": {
+                    "west_plains": 11,
+                    "willow_springs": 2,
+                    "mountain_view": 2,
+                    "other": 3,
+                    "unknown": 0
+                },
+                "active_cases": 148,
+                "hospitalizations": 5,
+                "deaths": 3,
+                "tests": 4926,
+                "estimates": {
+                    "cases": false,
+                    "active": false,
+                    "deaths": false,
+                    "hospitalizations": false,
+                    "tests": false
+                },
+                "sources": [
+                    "https://www.facebook.com/permalink.php?story_fbid=3943785538969556&id=170310842983730",
+                    "https://www.facebook.com/permalink.php?story_fbid=3943789192302524&id=170310842983730"
+                ]
+            }
         }
     }
 }
