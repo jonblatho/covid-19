@@ -3491,7 +3491,7 @@
             },
             "2020-09-05": {
                 "new_cases": {
-                    "west_plains": 6,
+                    "west_plains": 7,
                     "willow_springs": 1,
                     "mountain_view": 0,
                     "other": 0,
@@ -3512,7 +3512,7 @@
             },
             "2020-09-06": {
                 "new_cases": {
-                    "west_plains": 6,
+                    "west_plains": 8,
                     "willow_springs": 1,
                     "mountain_view": 0,
                     "other": 0,
@@ -3533,9 +3533,9 @@
             },
             "2020-09-07": {
                 "new_cases": {
-                    "west_plains": 6,
-                    "willow_springs": 1,
-                    "mountain_view": 0,
+                    "west_plains": 8,
+                    "willow_springs": 2,
+                    "mountain_view": 1,
                     "other": 1,
                     "unknown": 0
                 },
@@ -3554,10 +3554,10 @@
             },
             "2020-09-08": {
                 "new_cases": {
-                    "west_plains": 6,
-                    "willow_springs": 1,
-                    "mountain_view": 0,
-                    "other": 0,
+                    "west_plains": 8,
+                    "willow_springs": 2,
+                    "mountain_view": 1,
+                    "other": 1,
                     "unknown": 0
                 },
                 "active_cases": 105,
@@ -3785,7 +3785,7 @@
                     "west_plains": 19,
                     "willow_springs": 2,
                     "mountain_view": 1,
-                    "other": 2,
+                    "other": 1,
                     "unknown": 0
                 },
                 "active_cases": 158,
