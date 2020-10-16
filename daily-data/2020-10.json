@@ -336,5 +336,30 @@
             "https://www.facebook.com/permalink.php?story_fbid=4037338779614231&id=170310842983730"
         ],
         "date": "2020-10-14"
+    },
+    {
+        "new_cases": {
+            "west_plains": 11,
+            "willow_springs": 9,
+            "mountain_view": 4,
+            "other": 3,
+            "unknown": 0
+        },
+        "active_cases": 306,
+        "hospitalizations": 21,
+        "deaths": 20,
+        "tests": 9940,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": false
+        },
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4040308252650617&id=170310842983730",
+            "https://www.facebook.com/permalink.php?story_fbid=4040310522650390&id=170310842983730"
+        ],
+        "date": "2020-10-15"
     }
 ]
