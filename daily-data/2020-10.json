@@ -373,7 +373,7 @@
         "active_cases": 282,
         "hospitalizations": 21,
         "deaths": 22,
-        "tests": 10015,
+        "tests": 9971,
         "estimates": {
             "cases": false,
             "active": false,
@@ -386,5 +386,74 @@
             "https://www.facebook.com/permalink.php?story_fbid=4044726362208806&id=170310842983730"
         ],
         "date": "2020-10-16"
+    },
+    {
+        "new_cases": {
+            "west_plains": 13,
+            "willow_springs": 4,
+            "mountain_view": 2,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 271,
+        "hospitalizations": 18,
+        "deaths": 22,
+        "tests": 10003,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": true,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2020-10-17"
+    },
+    {
+        "new_cases": {
+            "west_plains": 13,
+            "willow_springs": 5,
+            "mountain_view": 2,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 260,
+        "hospitalizations": 15,
+        "deaths": 22,
+        "tests": 10035,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": true,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2020-10-18"
+    },
+    {
+        "new_cases": {
+            "west_plains": 13,
+            "willow_springs": 5,
+            "mountain_view": 3,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 248,
+        "hospitalizations": 11,
+        "deaths": 23,
+        "tests": 10067,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": false
+        },
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4051083861573056&id=170310842983730",
+            "https://www.facebook.com/permalink.php?story_fbid=4051082178239891&id=170310842983730"
+        ],
+        "date": "2020-10-18"
     }
 ]
