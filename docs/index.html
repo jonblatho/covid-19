@@ -1069,6 +1069,18 @@
                                 }
                             }
                         }]
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                value = tooltipItem.yLabel.toString();
+                                value = value.split(/(?=(?:...)*$)/);
+                                value = value.join(',');
+                                return value;
+                            }
+                        }
                     }
                 }
             });
