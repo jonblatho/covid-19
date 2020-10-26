@@ -145,10 +145,17 @@ a.chart-selection-selected {
     font-weight: 600;
 }
 
-.totals {
+table {
     margin: 20px auto 40px;
 }
 
+table tr:nth-child(odd) {
+    background: rgba(0,0,0,0.05);
+}
+
+table thead tr {
+    background: transparent !important;
+}
 
 .totals th,
 .totals td {
@@ -159,17 +166,10 @@ a.chart-selection-selected {
     padding: 0 30px;
 }
 
-.totals tr:nth-child(odd) {
-    background: rgba(0,0,0,0.05);
-}
-
 .totals thead th {
     padding-bottom: 10px;
 }
 
-.totals thead tr {
-    background: transparent !important;
-}
 
 .totals th.row-head {
     padding: 8px 20px;
@@ -182,6 +182,41 @@ a.chart-selection-selected {
     font-size: 140%;
     font-weight: 600;
     text-align: center;
+}
+
+.all-data {
+    position: relative;
+    font-size: 80%;
+    line-height: 140%;
+}
+
+.all-data thead {
+    position: sticky;
+    background: #ccc;
+    top: 0;
+}
+
+.all-data th {
+    position: relative;
+    padding: 5px 8px;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #777;
+    vertical-align: middle;
+}
+
+.all-data td {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: right;
+}
+
+.all-data .date {
+    min-width: 85px;
+}
+
+.all-data .na {
+    color: rgba(0,0,0,0.4)
 }
 
 h3 {
