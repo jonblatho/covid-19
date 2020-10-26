@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta name="generator" content="Hugo 0.76.5" />
+        <meta charset="UTF-8" />
+        <title>COVID-19 in Howell County, MO</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="main.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <header>
+            <div class="wrap">
+                <h1>COVID-19 in Howell County, MO</h1>
+                <div id="last-updated">
+                    <p>Data as of October 23, 2020</p>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="charts">
+                <div class="wrap">
+                    <div id="chart-select">
+                        <a class="chart-selection chart-selection-selected" href="#">Total Cases (County)</a>
+                        <a class="chart-selection" href="#">Total Cases (by Town)</a>
+                        <a class="chart-selection" href="#">New Cases (County)</a>
+                        <a class="chart-selection" href="#">New Cases (by Town)</a>
+                        <a class="chart-selection" href="#">Active Cases</a>
+                    </div>
+                    <canvas id="chart"></canvas>
+                </div>
+            </section>
+            <section id="dashboard">
+                <div class="wrap">
+                    <div id="dashboard-grid-container">
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">194</div>
+                            <div class="dashboard-description">new cases in the past&nbsp;week</div>
+                            <div class="dashboard-context">
+                                
+                                <span class="change change-good">&darr; 
+                                
+                                55</span> from a week ago
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">225</div>
+                            <div class="dashboard-description">known active cases</div>
+                            <div class="dashboard-context">
+                                
+                                <span class="change change-good">&darr; 
+                                
+                                57</span> from a week ago
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">50.1%</div>
+                            <div class="dashboard-description">7-day positivity rate</div>
+                            <div class="dashboard-context">
+                                
+                                <span class="change change-bad">&uarr; 
+                                
+                                5.3%</span> from a week ago
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">5</div>
+                            <div class="dashboard-description">active hospitalizations</div>
+                            <div class="dashboard-context">
+                                
+                                <span class="change change-good">&darr;
+                                
+                                16</span> from a week ago
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">36</div>
+                            <div class="dashboard-description">cumulative deaths</div>
+                            <div class="dashboard-context">
+                                
+                                <span class="change change-bad">&uarr; 
+                                
+                                14</span> from a week ago
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">387</div>
+                            <div class="dashboard-description">new tests in the past week</div>
+                            <div class="dashboard-context">
+                                
+                                <span class="change change-bad">&darr;
+                                
+                                168</span> from a week ago
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Active cases by town</h4>
+                    <div class="town-grid-container">
+                        
+                        <div class="town-grid-item">
+                            <div class="town-label town-label-light">
+                                West Plains
+                            </div>
+                            <div class="town-number">
+                                117
+                            </div>
+                        </div>
+                        
+                        <div class="town-grid-item">
+                            <div class="town-label town-label-light">
+                                Willow Springs
+                            </div>
+                            <div class="town-number">
+                                64
+                            </div>
+                        </div>
+                        
+                        <div class="town-grid-item">
+                            <div class="town-label town-label-light">
+                                Mountain View
+                            </div>
+                            <div class="town-number">
+                                29
+                            </div>
+                        </div>
+                        
+                        <div class="town-grid-item">
+                            <div class="town-label town-label-light">
+                                Other
+                            </div>
+                            <div class="town-number">
+                                15
+                            </div>
+                        </div>
+                        
+                        <div class="town-grid-item">
+                            <div class="town-label town-label-light">
+                                Unknown
+                            </div>
+                            <div class="town-number">
+                                0
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <h4>New cases by month</h4>
+                    <table class="monthly-totals">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="town-label town-label-dark">Howell<br />County</th>
+                                <th class="town-label town-label-dark">West<br />Plains</th>
+                                <th class="town-label town-label-dark">Willow<br /> Springs</th>
+                                <th class="town-label town-label-dark">Mountain<br /> View</th>
+                                <th class="town-label town-label-dark">Other</th>
+                                <th class="town-label town-label-dark">Unknown</th>
+                            </tr>
+                        </thead>
+                        
+                        <tr>
+                            <th class="row-head">April 2020</th>
+                            
+                            <td>5</td>
+                            
+                            <td>4</td>
+                            
+                            <td>0</td>
+                            
+                            <td>1</td>
+                            
+                            <td>0</td>
+                            
+                            <td>0</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <th class="row-head">May 2020</th>
+                            
+                            <td>2</td>
+                            
+                            <td>0</td>
+                            
+                            <td>0</td>
+                            
+                            <td>2</td>
+                            
+                            <td>0</td>
+                            
+                            <td>0</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <th class="row-head">June 2020</th>
+                            
+                            <td>32</td>
+                            
+                            <td>16</td>
+                            
+                            <td>0</td>
+                            
+                            <td>5</td>
+                            
+                            <td>11</td>
+                            
+                            <td>0</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <th class="row-head">July 2020</th>
+                            
+                            <td>89</td>
+                            
+                            <td>63</td>
+                            
+                            <td>6</td>
+                            
+                            <td>8</td>
+                            
+                            <td>10</td>
+                            
+                            <td>2</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <th class="row-head">August 2020</th>
+                            
+                            <td>156</td>
+                            
+                            <td>129</td>
+                            
+                            <td>13</td>
+                            
+                            <td>7</td>
+                            
+                            <td>7</td>
+                            
+                            <td>0</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <th class="row-head">September 2020</th>
+                            
+                            <td>514</td>
+                            
+                            <td>354</td>
+                            
+                            <td>58</td>
+                            
+                            <td>49</td>
+                            
+                            <td>53</td>
+                            
+                            <td>0</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <th class="row-head">October 2020</th>
+                            
+                            <td>790</td>
+                            
+                            <td>509</td>
+                            
+                            <td>133</td>
+                            
+                            <td>87</td>
+                            
+                            <td>61</td>
+                            
+                            <td>0</td>
+                            
+                        </tr>
+                        
+                    </table>
+                </div>
+            </section>
+            <section id="table">
+                <div class="wrap">
+                </div>
+            </section>
+            <section id="notes">
+                <div class="wrap">
+                    <h3>Methodology and notes</h3>
+                    <ul>
+                        <li>
+                            Most data here comes directly from reports published on most non-holiday 
+                            weekdays by the Howell County Health Department (HCHD). To fill in gaps
+                            between those reports, when there is a substantial difference through the gap, 
+                            I apply a linear equation to estimate the missing data. On days when reports 
+                            are published, those are linked in the table.
+                        <li>
+                            Sometimes testing data is missing from a report that is published. When that
+                            happens, I take the 7-day average of new tests conducted daily and use that
+                            to estimate testing data until reporting resumes. Once it does resume, I 
+                            recalculate the estimates using the method mentioned in the above point.
+                        </li>
+                        <li>
+                            I use HCHD data because, although the Missouri Department of Health and Senior 
+                            Services (DHSS) updates its data more often/consistently, DHSS data for Howell 
+                            County is lagging woefully behind HCHD&rsquo;s reports for some reason.
+                        </li>
+                        <li>
+                            I usually update this within several hours after a HCHD report. I don&rsquo;t
+                            update data over weekends and holidays, or any other day where HCHD doesn&rsquo;t
+                            publish a report.
+                        </li>
+                        <li>
+                            While HCHD reports the total of active cases for the county, data for active
+                            cases by town is estimated. This is done by normalizing the 10-day total new 
+                            cases for the county and categories (cities and &ldquo;other&rdquo;) and 
+                            multiplying the county total active cases by those normalized values. Rounding 
+                            may cause the sum of the by-town values not to exactly equal the county total.
+                        </li>
+                        <li>
+                            Testing data isn&rsquo;t available prior to August 19, 2020. That&rsquo;s when
+                            HCHD began consistently publishing the number of SARS-CoV-2 tests conducted, 
+                            rather than the number of individuals tested. For consistency, I opted to neither 
+                            include nor estimate testing data before that date.
+                        </li>
+                        <li>
+                            This page includes both official data and unofficial estimates. For official data,
+                            please consult the Howell County Health Department.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="wrap">
+                <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
+            </div>
+        </footer>
+        <script>
+            Chart.defaults.global.defaultFontFamily = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+            var ctx = document.getElementById('chart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        data: [{
+                            x: '2020-04-01', y: 1
+                        }, {
+                            t: '2020-04-02', y: 1
+                        }, {
+                            t: '2020-04-03', y: 1
+                        }, {
+                            t: '2020-04-04', y: 1
+                        }, {
+                            t: '2020-04-05', y: 1
+                        }, {
+                            t: '2020-04-06', y: 3
+                        }, {
+                            t: '2020-04-07', y: 4
+                        }, {
+                            t: '2020-04-08', y: 4
+                        }, {
+                            t: '2020-04-09', y: 4
+                        }, {
+                            t: '2020-04-10', y: 4
+                        }, {
+                            t: '2020-04-11', y: 4
+                        }, {
+                            t: '2020-04-12', y: 4
+                        }, {
+                            t: '2020-04-13', y: 4
+                        }, {
+                            t: '2020-04-14', y: 4
+                        }, {
+                            t: '2020-04-15', y: 4
+                        }, {
+                            t: '2020-04-16', y: 5
+                        }, {
+                            t: '2020-04-17', y: 5
+                        }, {
+                            t: '2020-04-18',
+                            y: 5
+                        }, {
+                            t: '2020-04-19',
+                            y: 5
+                        }, {
+                            t: '2020-04-20',
+                            y: 5
+                        }, {
+                            t: '2020-04-21',
+                            y: 5
+                        }, {
+                            t: '2020-04-22',
+                            y: 5
+                        }, {
+                            t: '2020-04-23',
+                            y: 5
+                        }, {
+                            t: '2020-04-24',
+                            y: 5
+                        }, {
+                            t: '2020-04-25',
+                            y: 5
+                        }, {
+                            t: '2020-04-26',
+                            y: 5
+                        }, {
+                            t: '2020-04-27',
+                            y: 5
+                        }, {
+                            t: '2020-04-28',
+                            y: 5
+                        }, {
+                            t: '2020-04-29',
+                            y: 5
+                        }, {
+                            t: '2020-04-30',
+                            y: 5
+                        }, {
+                            t: '2020-05-01',
+                            y: 5
+                        }, {
+                            t: '2020-05-02',
+                            y: 5
+                        }, {
+                            t: '2020-05-03',
+                            y: 5
+                        }, {
+                            t: '2020-05-04',
+                            y: 5
+                        }, {
+                            t: '2020-05-05',
+                            y: 5
+                        }, {
+                            t: '2020-05-06',
+                            y: 5
+                        }, {
+                            t: '2020-05-07',
+                            y: 5
+                        }, {
+                            t: '2020-05-08',
+                            y: 5
+                        }, {
+                            t: '2020-05-09',
+                            y: 5
+                        }, {
+                            t: '2020-05-10',
+                            y: 5
+                        }, {
+                            t: '2020-05-11',
+                            y: 5
+                        }, {
+                            t: '2020-05-12',
+                            y: 5
+                        }, {
+                            t: '2020-05-13',
+                            y: 5
+                        }, {
+                            t: '2020-05-14',
+                            y: 5
+                        }, {
+                            t: '2020-05-15',
+                            y: 5
+                        }, {
+                            t: '2020-05-16',
+                            y: 5
+                        }, {
+                            t: '2020-05-17',
+                            y: 5
+                        }, {
+                            t: '2020-05-18',
+                            y: 5
+                        }, {
+                            t: '2020-05-19',
+                            y: 5
+                        }, {
+                            t: '2020-05-20',
+                            y: 5
+                        }, {
+                            t: '2020-05-21',
+                            y: 5
+                        }, {
+                            t: '2020-05-22',
+                            y: 5
+                        }, {
+                            t: '2020-05-23',
+                            y: 5
+                        }, {
+                            t: '2020-05-24',
+                            y: 5
+                        }, {
+                            t: '2020-05-25',
+                            y: 5
+                        }, {
+                            t: '2020-05-26',
+                            y: 5
+                        }, {
+                            t: '2020-05-27',
+                            y: 5
+                        }, {
+                            t: '2020-05-28',
+                            y: 6
+                        }, {
+                            t: '2020-05-29',
+                            y: 7
+                        }, {
+                            t: '2020-05-30',
+                            y: 7
+                        }, {
+                            t: '2020-06-01',
+                            y: 9
+                        }, {
+                            t: '2020-06-02',
+                            y: 9
+                        }, {
+                            t: '2020-06-03',
+                            y: 10
+                        }, {
+                            t: '2020-06-04',
+                            y: 11
+                        }, {
+                            t: '2020-06-05',
+                            y: 11
+                        }, {
+                            t: '2020-06-06',
+                            y: 11
+                        }, {
+                            t: '2020-06-07',
+                            y: 11
+                        }, {
+                            t: '2020-06-08',
+                            y: 13
+                        }, {
+                            t: '2020-06-09',
+                            y: 18
+                        }, {
+                            t: '2020-06-10',
+                            y: 19
+                        }, {
+                            t: '2020-06-11',
+                            y: 19
+                        }, {
+                            t: '2020-06-12',
+                            y: 20
+                        }, {
+                            t: '2020-06-13',
+                            y: 20
+                        }, {
+                            t: '2020-06-14',
+                            y: 20
+                        }, {
+                            t: '2020-06-15',
+                            y: 26
+                        }, {
+                            t: '2020-06-16',
+                            y: 28
+                        }, {
+                            t: '2020-06-17',
+                            y: 29
+                        }, {
+                            t: '2020-06-18',
+                            y: 30
+                        }, {
+                            t: '2020-06-19',
+                            y: 30
+                        }, {
+                            t: '2020-06-20',
+                            y: 30
+                        }, {
+                            t: '2020-06-21',
+                            y: 30
+                        }, {
+                            t: '2020-06-22',
+                            y: 34
+                        }, {
+                            t: '2020-06-23',
+                            y: 34
+                        }, {
+                            t: '2020-06-24',
+                            y: 36
+                        }, {
+                            t: '2020-06-25',
+                            y: 36
+                        }, {
+                            t: '2020-06-26',
+                            y: 36
+                        }, {
+                            t: '2020-06-27',
+                            y: 36
+                        }, {
+                            t: '2020-06-28',
+                            y: 36
+                        }, {
+                            t: '2020-06-29',
+                            y: 38
+                        }, {
+                            t: '2020-06-30',
+                            y: 39
+                        }, {
+                            t: '2020-07-01',
+                            y: 43
+                        }, {
+                            t: '2020-07-02',
+                            y: 44
+                        }, {
+                            t: '2020-07-03',
+                            y: 44
+                        }, {
+                            t: '2020-07-04',
+                            y: 44
+                        }, {
+                            t: '2020-07-05',
+                            y: 44
+                        }, {
+                            t: '2020-07-06',
+                            y: 44
+                        }, {
+                            t: '2020-07-07',
+                            y: 44
+                        }, {
+                            t: '2020-07-08',
+                            y: 45
+                        }, {
+                            t: '2020-07-09',
+                            y: 48
+                        }, {
+                            t: '2020-07-10',
+                            y: 49
+                        }, {
+                            t: '2020-07-11',
+                            y: 49
+                        }, {
+                            t: '2020-07-12',
+                            y: 49
+                        }, {
+                            t: '2020-07-13',
+                            y: 52
+                        }, {
+                            t: '2020-07-14',
+                            y: 53
+                        }, {
+                            t: '2020-07-15',
+                            y: 55
+                        }, {
+                            t: '2020-07-16',
+                            y: 61
+                        }, {
+                            t: '2020-07-17',
+                            y: 63
+                        }, {
+                            t: '2020-07-18',
+                            y: 64
+                        }, {
+                            t: '2020-07-19',
+                            y: 65
+                        }, {
+                            t: '2020-07-20',
+                            y: 68
+                        }, {
+                            t: '2020-07-21',
+                            y: 70
+                        }, {
+                            t: '2020-07-22',
+                            y: 80
+                        }, {
+                            t: '2020-07-23',
+                            y: 90
+                        }, {
+                            t: '2020-07-24',
+                            y: 95
+                        }, {
+                            t: '2020-07-25',
+                            y: 100
+                        }, {
+                            t: '2020-07-26',
+                            y: 106
+                        }, {
+                            t: '2020-07-27',
+                            y: 113
+                        }, {
+                            t: '2020-07-28',
+                            y: 117
+                        }, {
+                            t: '2020-07-29',
+                            y: 117
+                        }, {
+                            t: '2020-07-30',
+                            y: 122
+                        }, {
+                            t: '2020-07-31',
+                            y: 128
+                        }, {
+                            t: '2020-08-01',
+                            y: 133
+                        }, {
+                            t: '2020-08-02',
+                            y: 136
+                        }, {
+                            t: '2020-08-03',
+                            y: 138
+                        }, {
+                            t: '2020-08-04',
+                            y: 138
+                        }, {
+                            t: '2020-08-05',
+                            y: 144
+                        }, {
+                            t: '2020-08-06',
+                            y: 151
+                        }, {
+                            t: '2020-08-07',
+                            y: 151
+                        }, {
+                            t: '2020-08-08',
+                            y: 151
+                        }, {
+                            t: '2020-08-09',
+                            y: 152
+                        }, {
+                            t: '2020-08-10',
+                            y: 153
+                        }, {
+                            t: '2020-08-11',
+                            y: 155
+                        }, {
+                            t: '2020-08-12',
+                            y: 158
+                        }, {
+                            t: '2020-08-13',
+                            y: 162
+                        }, {
+                            t: '2020-08-14',
+                            y: 165
+                        }, {
+                            t: '2020-08-15',
+                            y: 165
+                        }, {
+                            t: '2020-08-16',
+                            y: 167
+                        }, {
+                            t: '2020-08-17',
+                            y: 169
+                        }, {
+                            t: '2020-08-18',
+                            y: 175
+                        }, {
+                            t: '2020-08-19',
+                            y: 180
+                        }, {
+                            t: '2020-08-20',
+                            y: 186
+                        }, {
+                            t: '2020-08-21',
+                            y: 196
+                        }, {
+                            t: '2020-08-22',
+                            y: 197
+                        }, {
+                            t: '2020-08-23',
+                            y: 199
+                        }, {
+                            t: '2020-08-24',
+                            y: 202
+                        }, {
+                            t: '2020-08-25',
+                            y: 210
+                        }, {
+                            t: '2020-08-26',
+                            y: 219
+                        }, {
+                            t: '2020-08-27',
+                            y: 241
+                        }, {
+                            t: '2020-08-28',
+                            y: 254
+                        }, {
+                            t: '2020-08-29',
+                            y: 262
+                        }, {
+                            t: '2020-08-30',
+                            y: 272
+                        }, {
+                            t: '2020-08-31',
+                            y: 284
+                        }, {
+                            t: '2020-09-01',
+                            y: 295
+                        }, {
+                            t: '2020-09-02',
+                            y: 303
+                        }, {
+                            t: '2020-09-03',
+                            y: 332
+                        }, {
+                            t: '2020-09-04',
+                            y: 342
+                        }, {
+                            t: '2020-09-05',
+                            y: 350
+                        }, {
+                            t: '2020-09-06',
+                            y: 359
+                        }, {
+                            t: '2020-09-07',
+                            y: 371
+                        }, {
+                            t: '2020-09-08',
+                            y: 383
+                        }, {
+                            t: '2020-09-09',
+                            y: 411
+                        }, {
+                            t: '2020-09-10',
+                            y: 423
+                        }, {
+                            t: '2020-09-11',
+                            y: 438
+                        }, {
+                            t: '2020-09-12',
+                            y: 454
+                        }, {
+                            t: '2020-09-13',
+                            y: 471
+                        }, {
+                            t: '2020-09-14',
+                            y: 489
+                        }, {
+                            t: '2020-09-15',
+                            y: 511
+                        }, {
+                            t: '2020-09-16',
+                            y: 535
+                        }, {
+                            t: '2020-09-17',
+                            y: 544
+                        }, {
+                            t: '2020-09-18',
+                            y: 567
+                        }, {
+                            t: '2020-09-19',
+                            y: 581
+                        }, {
+                            t: '2020-09-20',
+                            y: 598
+                        }, {
+                            t: '2020-09-21',
+                            y: 616
+                        }, {
+                            t: '2020-09-22',
+                            y: 620
+                        }, {
+                            t: '2020-09-23',
+                            y: 641
+                        }, {
+                            t: '2020-09-24',
+                            y: 679
+                        }, {
+                            t: '2020-09-25',
+                            y: 698
+                        }, {
+                            t: '2020-09-26',
+                            y: 715
+                        }, {
+                            t: '2020-09-27',
+                            y: 732
+                        }, {
+                            t: '2020-09-28',
+                            y: 750
+                        }, {
+                            t: '2020-09-29',
+                            y: 783
+                        }, {
+                            t: '2020-09-30',
+                            y: 798
+                        }, {
+                            t: '2020-10-01',
+                            y: 830
+                        }, {
+                            t: '2020-10-02',
+                            y: 870
+                        }, {
+                            t: '2020-10-03',
+                            y: 887
+                        }, {
+                            t: '2020-10-04',
+                            y: 905
+                        }, {
+                            t: '2020-10-05',
+                            y: 925
+                        }, {
+                            t: '2020-10-06',
+                            y: 979
+                        }, {
+                            t: '2020-10-07',
+                            y: 1039
+                        }, {
+                            t: '2020-10-08',
+                            y: 1092
+                        }, {
+                            t: '2020-10-09',
+                            y: 1145
+                        }, {
+                            t: '2020-10-10',
+                            y: 1177
+                        }, {
+                            t: '2020-10-11',
+                            y: 1210
+                        }, {
+                            t: '2020-10-12',
+                            y: 1244
+                        }, {
+                            t: '2020-10-13',
+                            y: 1289
+                        }, {
+                            t: '2020-10-14',
+                            y: 1321
+                        }, {
+                            t: '2020-10-15',
+                            y: 1348
+                        }, {
+                            t: '2020-10-16',
+                            y: 1394
+                        }, {
+                            t: '2020-10-17',
+                            y: 1414
+                        }, {
+                            t: '2020-10-18',
+                            y: 1435
+                        }, {
+                            t: '2020-10-19',
+                            y: 1457
+                        }, {
+                            t: '2020-10-20',
+                            y: 1469
+                        }, {
+                            t: '2020-10-21',
+                            y: 1528
+                        }, {
+                            t: '2020-10-22',
+                            y: 1558
+                        }, {
+                            t: '2020-10-23',
+                            y: 1588
+                        }],
+                        borderColor: '#42107b',
+                        borderWidth: 4,
+                        lineTension: 0,
+                        pointRadius: 0,
+                        pointHitRadius: 2,
+                        fill: false,
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                            type: 'time',
+                            time: {
+                                unit: 'month'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                userCallback: function(value, index, values) {
+                                    value = value.toString();
+                                    value = value.split(/(?=(?:...)*$)/);
+                                    value = value.join(',');
+                                    return value;
+                                }
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
