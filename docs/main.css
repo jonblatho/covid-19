@@ -145,39 +145,39 @@ a.chart-selection-selected {
     font-weight: 600;
 }
 
-.monthly-totals {
-    margin: 20px auto;
+.totals {
+    margin: 20px auto 40px;
 }
 
 
-.monthly-totals th,
-.monthly-totals td {
+.totals th,
+.totals td {
     padding: 4px 24px;
 }
 
-.monthly-totals tr {
+.totals tr {
     padding: 0 30px;
 }
 
-.monthly-totals tr:nth-child(odd) {
+.totals tr:nth-child(odd) {
     background: rgba(0,0,0,0.05);
 }
 
-.monthly-totals thead th {
+.totals thead th {
     padding-bottom: 10px;
 }
 
-.monthly-totals thead tr {
+.totals thead tr {
     background: transparent !important;
 }
 
-.monthly-totals th.row-head {
+.totals th.row-head {
     padding: 8px 20px;
     color: rgba(0,0,0,0.6);
     text-align: right;
 }
 
-.monthly-totals td {
+.totals td {
     padding: 16px;
     font-size: 140%;
     font-weight: 600;
