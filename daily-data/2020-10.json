@@ -229,7 +229,7 @@
         "active_cases": 287,
         "hospitalizations": 19,
         "deaths": 16,
-        "tests": 9570,
+        "tests": 9493,
         "estimates": {
             "cases": true,
             "active": true,
