@@ -1075,6 +1075,9 @@
                         intersect: false,
                         displayColors: false,
                         callbacks: {
+                            title: function(tooltipItem, data) {
+                                return tooltipItem.label
+                            },
                             label: function(tooltipItem, data) {
                                 value = tooltipItem.yLabel.toString();
                                 value = value.split(/(?=(?:...)*$)/);
