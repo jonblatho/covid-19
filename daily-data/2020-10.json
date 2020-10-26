@@ -555,5 +555,74 @@
             "https://www.facebook.com/permalink.php?story_fbid=4062826423732133&id=170310842983730"
         ],
         "date": "2020-10-23"
+    },
+    {
+        "new_cases": {
+            "west_plains": 14,
+            "willow_springs": 6,
+            "mountain_view": 3,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 220,
+        "hospitalizations": 5,
+        "deaths": 36,
+        "tests": 10404,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2020-10-24"
+    },
+    {
+        "new_cases": {
+            "west_plains": 15,
+            "willow_springs": 7,
+            "mountain_view": 3,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 215,
+        "hospitalizations": 5,
+        "deaths": 36,
+        "tests": 10450,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2020-10-25"
+    },
+    {
+        "new_cases": {
+            "west_plains": 15,
+            "willow_springs": 7,
+            "mountain_view": 3,
+            "other": 2,
+            "unknown": 0
+        },
+        "active_cases": 210,
+        "hospitalizations": 5,
+        "deaths": 37,
+        "tests": 10497,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": false
+        },
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4070909222923853&id=170310842983730",
+            "https://www.facebook.com/permalink.php?story_fbid=4070912106256898&id=170310842983730"
+        ],
+        "date": "2020-10-26"
     }
 ]
