@@ -23,7 +23,8 @@
             <div id="charts">
                 <div class="wrap">
                     <div id="chart-select">
-                        <a class="chart-selection chart-selection-selected" href="#">Total Cases (County)</a>
+                        <a class="chart-selection chart-selection-selected" href="#">Total Cases (by Town)</a>
+                        
                         
                     </div>
                     <canvas id="chart"></canvas>
@@ -10206,9 +10207,10 @@
                         labels: labels,
                         datasets: [{
                             data: data,
+                            label: 'Total Cases',
                             backgroundColor: primaryColor+'22',
                             borderColor: primaryColor,
-                            borderWidth: 4,
+                            borderWidth: 2,
                             lineTension: 0,
                             pointRadius: 0,
                             pointHitRadius: 2,
@@ -10216,9 +10218,6 @@
                         }]
                     },
                     options: {
-                        legend: {
-                            display: false,
-                        },
                         scales: {
                             xAxes: [{
                                 type: 'time',
@@ -10267,7 +10266,77 @@
                 });
             }
 
-            var chart = new lineChart([], [])
+            function areaChart(labels, datasets, decimal=false) {
+                return new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: datasets.forEach(function(dataset, index) {
+                            return {
+                                data: dataset,
+                                label: ["West Plains", "Willow Springs", "Mountain View", "Other", "Unknown"][index]
+                            }
+                        })
+                    },
+                    options: {
+                        responsive: true,
+                        aspectRatio: 2.0,
+                        scales: {
+                            xAxes: [{
+                                type: 'time',
+                                time: {
+                                    tooltipFormat: 'MMMM D, YYYY',
+                                    unit: 'month'
+                                }
+                            }],
+                            yAxes: [{
+                                stacked: true,
+                                ticks: {
+                                    beginAtZero: true,
+                                    userCallback: function(value, index, values) {
+                                        value = value.toString();
+                                        value = value.split(/(?=(?:...)*$)/);
+                                        value = value.join(',');
+                                        return value;
+                                    }
+                                }
+                            }]
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(tooltipItem, data) {
+                                    category = ["West Plains", "Willow Springs", "Mountain View", "Other", "Unknown"][tooltipItem.datasetIndex]
+                                    value = tooltipItem.yLabel.toString();
+                                    if (!decimal) {
+                                        value = value.split(/(?=(?:...)*$)/);
+                                        value = value.join(',');
+                                    }
+                                    if(tooltipItem.yLabel == 1) {
+                                        return category + ': ' + value + ' case';
+                                    } else {
+                                        return category + ': ' + value + ' cases';
+                                    }
+                                }
+                            },
+                            elements: {
+                                line: {
+                                    fill: '-1',
+                                    borderWidth: 0
+                                }
+                            }
+                        },
+                        plugins: {
+                            filler: {
+                                propagate: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            var chart = new areaChart([], [])
 
             
             function loadData() {
@@ -10277,18 +10346,43 @@
                     .then(res => res.json())
                     .then((out) => {
                         json = out
-                        updateChartData(out);
+                        updateAreaChartData(out);
                     })
                     .catch(err => { throw err } );
                 }
             }
 
-            function updateChartData(data) {
+            function updateLineChartData(data) {
                 let labels = data.map(day => day["date"]);
                 let values = data.map(day => day["total_cases"]["county"] ?? Number.NaN);
 
                 chart.data.labels = labels;
                 chart.data.datasets[0].data = values;
+                chart.update();
+            }
+
+            function updateAreaChartData(data) {
+                let labels = data.map(day => day["date"]);
+                var sets = [];
+                sets.push(data.map(day => day["total_cases"]["west_plains"]));
+                sets.push(data.map(day => day["total_cases"]["willow_springs"]));
+                sets.push(data.map(day => day["total_cases"]["mountain_view"]));
+                sets.push(data.map(day => day["total_cases"]["other"]));
+                sets.push(data.map(day => day["total_cases"]["unknown"]));
+
+                chart.data.labels = labels;
+                chart.data.datasets = []
+                sets.forEach(function(values, index) {
+                    console.log(index)
+                    chart.data.datasets.push(
+                        {
+                            data: values,
+                            label: ["West Plains", "Willow Springs", "Mountain View", "Other", "Unknown"][index],
+                            pointRadius: 0,
+                            backgroundColor: areaChartColors[index]
+                        }
+                    )
+                });
                 chart.update();
             }
 
