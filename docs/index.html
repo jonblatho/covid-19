@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=482e7864ab40074dd47f53c25526b437b91c365711c72c260eb1c2f07c5f1303" />
+        <link rel="stylesheet" href="main.css?v=bb454f764c3e8e733300b2057cf99b575a0ff58a01e5e06971ab9f7474710596" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
     </head>
@@ -35,7 +35,11 @@
                     <div id="dashboard-grid-container">
                         <div class="dashboard-grid-item">
                             <div class="dashboard-highlight">181</div>
-                            <div class="dashboard-description">new cases in the past&nbsp;week</div>
+                            <div class="dashboard-description">
+                                
+                                new cases in the past week
+                                
+                            </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-good">&darr; 
@@ -45,7 +49,11 @@
                         </div>
                         <div class="dashboard-grid-item">
                             <div class="dashboard-highlight">209</div>
-                            <div class="dashboard-description">known active cases</div>
+                            <div class="dashboard-description">
+                                
+                                known active cases
+                                
+                            </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-good">&darr; 
@@ -65,7 +73,11 @@
                         </div>
                         <div class="dashboard-grid-item">
                             <div class="dashboard-highlight">1</div>
-                            <div class="dashboard-description">active hospitalizations</div>
+                            <div class="dashboard-description">
+                                
+                                active hospitalization
+                                
+                            </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-good">&darr;
@@ -75,7 +87,11 @@
                         </div>
                         <div class="dashboard-grid-item">
                             <div class="dashboard-highlight">40</div>
-                            <div class="dashboard-description">cumulative deaths</div>
+                            <div class="dashboard-description">
+                                
+                                cumulative deaths
+                                
+                            </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-bad">&uarr; 
@@ -85,7 +101,11 @@
                         </div>
                         <div class="dashboard-grid-item">
                             <div class="dashboard-highlight">679</div>
-                            <div class="dashboard-description">new tests in the past week</div>
+                            <div class="dashboard-description">
+                                
+                                new tests in the past week
+                                
+                            </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-good">&uarr; 
@@ -10488,7 +10508,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=23dcf605f3ec93f91cb15561fb26170b6083ae6752ea00adea424f8e84a34b7b';
+                    let url = 'chart-data/data.json?v=757e0ae7ac3226c04f84cb8360fa4c85e8f0f6f2aa0323b39f12139c91051229';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
