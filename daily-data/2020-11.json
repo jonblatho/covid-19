@@ -45,5 +45,55 @@
             "https://www.facebook.com/permalink.php?story_fbid=4091218517559590&id=170310842983730"
         ],
         "date": "2020-11-02"
+    },
+    {
+        "new_cases": {
+            "west_plains": 7,
+            "willow_springs": 0,
+            "mountain_view": 19,
+            "other": 2,
+            "unknown": 0
+        },
+        "active_cases": 144,
+        "hospitalizations": 1,
+        "deaths": 40,
+        "tests": 11354,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": false
+        },
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4093847880629987&id=170310842983730",
+            "https://www.facebook.com/permalink.php?story_fbid=4093849440629831&id=170310842983730"
+        ],
+        "date": "2020-11-03"
+    },
+    {
+        "new_cases": {
+            "west_plains": 11,
+            "willow_springs": 7,
+            "mountain_view": 2,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 148,
+        "hospitalizations": 0,
+        "deaths": 40,
+        "tests": 11440,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4098132450201530&id=170310842983730",
+            "https://www.facebook.com/permalink.php?story_fbid=4098123413535767&id=170310842983730"
+        ],
+        "date": "2020-11-04"
     }
 ]
