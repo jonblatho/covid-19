@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=f168fb9d7bd48974eece852fc93cf1da7f7cedc62da28d9485278efdc975d567" />
+        <link rel="stylesheet" href="main.css?v=476b074d654c195b5a71d67dfd1963787906ea1b37135808a54411a599664b36" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -11208,25 +11208,9 @@
                                     borderWidth: 1,
                                     borderColor: '#ff0000',
                                     label: {
-                                        content: "Trump parade/rally #1",
+                                        content: "Trump parade/rally",
                                         enabled: true,
                                         position: "top",
-                                    }
-                                },
-                                {
-                                    type: "line",
-                                    mode: "vertical",
-                                    scaleID: "x-axis-0",
-                                    value: "2020-11-01",
-                                    backgroundColor: 'rgba(0,0,0,0.5)',
-                                    borderWidth: 1,
-                                    borderColor: '#ff0000',
-                                    label: {
-                                        content: "Trump parade/rally #2",
-                                        enabled: true,
-                                        position: "top",
-                                        xAdjust: 60,
-                                        yAdjust: 25,
                                     }
                                 },
                                 {
@@ -11241,8 +11225,8 @@
                                         content: "WP mask mandate",
                                         enabled: true,
                                         position: "top",
-                                        xAdjust: 55,
-                                        yAdjust: 50,
+                                        xAdjust: 25,
+                                        yAdjust: 25,
                                     }
                                 },
                             ]
@@ -11256,7 +11240,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=389597cfc61213a38b74f0fab9cb4bc9831e9e755a3a79d62153299454f57ab1';
+                    let url = 'chart-data/data.json?v=2b44ae1bf2ca5e46c31d7c4c95926731b01c9f97e6efcc7b3175ce4548a3d26f';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
