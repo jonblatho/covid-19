@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=c5862971b74154b974916dfe2cb03d04f4fcb8f8dec7d2aede210a7be2fb0410" />
+        <link rel="stylesheet" href="main.css?v=2a0e65a774b6724e3c2ccafe523863e61b18ddcc10fd1be773dc612ef9b26b21" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <h4>Active cases by town</h4>
+                    <h4>Est. active cases by town</h4>
                     <div class="town-grid-container">
                         
                         <div class="town-grid-item">
@@ -11472,7 +11472,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=061d9efb1841c791fa7c32cf4dc06b6a671664a8c129cfe666d927a247bbbdbc';
+                    let url = 'chart-data/data.json?v=e077c097ae0a9f990232bec04f18b796d323ac85e17376803826a7135c0ba986';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
