@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=31232c51184fa5de84a1f0bb6c0bf778de2bb73ac754af2df3805c054ca411f0" />
+        <link rel="stylesheet" href="main.css?v=09d7ea66882a715bba9fa973a954f18a963c668753b8935dee774fcba746b8af" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -67,9 +67,9 @@
                             <div class="dashboard-description">14-day positivity rate</div>
                             <div class="dashboard-context">
                                 
-                                <span class="change change-bad">&uarr; 
+                                <span class="change change-good">&darr; 
                                 
-                                12.7%</span> from a week ago
+                                2.1%</span> from a week ago
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
@@ -11521,7 +11521,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=87ae5c3d5ae565e0200c9a23b758256d9d8bc9ef53f42b0cc5bd15e7223801ba';
+                    let url = 'chart-data/data.json?v=36d4ad420643052fd359b1b99707972673917f3181b33af38611b83592991827';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
