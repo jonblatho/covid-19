@@ -184,8 +184,13 @@ table thead tr {
     text-align: center;
 }
 
+.all-data-wrapper {
+    overflow-x: scroll;
+}
+
 .all-data {
     position: relative;
+    margin-bottom: 16px;
     font-size: 80%;
     line-height: 140%;
 }
