@@ -184,10 +184,6 @@ table thead tr {
     text-align: center;
 }
 
-.all-data-wrapper {
-    overflow-x: scroll;
-}
-
 .all-data {
     position: relative;
     margin-bottom: 16px;
@@ -217,7 +213,6 @@ table thead tr {
 }
 
 .all-data .date {
-    min-width: 70px;
     font-weight: 600;
 }
 
