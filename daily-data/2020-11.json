@@ -512,7 +512,7 @@
             "other": 1,
             "unknown": 0
         },
-        "active_cases": 96,
+        "active_cases": 97,
         "hospitalizations": 6,
         "deaths": 53,
         "tests": 12676,
@@ -535,7 +535,7 @@
             "other": 1,
             "unknown": 0
         },
-        "active_cases": 90,
+        "active_cases": 92,
         "hospitalizations": 6,
         "deaths": 53,
         "tests": 12738,
@@ -558,7 +558,7 @@
             "other": 1,
             "unknown": 0
         },
-        "active_cases": 85,
+        "active_cases": 87,
         "hospitalizations": 6,
         "deaths": 53,
         "tests": 12800,
