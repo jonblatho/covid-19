@@ -11,7 +11,7 @@
         "hospitalizations": 1,
         "deaths": 40,
         "tests": 11227,
-        "dhss_total": 1313,
+        "dhss_total": 1316,
         "estimates": {
             "cases": true,
             "active": true,
@@ -34,7 +34,7 @@
         "hospitalizations": 1,
         "deaths": 40,
         "tests": 11299,
-        "dhss_total": 1328,
+        "dhss_total": 1331,
         "estimates": {
             "cases": false,
             "active": false,
@@ -60,7 +60,7 @@
         "hospitalizations": 1,
         "deaths": 40,
         "tests": 11354,
-        "dhss_total": 1336,
+        "dhss_total": 1339,
         "estimates": {
             "cases": false,
             "active": false,
@@ -86,7 +86,7 @@
         "hospitalizations": 0,
         "deaths": 40,
         "tests": 11420,
-        "dhss_total": 1348,
+        "dhss_total": 1350,
         "estimates": {
             "cases": false,
             "active": false,
@@ -112,7 +112,7 @@
         "hospitalizations": 0,
         "deaths": 46,
         "tests": 11486,
-        "dhss_total": 1359,
+        "dhss_total": 1362,
         "estimates": {
             "cases": false,
             "active": false,
@@ -138,7 +138,7 @@
         "hospitalizations": 0,
         "deaths": 47,
         "tests": 11582,
-        "dhss_total": 1377,
+        "dhss_total": 1380,
         "estimates": {
             "cases": false,
             "active": false,
@@ -164,7 +164,7 @@
         "hospitalizations": 1,
         "deaths": 47,
         "tests": 11644,
-        "dhss_total": 1381,
+        "dhss_total": 1385,
         "estimates": {
             "cases": true,
             "active": true,
@@ -187,7 +187,7 @@
         "hospitalizations": 2,
         "deaths": 47,
         "tests": 11706,
-        "dhss_total": 1393,
+        "dhss_total": 1397,
         "estimates": {
             "cases": true,
             "active": true,
@@ -210,7 +210,7 @@
         "hospitalizations": 3,
         "deaths": 47,
         "tests": 11768,
-        "dhss_total": 1407,
+        "dhss_total": 1411,
         "estimates": {
             "cases": false,
             "active": false,
@@ -236,7 +236,7 @@
         "hospitalizations": 5,
         "deaths": 47,
         "tests": 11888,
-        "dhss_total": 1419,
+        "dhss_total": 1426,
         "estimates": {
             "cases": false,
             "active": false,
@@ -262,7 +262,7 @@
         "hospitalizations": 7,
         "deaths": 47,
         "tests": 11940,
-        "dhss_total": 1444,
+        "dhss_total": 1451,
         "estimates": {
             "cases": false,
             "active": false,
@@ -288,7 +288,7 @@
         "hospitalizations": 8,
         "deaths": 47,
         "tests": 12049,
-        "dhss_total": 1459,
+        "dhss_total": 1466,
         "estimates": {
             "cases": false,
             "active": false,
@@ -314,7 +314,7 @@
         "hospitalizations": 8,
         "deaths": 47,
         "tests": 12121,
-        "dhss_total": 1468,
+        "dhss_total": 1478,
         "estimates": {
             "cases": false,
             "active": false,
@@ -340,7 +340,7 @@
         "hospitalizations": 8,
         "deaths": 47,
         "tests": 12172,
-        "dhss_total": 1475,
+        "dhss_total": 1485,
         "estimates": {
             "cases": true,
             "active": true,
@@ -363,7 +363,7 @@
         "hospitalizations": 8,
         "deaths": 47,
         "tests": 12223,
-        "dhss_total": 1485,
+        "dhss_total": 1494,
         "estimates": {
             "cases": true,
             "active": true,
@@ -386,7 +386,7 @@
         "hospitalizations": 7,
         "deaths": 47,
         "tests": 12275,
-        "dhss_total": 1498,
+        "dhss_total": 1508,
         "estimates": {
             "cases": false,
             "active": false,
@@ -412,7 +412,7 @@
         "hospitalizations": 7,
         "deaths": 53,
         "tests": 12390,
-        "dhss_total": 1501,
+        "dhss_total": 1514,
         "estimates": {
             "cases": false,
             "active": false,
@@ -438,7 +438,7 @@
         "hospitalizations": 6,
         "deaths": 53,
         "tests": 12545,
-        "dhss_total": 1505,
+        "dhss_total": 1524,
         "estimates": {
             "cases": false,
             "active": false,
@@ -464,7 +464,7 @@
         "hospitalizations": 6,
         "deaths": 53,
         "tests": 12592,
-        "dhss_total": null,
+        "dhss_total": 1528,
         "estimates": {
             "cases": false,
             "active": false,
@@ -490,7 +490,7 @@
         "hospitalizations": 6,
         "deaths": 53,
         "tests": 12615,
-        "dhss_total": null,
+        "dhss_total": 1534,
         "estimates": {
             "cases": false,
             "active": false,
@@ -503,5 +503,77 @@
             "https://www.facebook.com/permalink.php?story_fbid=4144032675611507&id=170310842983730"
         ],
         "date": "2020-11-20"
+    },
+    {
+        "new_cases": {
+            "west_plains": 6,
+            "willow_springs": 0,
+            "mountain_view": 2,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 96,
+        "hospitalizations": 6,
+        "deaths": 53,
+        "tests": 12676,
+        "dhss_total": 1536,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2020-11-21"
+    },
+    {
+        "new_cases": {
+            "west_plains": 6,
+            "willow_springs": 1,
+            "mountain_view": 2,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 90,
+        "hospitalizations": 6,
+        "deaths": 53,
+        "tests": 12738,
+        "dhss_total": null,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2020-11-22"
+    },
+    {
+        "new_cases": {
+            "west_plains": 7,
+            "willow_springs": 1,
+            "mountain_view": 2,
+            "other": 1,
+            "unknown": 0
+        },
+        "active_cases": 85,
+        "hospitalizations": 6,
+        "deaths": 53,
+        "tests": 12800,
+        "dhss_total": null,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": false
+        },
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4152177521463689&id=170310842983730",
+            "https://www.facebook.com/permalink.php?story_fbid=4152179414796833&id=170310842983730"
+        ],
+        "date": "2020-11-23"
     }
 ]

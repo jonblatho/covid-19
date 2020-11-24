@@ -11,7 +11,7 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 3,
+        "dhss_total": 2,
         "estimates": {
             "cases": false,
             "active": true,
