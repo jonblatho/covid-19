@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=2f4f7a20906a8a865e1b7fa13ebf41965d5f3cbd5c1e4896655d364b6e4c3134" />
+        <link rel="stylesheet" href="main.css?v=47797957779a4501541d6d9090eca5b7ab8f34a2ed8d130e4861b875b918853a" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -21,6 +21,17 @@
             </div>
         </header>
         <main>
+            <div id="top">
+                <div class="wrap">
+                    <div class="message message-moderate">
+                        The Howell County Health Department has stopped providing its daily Facebook posts
+                        containing data used to produce this dashboard, most notably including case data 
+                        by town and test counts. Unless and until that data is made available again, data on 
+                        this dashboard will be frozen. The HCHD is now publishing a <a href="https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/">new dashboard</a>
+                        in partnership with the University of Missouri Extension.
+                    </div>
+                </div>
+            </div>
             <div id="charts">
                 <div class="wrap">
                     <div id="chart-select">
@@ -11752,7 +11763,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=f62706cfab08bcef9d29cce3cca172abab7ad3ec9f2f78a4f58a3f17f2ac953f';
+                    let url = 'chart-data/data.json?v=3c4078d60c5b8e71d6ee7c4d6e7753d56ce49c7c1a07b487fd9be19d3dc8e9cf';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
