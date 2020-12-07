@@ -36,7 +36,7 @@
         "hospitalizations": 13,
         "deaths": 70,
         "tests": 13397,
-        "dhss_total": 1650,
+        "dhss_total": 1652,
         "estimates": {
             "cases": false,
             "active": false,
@@ -62,7 +62,7 @@
         "hospitalizations": 13,
         "deaths": 74,
         "tests": 13475,
-        "dhss_total": null,
+        "dhss_total": 1659,
         "estimates": {
             "cases": false,
             "active": false,
