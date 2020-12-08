@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=700f15705dedb76786ffa96b9b5d059edaa195263fda3de6ba3828b85ce2c981" />
+        <link rel="stylesheet" href="main.css?v=17cdea29e2bdb9e39daf6eb9d74fef78a36b318ab295f3297e9b8d2bf16c6695" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -13723,15 +13723,6 @@
                             rather than the number of individuals tested. For consistency, I opted to neither 
                             include nor estimate testing data before that date.
                         </li>
-                        <li>
-                            I was unable to locate press releases with data by town for two cases added on 
-                            July 10 and July 14, 2020.
-                        </li>
-                        <li>
-                            HCHD did not provide data by town between November 24 and November 30,
-                            2020. The 143 new cases added in that time period are placed under the "Unknown" 
-                            category unless and until that data is made available.
-                        </li>
                     </ul>
                 </div>
             </section>
@@ -13741,9 +13732,9 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
-        <script src="js/chart-config.js?v=0987dc8e90b54ca861c9ef974ecd41f42f6104bd9f8af24b59ca3325f60c74df"></script>
-        <script src="js/chart-ui.js?v=d6620cfffb4cf220f228a5d2a665d7cdcbd67ee145784035537feb29e97a324a"></script>
-        <script src="js/chart-date-markers.js?v=cf3c8b7de1010823c0d6a210b365441c7f86742416cc5d2a2c51edbca89dba01"></script>
+        <script src="js/chart-config.js?v=a1ed3e92e7408a755714358f5f2d4b22dca64186c1cf4df47360237ed7825183"></script>
+        <script src="js/chart-ui.js?v=8ed0a4de97d8ecca0ea33a537f1f849ffb4b6ec4ab35390065f9273c75506680"></script>
+        <script src="js/chart-date-markers.js?v=30f4084969f0473270678f36acb1b4eea1d505bcddaa99fe842f87aac82f12bc"></script>
         <script>
             function lineChart(labels, data, decimal=false) {
                 return new Chart(ctx, {
@@ -13887,7 +13878,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=cd9632f205708422dbf2282e74743e35b9f50453c08bd5b9011708a1850ea31d';
+                    let url = 'chart-data/data.json?v=d4c82c10942976c1723cfce19d0a43f3f61a9211b2f5a54f1191039532b71e80';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
