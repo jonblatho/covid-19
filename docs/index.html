@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=e61f79f616cd6d2d2eb7812f29c7b9472c5b48bd9b3373defceccf50f37ae6b2" />
+        <link rel="stylesheet" href="main.css?v=025e010edc577a001a3c0b9eea11a7a3e05256586f4f6485f4dfa4bd9f2d2fea" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
             <div id="charts">
                 <div class="wrap">
                     <div id="chart-select">
-                        <a class="chart-selection chart-selection-selected" href="#">Total Cases (by Town)</a>
+                        <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total');">Total Cases</button>
                         
-                        
+                        <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers');">Date Markers On</button>
                     </div>
                     <canvas id="chart"></canvas>
                 </div>
@@ -241,15 +241,15 @@
                             
                             <td>2,575</td>
                             
-                            <td>1,549</td>
+                            <td>1,632</td>
                             
-                            <td>332</td>
+                            <td>350</td>
                             
-                            <td>325</td>
+                            <td>338</td>
                             
-                            <td>224</td>
+                            <td>255</td>
                             
-                            <td>145</td>
+                            <td>0</td>
                             
                         </tr>
                         
@@ -258,15 +258,15 @@
                             
                             <td>2,575</td>
                             
-                            <td>1,549</td>
+                            <td>1,632</td>
                             
-                            <td>332</td>
+                            <td>350</td>
                             
-                            <td>325</td>
+                            <td>338</td>
                             
-                            <td>224</td>
+                            <td>255</td>
                             
-                            <td>145</td>
+                            <td>0</td>
                             
                         </tr>
                         
@@ -340,7 +340,7 @@
                             
                             <td>89</td>
                             
-                            <td>63</td>
+                            <td>65</td>
                             
                             <td>6</td>
                             
@@ -348,7 +348,7 @@
                             
                             <td>10</td>
                             
-                            <td>2</td>
+                            <td>0</td>
                             
                         </tr>
                         
@@ -408,15 +408,15 @@
                             
                             <td>604</td>
                             
-                            <td>251</td>
+                            <td>332</td>
                             
-                            <td>46</td>
+                            <td>64</td>
                             
-                            <td>113</td>
+                            <td>126</td>
                             
-                            <td>51</td>
+                            <td>82</td>
                             
-                            <td>143</td>
+                            <td>0</td>
                             
                         </tr>
                         
@@ -5682,32 +5682,32 @@
                             <td class="date prominent-right-border">7/10/20</td>
                             
                             
-                            <td>49</td>
+                            <td class="estimate">49</td>
                             
-                            <td>26</td>
+                            <td class="estimate">27</td>
                             
-                            <td>0</td>
+                            <td class="estimate">0</td>
                             
-                            <td>10</td>
+                            <td class="estimate">10</td>
                             
-                            <td>12</td>
-                            
-                            
-                            <td class="prominent-right-border ">1</td>
+                            <td class="estimate">12</td>
                             
                             
-                            <td>1</td>
-                            
-                            <td>0</td>
-                            
-                            <td>0</td>
-                            
-                            <td>0</td>
-                            
-                            <td>0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border ">1</td>
+                            <td class="estimate">1</td>
+                            
+                            <td class="estimate">1</td>
+                            
+                            <td class="estimate">0</td>
+                            
+                            <td class="estimate">0</td>
+                            
+                            <td class="estimate">0</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border ">6</td>
                             
                             
@@ -5720,7 +5720,7 @@
                             <td class="">0</td>
                             <td class="prominent-right-border">0</td>
                             
-                            <td class="prominent-right-border ">8</td>
+                            <td class="prominent-right-border estimate">8</td>
                             
                             
                             <td>
@@ -5737,7 +5737,7 @@
                             
                             <td>49</td>
                             
-                            <td>26</td>
+                            <td>27</td>
                             
                             <td>0</td>
                             
@@ -5746,7 +5746,7 @@
                             <td>12</td>
                             
                             
-                            <td class="prominent-right-border ">1</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>0</td>
@@ -5786,7 +5786,7 @@
                             
                             <td>49</td>
                             
-                            <td>26</td>
+                            <td>27</td>
                             
                             <td>0</td>
                             
@@ -5795,7 +5795,7 @@
                             <td>12</td>
                             
                             
-                            <td class="prominent-right-border ">1</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>0</td>
@@ -5835,7 +5835,7 @@
                             
                             <td>52</td>
                             
-                            <td>28</td>
+                            <td>29</td>
                             
                             <td>0</td>
                             
@@ -5844,7 +5844,7 @@
                             <td>13</td>
                             
                             
-                            <td class="prominent-right-border ">1</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>3</td>
@@ -5888,32 +5888,32 @@
                             <td class="date prominent-right-border">7/14/20</td>
                             
                             
-                            <td>53</td>
+                            <td class="estimate">53</td>
                             
-                            <td>28</td>
+                            <td class="estimate">30</td>
                             
-                            <td>0</td>
+                            <td class="estimate">0</td>
                             
-                            <td>10</td>
+                            <td class="estimate">10</td>
                             
-                            <td>13</td>
-                            
-                            
-                            <td class="prominent-right-border ">2</td>
+                            <td class="estimate">13</td>
                             
                             
-                            <td>1</td>
-                            
-                            <td>0</td>
-                            
-                            <td>0</td>
-                            
-                            <td>0</td>
-                            
-                            <td>0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border ">1</td>
+                            <td class="estimate">1</td>
+                            
+                            <td class="estimate">1</td>
+                            
+                            <td class="estimate">0</td>
+                            
+                            <td class="estimate">0</td>
+                            
+                            <td class="estimate">0</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border ">6</td>
                             
                             
@@ -5926,7 +5926,7 @@
                             <td class="">0</td>
                             <td class="prominent-right-border">0</td>
                             
-                            <td class="prominent-right-border ">10</td>
+                            <td class="prominent-right-border estimate">10</td>
                             
                             
                             <td>
@@ -5945,7 +5945,7 @@
                             
                             <td>55</td>
                             
-                            <td>29</td>
+                            <td>31</td>
                             
                             <td>0</td>
                             
@@ -5954,7 +5954,7 @@
                             <td>14</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>2</td>
@@ -6000,7 +6000,7 @@
                             
                             <td>61</td>
                             
-                            <td>33</td>
+                            <td>35</td>
                             
                             <td>0</td>
                             
@@ -6009,7 +6009,7 @@
                             <td>16</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>6</td>
@@ -6055,7 +6055,7 @@
                             
                             <td>63</td>
                             
-                            <td>35</td>
+                            <td>37</td>
                             
                             <td>0</td>
                             
@@ -6064,7 +6064,7 @@
                             <td>16</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>2</td>
@@ -6108,7 +6108,7 @@
                             
                             <td class="estimate">64</td>
                             
-                            <td class="estimate">36</td>
+                            <td class="estimate">38</td>
                             
                             <td class="estimate">0</td>
                             
@@ -6117,7 +6117,7 @@
                             <td class="estimate">16</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">1</td>
@@ -6157,7 +6157,7 @@
                             
                             <td class="estimate">65</td>
                             
-                            <td class="estimate">37</td>
+                            <td class="estimate">39</td>
                             
                             <td class="estimate">0</td>
                             
@@ -6166,7 +6166,7 @@
                             <td class="estimate">16</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">1</td>
@@ -6206,7 +6206,7 @@
                             
                             <td>68</td>
                             
-                            <td>38</td>
+                            <td>40</td>
                             
                             <td>0</td>
                             
@@ -6215,7 +6215,7 @@
                             <td>17</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>3</td>
@@ -6261,7 +6261,7 @@
                             
                             <td class="estimate">70</td>
                             
-                            <td class="estimate">40</td>
+                            <td class="estimate">42</td>
                             
                             <td class="estimate">0</td>
                             
@@ -6270,7 +6270,7 @@
                             <td class="estimate">17</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">2</td>
@@ -6316,7 +6316,7 @@
                             
                             <td class="estimate">80</td>
                             
-                            <td class="estimate">41</td>
+                            <td class="estimate">43</td>
                             
                             <td class="estimate">4</td>
                             
@@ -6325,7 +6325,7 @@
                             <td class="estimate">18</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">10</td>
@@ -6371,7 +6371,7 @@
                             
                             <td>90</td>
                             
-                            <td>50</td>
+                            <td>52</td>
                             
                             <td>4</td>
                             
@@ -6380,7 +6380,7 @@
                             <td>18</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>10</td>
@@ -6426,7 +6426,7 @@
                             
                             <td class="estimate">95</td>
                             
-                            <td class="estimate">55</td>
+                            <td class="estimate">57</td>
                             
                             <td class="estimate">4</td>
                             
@@ -6435,7 +6435,7 @@
                             <td class="estimate">18</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">5</td>
@@ -6475,7 +6475,7 @@
                             
                             <td class="estimate">100</td>
                             
-                            <td class="estimate">60</td>
+                            <td class="estimate">62</td>
                             
                             <td class="estimate">4</td>
                             
@@ -6484,7 +6484,7 @@
                             <td class="estimate">18</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">5</td>
@@ -6524,7 +6524,7 @@
                             
                             <td class="estimate">106</td>
                             
-                            <td class="estimate">66</td>
+                            <td class="estimate">68</td>
                             
                             <td class="estimate">4</td>
                             
@@ -6533,7 +6533,7 @@
                             <td class="estimate">18</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">6</td>
@@ -6573,7 +6573,7 @@
                             
                             <td>113</td>
                             
-                            <td>72</td>
+                            <td>74</td>
                             
                             <td>4</td>
                             
@@ -6582,7 +6582,7 @@
                             <td>19</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>7</td>
@@ -6626,7 +6626,7 @@
                             
                             <td>117</td>
                             
-                            <td>75</td>
+                            <td>77</td>
                             
                             <td>4</td>
                             
@@ -6635,7 +6635,7 @@
                             <td>20</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>4</td>
@@ -6681,7 +6681,7 @@
                             
                             <td>117</td>
                             
-                            <td>75</td>
+                            <td>77</td>
                             
                             <td>4</td>
                             
@@ -6690,7 +6690,7 @@
                             <td>20</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>0</td>
@@ -6734,7 +6734,7 @@
                             
                             <td>122</td>
                             
-                            <td>79</td>
+                            <td>81</td>
                             
                             <td>4</td>
                             
@@ -6743,7 +6743,7 @@
                             <td>21</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>5</td>
@@ -6787,7 +6787,7 @@
                             
                             <td>128</td>
                             
-                            <td>83</td>
+                            <td>85</td>
                             
                             <td>6</td>
                             
@@ -6796,7 +6796,7 @@
                             <td>21</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>6</td>
@@ -6840,7 +6840,7 @@
                             
                             <td class="estimate">131</td>
                             
-                            <td class="estimate">86</td>
+                            <td class="estimate">88</td>
                             
                             <td class="estimate">6</td>
                             
@@ -6849,7 +6849,7 @@
                             <td class="estimate">21</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">3</td>
@@ -6889,7 +6889,7 @@
                             
                             <td class="estimate">134</td>
                             
-                            <td class="estimate">89</td>
+                            <td class="estimate">91</td>
                             
                             <td class="estimate">6</td>
                             
@@ -6898,7 +6898,7 @@
                             <td class="estimate">21</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">3</td>
@@ -6938,7 +6938,7 @@
                             
                             <td>138</td>
                             
-                            <td>93</td>
+                            <td>95</td>
                             
                             <td>6</td>
                             
@@ -6947,7 +6947,7 @@
                             <td>21</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>4</td>
@@ -6993,7 +6993,7 @@
                             
                             <td>138</td>
                             
-                            <td>93</td>
+                            <td>95</td>
                             
                             <td>6</td>
                             
@@ -7002,7 +7002,7 @@
                             <td>21</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>0</td>
@@ -7046,7 +7046,7 @@
                             
                             <td>144</td>
                             
-                            <td>96</td>
+                            <td>98</td>
                             
                             <td>7</td>
                             
@@ -7055,7 +7055,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>6</td>
@@ -7101,7 +7101,7 @@
                             
                             <td>151</td>
                             
-                            <td>99</td>
+                            <td>101</td>
                             
                             <td>9</td>
                             
@@ -7110,7 +7110,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>7</td>
@@ -7156,7 +7156,7 @@
                             
                             <td>151</td>
                             
-                            <td>99</td>
+                            <td>101</td>
                             
                             <td>9</td>
                             
@@ -7165,7 +7165,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>0</td>
@@ -7209,7 +7209,7 @@
                             
                             <td class="estimate">151</td>
                             
-                            <td class="estimate">99</td>
+                            <td class="estimate">101</td>
                             
                             <td class="estimate">9</td>
                             
@@ -7218,7 +7218,7 @@
                             <td class="estimate">22</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">0</td>
@@ -7258,7 +7258,7 @@
                             
                             <td class="estimate">152</td>
                             
-                            <td class="estimate">100</td>
+                            <td class="estimate">102</td>
                             
                             <td class="estimate">9</td>
                             
@@ -7267,7 +7267,7 @@
                             <td class="estimate">22</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">1</td>
@@ -7307,7 +7307,7 @@
                             
                             <td>153</td>
                             
-                            <td>101</td>
+                            <td>103</td>
                             
                             <td>9</td>
                             
@@ -7316,7 +7316,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>1</td>
@@ -7362,7 +7362,7 @@
                             
                             <td>155</td>
                             
-                            <td>103</td>
+                            <td>105</td>
                             
                             <td>9</td>
                             
@@ -7371,7 +7371,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>2</td>
@@ -7417,7 +7417,7 @@
                             
                             <td>158</td>
                             
-                            <td>106</td>
+                            <td>108</td>
                             
                             <td>9</td>
                             
@@ -7426,7 +7426,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>3</td>
@@ -7472,7 +7472,7 @@
                             
                             <td>162</td>
                             
-                            <td>110</td>
+                            <td>112</td>
                             
                             <td>9</td>
                             
@@ -7481,7 +7481,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>4</td>
@@ -7527,7 +7527,7 @@
                             
                             <td>165</td>
                             
-                            <td>111</td>
+                            <td>113</td>
                             
                             <td>11</td>
                             
@@ -7536,7 +7536,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>3</td>
@@ -7580,7 +7580,7 @@
                             
                             <td class="estimate">165</td>
                             
-                            <td class="estimate">111</td>
+                            <td class="estimate">113</td>
                             
                             <td class="estimate">11</td>
                             
@@ -7589,7 +7589,7 @@
                             <td class="estimate">22</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">0</td>
@@ -7629,7 +7629,7 @@
                             
                             <td class="estimate">167</td>
                             
-                            <td class="estimate">112</td>
+                            <td class="estimate">114</td>
                             
                             <td class="estimate">12</td>
                             
@@ -7638,7 +7638,7 @@
                             <td class="estimate">22</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">2</td>
@@ -7678,7 +7678,7 @@
                             
                             <td>169</td>
                             
-                            <td>113</td>
+                            <td>115</td>
                             
                             <td>13</td>
                             
@@ -7687,7 +7687,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>2</td>
@@ -7733,7 +7733,7 @@
                             
                             <td>175</td>
                             
-                            <td>118</td>
+                            <td>120</td>
                             
                             <td>13</td>
                             
@@ -7742,7 +7742,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>6</td>
@@ -7788,7 +7788,7 @@
                             
                             <td>180</td>
                             
-                            <td>122</td>
+                            <td>124</td>
                             
                             <td>14</td>
                             
@@ -7797,7 +7797,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>5</td>
@@ -7843,7 +7843,7 @@
                             
                             <td>186</td>
                             
-                            <td>128</td>
+                            <td>130</td>
                             
                             <td>14</td>
                             
@@ -7852,7 +7852,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>6</td>
@@ -7898,7 +7898,7 @@
                             
                             <td>196</td>
                             
-                            <td>138</td>
+                            <td>140</td>
                             
                             <td>14</td>
                             
@@ -7907,7 +7907,7 @@
                             <td>22</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>10</td>
@@ -7953,7 +7953,7 @@
                             
                             <td class="estimate">197</td>
                             
-                            <td class="estimate">139</td>
+                            <td class="estimate">141</td>
                             
                             <td class="estimate">14</td>
                             
@@ -7962,7 +7962,7 @@
                             <td class="estimate">22</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">1</td>
@@ -8002,7 +8002,7 @@
                             
                             <td class="estimate">199</td>
                             
-                            <td class="estimate">141</td>
+                            <td class="estimate">143</td>
                             
                             <td class="estimate">14</td>
                             
@@ -8011,7 +8011,7 @@
                             <td class="estimate">22</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">2</td>
@@ -8051,7 +8051,7 @@
                             
                             <td>202</td>
                             
-                            <td>143</td>
+                            <td>145</td>
                             
                             <td>14</td>
                             
@@ -8060,7 +8060,7 @@
                             <td>23</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>3</td>
@@ -8106,7 +8106,7 @@
                             
                             <td>210</td>
                             
-                            <td>151</td>
+                            <td>153</td>
                             
                             <td>14</td>
                             
@@ -8115,7 +8115,7 @@
                             <td>23</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>8</td>
@@ -8161,7 +8161,7 @@
                             
                             <td>219</td>
                             
-                            <td>159</td>
+                            <td>161</td>
                             
                             <td>15</td>
                             
@@ -8170,7 +8170,7 @@
                             <td>23</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>9</td>
@@ -8216,7 +8216,7 @@
                             
                             <td>241</td>
                             
-                            <td>176</td>
+                            <td>178</td>
                             
                             <td>18</td>
                             
@@ -8225,7 +8225,7 @@
                             <td>24</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>22</td>
@@ -8271,7 +8271,7 @@
                             
                             <td>254</td>
                             
-                            <td>189</td>
+                            <td>191</td>
                             
                             <td>18</td>
                             
@@ -8280,7 +8280,7 @@
                             <td>24</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>13</td>
@@ -8326,7 +8326,7 @@
                             
                             <td class="estimate">262</td>
                             
-                            <td class="estimate">196</td>
+                            <td class="estimate">198</td>
                             
                             <td class="estimate">18</td>
                             
@@ -8335,7 +8335,7 @@
                             <td class="estimate">25</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">8</td>
@@ -8375,7 +8375,7 @@
                             
                             <td class="estimate">272</td>
                             
-                            <td class="estimate">204</td>
+                            <td class="estimate">206</td>
                             
                             <td class="estimate">18</td>
                             
@@ -8384,7 +8384,7 @@
                             <td class="estimate">26</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">10</td>
@@ -8424,7 +8424,7 @@
                             
                             <td>284</td>
                             
-                            <td>212</td>
+                            <td>214</td>
                             
                             <td>19</td>
                             
@@ -8433,7 +8433,7 @@
                             <td>28</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>12</td>
@@ -8479,7 +8479,7 @@
                             
                             <td>295</td>
                             
-                            <td>219</td>
+                            <td>221</td>
                             
                             <td>20</td>
                             
@@ -8488,7 +8488,7 @@
                             <td>29</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>11</td>
@@ -8534,7 +8534,7 @@
                             
                             <td>303</td>
                             
-                            <td>224</td>
+                            <td>226</td>
                             
                             <td>21</td>
                             
@@ -8543,7 +8543,7 @@
                             <td>30</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>8</td>
@@ -8589,7 +8589,7 @@
                             
                             <td>332</td>
                             
-                            <td>241</td>
+                            <td>243</td>
                             
                             <td>27</td>
                             
@@ -8598,7 +8598,7 @@
                             <td>35</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>29</td>
@@ -8644,7 +8644,7 @@
                             
                             <td>342</td>
                             
-                            <td>249</td>
+                            <td>251</td>
                             
                             <td>28</td>
                             
@@ -8653,7 +8653,7 @@
                             <td>35</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>10</td>
@@ -8699,7 +8699,7 @@
                             
                             <td class="estimate">350</td>
                             
-                            <td class="estimate">256</td>
+                            <td class="estimate">258</td>
                             
                             <td class="estimate">29</td>
                             
@@ -8708,7 +8708,7 @@
                             <td class="estimate">35</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">8</td>
@@ -8748,7 +8748,7 @@
                             
                             <td class="estimate">359</td>
                             
-                            <td class="estimate">264</td>
+                            <td class="estimate">266</td>
                             
                             <td class="estimate">30</td>
                             
@@ -8757,7 +8757,7 @@
                             <td class="estimate">35</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">9</td>
@@ -8797,7 +8797,7 @@
                             
                             <td class="estimate">371</td>
                             
-                            <td class="estimate">272</td>
+                            <td class="estimate">274</td>
                             
                             <td class="estimate">32</td>
                             
@@ -8806,7 +8806,7 @@
                             <td class="estimate">36</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">12</td>
@@ -8846,7 +8846,7 @@
                             
                             <td>383</td>
                             
-                            <td>280</td>
+                            <td>282</td>
                             
                             <td>34</td>
                             
@@ -8855,7 +8855,7 @@
                             <td>37</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>12</td>
@@ -8901,7 +8901,7 @@
                             
                             <td>411</td>
                             
-                            <td>298</td>
+                            <td>300</td>
                             
                             <td>38</td>
                             
@@ -8910,7 +8910,7 @@
                             <td>40</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>28</td>
@@ -8956,7 +8956,7 @@
                             
                             <td>423</td>
                             
-                            <td>308</td>
+                            <td>310</td>
                             
                             <td>40</td>
                             
@@ -8965,7 +8965,7 @@
                             <td>40</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>12</td>
@@ -9011,7 +9011,7 @@
                             
                             <td class="estimate">438</td>
                             
-                            <td class="estimate">319</td>
+                            <td class="estimate">321</td>
                             
                             <td class="estimate">41</td>
                             
@@ -9020,7 +9020,7 @@
                             <td class="estimate">42</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">15</td>
@@ -9060,7 +9060,7 @@
                             
                             <td class="estimate">454</td>
                             
-                            <td class="estimate">330</td>
+                            <td class="estimate">332</td>
                             
                             <td class="estimate">42</td>
                             
@@ -9069,7 +9069,7 @@
                             <td class="estimate">44</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">16</td>
@@ -9109,7 +9109,7 @@
                             
                             <td class="estimate">471</td>
                             
-                            <td class="estimate">341</td>
+                            <td class="estimate">343</td>
                             
                             <td class="estimate">44</td>
                             
@@ -9118,7 +9118,7 @@
                             <td class="estimate">46</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">17</td>
@@ -9158,7 +9158,7 @@
                             
                             <td>489</td>
                             
-                            <td>352</td>
+                            <td>354</td>
                             
                             <td>46</td>
                             
@@ -9167,7 +9167,7 @@
                             <td>49</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>18</td>
@@ -9213,7 +9213,7 @@
                             
                             <td class="estimate">511</td>
                             
-                            <td class="estimate">368</td>
+                            <td class="estimate">370</td>
                             
                             <td class="estimate">47</td>
                             
@@ -9222,7 +9222,7 @@
                             <td class="estimate">50</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">22</td>
@@ -9262,7 +9262,7 @@
                             
                             <td>535</td>
                             
-                            <td>384</td>
+                            <td>386</td>
                             
                             <td>48</td>
                             
@@ -9271,7 +9271,7 @@
                             <td>52</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>24</td>
@@ -9317,7 +9317,7 @@
                             
                             <td>544</td>
                             
-                            <td>387</td>
+                            <td>389</td>
                             
                             <td>49</td>
                             
@@ -9326,7 +9326,7 @@
                             <td>52</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>9</td>
@@ -9372,7 +9372,7 @@
                             
                             <td>567</td>
                             
-                            <td>406</td>
+                            <td>408</td>
                             
                             <td>51</td>
                             
@@ -9381,7 +9381,7 @@
                             <td>53</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>23</td>
@@ -9427,7 +9427,7 @@
                             
                             <td class="estimate">581</td>
                             
-                            <td class="estimate">418</td>
+                            <td class="estimate">420</td>
                             
                             <td class="estimate">52</td>
                             
@@ -9436,7 +9436,7 @@
                             <td class="estimate">54</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">14</td>
@@ -9476,7 +9476,7 @@
                             
                             <td class="estimate">598</td>
                             
-                            <td class="estimate">431</td>
+                            <td class="estimate">433</td>
                             
                             <td class="estimate">53</td>
                             
@@ -9485,7 +9485,7 @@
                             <td class="estimate">56</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">17</td>
@@ -9525,7 +9525,7 @@
                             
                             <td>616</td>
                             
-                            <td>444</td>
+                            <td>446</td>
                             
                             <td>55</td>
                             
@@ -9534,7 +9534,7 @@
                             <td>58</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>18</td>
@@ -9580,7 +9580,7 @@
                             
                             <td>620</td>
                             
-                            <td>445</td>
+                            <td>447</td>
                             
                             <td>55</td>
                             
@@ -9589,7 +9589,7 @@
                             <td>61</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>4</td>
@@ -9635,7 +9635,7 @@
                             
                             <td>641</td>
                             
-                            <td>461</td>
+                            <td>463</td>
                             
                             <td>55</td>
                             
@@ -9644,7 +9644,7 @@
                             <td>64</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>21</td>
@@ -9690,7 +9690,7 @@
                             
                             <td>679</td>
                             
-                            <td>489</td>
+                            <td>491</td>
                             
                             <td>57</td>
                             
@@ -9699,7 +9699,7 @@
                             <td>70</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>38</td>
@@ -9745,7 +9745,7 @@
                             
                             <td>698</td>
                             
-                            <td>503</td>
+                            <td>505</td>
                             
                             <td>58</td>
                             
@@ -9754,7 +9754,7 @@
                             <td>72</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>19</td>
@@ -9800,7 +9800,7 @@
                             
                             <td class="estimate">715</td>
                             
-                            <td class="estimate">514</td>
+                            <td class="estimate">516</td>
                             
                             <td class="estimate">61</td>
                             
@@ -9809,7 +9809,7 @@
                             <td class="estimate">73</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">17</td>
@@ -9849,7 +9849,7 @@
                             
                             <td class="estimate">732</td>
                             
-                            <td class="estimate">525</td>
+                            <td class="estimate">527</td>
                             
                             <td class="estimate">64</td>
                             
@@ -9858,7 +9858,7 @@
                             <td class="estimate">74</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">17</td>
@@ -9898,7 +9898,7 @@
                             
                             <td>750</td>
                             
-                            <td>536</td>
+                            <td>538</td>
                             
                             <td>67</td>
                             
@@ -9907,7 +9907,7 @@
                             <td>76</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>18</td>
@@ -9953,7 +9953,7 @@
                             
                             <td>783</td>
                             
-                            <td>557</td>
+                            <td>559</td>
                             
                             <td>74</td>
                             
@@ -9962,7 +9962,7 @@
                             <td>79</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>33</td>
@@ -10008,7 +10008,7 @@
                             
                             <td>798</td>
                             
-                            <td>566</td>
+                            <td>568</td>
                             
                             <td>77</td>
                             
@@ -10017,7 +10017,7 @@
                             <td>81</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>15</td>
@@ -10063,7 +10063,7 @@
                             
                             <td>830</td>
                             
-                            <td>587</td>
+                            <td>589</td>
                             
                             <td>83</td>
                             
@@ -10072,7 +10072,7 @@
                             <td>81</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>32</td>
@@ -10118,7 +10118,7 @@
                             
                             <td>870</td>
                             
-                            <td>617</td>
+                            <td>619</td>
                             
                             <td>88</td>
                             
@@ -10127,7 +10127,7 @@
                             <td>84</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>40</td>
@@ -10173,7 +10173,7 @@
                             
                             <td class="estimate">887</td>
                             
-                            <td class="estimate">630</td>
+                            <td class="estimate">632</td>
                             
                             <td class="estimate">89</td>
                             
@@ -10182,7 +10182,7 @@
                             <td class="estimate">85</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">17</td>
@@ -10222,7 +10222,7 @@
                             
                             <td class="estimate">905</td>
                             
-                            <td class="estimate">644</td>
+                            <td class="estimate">646</td>
                             
                             <td class="estimate">90</td>
                             
@@ -10231,7 +10231,7 @@
                             <td class="estimate">86</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">18</td>
@@ -10271,7 +10271,7 @@
                             
                             <td>925</td>
                             
-                            <td>658</td>
+                            <td>660</td>
                             
                             <td>91</td>
                             
@@ -10280,7 +10280,7 @@
                             <td>88</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>20</td>
@@ -10326,7 +10326,7 @@
                             
                             <td>979</td>
                             
-                            <td>704</td>
+                            <td>706</td>
                             
                             <td>94</td>
                             
@@ -10335,7 +10335,7 @@
                             <td>92</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>54</td>
@@ -10381,7 +10381,7 @@
                             
                             <td>1,039</td>
                             
-                            <td>749</td>
+                            <td>751</td>
                             
                             <td>103</td>
                             
@@ -10390,7 +10390,7 @@
                             <td>94</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>60</td>
@@ -10436,7 +10436,7 @@
                             
                             <td>1,092</td>
                             
-                            <td>778</td>
+                            <td>780</td>
                             
                             <td>111</td>
                             
@@ -10445,7 +10445,7 @@
                             <td>104</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>53</td>
@@ -10491,7 +10491,7 @@
                             
                             <td>1,145</td>
                             
-                            <td>820</td>
+                            <td>822</td>
                             
                             <td>112</td>
                             
@@ -10500,7 +10500,7 @@
                             <td>109</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>53</td>
@@ -10546,7 +10546,7 @@
                             
                             <td class="estimate">1,177</td>
                             
-                            <td class="estimate">841</td>
+                            <td class="estimate">843</td>
                             
                             <td class="estimate">115</td>
                             
@@ -10555,7 +10555,7 @@
                             <td class="estimate">112</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">32</td>
@@ -10595,7 +10595,7 @@
                             
                             <td class="estimate">1,210</td>
                             
-                            <td class="estimate">862</td>
+                            <td class="estimate">864</td>
                             
                             <td class="estimate">118</td>
                             
@@ -10604,7 +10604,7 @@
                             <td class="estimate">116</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">33</td>
@@ -10644,7 +10644,7 @@
                             
                             <td class="estimate">1,244</td>
                             
-                            <td class="estimate">884</td>
+                            <td class="estimate">886</td>
                             
                             <td class="estimate">121</td>
                             
@@ -10653,7 +10653,7 @@
                             <td class="estimate">120</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">34</td>
@@ -10699,7 +10699,7 @@
                             
                             <td>1,289</td>
                             
-                            <td>920</td>
+                            <td>922</td>
                             
                             <td>125</td>
                             
@@ -10708,7 +10708,7 @@
                             <td>122</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>45</td>
@@ -10754,7 +10754,7 @@
                             
                             <td>1,321</td>
                             
-                            <td>937</td>
+                            <td>939</td>
                             
                             <td>132</td>
                             
@@ -10763,7 +10763,7 @@
                             <td>125</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>32</td>
@@ -10809,7 +10809,7 @@
                             
                             <td>1,348</td>
                             
-                            <td>948</td>
+                            <td>950</td>
                             
                             <td>141</td>
                             
@@ -10818,7 +10818,7 @@
                             <td>128</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>27</td>
@@ -10864,7 +10864,7 @@
                             
                             <td>1,394</td>
                             
-                            <td>974</td>
+                            <td>976</td>
                             
                             <td>152</td>
                             
@@ -10873,7 +10873,7 @@
                             <td>131</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>46</td>
@@ -10919,7 +10919,7 @@
                             
                             <td class="estimate">1,414</td>
                             
-                            <td class="estimate">987</td>
+                            <td class="estimate">989</td>
                             
                             <td class="estimate">156</td>
                             
@@ -10928,7 +10928,7 @@
                             <td class="estimate">132</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">20</td>
@@ -10968,7 +10968,7 @@
                             
                             <td class="estimate">1,435</td>
                             
-                            <td class="estimate">1,000</td>
+                            <td class="estimate">1,002</td>
                             
                             <td class="estimate">161</td>
                             
@@ -10977,7 +10977,7 @@
                             <td class="estimate">133</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">21</td>
@@ -11017,7 +11017,7 @@
                             
                             <td>1,457</td>
                             
-                            <td>1,013</td>
+                            <td>1,015</td>
                             
                             <td>166</td>
                             
@@ -11026,7 +11026,7 @@
                             <td>134</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>22</td>
@@ -11072,7 +11072,7 @@
                             
                             <td>1,469</td>
                             
-                            <td>1,016</td>
+                            <td>1,018</td>
                             
                             <td>167</td>
                             
@@ -11081,7 +11081,7 @@
                             <td>136</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>12</td>
@@ -11127,7 +11127,7 @@
                             
                             <td>1,528</td>
                             
-                            <td>1,042</td>
+                            <td>1,044</td>
                             
                             <td>195</td>
                             
@@ -11136,7 +11136,7 @@
                             <td>138</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>59</td>
@@ -11182,7 +11182,7 @@
                             
                             <td>1,558</td>
                             
-                            <td>1,054</td>
+                            <td>1,056</td>
                             
                             <td>206</td>
                             
@@ -11191,7 +11191,7 @@
                             <td>140</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>30</td>
@@ -11237,7 +11237,7 @@
                             
                             <td>1,588</td>
                             
-                            <td>1,075</td>
+                            <td>1,077</td>
                             
                             <td>210</td>
                             
@@ -11246,7 +11246,7 @@
                             <td>142</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>30</td>
@@ -11292,7 +11292,7 @@
                             
                             <td class="estimate">1,612</td>
                             
-                            <td class="estimate">1,089</td>
+                            <td class="estimate">1,091</td>
                             
                             <td class="estimate">216</td>
                             
@@ -11301,7 +11301,7 @@
                             <td class="estimate">143</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">24</td>
@@ -11341,7 +11341,7 @@
                             
                             <td class="estimate">1,638</td>
                             
-                            <td class="estimate">1,104</td>
+                            <td class="estimate">1,106</td>
                             
                             <td class="estimate">223</td>
                             
@@ -11350,7 +11350,7 @@
                             <td class="estimate">144</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">26</td>
@@ -11390,7 +11390,7 @@
                             
                             <td>1,665</td>
                             
-                            <td>1,119</td>
+                            <td>1,121</td>
                             
                             <td>230</td>
                             
@@ -11399,7 +11399,7 @@
                             <td>146</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>27</td>
@@ -11445,7 +11445,7 @@
                             
                             <td>1,682</td>
                             
-                            <td>1,134</td>
+                            <td>1,136</td>
                             
                             <td>231</td>
                             
@@ -11454,7 +11454,7 @@
                             <td>147</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>17</td>
@@ -11500,7 +11500,7 @@
                             
                             <td>1,717</td>
                             
-                            <td>1,153</td>
+                            <td>1,155</td>
                             
                             <td>236</td>
                             
@@ -11509,7 +11509,7 @@
                             <td>147</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>35</td>
@@ -11555,7 +11555,7 @@
                             
                             <td>1,739</td>
                             
-                            <td>1,156</td>
+                            <td>1,158</td>
                             
                             <td>243</td>
                             
@@ -11564,7 +11564,7 @@
                             <td>152</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>22</td>
@@ -11610,7 +11610,7 @@
                             
                             <td>1,768</td>
                             
-                            <td>1,168</td>
+                            <td>1,170</td>
                             
                             <td>249</td>
                             
@@ -11619,7 +11619,7 @@
                             <td>152</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>29</td>
@@ -11665,7 +11665,7 @@
                             
                             <td class="estimate">1,788</td>
                             
-                            <td class="estimate">1,181</td>
+                            <td class="estimate">1,183</td>
                             
                             <td class="estimate">251</td>
                             
@@ -11674,7 +11674,7 @@
                             <td class="estimate">152</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">20</td>
@@ -11714,7 +11714,7 @@
                             
                             <td class="estimate">1,809</td>
                             
-                            <td class="estimate">1,194</td>
+                            <td class="estimate">1,196</td>
                             
                             <td class="estimate">253</td>
                             
@@ -11723,7 +11723,7 @@
                             <td class="estimate">153</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">21</td>
@@ -11763,7 +11763,7 @@
                             
                             <td>1,831</td>
                             
-                            <td>1,208</td>
+                            <td>1,210</td>
                             
                             <td>255</td>
                             
@@ -11772,7 +11772,7 @@
                             <td>154</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>22</td>
@@ -11818,7 +11818,7 @@
                             
                             <td>1,859</td>
                             
-                            <td>1,215</td>
+                            <td>1,217</td>
                             
                             <td>255</td>
                             
@@ -11827,7 +11827,7 @@
                             <td>156</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>28</td>
@@ -11873,7 +11873,7 @@
                             
                             <td>1,880</td>
                             
-                            <td>1,226</td>
+                            <td>1,228</td>
                             
                             <td>262</td>
                             
@@ -11882,7 +11882,7 @@
                             <td>157</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>21</td>
@@ -11928,7 +11928,7 @@
                             
                             <td>1,907</td>
                             
-                            <td>1,233</td>
+                            <td>1,235</td>
                             
                             <td>267</td>
                             
@@ -11937,7 +11937,7 @@
                             <td>158</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>27</td>
@@ -11983,7 +11983,7 @@
                             
                             <td>1,939</td>
                             
-                            <td>1,246</td>
+                            <td>1,248</td>
                             
                             <td>271</td>
                             
@@ -11992,7 +11992,7 @@
                             <td>165</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>32</td>
@@ -12038,7 +12038,7 @@
                             
                             <td class="estimate">1,958</td>
                             
-                            <td class="estimate">1,255</td>
+                            <td class="estimate">1,257</td>
                             
                             <td class="estimate">273</td>
                             
@@ -12047,7 +12047,7 @@
                             <td class="estimate">166</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">19</td>
@@ -12087,7 +12087,7 @@
                             
                             <td class="estimate">1,978</td>
                             
-                            <td class="estimate">1,265</td>
+                            <td class="estimate">1,267</td>
                             
                             <td class="estimate">275</td>
                             
@@ -12096,7 +12096,7 @@
                             <td class="estimate">167</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">20</td>
@@ -12136,7 +12136,7 @@
                             
                             <td>2,001</td>
                             
-                            <td>1,275</td>
+                            <td>1,277</td>
                             
                             <td>278</td>
                             
@@ -12145,7 +12145,7 @@
                             <td>169</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>23</td>
@@ -12191,7 +12191,7 @@
                             
                             <td>2,020</td>
                             
-                            <td>1,286</td>
+                            <td>1,288</td>
                             
                             <td>278</td>
                             
@@ -12200,7 +12200,7 @@
                             <td>176</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>19</td>
@@ -12246,7 +12246,7 @@
                             
                             <td>2,045</td>
                             
-                            <td>1,295</td>
+                            <td>1,297</td>
                             
                             <td>281</td>
                             
@@ -12255,7 +12255,7 @@
                             <td>180</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>25</td>
@@ -12301,7 +12301,7 @@
                             
                             <td>2,075</td>
                             
-                            <td>1,314</td>
+                            <td>1,316</td>
                             
                             <td>282</td>
                             
@@ -12310,7 +12310,7 @@
                             <td>183</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>30</td>
@@ -12356,7 +12356,7 @@
                             
                             <td>2,104</td>
                             
-                            <td>1,335</td>
+                            <td>1,337</td>
                             
                             <td>285</td>
                             
@@ -12365,7 +12365,7 @@
                             <td>185</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>29</td>
@@ -12411,7 +12411,7 @@
                             
                             <td class="estimate">2,117</td>
                             
-                            <td class="estimate">1,343</td>
+                            <td class="estimate">1,345</td>
                             
                             <td class="estimate">286</td>
                             
@@ -12420,7 +12420,7 @@
                             <td class="estimate">187</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">13</td>
@@ -12460,7 +12460,7 @@
                             
                             <td class="estimate">2,130</td>
                             
-                            <td class="estimate">1,351</td>
+                            <td class="estimate">1,353</td>
                             
                             <td class="estimate">287</td>
                             
@@ -12469,7 +12469,7 @@
                             <td class="estimate">189</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">13</td>
@@ -12509,7 +12509,7 @@
                             
                             <td>2,143</td>
                             
-                            <td>1,359</td>
+                            <td>1,361</td>
                             
                             <td>288</td>
                             
@@ -12518,7 +12518,7 @@
                             <td>191</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>13</td>
@@ -12564,7 +12564,7 @@
                             
                             <td>2,165</td>
                             
-                            <td>1,374</td>
+                            <td>1,376</td>
                             
                             <td>291</td>
                             
@@ -12573,7 +12573,7 @@
                             <td>194</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>22</td>
@@ -12619,7 +12619,7 @@
                             
                             <td>2,186</td>
                             
-                            <td>1,392</td>
+                            <td>1,394</td>
                             
                             <td>293</td>
                             
@@ -12628,7 +12628,7 @@
                             <td>195</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>21</td>
@@ -12674,7 +12674,7 @@
                             
                             <td>2,209</td>
                             
-                            <td>1,407</td>
+                            <td>1,409</td>
                             
                             <td>295</td>
                             
@@ -12683,7 +12683,7 @@
                             <td>199</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>23</td>
@@ -12729,7 +12729,7 @@
                             
                             <td>2,219</td>
                             
-                            <td>1,413</td>
+                            <td>1,415</td>
                             
                             <td>295</td>
                             
@@ -12738,7 +12738,7 @@
                             <td>200</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>10</td>
@@ -12784,7 +12784,7 @@
                             
                             <td class="estimate">2,228</td>
                             
-                            <td class="estimate">1,419</td>
+                            <td class="estimate">1,421</td>
                             
                             <td class="estimate">295</td>
                             
@@ -12793,7 +12793,7 @@
                             <td class="estimate">201</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">9</td>
@@ -12833,7 +12833,7 @@
                             
                             <td class="estimate">2,238</td>
                             
-                            <td class="estimate">1,425</td>
+                            <td class="estimate">1,427</td>
                             
                             <td class="estimate">296</td>
                             
@@ -12842,7 +12842,7 @@
                             <td class="estimate">202</td>
                             
                             
-                            <td class="prominent-right-border estimate">2</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">10</td>
@@ -12882,7 +12882,7 @@
                             
                             <td>2,249</td>
                             
-                            <td>1,432</td>
+                            <td>1,434</td>
                             
                             <td>297</td>
                             
@@ -12891,7 +12891,7 @@
                             <td>203</td>
                             
                             
-                            <td class="prominent-right-border ">2</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>11</td>
@@ -12935,45 +12935,45 @@
                             <td class="date prominent-right-border">11/24/20</td>
                             
                             
-                            <td class="estimate">2,269</td>
+                            <td class="estimate">2,267</td>
                             
-                            <td class="estimate">1,432</td>
+                            <td class="estimate">1,445</td>
                             
-                            <td class="estimate">297</td>
+                            <td class="estimate">299</td>
                             
-                            <td class="estimate">315</td>
+                            <td class="estimate">316</td>
                             
-                            <td class="estimate">203</td>
-                            
-                            
-                            <td class="prominent-right-border estimate">22</td>
+                            <td class="estimate">207</td>
                             
                             
-                            <td class="estimate">20</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border estimate">20</td>
+                            <td class="estimate">18</td>
+                            
+                            <td class="estimate">11</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">1</td>
+                            
+                            <td class="estimate">4</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">93</td>
                             
                             
                             <td class="estimate">12,870</td>
                             
                             
-                            <td class="prominent-right-border estimate">25.4%</td>
+                            <td class="prominent-right-border estimate">25.2%</td>
                             
                             
                             <td class="estimate">6</td>
                             <td class="prominent-right-border estimate">55</td>
                             
-                            <td class="prominent-right-border estimate">-678</td>
+                            <td class="prominent-right-border estimate">-676</td>
                             
                             
                             <td class="na">N/A</td>
@@ -12984,45 +12984,45 @@
                             <td class="date prominent-right-border">11/25/20</td>
                             
                             
-                            <td class="estimate">2,289</td>
+                            <td class="estimate">2,286</td>
                             
-                            <td class="estimate">1,432</td>
+                            <td class="estimate">1,456</td>
                             
-                            <td class="estimate">297</td>
+                            <td class="estimate">301</td>
                             
-                            <td class="estimate">315</td>
+                            <td class="estimate">318</td>
                             
-                            <td class="estimate">203</td>
-                            
-                            
-                            <td class="prominent-right-border estimate">42</td>
+                            <td class="estimate">211</td>
                             
                             
-                            <td class="estimate">20</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border estimate">20</td>
+                            <td class="estimate">19</td>
+                            
+                            <td class="estimate">11</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">4</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">100</td>
                             
                             
                             <td class="estimate">12,940</td>
                             
                             
-                            <td class="prominent-right-border estimate">24.4%</td>
+                            <td class="prominent-right-border estimate">24.1%</td>
                             
                             
                             <td class="estimate">6</td>
                             <td class="prominent-right-border estimate">57</td>
                             
-                            <td class="prominent-right-border estimate">-692</td>
+                            <td class="prominent-right-border estimate">-689</td>
                             
                             
                             <td class="na">N/A</td>
@@ -13033,45 +13033,45 @@
                             <td class="date prominent-right-border">11/26/20</td>
                             
                             
-                            <td class="estimate">2,309</td>
+                            <td class="estimate">2,305</td>
                             
-                            <td class="estimate">1,432</td>
+                            <td class="estimate">1,467</td>
                             
-                            <td class="estimate">297</td>
+                            <td class="estimate">303</td>
                             
-                            <td class="estimate">315</td>
+                            <td class="estimate">320</td>
                             
-                            <td class="estimate">203</td>
-                            
-                            
-                            <td class="prominent-right-border estimate">62</td>
+                            <td class="estimate">215</td>
                             
                             
-                            <td class="estimate">20</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border estimate">20</td>
+                            <td class="estimate">19</td>
+                            
+                            <td class="estimate">11</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">4</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">107</td>
                             
                             
                             <td class="estimate">13,010</td>
                             
                             
-                            <td class="prominent-right-border estimate">24.4%</td>
+                            <td class="prominent-right-border estimate">23.9%</td>
                             
                             
                             <td class="estimate">7</td>
                             <td class="prominent-right-border estimate">59</td>
                             
-                            <td class="prominent-right-border estimate">-710</td>
+                            <td class="prominent-right-border estimate">-706</td>
                             
                             
                             <td class="na">N/A</td>
@@ -13082,45 +13082,45 @@
                             <td class="date prominent-right-border">11/27/20</td>
                             
                             
-                            <td class="estimate">2,329</td>
+                            <td class="estimate">2,326</td>
                             
-                            <td class="estimate">1,432</td>
+                            <td class="estimate">1,479</td>
                             
-                            <td class="estimate">297</td>
+                            <td class="estimate">306</td>
                             
-                            <td class="estimate">315</td>
+                            <td class="estimate">322</td>
                             
-                            <td class="estimate">203</td>
-                            
-                            
-                            <td class="prominent-right-border estimate">82</td>
+                            <td class="estimate">219</td>
                             
                             
-                            <td class="estimate">20</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border estimate">20</td>
+                            <td class="estimate">21</td>
+                            
+                            <td class="estimate">12</td>
+                            
+                            <td class="estimate">3</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">4</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">114</td>
                             
                             
                             <td class="estimate">13,080</td>
                             
                             
-                            <td class="prominent-right-border estimate">23.5%</td>
+                            <td class="prominent-right-border estimate">23.2%</td>
                             
                             
                             <td class="estimate">8</td>
                             <td class="prominent-right-border estimate">61</td>
                             
-                            <td class="prominent-right-border estimate">-721</td>
+                            <td class="prominent-right-border estimate">-718</td>
                             
                             
                             <td class="na">N/A</td>
@@ -13131,45 +13131,45 @@
                             <td class="date prominent-right-border">11/28/20</td>
                             
                             
-                            <td class="estimate">2,350</td>
+                            <td class="estimate">2,348</td>
                             
-                            <td class="estimate">1,432</td>
+                            <td class="estimate">1,491</td>
                             
-                            <td class="estimate">297</td>
+                            <td class="estimate">309</td>
                             
-                            <td class="estimate">315</td>
+                            <td class="estimate">324</td>
                             
-                            <td class="estimate">203</td>
-                            
-                            
-                            <td class="prominent-right-border estimate">103</td>
+                            <td class="estimate">224</td>
                             
                             
-                            <td class="estimate">21</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border estimate">21</td>
+                            <td class="estimate">22</td>
+                            
+                            <td class="estimate">12</td>
+                            
+                            <td class="estimate">3</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">5</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">121</td>
                             
                             
                             <td class="estimate">13,151</td>
                             
                             
-                            <td class="prominent-right-border estimate">23.8%</td>
+                            <td class="prominent-right-border estimate">23.6%</td>
                             
                             
                             <td class="estimate">9</td>
                             <td class="prominent-right-border estimate">63</td>
                             
-                            <td class="prominent-right-border estimate">-738</td>
+                            <td class="prominent-right-border estimate">-736</td>
                             
                             
                             <td class="na">N/A</td>
@@ -13180,45 +13180,45 @@
                             <td class="date prominent-right-border">11/29/20</td>
                             
                             
-                            <td class="estimate">2,371</td>
+                            <td class="estimate">2,370</td>
                             
-                            <td class="estimate">1,432</td>
+                            <td class="estimate">1,503</td>
                             
-                            <td class="estimate">297</td>
+                            <td class="estimate">312</td>
                             
-                            <td class="estimate">315</td>
+                            <td class="estimate">326</td>
                             
-                            <td class="estimate">203</td>
-                            
-                            
-                            <td class="prominent-right-border estimate">124</td>
+                            <td class="estimate">229</td>
                             
                             
-                            <td class="estimate">21</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
-                            
-                            <td class="estimate">0</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="prominent-right-border estimate">21</td>
+                            <td class="estimate">22</td>
+                            
+                            <td class="estimate">12</td>
+                            
+                            <td class="estimate">3</td>
+                            
+                            <td class="estimate">2</td>
+                            
+                            <td class="estimate">5</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">128</td>
                             
                             
                             <td class="estimate">13,222</td>
                             
                             
-                            <td class="prominent-right-border estimate">24.1%</td>
+                            <td class="prominent-right-border estimate">24.0%</td>
                             
                             
                             <td class="estimate">10</td>
                             <td class="prominent-right-border estimate">65</td>
                             
-                            <td class="prominent-right-border estimate">-758</td>
+                            <td class="prominent-right-border estimate">-757</td>
                             
                             
                             <td class="na">N/A</td>
@@ -13231,30 +13231,30 @@
                             
                             <td class="estimate">2,392</td>
                             
-                            <td class="estimate">1,432</td>
-                            
-                            <td class="estimate">297</td>
+                            <td class="estimate">1,515</td>
                             
                             <td class="estimate">315</td>
                             
-                            <td class="estimate">203</td>
+                            <td class="estimate">328</td>
+                            
+                            <td class="estimate">234</td>
                             
                             
-                            <td class="prominent-right-border estimate">145</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
-                            <td class="estimate">21</td>
+                            <td class="estimate">22</td>
                             
-                            <td class="estimate">0</td>
+                            <td class="estimate">12</td>
                             
-                            <td class="estimate">0</td>
+                            <td class="estimate">3</td>
                             
-                            <td class="estimate">0</td>
+                            <td class="estimate">2</td>
                             
-                            <td class="estimate">0</td>
+                            <td class="estimate">5</td>
                             
                             
-                            <td class="prominent-right-border estimate">21</td>
+                            <td class="prominent-right-border estimate">0</td>
                             <td class="prominent-right-border estimate">135</td>
                             
                             
@@ -13280,16 +13280,16 @@
                             
                             <td>2,417</td>
                             
-                            <td>1,453</td>
+                            <td>1,536</td>
                             
-                            <td>297</td>
+                            <td>315</td>
                             
-                            <td>317</td>
+                            <td>330</td>
                             
-                            <td>205</td>
+                            <td>236</td>
                             
                             
-                            <td class="prominent-right-border ">145</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>25</td>
@@ -13333,16 +13333,16 @@
                             
                             <td>2,440</td>
                             
-                            <td>1,469</td>
+                            <td>1,552</td>
                             
-                            <td>299</td>
+                            <td>317</td>
                             
-                            <td>319</td>
+                            <td>332</td>
                             
-                            <td>208</td>
+                            <td>239</td>
                             
                             
-                            <td class="prominent-right-border ">145</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>23</td>
@@ -13388,16 +13388,16 @@
                             
                             <td>2,475</td>
                             
-                            <td>1,490</td>
+                            <td>1,573</td>
                             
-                            <td>307</td>
+                            <td>325</td>
                             
-                            <td>319</td>
+                            <td>332</td>
                             
-                            <td>214</td>
+                            <td>245</td>
                             
                             
-                            <td class="prominent-right-border ">145</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>35</td>
@@ -13443,16 +13443,16 @@
                             
                             <td class="estimate">2,508</td>
                             
-                            <td class="estimate">1,514</td>
+                            <td class="estimate">1,597</td>
                             
-                            <td class="estimate">311</td>
+                            <td class="estimate">329</td>
                             
-                            <td class="estimate">321</td>
+                            <td class="estimate">334</td>
                             
-                            <td class="estimate">217</td>
+                            <td class="estimate">248</td>
                             
                             
-                            <td class="prominent-right-border estimate">145</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">33</td>
@@ -13498,16 +13498,16 @@
                             
                             <td class="estimate">2,519</td>
                             
-                            <td class="estimate">1,521</td>
+                            <td class="estimate">1,604</td>
                             
-                            <td class="estimate">313</td>
+                            <td class="estimate">331</td>
                             
-                            <td class="estimate">322</td>
+                            <td class="estimate">335</td>
                             
-                            <td class="estimate">218</td>
+                            <td class="estimate">249</td>
                             
                             
-                            <td class="prominent-right-border estimate">145</td>
+                            <td class="prominent-right-border estimate">0</td>
                             
                             
                             <td class="estimate">11</td>
@@ -13553,16 +13553,16 @@
                             
                             <td>2,519</td>
                             
-                            <td>1,521</td>
+                            <td>1,604</td>
                             
-                            <td>313</td>
+                            <td>331</td>
                             
-                            <td>322</td>
+                            <td>335</td>
                             
-                            <td>218</td>
+                            <td>249</td>
                             
                             
-                            <td class="prominent-right-border ">145</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>0</td>
@@ -13608,16 +13608,16 @@
                             
                             <td>2,575</td>
                             
-                            <td>1,549</td>
+                            <td>1,632</td>
                             
-                            <td>332</td>
+                            <td>350</td>
                             
-                            <td>325</td>
+                            <td>338</td>
                             
-                            <td>224</td>
+                            <td>255</td>
                             
                             
-                            <td class="prominent-right-border ">145</td>
+                            <td class="prominent-right-border ">0</td>
                             
                             
                             <td>56</td>
@@ -13741,27 +13741,10 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
+        <script src="js/chart-config.js"></script>
+        <script src="js/chart-ui.js"></script>
+        <script src="js/chart-date-markers.js"></script>
         <script>
-            
-            Chart.defaults.global.defaultFontFamily = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
-
-            
-            var json = null
-
-            
-            var primaryColor = '#42107b';
-
-            
-            var color1 = '#1355bf'; 
-            var color2 = '#138bbf'; 
-            var color3 = '#13afbf'; 
-            var color4 = '#13bf80'; 
-            var color5 = '#808080'; 
-            var areaChartColors = [color1, color2, color3, color4, color5]
-
-            
-            var ctx = document.getElementById('chart').getContext('2d');
-
             function lineChart(labels, data, decimal=false) {
                 return new Chart(ctx, {
                     type: 'line',
@@ -13894,72 +13877,7 @@
                                 propagate: false
                             }
                         },
-                        annotation: {
-                            drawTime: "afterDatasetsDraw",
-                            font: {
-                                family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
-                            },
-                            annotations: [
-                                {
-                                    type: "line",
-                                    mode: "vertical",
-                                    scaleID: "x-axis-0",
-                                    value: "2020-08-24",
-                                    backgroundColor: 'rgba(0,0,0,0.5)',
-                                    borderWidth: 1,
-                                    borderColor: '#ff0000',
-                                    label: {
-                                        content: "Schools start",
-                                        enabled: true,
-                                        position: "top",
-                                    }
-                                },
-                                {
-                                    type: "line",
-                                    mode: "vertical",
-                                    scaleID: "x-axis-0",
-                                    value: "2020-10-03",
-                                    backgroundColor: 'rgba(0,0,0,0.5)',
-                                    borderWidth: 1,
-                                    borderColor: '#ff0000',
-                                    label: {
-                                        content: "Trump parade/rally",
-                                        enabled: true,
-                                        position: "top",
-                                    }
-                                },
-                                {
-                                    type: "line",
-                                    mode: "vertical",
-                                    scaleID: "x-axis-0",
-                                    value: "2020-11-04",
-                                    backgroundColor: 'rgba(0,0,0,0.5)',
-                                    borderWidth: 1,
-                                    borderColor: '#ff0000',
-                                    label: {
-                                        content: "WP mask mandate",
-                                        enabled: true,
-                                        position: "top",
-                                        yAdjust: 25
-                                    }
-                                },
-                                {
-                                    type: "line",
-                                    mode: "vertical",
-                                    scaleID: "x-axis-0",
-                                    value: "2020-11-26",
-                                    backgroundColor: 'rgba(0,0,0,0.5)',
-                                    borderWidth: 1,
-                                    borderColor: '#ff0000',
-                                    label: {
-                                        content: "Thanksgiving",
-                                        enabled: true,
-                                        position: "top",
-                                        xAdjust: 10
-                                    }
-                                }
-                            ]
-                        }
+                        annotation: markers
                     }
                 });
             }
@@ -13969,7 +13887,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=a6cae6fcc477252c9f3791619ece2bf8ecc3e7a28edfe1673f47f3e3f7b3c895';
+                    let url = 'chart-data/data.json?v=376d7f284e6685b195911ef8aa6fbcffd35fc7f0b99d73344490259bcc17ea43';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
@@ -14001,11 +13919,10 @@
                 chart.data.labels = labels;
                 chart.data.datasets = []
                 sets.forEach(function(values, index) {
-                    console.log(index)
                     chart.data.datasets.push(
                         {
                             data: values,
-                            label: ["West Plains", "Willow Springs", "Mountain View", "Other", "Unknown"][index],
+                            label: categories[index],
                             pointRadius: 0,
                             backgroundColor: areaChartColors[index]
                         }
