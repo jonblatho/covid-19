@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=025e010edc577a001a3c0b9eea11a7a3e05256586f4f6485f4dfa4bd9f2d2fea" />
+        <link rel="stylesheet" href="main.css?v=700f15705dedb76786ffa96b9b5d059edaa195263fda3de6ba3828b85ce2c981" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -13741,9 +13741,9 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
-        <script src="js/chart-config.js"></script>
-        <script src="js/chart-ui.js"></script>
-        <script src="js/chart-date-markers.js"></script>
+        <script src="js/chart-config.js?v=0987dc8e90b54ca861c9ef974ecd41f42f6104bd9f8af24b59ca3325f60c74df"></script>
+        <script src="js/chart-ui.js?v=d6620cfffb4cf220f228a5d2a665d7cdcbd67ee145784035537feb29e97a324a"></script>
+        <script src="js/chart-date-markers.js?v=cf3c8b7de1010823c0d6a210b365441c7f86742416cc5d2a2c51edbca89dba01"></script>
         <script>
             function lineChart(labels, data, decimal=false) {
                 return new Chart(ctx, {
@@ -13887,7 +13887,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=376d7f284e6685b195911ef8aa6fbcffd35fc7f0b99d73344490259bcc17ea43';
+                    let url = 'chart-data/data.json?v=cd9632f205708422dbf2282e74743e35b9f50453c08bd5b9011708a1850ea31d';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {
