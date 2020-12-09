@@ -22,4 +22,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 
 * Make site responsive to improve legibility on mobile devices.
 * Convert processing code from Python to Swift.
-* Open-source Hugo and processing source files.
+* Open-source processing source files.
