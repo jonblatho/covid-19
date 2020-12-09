@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=3ad3e363e405efa7726fec5e28b8ec2f694cb1a0295080a604d50f7c176b5e74" />
+        <link rel="stylesheet" href="main.css?v=1125fef935acbb8dd6d04eae24b995135fb5860adf8a981b171d7c47618a644b" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -25,9 +25,13 @@
             <div id="charts">
                 <div class="wrap">
                     <div id="chart-select">
-                        <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total');">Total Cases</button>
-                        
-                        <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers');">Date Markers On</button>
+                        <div style="float:left;">
+                            <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total');">Total Cases</button>
+                            
+                        </div>
+                        <div style="float:right;">
+                            <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers');">Date Markers On</button>
+                        </div>
                     </div>
                     <canvas id="chart"></canvas>
                 </div>
@@ -64,13 +68,13 @@
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">36.2%</div>
+                            <div class="dashboard-highlight">35.1%</div>
                             <div class="dashboard-description">14-day positivity rate*</div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-bad">&uarr; 
                                 
-                                10.3%</span> from a week ago*
+                                9.3%</span> from a week ago*
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
@@ -102,17 +106,17 @@
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">401</div>
+                            <div class="dashboard-highlight">428</div>
                             <div class="dashboard-description">
                                 
-                                new tests in the past week*
+                                new tests in the past week
                                 
                             </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-bad">&darr;
                                 
-                                93</span> from a week ago*
+                                66</span> from a week ago*
                             </div>
                         </div>
                     </div>
@@ -13690,10 +13694,10 @@
                             <td class="prominent-right-border ">180</td>
                             
                             
-                            <td class="estimate">13,765</td>
+                            <td class="">13,792</td>
                             
                             
-                            <td class="prominent-right-border estimate">36.2%</td>
+                            <td class="prominent-right-border">35.1%</td>
                             
                             
                             <td class="">12</td>
@@ -13755,11 +13759,11 @@
                     <ul>
                         <li>
                             <strong>Monday&ndash;Thursday data:</strong> Most data by about 1 AM the following day, 
-                            new cases by town and testing data by about 10 AM the following day
+                            testing data by about 11 AM the following day
                         </li>
                         <li>
                             <strong>Friday&ndash;Sunday data:</strong> Most data by about 1 AM the following day, 
-                            new cases by town and testing data by about 10 AM the following Monday
+                            testing data by about 11 AM the following Monday
                         </li>
                         <li>
                             <strong>DHSS case totals:</strong> Updated every 1&ndash;2 days.
@@ -13785,9 +13789,9 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
-        <script src="js/chart-config.js?v=eb7b6e1a3c5da9c93dfc3b01550d3705624df4fb85a176077dcefb21a793d8b0"></script>
-        <script src="js/chart-ui.js?v=33ad2200b240865089d683ac2789c403008770af8aee60cb8ffd835c11303b48"></script>
-        <script src="js/chart-date-markers.js?v=2873c3f8d51885187c9f9336053abe35d853ff0ba8da30ec7e53c727d916b062"></script>
+        <script src="js/chart-config.js?v=af6a3a7807d7a54ed90f8b87db38272f752bc9a332be8b9bc8367ae58f528870"></script>
+        <script src="js/chart-ui.js?v=a28286d7fd5201c8be3c31d5b8bfe20c91ae14a10b27a7d058d104d2d36ee146"></script>
+        <script src="js/chart-date-markers.js?v=2729e11547713d50d15cccc920bb034af30bf344442e1ba3e4805456e85d12b7"></script>
         <script>
             function lineChart(labels, data, decimal=false) {
                 return new Chart(ctx, {
@@ -13931,7 +13935,7 @@
             
             function loadData() {
                 if (json == null) {
-                    let url = 'chart-data/data.json?v=ac72ce3909b1531985c7e4416828c3c940cf6d28e0136aaf3bb8e518000bcc3f';
+                    let url = 'chart-data/data.json?v=c4966bdf9753a01f666418b4eb04fbde2315f0dd5bd0be83cf0a1875a655b109';
                     fetch(url)
                     .then(res => res.json())
                     .then((out) => {

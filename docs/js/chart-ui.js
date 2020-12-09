@@ -44,6 +44,8 @@ function changeChart(type) {
 function reloadChart(type) {
     if(type == 'total') {
 
+    } else if(type == 'new') {
+        chart = new Chart(ctx);
     }
     chart.update()
 }
