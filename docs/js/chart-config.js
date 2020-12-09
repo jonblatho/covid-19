@@ -8,7 +8,7 @@ var color2 = '#138bbf'; // Willow Springs
 var color3 = '#13afbf'; // Mountain View
 var color4 = '#13bf80'; // Other
 var color5 = '#808080'; // Unknown
-var areaChartColors = [color1, color2, color3, color4, color5];
+var categoryColors = [color1, color2, color3, color4, color5];
 
 var ctx = document.getElementById('chart').getContext('2d');
 
