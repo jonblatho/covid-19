@@ -104,6 +104,23 @@ function reloadChart(type, data) {
     }
 
     if(type == 'pos_rate') {
+        chart.options.scales.yAxes = [
+            {
+                id: 'pos_rate',
+                position: 'left',
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+            {
+                id: 'tests',
+                position: 'right',
+                ticks: {
+                    beginAtZero: true,
+                    lineWidth: 0
+                }
+            },
+        ]
         chart.options.scales.yAxes[0].ticks.userCallback = function(value, index, values) {
             value = value.toString();
             value = value.split(/(?=(?:...)*$)/);
@@ -112,7 +129,11 @@ function reloadChart(type, data) {
         chart.options.tooltips.callbacks = {
             label: function(tooltipItem, data) {
                 value = tooltipItem.yLabel.toString();
-                return '14-day Positivity Rate: ' + value + '%';
+                if(tooltipItem.datasetIndex == 0) {
+                    return '14-day Positivity Rate: ' + value + '%';
+                } else if (tooltipItem.datasetIndex == 1) {
+                    return '14-day Average Daily Tests: ' + value;
+                }
             }
         }
     }

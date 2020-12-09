@@ -106,7 +106,6 @@ function chartData(type, data) {
         );
         return datasets
     } else if(type == 'pos_rate') {
-        console.log(data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN))
         datasets = []
         datasets.push(
             {
@@ -118,7 +117,22 @@ function chartData(type, data) {
                 borderColor: '#0077cc',
                 borderWidth: 2,
                 order: 1,
-                lineTension: 0
+                lineTension: 0,
+                yAxisID: 'pos_rate'
+            }
+        );
+        datasets.push(
+            {
+                data: data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN),
+                pointRadius: 0,
+                type: 'line',
+                fill: false,
+                label: '14-day Average Daily Tests',
+                borderColor: '#aaaaaa',
+                borderWidth: 1,
+                order: 1,
+                lineTension: 0,
+                yAxisID: 'tests'
             }
         );
         return datasets

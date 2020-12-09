@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=bbe597c89b5a0667f270e8e66d7a50aad68e06e63f04d185dd793f54feea6b2d" />
+        <link rel="stylesheet" href="main.css?v=7524c4da8959e55bb49061b1c69e9ef801f5a603bbfc7227b5aef797031ed421" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -29,7 +29,7 @@
                             <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
                             <button type="button" class="chart-selection" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
                             <button type="button" class="chart-selection" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
-                            <button type="button" class="chart-selection" id="positivity-rate" onclick="changeChart('pos_rate', json);">Positivity Rate</button>
+                            <button type="button" class="chart-selection" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
                         </div>
                         <div style="float:right;">
                             <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers On</button>
@@ -13793,13 +13793,13 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
-        <script src="js/chart-data.js?v=22f14bc890dde1bca063cd0631ef520fe9d8db9972467c320f5b276e335d44fb"></script>
-        <script src="js/chart-config.js?v=dca3aa59cf584b34084e5abfd6f4dfe676ed44a9d903836178cc06861e4b5410"></script>
-        <script src="js/chart-ui.js?v=c47fbe0576ad1901211c3984bf0cc9724ff603f3301ade19519d3c9141d449be"></script>
-        <script src="js/chart-date-markers.js?v=11839376e5621c55719e8b62c075f058b23d17cdef48ff7791abb7683ba25083"></script>
+        <script src="js/chart-data.js?v=41323b5c0955f16dc958ff534c22477c99b160a89518cf95a89368f660552878"></script>
+        <script src="js/chart-config.js?v=2566ca7c6c0c852402fccebb69e39c7f117a364265c2bc19dc87c80e06e65837"></script>
+        <script src="js/chart-ui.js?v=dee2511a858cb837372358f09b7675c59a2238ff4e39c63f797ce9cb2c43169d"></script>
+        <script src="js/chart-date-markers.js?v=e754105f0c7cf249857fbca363523e4e1dbaecd7d612c66f6e708b3888927fab"></script>
         <script>
             var chart = new Chart(ctx);
-            let url = 'chart-data/data.json?v=dd0286fc6b0e23124fbcf21f98ac174dd5803ad5781568e7073543ff28cc56f8';
+            let url = 'chart-data/data.json?v=36d946b574adbd57c9a9fba99be99fc9a2a2c487bba57725310bf416ca80c5d8';
 
             loadData(url);
         </script>
