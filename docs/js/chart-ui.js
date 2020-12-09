@@ -93,6 +93,8 @@ function reloadChart(type, data) {
         }
     } else if(type == 'new') {
         chart.options.scales.xAxes[0].stacked = true;
+        chart.options.scales.xAxes[0].categoryPercentage = 1.0;
+        chart.options.scales.xAxes[0].barPercentage = 1.0;
         chart.options.scales.yAxes[0].stacked = true;
         chart.options.plugins = {}
     } else if(type == 'active') {

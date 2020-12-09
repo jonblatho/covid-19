@@ -56,6 +56,7 @@ function chartData(type, data) {
                     data: values,
                     label: categories[index],
                     backgroundColor: categoryColors[index],
+                    borderColor: categoryColors[index],
                     order: 2
                 }
             )
