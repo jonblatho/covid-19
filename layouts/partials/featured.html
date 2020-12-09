@@ -1,0 +1,99 @@
+            <section id="dashboard">
+                <div class="wrap">
+                    <div id="dashboard-grid-container">
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">{{ lang.NumFmt 0 .Site.Data.summary.new_cases_7d.value }}</div>
+                            <div class="dashboard-description">
+                                new case{{ if ne (int .Site.Data.summary.new_cases_7d.value) 1 }}s{{ end }} in the past week{{ if .Site.Data.summary.new_cases_7d.estimate }}*{{ end }}
+                            </div>
+                            <div class="dashboard-context">
+                                {{ if gt .Site.Data.summary.new_cases_change 0 }}
+                                <span class="change change-bad">&uarr; 
+                                {{ else if lt .Site.Data.summary.new_cases_change 0 }}
+                                <span class="change change-good">&darr; 
+                                {{ else }}
+                                <span class="change change-neutral">&rarr;
+                                {{ end }}
+                                {{ lang.NumFmt 0 .Site.Data.summary.new_cases_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.new_cases_change.estimate }}*{{ end }}
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">{{ lang.NumFmt 0 .Site.Data.summary.active_cases.value }}</div>
+                            <div class="dashboard-description">
+                                known active case{{ if ne (int .Site.Data.summary.active_cases.value) 1 }}s{{ end }}{{ if .Site.Data.summary.active_cases.estimate }}*{{ end }}
+                            </div>
+                            <div class="dashboard-context">
+                                {{ if gt .Site.Data.summary.active_cases_change.value 0 }}
+                                <span class="change change-bad">&uarr; 
+                                {{ else if lt .Site.Data.summary.active_cases_change.value 0 }}
+                                <span class="change change-good">&darr; 
+                                {{ else }}
+                                <span class="change change-neutral">&rarr;
+                                {{ end }}
+                                {{ lang.NumFmt 0 .Site.Data.summary.active_cases_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.active_cases_change.estimate }}*{{ end }}
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">{{ lang.NumFmt 1 .Site.Data.summary.positivity_rate_2w.value }}%</div>
+                            <div class="dashboard-description">14-day positivity rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
+                            <div class="dashboard-context">
+                                {{ if ge .Site.Data.summary.positivity_rate_2w_change.value 0 }}
+                                <span class="change change-bad">&uarr; 
+                                {{ else if lt .Site.Data.summary.positivity_rate_2w_change.value 0 }}
+                                <span class="change change-good">&darr; 
+                                {{ else }}
+                                <span class="change change-neutral">&rarr;
+                                {{ end }}
+                                {{ lang.NumFmt 1 .Site.Data.summary.positivity_rate_2w_change.value "|.|," "|"}}%</span> from a week ago{{ if .Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">{{ lang.NumFmt 0 .Site.Data.summary.hospitalizations.value }}</div>
+                            <div class="dashboard-description">
+                                active hospitalization{{ if ne (int .Site.Data.summary.hospitalizations.value) 1 }}s{{ end }}{{ if .Site.Data.summary.hospitalizations.estimate }}*{{ end }}
+                            </div>
+                            <div class="dashboard-context">
+                                {{ if gt .Site.Data.summary.hospitalizations_change.value 0 }}
+                                <span class="change change-bad">&uarr; 
+                                {{ else if lt .Site.Data.summary.hospitalizations_change.value 0 }}
+                                <span class="change change-good">&darr;
+                                {{ else }}
+                                <span class="change change-neutral">&rarr; 
+                                {{ end }}
+                                {{ lang.NumFmt 0 .Site.Data.summary.hospitalizations_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.hospitalizations_change.estimate }}*{{ end }}
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">{{ lang.NumFmt 0 .Site.Data.summary.deaths.value }}</div>
+                            <div class="dashboard-description">
+                                cumulative deaths{{ if .Site.Data.summary.deaths.estimate }}*{{ end }}
+                            </div>
+                            <div class="dashboard-context">
+                                {{ if (gt .Site.Data.summary.deaths_change.value 0) }}
+                                <span class="change change-bad">&uarr; 
+                                {{ else }}
+                                <span class="change change-neutral">&rarr; 
+                                {{ end }}
+                                {{ lang.NumFmt 0 .Site.Data.summary.deaths_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.deaths_change.estimate }}*{{ end }}
+                            </div>
+                        </div>
+                        <div class="dashboard-grid-item">
+                            <div class="dashboard-highlight">{{ lang.NumFmt 0 .Site.Data.summary.new_tests_7d.value }}</div>
+                            <div class="dashboard-description">
+                                new test{{ if ne (int .Site.Data.summary.new_tests_7d.value) 1 }}s{{ end }} in the past week{{ if .Site.Data.summary.new_tests_7d.estimate }}*{{ end }}
+                            </div>
+                            <div class="dashboard-context">
+                                {{ if gt .Site.Data.summary.new_tests_7d_change.value 0 }}
+                                <span class="change change-good">&uarr; 
+                                {{ else if lt .Site.Data.summary.new_tests_7d_change.value 0 }}
+                                <span class="change change-bad">&darr;
+                                {{ else }}
+                                <span class="change change-neutral">&rarr;
+                                {{ end }}
+                                {{ lang.NumFmt 0 .Site.Data.summary.new_tests_7d_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.new_tests_7d_change.estimate }}*{{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrap">
+                        <p class="table-footer">* Quantity estimated or impacted by estimated data.</p>
+                    </div>

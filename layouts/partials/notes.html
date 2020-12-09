@@ -1,0 +1,65 @@
+            <section id="notes">
+                <div class="wrap">
+                    <h3>Methodology</h3>
+                    <ul>
+                        <li>
+                            Most data here comes directly from reports published on most non-holiday 
+                            weekdays by the Howell County Health Department (HCHD). To fill in gaps
+                            between those reports, when there is a substantial difference through the gap, 
+                            I apply a linear equation to estimate the missing data. Where sources are 
+                            available, those are linked in the table.
+                        <li>
+                            Sometimes testing data is missing from a report that is published. When that
+                            happens, I take the 7-day average of new tests conducted daily and use that
+                            to estimate testing data until reporting resumes. Once it does resume, I 
+                            recalculate the estimates using the method mentioned in the above point.
+                        </li>
+                        <li>
+                            I use HCHD data because, although the Missouri Department of Health and Senior 
+                            Services (DHSS) updates its data more often/consistently, DHSS data for Howell 
+                            County is lagging woefully behind HCHD&rsquo;s reports for some reason.
+                        </li>
+                        <li>
+                            While HCHD reports the total of active cases for the county, data for active
+                            cases by town is estimated. This is done by normalizing the 7-day total new 
+                            cases for the county and categories (cities and &ldquo;other&rdquo;) and 
+                            multiplying the county total active cases by those normalized values. Rounding 
+                            may cause the sum of the by-town values not to exactly equal the county total.
+                        </li>
+                        <li>
+                            This page includes both official data and unofficial estimates. For official data,
+                            please consult the Howell County Health Department.
+                        </li>
+                    </ul>
+                    <h3>Update schedule</h3>
+                    <p>
+                        Data should be updated by the following times as long as HCHD publishes the requisite
+                        data:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Monday&ndash;Thursday data:</strong> Most data by about 1 AM the following day, 
+                            testing data by about 11 AM the following day
+                        </li>
+                        <li>
+                            <strong>Friday&ndash;Sunday data:</strong> Most data by about 1 AM the following day, 
+                            testing data by about 11 AM the following Monday
+                        </li>
+                        <li>
+                            <strong>DHSS case totals:</strong> Updated every 1&ndash;2 days.
+                        </li>
+                    </ul>
+                    <h3>Missing data</h3>
+                    <ul>
+                        <li>
+                            HCHD did not begin providing an active case count until April 23, 2020.
+                        </li>
+                        <li>
+                            Testing data isn&rsquo;t available prior to August 19, 2020. That&rsquo;s when
+                            HCHD began consistently publishing the number of SARS-CoV-2 tests conducted, 
+                            rather than the number of individuals tested. For consistency, I opted to neither 
+                            include nor estimate testing data before that date.
+                        </li>
+                    </ul>
+                </div>
+            </section>

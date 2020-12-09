@@ -1,0 +1,5 @@
+baseURL = "https://covid.jonblatho.com/"
+languageCode = "en-us"
+title = "COVID-19 in Howell County, MO"
+publishDir = "docs"
+disableKinds = ["sitemap", "RSS", "taxonomy", "section", "term"]

@@ -1,0 +1,18 @@
+        </main>
+        <footer>
+            <div class="wrap">
+                <p class="footer">&copy; {{ now.Format "2006"}} &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
+            </div>
+        </footer>
+        <script src="js/chart-data.js?v={{ sha256 now }}"></script>
+        <script src="js/chart-config.js?v={{ sha256 now }}"></script>
+        <script src="js/chart-ui.js?v={{ sha256 now }}"></script>
+        <script src="js/chart-date-markers.js?v={{ sha256 now }}"></script>
+        <script>
+            var chart = new Chart(ctx);
+            let url = 'chart-data/data.json?v={{ sha256 now }}';
+
+            loadData(url);
+        </script>
+    </body>
+</html>

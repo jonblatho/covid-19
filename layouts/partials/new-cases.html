@@ -1,0 +1,45 @@
+                    <h4>New cases</h4>
+                    <table class="totals">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="town-label town-label-dark">Howell<br />County</th>
+                                <th class="town-label town-label-dark">West<br />Plains</th>
+                                <th class="town-label town-label-dark">Willow<br /> Springs</th>
+                                <th class="town-label town-label-dark">Mountain<br /> View</th>
+                                <th class="town-label town-label-dark">Other</th>
+                                <th class="town-label town-label-dark">Unknown</th>
+                            </tr>
+                        </thead>
+                        {{ range $.Site.Data.relative }}
+                        <tr>
+                            <th class="row-head">{{ .label }}</th>
+                            {{ range .totals }}
+                            <td>{{ lang.NumFmt 0 . }}</td>
+                            {{ end }}
+                        </tr>
+                        {{ end }}
+                    </table>
+                    <table class="totals">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="town-label town-label-dark">Howell<br />County</th>
+                                <th class="town-label town-label-dark">West<br />Plains</th>
+                                <th class="town-label town-label-dark">Willow<br /> Springs</th>
+                                <th class="town-label town-label-dark">Mountain<br /> View</th>
+                                <th class="town-label town-label-dark">Other</th>
+                                <th class="town-label town-label-dark">Unknown</th>
+                            </tr>
+                        </thead>
+                        {{ range $.Site.Data.monthly }}
+                        <tr>
+                            <th class="row-head">{{ dateFormat "January 2006" (print .month "-01") }}</th>
+                            {{ range .totals }}
+                            <td>{{ lang.NumFmt 0 . }}</td>
+                            {{ end }}
+                        </tr>
+                        {{ end }}
+                    </table>
+                </div>
+            </section>
