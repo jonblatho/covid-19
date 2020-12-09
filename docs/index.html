@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=15a4055933e189f23bda49ea2dbdc2ef8acdb7ea2e007ccedcf441c987c02dd3" />
+        <link rel="stylesheet" href="main.css?v=9056051d9c6306a9e284072ffee77fcfdba5fff95fc1cf47d8df6489430b317f" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -26,11 +26,13 @@
                 <div class="wrap">
                     <div id="chart-select">
                         <div style="float:left;">
-                            <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total');">Total Cases</button>
-                            
+                            <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
+                            <button type="button" class="chart-selection" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
+                            <button type="button" class="chart-selection" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
+                            <button type="button" class="chart-selection" id="positivity-rate" onclick="changeChart('pos_rate', json);">Positivity Rate</button>
                         </div>
                         <div style="float:right;">
-                            <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers');">Date Markers On</button>
+                            <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers On</button>
                         </div>
                     </div>
                     <canvas id="chart"></canvas>
@@ -13791,197 +13793,15 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
-        <script src="js/chart-config.js?v=f0cd363940575a7592998dee1521eb0ed199804bae29a90484d336a9b28c164e"></script>
-        <script src="js/chart-ui.js?v=d51c58a642f11fccddb7602c3e8ab84a396bbf2faade217de4554524eb96151c"></script>
-        <script src="js/chart-date-markers.js?v=d8465e9a7df2bfdf108fd71a905fd89891f73acf4dec81ee831efb0015e2a176"></script>
+        <script src="js/chart-data.js?v=1539786354a326f4a9c7cd039e38ad2087ed7e609c212ba281c7a7624bdf79cc"></script>
+        <script src="js/chart-config.js?v=f8a9c11193252f6c78ad9077716a6d28bbbe9fb3a54317019cd78bd3763fae0c"></script>
+        <script src="js/chart-ui.js?v=0662e57e50658723dcf543bff2def715464a675c011c18c2dd297cfd02e629f6"></script>
+        <script src="js/chart-date-markers.js?v=39fa7dc0c9ee597325c90b5e0807eacf7125b9e58078996e3df08fc6df756bc1"></script>
         <script>
-            function lineChart(labels, data, decimal=false) {
-                return new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: data,
-                            label: 'Total Cases',
-                            backgroundColor: primaryColor+'22',
-                            borderColor: primaryColor,
-                            borderWidth: 2,
-                            lineTension: 0,
-                            pointRadius: 0,
-                            pointHitRadius: 2,
-                            fill: 'origin',
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            xAxes: [{
-                                type: 'time',
-                                time: {
-                                    tooltipFormat: 'MMMM D, YYYY',
-                                    unit: 'month'
-                                }
-                            }],
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true,
-                                    userCallback: function(value, index, values) {
-                                        value = value.toString();
-                                        value = value.split(/(?=(?:...)*$)/);
-                                        value = value.join(',');
-                                        return value;
-                                    }
-                                }
-                            }]
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false,
-                            displayColors: false,
-                            callbacks: {
-                                label: function(tooltipItem, data) {
-                                    value = tooltipItem.yLabel.toString();
-                                    if (!decimal) {
-                                        value = value.split(/(?=(?:...)*$)/);
-                                        value = value.join(',');
-                                    }
-                                    if(tooltipItem.yLabel == 1) {
-                                        return value + ' case';
-                                    } else {
-                                        return value + ' cases';
-                                    }
-                                }
-                            }
-                        },
-                        plugins: {
-                            filler: {
-                                propagate: false
-                            }
-                        }
-                    }
-                });
-            }
+            var chart = new Chart(ctx);
+            let url = 'chart-data/data.json?v=7d9ebe6fa26275bce38529012d003eaa1e871a7b39f0ec0308517bda8b8445ac';
 
-            function areaChart(labels, datasets, decimal=false) {
-                return new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: datasets.forEach(function(dataset, index) {
-                            return {
-                                data: dataset,
-                                label: ["West Plains", "Willow Springs", "Mountain View", "Other", "Unknown"][index]
-                            }
-                        })
-                    },
-                    options: {
-                        responsive: true,
-                        aspectRatio: 2.0,
-                        scales: {
-                            xAxes: [{
-                                type: 'time',
-                                time: {
-                                    tooltipFormat: 'MMMM D, YYYY',
-                                    unit: 'month'
-                                }
-                            }],
-                            yAxes: [{
-                                stacked: true,
-                                ticks: {
-                                    beginAtZero: true,
-                                    userCallback: function(value, index, values) {
-                                        value = value.toString();
-                                        value = value.split(/(?=(?:...)*$)/);
-                                        value = value.join(',');
-                                        return value;
-                                    }
-                                }
-                            }]
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false,
-                            callbacks: {
-                                label: function(tooltipItem, data) {
-                                    category = ["West Plains", "Willow Springs", "Mountain View", "Other", "Unknown"][tooltipItem.datasetIndex]
-                                    value = tooltipItem.yLabel.toString();
-                                    if (!decimal) {
-                                        value = value.split(/(?=(?:...)*$)/);
-                                        value = value.join(',');
-                                    }
-                                    if(tooltipItem.yLabel == 1) {
-                                        return category + ': ' + value + ' case';
-                                    } else {
-                                        return category + ': ' + value + ' cases';
-                                    }
-                                }
-                            },
-                            elements: {
-                                line: {
-                                    fill: '-1',
-                                    borderWidth: 0
-                                }
-                            }
-                        },
-                        plugins: {
-                            filler: {
-                                propagate: false
-                            }
-                        },
-                        annotation: markers
-                    }
-                });
-            }
-            
-            var chart = new areaChart([], [])
-
-            
-            function loadData() {
-                if (json == null) {
-                    let url = 'chart-data/data.json?v=adcc75065e86f94cf4b6d4e8fb70259be76494278aa324cc74d64f8a3f6c2788';
-                    fetch(url)
-                    .then(res => res.json())
-                    .then((out) => {
-                        json = out
-                        updateAreaChartData(out);
-                    })
-                    .catch(err => { throw err } );
-                }
-            }
-
-            function updateLineChartData(data) {
-                let labels = data.map(day => day["date"]);
-                let values = data.map(day => day["total_cases"]["county"] ?? Number.NaN);
-
-                chart.data.labels = labels;
-                chart.data.datasets[0].data = values;
-                chart.update();
-            }
-
-            function updateAreaChartData(data) {
-                let labels = data.map(day => day["date"]);
-                var sets = [];
-                sets.push(data.map(day => day["total_cases"]["west_plains"]));
-                sets.push(data.map(day => day["total_cases"]["willow_springs"]));
-                sets.push(data.map(day => day["total_cases"]["mountain_view"]));
-                sets.push(data.map(day => day["total_cases"]["other"]));
-                sets.push(data.map(day => day["total_cases"]["unknown"]));
-
-                chart.data.labels = labels;
-                chart.data.datasets = []
-                sets.forEach(function(values, index) {
-                    chart.data.datasets.push(
-                        {
-                            data: values,
-                            label: categories[index],
-                            pointRadius: 0,
-                            backgroundColor: categoryColors[index]
-                        }
-                    )
-                });
-                chart.update();
-            }
-
-            loadData();
+            loadData(url);
         </script>
     </body>
 </html>

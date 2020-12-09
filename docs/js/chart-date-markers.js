@@ -58,8 +58,7 @@ markers = {
             label: {
                 content: "Thanksgiving",
                 enabled: true,
-                position: "top",
-                xAdjust: 3
+                position: "top"
             }
         }
     ]
