@@ -77,7 +77,6 @@ function reloadChart(type, data) {
                 mode: 'index',
                 intersect: false,
             },
-            annotation: markers
         }
     });
 
@@ -116,6 +115,12 @@ function reloadChart(type, data) {
                 return '14-day Positivity Rate: ' + value + '%';
             }
         }
+    }
+
+    if(dateMarkersButton.classList.contains("chart-selection-selected")) {
+        chart.options.annotation = markers
+    } else {
+        chart.options.annotation = {}
     }
 
     chart.update()
