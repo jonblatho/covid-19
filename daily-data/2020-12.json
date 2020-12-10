@@ -217,17 +217,18 @@
         "active_cases": 198,
         "hospitalizations": 13,
         "deaths": 77,
-        "tests": 13853,
+        "tests": 13837,
         "dhss_total": null,
         "estimates": {
             "cases": false,
             "active": false,
             "deaths": false,
             "hospitalizations": false,
-            "tests": true
+            "tests": false
         },
         "sources": [
-            "https://web.archive.org/web/20201210071404/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
+            "https://web.archive.org/web/20201210071404/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/",
+            "https://www.facebook.com/permalink.php?story_fbid=4198519760162798&id=170310842983730"
         ],
         "date": "2020-12-09"
     }
