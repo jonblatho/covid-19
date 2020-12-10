@@ -8,6 +8,20 @@ markers = {
             type: "line",
             mode: "vertical",
             scaleID: "x-axis-0",
+            value: "2020-06-16",
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            borderWidth: 1,
+            borderColor: '#ff0000',
+            label: {
+                content: "Missouri reopens",
+                enabled: true,
+                position: "top",
+            }
+        },
+        {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x-axis-0",
             value: "2020-08-24",
             backgroundColor: 'rgba(0,0,0,0.5)',
             borderWidth: 1,
