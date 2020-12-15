@@ -11,7 +11,7 @@
         "hospitalizations": 12,
         "deaths": 69,
         "tests": 13364,
-        "dhss_total": 1648,
+        "dhss_total": 1938,
         "estimates": {
             "cases": false,
             "active": false,
@@ -36,7 +36,7 @@
         "hospitalizations": 13,
         "deaths": 70,
         "tests": 13397,
-        "dhss_total": 1657,
+        "dhss_total": 1955,
         "estimates": {
             "cases": false,
             "active": false,
@@ -62,7 +62,7 @@
         "hospitalizations": 13,
         "deaths": 74,
         "tests": 13475,
-        "dhss_total": 1667,
+        "dhss_total": 1976,
         "estimates": {
             "cases": false,
             "active": false,
@@ -88,7 +88,7 @@
         "hospitalizations": 15,
         "deaths": 76,
         "tests": 13504,
-        "dhss_total": 1674,
+        "dhss_total": 1988,
         "estimates": {
             "cases": true,
             "active": false,
@@ -113,7 +113,7 @@
         "hospitalizations": 15,
         "deaths": 76,
         "tests": 13533,
-        "dhss_total": 1680,
+        "dhss_total": 1996,
         "estimates": {
             "cases": true,
             "active": false,
@@ -138,7 +138,7 @@
         "hospitalizations": 15,
         "deaths": 76,
         "tests": 13562,
-        "dhss_total": 1690,
+        "dhss_total": 2014,
         "estimates": {
             "cases": false,
             "active": false,
@@ -163,7 +163,7 @@
         "hospitalizations": 16,
         "deaths": 76,
         "tests": 13706,
-        "dhss_total": 1701,
+        "dhss_total": 2035,
         "estimates": {
             "cases": false,
             "active": false,
@@ -189,7 +189,7 @@
         "hospitalizations": 12,
         "deaths": 76,
         "tests": 13792,
-        "dhss_total": null,
+        "dhss_total": 2044,
         "estimates": {
             "cases": false,
             "active": false,
@@ -215,7 +215,7 @@
         "hospitalizations": 13,
         "deaths": 77,
         "tests": 13837,
-        "dhss_total": null,
+        "dhss_total": 2060,
         "estimates": {
             "cases": false,
             "active": false,
@@ -241,7 +241,7 @@
         "hospitalizations": 6,
         "deaths": 78,
         "tests": 13889,
-        "dhss_total": null,
+        "dhss_total": 2070,
         "estimates": {
             "cases": false,
             "active": false,
@@ -267,7 +267,7 @@
         "hospitalizations": 6,
         "deaths": 78,
         "tests": 13901,
-        "dhss_total": null,
+        "dhss_total": 2073,
         "estimates": {
             "cases": false,
             "active": false,
@@ -330,5 +330,30 @@
             "https://www.facebook.com/permalink.php?story_fbid=4209145285766912&id=170310842983730"
         ],
         "date": "2020-12-13"
+    },
+    {
+        "new_cases": {
+            "west_plains": 16,
+            "willow_springs": 9,
+            "mountain_view": 2,
+            "other": 4,
+            "unknown": 0
+        },
+        "active_cases": 122,
+        "hospitalizations": 7,
+        "deaths": 78,
+        "tests": 13979,
+        "dhss_total": null,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": [
+            "https://web.archive.org/web/20201215060417/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
+        ],
+        "date": "2020-12-14"
     }
 ]
