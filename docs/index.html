@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>COVID-19 in Howell County, MO</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="main.css?v=ef3d904dc013940bf9479c44265d9b991afa44589690638b96b511a2834e1301" />
+        <link rel="stylesheet" href="main.css?v=1d83d31983335863b4671e8ca0055c940cd5f9cb2de073d732ad2285ea0d9568" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
@@ -16,12 +16,18 @@
             <div class="wrap">
                 <h1>COVID-19 in Howell County, MO</h1>
                 <div id="last-updated">
-                    <p>Data as of December 15, 2020</p>
+                    <p>Data as of December 16, 2020</p>
                 </div>
             </div>
         </header>
         <main>
-            
+            <div id="top">
+                <div class="wrap">
+                    <div class="message message-moderate">
+                        On December 15, the HCHD received a large influx of test results due to a data dump from the state &mdash; adding nearly 800 tests in a single day. This influx may impact  some quantities shown here, such as the 14-day positivity rate, through the end of the month. Interpret the data here with caution.
+                    </div>
+                </div>
+            </div>
             <div id="charts">
                 <div class="wrap">
                     <div id="chart-select">
@@ -42,7 +48,7 @@
                 <div class="wrap">
                     <div id="dashboard-grid-container">
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">104</div>
+                            <div class="dashboard-highlight">109</div>
                             <div class="dashboard-description">
                                 new cases in the past week
                             </div>
@@ -50,11 +56,11 @@
                                 
                                 <span class="change change-bad">&uarr; 
                                 
-                                70</span> from a week ago
+                                64</span> from a week ago
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">119</div>
+                            <div class="dashboard-highlight">115</div>
                             <div class="dashboard-description">
                                 known active cases
                             </div>
@@ -62,17 +68,17 @@
                                 
                                 <span class="change change-good">&darr; 
                                 
-                                61</span> from a week ago
+                                83</span> from a week ago
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">19.2%</div>
-                            <div class="dashboard-description">14-day positivity rate</div>
+                            <div class="dashboard-highlight">19.3%</div>
+                            <div class="dashboard-description">14-day positivity rate*</div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-good">&darr; 
                                 
-                                16.0%</span> from a week ago*
+                                17.2%</span> from a week ago*
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
@@ -84,11 +90,11 @@
                                 
                                 <span class="change change-good">&darr;
                                 
-                                6</span> from a week ago
+                                7</span> from a week ago
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">80</div>
+                            <div class="dashboard-highlight">81</div>
                             <div class="dashboard-description">
                                 cumulative deaths
                             </div>
@@ -100,15 +106,15 @@
                             </div>
                         </div>
                         <div class="dashboard-grid-item">
-                            <div class="dashboard-highlight">1,022</div>
+                            <div class="dashboard-highlight">1,024</div>
                             <div class="dashboard-description">
-                                new tests in the past week
+                                new tests in the past week*
                             </div>
                             <div class="dashboard-context">
                                 
                                 <span class="change change-good">&uarr; 
                                 
-                                594</span> from a week ago
+                                584</span> from a week ago*
                             </div>
                         </div>
                     </div>
@@ -123,7 +129,7 @@
                                 West Plains
                             </div>
                             <div class="town-number">
-                                74
+                                76
                             </div>
                         </div>
                         
@@ -132,7 +138,7 @@
                                 Willow Springs
                             </div>
                             <div class="town-number">
-                                16
+                                14
                             </div>
                         </div>
                         
@@ -141,7 +147,7 @@
                                 Mountain View
                             </div>
                             <div class="town-number">
-                                9
+                                8
                             </div>
                         </div>
                         
@@ -150,7 +156,7 @@
                                 Other
                             </div>
                             <div class="town-number">
-                                19
+                                17
                             </div>
                         </div>
                         
@@ -184,15 +190,15 @@
                         <tr>
                             <th class="row-head">Today</th>
                             
-                            <td>11</td>
+                            <td>27</td>
                             
-                            <td>7</td>
+                            <td>19</td>
                             
-                            <td>0</td>
+                            <td>2</td>
                             
-                            <td>0</td>
+                            <td>3</td>
                             
-                            <td>4</td>
+                            <td>3</td>
                             
                             <td>0</td>
                             
@@ -201,15 +207,15 @@
                         <tr>
                             <th class="row-head">Past Week</th>
                             
-                            <td>104</td>
+                            <td>109</td>
                             
-                            <td>65</td>
+                            <td>72</td>
                             
-                            <td>14</td>
+                            <td>13</td>
                             
                             <td>8</td>
                             
-                            <td>17</td>
+                            <td>16</td>
                             
                             <td>0</td>
                             
@@ -218,15 +224,15 @@
                         <tr>
                             <th class="row-head">MTD</th>
                             
-                            <td>303</td>
+                            <td>330</td>
                             
-                            <td>192</td>
+                            <td>211</td>
                             
-                            <td>52</td>
+                            <td>54</td>
                             
-                            <td>20</td>
+                            <td>23</td>
                             
-                            <td>39</td>
+                            <td>42</td>
                             
                             <td>0</td>
                             
@@ -235,15 +241,15 @@
                         <tr>
                             <th class="row-head">YTD</th>
                             
-                            <td>2,695</td>
+                            <td>2,722</td>
                             
-                            <td>1,707</td>
+                            <td>1,726</td>
                             
-                            <td>367</td>
+                            <td>369</td>
                             
-                            <td>348</td>
+                            <td>351</td>
                             
-                            <td>273</td>
+                            <td>276</td>
                             
                             <td>0</td>
                             
@@ -252,15 +258,15 @@
                         <tr>
                             <th class="row-head">All</th>
                             
-                            <td>2,695</td>
+                            <td>2,722</td>
                             
-                            <td>1,707</td>
+                            <td>1,726</td>
                             
-                            <td>367</td>
+                            <td>369</td>
                             
-                            <td>348</td>
+                            <td>351</td>
                             
-                            <td>273</td>
+                            <td>276</td>
                             
                             <td>0</td>
                             
@@ -419,15 +425,15 @@
                         <tr>
                             <th class="row-head">December 2020</th>
                             
-                            <td>303</td>
+                            <td>330</td>
                             
-                            <td>192</td>
+                            <td>211</td>
                             
-                            <td>52</td>
+                            <td>54</td>
                             
-                            <td>20</td>
+                            <td>23</td>
                             
-                            <td>39</td>
+                            <td>42</td>
                             
                             <td>0</td>
                             
@@ -14083,6 +14089,59 @@
                             
                         </tr>
                         
+                        <tr>
+                            <td class="date prominent-right-border">12/16/20</td>
+                            
+                            
+                            <td>2,722</td>
+                            
+                            <td>1,726</td>
+                            
+                            <td>369</td>
+                            
+                            <td>351</td>
+                            
+                            <td>276</td>
+                            
+                            
+                            <td class="prominent-right-border ">0</td>
+                            
+                            
+                            <td>27</td>
+                            
+                            <td>19</td>
+                            
+                            <td>2</td>
+                            
+                            <td>3</td>
+                            
+                            <td>3</td>
+                            
+                            
+                            <td class="prominent-right-border ">0</td>
+                            <td class="prominent-right-border ">115</td>
+                            
+                            
+                            <td class="estimate">14,861</td>
+                            
+                            
+                            <td class="prominent-right-border estimate">19.3%</td>
+                            
+                            
+                            <td class="">6</td>
+                            <td class="prominent-right-border">81</td>
+                            
+                            <td class="na prominent-right-border">N/A</td>
+                            
+                            
+                            <td>
+                                
+                                <a href="https://web.archive.org/web/20201217060836/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/">[1]</a>
+                                
+                            </td>
+                            
+                        </tr>
+                        
                     </table>
                     <p class="table-footer"><span style="font-style: italic;">Italicized</span> quantities are estimated or impacted by estimated data.</p>
                 </div>
@@ -14158,13 +14217,13 @@
                 <p class="footer">&copy; 2020 &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
-        <script src="js/chart-data.js?v=980dc9a2a0635fbf22912c438e65e85a135025ea2e537f0f8155469f66b05898"></script>
-        <script src="js/chart-config.js?v=2f30eb2ead8f57d1e0246c3ba9f424362a7f2dda66c9d436ea9384c08d9ca6b0"></script>
-        <script src="js/chart-ui.js?v=cdfb4c400db4e6759fdad844c6a68775865528fb035fdbba4858b5d6f72aba41"></script>
-        <script src="js/chart-date-markers.js?v=ef8a418009bfd6fb9af545a942a5cb6d28055f493c517a8eb6e1c9159a69db22"></script>
+        <script src="js/chart-data.js?v=0b9e200ff2c74ddb4e13692a44dc9356fdbd008e57026d20a53d128d0dd97ad5"></script>
+        <script src="js/chart-config.js?v=c7acb2e2af35c4815dffd10e241c769b231cca3c2b0c4958a69df3f8d5b36326"></script>
+        <script src="js/chart-ui.js?v=2d2d34a54335ac2b964151ee1ff63aec0cba420fe799539b35d5907bd54d5373"></script>
+        <script src="js/chart-date-markers.js?v=400e197e18a1f62184797de7c6090b2fd6837bc9ae6f0866ed76da1427526626"></script>
         <script>
             var chart = new Chart(ctx);
-            let url = 'chart-data/data.json?v=8a671d013b8932475d28a25940441dbe08b4c73ee3b1698ab06225e5d618a88f';
+            let url = 'chart-data/data.json?v=efdd0709b3aa4788251115155f23645298851fa575ef97ca4719b0bc34fd1c66';
 
             loadData(url);
         </script>
