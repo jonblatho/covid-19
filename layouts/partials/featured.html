@@ -7,12 +7,12 @@
                                 new case{{ if ne (int .Site.Data.summary.new_cases_7d.value) 1 }}s{{ end }} in the past week{{ if .Site.Data.summary.new_cases_7d.estimate }}*{{ end }}
                             </div>
                             <div class="context">
-                                {{ if gt .Site.Data.summary.new_cases_change 0 }}
-                                <span class="change change-bad">&uarr; 
-                                {{ else if lt .Site.Data.summary.new_cases_change 0 }}
-                                <span class="change change-good">&darr; 
+                                {{ if gt .Site.Data.summary.new_cases_0 }}
+                                <span class="change-bad">&uarr; 
+                                {{ else if lt .Site.Data.summary.new_cases_0 }}
+                                <span class="change-good">&darr; 
                                 {{ else }}
-                                <span class="change change-neutral">&rarr;
+                                <span class="change-neutral">&rarr;
                                 {{ end }}
                                 {{ lang.NumFmt 0 .Site.Data.summary.new_cases_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.new_cases_change.estimate }}*{{ end }}
                             </div>
@@ -24,11 +24,11 @@
                             </div>
                             <div class="context">
                                 {{ if gt .Site.Data.summary.active_cases_change.value 0 }}
-                                <span class="change change-bad">&uarr; 
+                                <span class="change-bad">&uarr; 
                                 {{ else if lt .Site.Data.summary.active_cases_change.value 0 }}
-                                <span class="change change-good">&darr; 
+                                <span class="change-good">&darr; 
                                 {{ else }}
-                                <span class="change change-neutral">&rarr;
+                                <span class="change-neutral">&rarr;
                                 {{ end }}
                                 {{ lang.NumFmt 0 .Site.Data.summary.active_cases_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.active_cases_change.estimate }}*{{ end }}
                             </div>
@@ -38,11 +38,11 @@
                             <div class="description">14-day positivity rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
                             <div class="context">
                                 {{ if ge .Site.Data.summary.positivity_rate_2w_change.value 0 }}
-                                <span class="change change-bad">&uarr; 
+                                <span class="change-bad">&uarr; 
                                 {{ else if lt .Site.Data.summary.positivity_rate_2w_change.value 0 }}
-                                <span class="change change-good">&darr; 
+                                <span class="change-good">&darr; 
                                 {{ else }}
-                                <span class="change change-neutral">&rarr;
+                                <span class="change-neutral">&rarr;
                                 {{ end }}
                                 {{ lang.NumFmt 1 .Site.Data.summary.positivity_rate_2w_change.value "|.|," "|"}}%</span> from a week ago{{ if .Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
                             </div>
@@ -54,11 +54,11 @@
                             </div>
                             <div class="context">
                                 {{ if gt .Site.Data.summary.hospitalizations_change.value 0 }}
-                                <span class="change change-bad">&uarr; 
+                                <span class="change-bad">&uarr; 
                                 {{ else if lt .Site.Data.summary.hospitalizations_change.value 0 }}
-                                <span class="change change-good">&darr;
+                                <span class="change-good">&darr;
                                 {{ else }}
-                                <span class="change change-neutral">&rarr; 
+                                <span class="change-neutral">&rarr; 
                                 {{ end }}
                                 {{ lang.NumFmt 0 .Site.Data.summary.hospitalizations_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.hospitalizations_change.estimate }}*{{ end }}
                             </div>
@@ -70,9 +70,9 @@
                             </div>
                             <div class="context">
                                 {{ if (gt .Site.Data.summary.deaths_change.value 0) }}
-                                <span class="change change-bad">&uarr; 
+                                <span class="change-bad">&uarr; 
                                 {{ else }}
-                                <span class="change change-neutral">&rarr; 
+                                <span class="change-neutral">&rarr; 
                                 {{ end }}
                                 {{ lang.NumFmt 0 .Site.Data.summary.deaths_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.deaths_change.estimate }}*{{ end }}
                             </div>
@@ -84,11 +84,11 @@
                             </div>
                             <div class="context">
                                 {{ if gt .Site.Data.summary.new_tests_7d_change.value 0 }}
-                                <span class="change change-good">&uarr; 
+                                <span class="change-good">&uarr; 
                                 {{ else if lt .Site.Data.summary.new_tests_7d_change.value 0 }}
-                                <span class="change change-bad">&darr;
+                                <span class="change-bad">&darr;
                                 {{ else }}
-                                <span class="change change-neutral">&rarr;
+                                <span class="change-neutral">&rarr;
                                 {{ end }}
                                 {{ lang.NumFmt 0 .Site.Data.summary.new_tests_7d_change.value "|.|," "|"}}</span> from a week ago{{ if .Site.Data.summary.new_tests_7d_change.estimate }}*{{ end }}
                             </div>

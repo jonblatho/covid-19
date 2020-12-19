@@ -51,12 +51,13 @@ a {
         border-radius: 4px;
         font-size: 90%;
         line-height: 130%;
-    }
-    
-    .message-moderate {
-        background: #fff3d1;
-        border-color: #e6af19;
-        color: #634900
+
+        &-moderate {
+            @extend .message;
+            background: #fff3d1;
+            border-color: #e6af19;
+            color: #634900
+        }
     }
 } 
 
@@ -75,13 +76,14 @@ a {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 100%;
         text-decoration: none;
-        cursor: pointer
-    }
+        cursor: pointer;
 
-    .button-selected {
-        background: #42107b;
-        color: #fff;
-        font-weight: bold;
+        &-selected {
+            @extend .button;
+            background: #42107b;
+            color: #fff;
+            font-weight: bold;
+        }
     }
 }
 
@@ -119,24 +121,23 @@ a {
     }
 }
 
-
-
-
-
 .change {
     font-weight: 600;
-}
 
-.change-bad {
-    color: #f7685e;
-}
+    &-bad {
+        @extend .change;
+        color: #f7685e;
+    }
 
-.change-neutral {
-    color: #ddd;
-}
+    &-neutral {
+        @extend .change;
+        color: #ddd;
+    }
 
-.change-good {
-    color: #88eb8f;
+    &-good {
+        @extend .change;
+        color: #88eb8f;
+    }
 }
 
 .town-grid-container {
@@ -148,10 +149,10 @@ a {
     background: #222;
     border-radius: 8px;
     color: #fff;
-}
 
-.town-grid-item {
-    text-align: center;
+    .item {
+        text-align: center;
+    }
 }
 
 .town-label {
@@ -160,14 +161,16 @@ a {
     line-height: 120%;
     text-transform: uppercase;
     vertical-align: middle;
-}
 
-.town-label-dark {
-    color: #888;
-}
+    &-dark {
+        @extend .town-label;
+        color: #888;
+    }
 
-.town-label-light {
-    color: #bbb;
+    &-light {
+        @extend .town-label;
+        color: #bbb;
+    }
 }
 
 .town-number {
@@ -178,41 +181,41 @@ a {
 
 table {
     margin: 20px auto 40px;
+    
+    tr:nth-child(odd) {
+        background: rgba(0,0,0,0.05);
+    }
+
+    thead tr {
+        background: transparent !important;
+    }
 }
 
-table tr:nth-child(odd) {
-    background: rgba(0,0,0,0.05);
-}
+.totals {
+    th, td {
+        padding: 4px 24px;
+    }
 
-table thead tr {
-    background: transparent !important;
-}
+    thead th {
+        padding-bottom: 10px;
+    }
 
-.totals th,
-.totals td {
-    padding: 4px 24px;
-}
+    th.row-head {
+        padding: 8px 20px;
+        color: rgba(0,0,0,0.6);
+        text-align: right;
+    }
 
-.totals tr {
-    padding: 0 30px;
-}
+    tr {
+        padding: 0 30px;
+    }
 
-.totals thead th {
-    padding-bottom: 10px;
-}
-
-
-.totals th.row-head {
-    padding: 8px 20px;
-    color: rgba(0,0,0,0.6);
-    text-align: right;
-}
-
-.totals td {
-    padding: 16px;
-    font-size: 140%;
-    font-weight: 600;
-    text-align: center;
+    td {
+        padding: 16px;
+        font-size: 140%;
+        font-weight: 600;
+        text-align: center;
+    }
 }
 
 .all-data {
@@ -220,43 +223,43 @@ table thead tr {
     margin-bottom: 16px;
     font-size: 80%;
     line-height: 140%;
-}
 
-.all-data thead {
-    position: sticky;
-    background: #ccc;
-    top: 0;
-}
+    thead {
+        position: sticky;
+        background: #ccc;
+        top: 0;
+    }
 
-.all-data th {
-    position: relative;
-    padding: 5px 8px;
-    background: #fff;
-    border: 1px solid #ccc;
-    color: #777;
-    vertical-align: middle;
-}
+    th {
+        position: relative;
+        padding: 5px 8px;
+        background: #fff;
+        border: 1px solid #ccc;
+        color: #777;
+        vertical-align: middle;
+    }
 
-.all-data td {
-    padding: 3px 5px;
-    border: 1px solid #ccc;
-    text-align: right;
-}
+    td {
+        padding: 3px 5px;
+        border: 1px solid #ccc;
+        text-align: right;
+    }
 
-.all-data .date {
-    font-weight: 600;
-}
+    td.date {
+        font-weight: 600;
+    }
 
-.all-data .prominent-right-border {
-    border-right: 2px solid #888;
-}
+    td.prominent-right-border {
+        border-right: 2px solid #888;
+    }
 
-.all-data .na {
-    color: rgba(0,0,0,0.4)
-}
+    td.na {
+        color: rgba(0,0,0,0.4)
+    }
 
-.all-data .estimate {
-    font-style: italic;
+    td.estimate {
+        font-style: italic;
+    }
 }
 
 .table-footer {
@@ -285,19 +288,21 @@ h4 {
     text-transform: uppercase;
 }
 
-#notes p {
-    margin-bottom: 10px;
-}
+#notes {
+    p {
+        margin-bottom: 10px;
+    }
 
-#notes ul {
-    padding-left: 30px;
-    color: #222;
-    list-style-type: square;
-}
+    ul {
+        padding-left: 30px;
+        color: #222;
+        list-style-type: square;
+    }
 
-#notes li {
-    margin-bottom: 10px;
-    line-height: 150%;
+    li {
+        margin-bottom: 10px;
+        line-height: 150%;
+    }
 }
 
 strong {
@@ -310,4 +315,92 @@ footer {
     color: rgba(0,0,0,0.6);
     font-size: 80%;
     text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    body, main {
+        background: #111;
+        color: #eee;
+    }
+
+    a {
+        color: #ba7eff;
+        text-decoration: none;
+    }
+
+    p, li {
+        color: #ccc;
+    }
+
+    #top {
+        .message {
+            &-moderate {
+                background: #533d00;
+                border-color: #b98c0e;
+                color: #fff;
+            }
+        }
+    }
+
+    #chart-select {
+        .button {
+            background: #292929;
+            color: #fff;
+            &-selected {
+                background: #42107b;
+                color: #fff;
+            }
+        }
+    }
+
+    p.table-footer {
+        color: #888;
+    }
+
+    h3 {
+        background: #444;
+        color: #bbb;
+    }
+
+    h4 {
+        color: #aaa;
+    }
+
+    table {
+        tr:nth-child(odd) {
+            background: rgba(255,255,255,0.08);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255,255,255,0.02);
+        }
+    }
+
+    .totals th.row-head {
+        padding: 8px 20px;
+        color: rgba(255,255,255,0.7);
+        text-align: right;
+    }
+    
+    .all-data {
+        color: #ddd;
+    }
+
+    .all-data th {
+        background: #333 !important;
+        color: #bbb;
+    }
+
+    .all-data th,
+    .all-data td {
+        border-color: #444 !important;
+    }
+    
+    .all-data td.na {
+        color: rgba(255,255,255,0.4);
+    }
+
+    footer {
+        border-color: #333;
+    }
 }

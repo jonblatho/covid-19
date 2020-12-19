@@ -142,7 +142,7 @@ function reloadChart(type, data) {
         }
     }
 
-    if(dateMarkersButton.classList.contains("chart-selection-selected")) {
+    if(dateMarkersButton.classList.contains("button-selected")) {
         chart.options.annotation = markers
     } else {
         chart.options.annotation = {}
