@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="description">
-                                        current COVID-19 hospitalization{{ if ne (int .Site.Data.summary.hospitalizations.value) 1 }}s{{ end }}{{ if .Site.Data.summary.hospitalizations.estimate }}*{{ end }}
+                                        current hospitalization{{ if ne (int .Site.Data.summary.hospitalizations.value) 1 }}s{{ end }}{{ if .Site.Data.summary.hospitalizations.estimate }}*{{ end }}
                                     </div>
                                     <div class="context">
                                         {{ if gt .Site.Data.summary.hospitalizations_change.value 0 }}
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="description">
-                                        cumulative COVID&#8209;19&nbsp;deaths{{ if .Site.Data.summary.deaths.estimate }}*{{ end }}
+                                        cumulative <br />deaths{{ if .Site.Data.summary.deaths.estimate }}*{{ end }}
                                     </div>
                                     <div class="context">
                                         {{ if (gt .Site.Data.summary.deaths_change.value 0) }}
