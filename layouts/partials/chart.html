@@ -2,13 +2,13 @@
                 <div class="wrap">
                     <div id="chart-select">
                         <div style="float:left;">
-                            <button type="button" class="chart-selection chart-selection-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
-                            <button type="button" class="chart-selection" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
-                            <button type="button" class="chart-selection" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
-                            <button type="button" class="chart-selection" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
+                            <button type="button" class="button button-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
+                            <button type="button" class="button" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
+                            <button type="button" class="button" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
+                            <button type="button" class="button" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
                         </div>
                         <div style="float:right;">
-                            <button type="button" class="chart-selection chart-selection-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers On</button>
+                            <button type="button" class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers On</button>
                         </div>
                     </div>
                     <canvas id="chart"></canvas>

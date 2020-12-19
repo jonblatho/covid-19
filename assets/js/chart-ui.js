@@ -5,33 +5,35 @@ var positivityRateButton = document.getElementById("positivity-rate");
 var dateMarkersButton = document.getElementById("date-markers");
 
 function changeChart(type, data) {
+    let selectedClassName = "button-selected";
+
     if(type == 'total') {
-        totalCasesButton.classList.add("chart-selection-selected");
-        newCasesButton.classList.remove("chart-selection-selected");
-        activeCasesButton.classList.remove("chart-selection-selected");
-        positivityRateButton.classList.remove("chart-selection-selected");
+        totalCasesButton.classList.add(selectedClassName);
+        newCasesButton.classList.remove(selectedClassName);
+        activeCasesButton.classList.remove(selectedClassName);
+        positivityRateButton.classList.remove(selectedClassName);
     } else if(type == 'new') {
-        totalCasesButton.classList.remove("chart-selection-selected");
-        newCasesButton.classList.add("chart-selection-selected");
-        activeCasesButton.classList.remove("chart-selection-selected");
-        positivityRateButton.classList.remove("chart-selection-selected");
+        totalCasesButton.classList.remove(selectedClassName);
+        newCasesButton.classList.add(selectedClassName);
+        activeCasesButton.classList.remove(selectedClassName);
+        positivityRateButton.classList.remove(selectedClassName);
     } else if(type == 'active') {
-        totalCasesButton.classList.remove("chart-selection-selected");
-        newCasesButton.classList.remove("chart-selection-selected");
-        activeCasesButton.classList.add("chart-selection-selected");
-        positivityRateButton.classList.remove("chart-selection-selected");
+        totalCasesButton.classList.remove(selectedClassName);
+        newCasesButton.classList.remove(selectedClassName);
+        activeCasesButton.classList.add(selectedClassName);
+        positivityRateButton.classList.remove(selectedClassName);
     } else if(type == 'pos_rate') {
-        totalCasesButton.classList.remove("chart-selection-selected");
-        newCasesButton.classList.remove("chart-selection-selected");
-        activeCasesButton.classList.remove("chart-selection-selected");
-        positivityRateButton.classList.add("chart-selection-selected");
+        totalCasesButton.classList.remove(selectedClassName);
+        newCasesButton.classList.remove(selectedClassName);
+        activeCasesButton.classList.remove(selectedClassName);
+        positivityRateButton.classList.add(selectedClassName);
     } else if(type == 'date_markers') {
-        if(dateMarkersButton.classList.contains("chart-selection-selected")) {
-            dateMarkersButton.classList.remove("chart-selection-selected");
+        if(dateMarkersButton.classList.contains(selectedClassName)) {
+            dateMarkersButton.classList.remove(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers Off"
             chart.options.annotation = {}
         } else {
-            dateMarkersButton.classList.add("chart-selection-selected");
+            dateMarkersButton.classList.add(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers On"
             chart.options.annotation = markers
         }
