@@ -165,11 +165,14 @@ function restyleChartForDarkMode() {
         chart.options.scales.xAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
         chart.options.scales.yAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
         try {
+            chart.options.scales.xAxes[1].gridLines.color = 'rgba(255,255,255,0.1)';
             chart.options.scales.yAxes[1].gridLines.color = 'rgba(255,255,255,0.1)';
         } catch { }
     } else {
         chart.options.scales.xAxes[0].gridLines.color = 'rgba(0,0,0,0.1)';
+        chart.options.scales.yAxes[0].gridLines.color = 'rgba(0,0,0,0.1)';
         try {
+            chart.options.scales.xAxes[1].gridLines.color = 'rgba(0,0,0,0.1)';
             chart.options.scales.yAxes[1].gridLines.color = 'rgba(0,0,0,0.1)';
         } catch { }
     }
