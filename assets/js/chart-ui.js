@@ -7,35 +7,28 @@ var dateMarkersButton = document.getElementById("date-markers");
 function changeChart(type, data) {
     let selectedClassName = "button-selected";
 
+    totalCasesButton.classList.remove(selectedClassName);
+    newCasesButton.classList.remove(selectedClassName);
+    activeCasesButton.classList.remove(selectedClassName);
+    positivityRateButton.classList.remove(selectedClassName);
+
     if(type == 'total') {
         totalCasesButton.classList.add(selectedClassName);
-        newCasesButton.classList.remove(selectedClassName);
-        activeCasesButton.classList.remove(selectedClassName);
-        positivityRateButton.classList.remove(selectedClassName);
     } else if(type == 'new') {
-        totalCasesButton.classList.remove(selectedClassName);
         newCasesButton.classList.add(selectedClassName);
-        activeCasesButton.classList.remove(selectedClassName);
-        positivityRateButton.classList.remove(selectedClassName);
     } else if(type == 'active') {
-        totalCasesButton.classList.remove(selectedClassName);
-        newCasesButton.classList.remove(selectedClassName);
         activeCasesButton.classList.add(selectedClassName);
-        positivityRateButton.classList.remove(selectedClassName);
     } else if(type == 'pos_rate') {
-        totalCasesButton.classList.remove(selectedClassName);
-        newCasesButton.classList.remove(selectedClassName);
-        activeCasesButton.classList.remove(selectedClassName);
         positivityRateButton.classList.add(selectedClassName);
     } else if(type == 'date_markers') {
         if(dateMarkersButton.classList.contains(selectedClassName)) {
             dateMarkersButton.classList.remove(selectedClassName);
-            dateMarkersButton.innerHTML = "Date Markers Off"
-            chart.options.annotation = {}
+            dateMarkersButton.innerHTML = "Date Markers Off";
+            chart.options.annotation = {};
         } else {
             dateMarkersButton.classList.add(selectedClassName);
-            dateMarkersButton.innerHTML = "Date Markers On"
-            chart.options.annotation = markers
+            dateMarkersButton.innerHTML = "Date Markers On";
+            chart.options.annotation = markers;
         }
 
     }
@@ -92,13 +85,11 @@ function reloadChart(type, data) {
             filler: {
                 propagate: false
             }
-        }
+        };
     } else if(type == 'new') {
         chart.options.scales.xAxes[0].stacked = true;
-        chart.options.scales.xAxes[0].categoryPercentage = 1.0;
-        chart.options.scales.xAxes[0].barPercentage = 1.0;
         chart.options.scales.yAxes[0].stacked = true;
-        chart.options.plugins = {}
+        chart.options.plugins = {};
     } else if(type == 'active') {
         chart.options.scales.xAxes[0].stacked = false;
         chart.options.scales.yAxes[0].stacked = false;
@@ -114,6 +105,9 @@ function reloadChart(type, data) {
                 position: 'left',
                 ticks: {
                     beginAtZero: true
+                },
+                gridLines: {
+                    display: true
                 }
             },
             {
@@ -122,14 +116,17 @@ function reloadChart(type, data) {
                 ticks: {
                     beginAtZero: true,
                     lineWidth: 0
+                },
+                gridLines: {
+                    display: true
                 }
             },
-        ]
+        ];
         chart.options.scales.yAxes[0].ticks.userCallback = function(value, index, values) {
             value = value.toString();
             value = value.split(/(?=(?:...)*$)/);
             return value + '%';
-        }
+        };
         chart.options.tooltips.callbacks = {
             label: function(tooltipItem, data) {
                 value = tooltipItem.yLabel.toString();
@@ -139,14 +136,47 @@ function reloadChart(type, data) {
                     return '14-day Average Daily Tests: ' + value;
                 }
             }
-        }
+        };
     }
+
+    restyleChartForDarkMode();
 
     if(dateMarkersButton.classList.contains("button-selected")) {
-        chart.options.annotation = markers
+        chart.options.annotation = markers;
     } else {
-        chart.options.annotation = {}
+        chart.options.annotation = {};
     }
 
-    chart.update()
+    chart.update();
+}
+
+function isDarkMode() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return true;
+    }
+    return false;
+}
+
+function restyleChartForDarkMode() {
+    console.log(chart.options.scales.yAxes )
+    if(isDarkMode()) {
+        chart.options.scales.xAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
+        chart.options.scales.yAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
+        try {
+            chart.options.scales.yAxes[1].gridLines.color = 'rgba(255,255,255,0.1)';
+        } catch { }
+    } else {
+        chart.options.scales.xAxes[0].gridLines.color = 'rgba(0,0,0,0.1)';
+        try {
+            chart.options.scales.yAxes[1].gridLines.color = 'rgba(0,0,0,0.1)';
+        } catch { }
+    }
+}
+
+function reloadChartForTraitChange(trait) {
+    if('trait' == 'darkMode') {
+        restyleChartForDarkMode();
+    }
+
+    chart.update();
 }

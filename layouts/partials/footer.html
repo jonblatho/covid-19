@@ -18,6 +18,11 @@
             let url = '{{ $data.Permalink }}';
 
             loadData(url);
+
+            // Listen for dark mode changes
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                reloadChartForTraitChange('darkMode');
+            });
         </script>
     </body>
 </html>

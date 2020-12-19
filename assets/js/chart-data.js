@@ -57,12 +57,13 @@ function chartData(type, data) {
                     label: categories[index],
                     backgroundColor: categoryColors[index],
                     borderColor: categoryColors[index],
-                    order: 2
+                    order: 2,
+                    categoryPercentage: 1.0,
+                    barPercentage: 1.0
                 }
             )
         });
         // Add 7D moving average
-        console.log(data.map(day => day["average_daily_cases_7d"] ?? Number.NaN))
         datasets.push(
             {
                 data: data.map(day => day["average_daily_cases_7d"] ?? Number.NaN),
