@@ -100,9 +100,10 @@ a {
 
     .upper {
         display: grid;
+        grid-gap: 12px;
         grid-template-columns: 40% 60%;
 
-        .right {
+        .left {
             text-align: right;
         }
     }
