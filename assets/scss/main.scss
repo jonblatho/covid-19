@@ -218,6 +218,21 @@ table {
     }
 }
 
+#big-button-link {
+    padding-bottom: 20px;
+    text-align: center;
+
+    .big-button {
+        display: inline-block;
+        padding: 20px 40px;
+        background: #42107b;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
 .all-data {
     position: relative;
     margin-bottom: 16px;

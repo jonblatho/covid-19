@@ -1,12 +1,14 @@
 {{ partial "head.html" . }}
-        <header>
-            <div class="wrap">
-                <h1>COVID-19 in Howell County, MO</h1>
-                <div id="last-updated">
-                    <p>Data as of {{ dateFormat "January 2, 2006" .Site.Data.summary.last_updated }}</p>
+        <a href="{{ .Site.BaseURL }}">
+            <header>
+                <div class="wrap">
+                    <h1>COVID-19 in Howell County, MO</h1>
+                    <div id="last-updated">
+                        <p>Data as of {{ dateFormat "January 2, 2006" .Site.Data.summary.last_updated }}</p>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </a>
         <main>
             <div id="top">
                 <div class="wrap">
