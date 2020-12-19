@@ -6,11 +6,13 @@ var dateMarkersButton = document.getElementById("date-markers");
 
 function changeChart(type, data) {
     let selectedClassName = "button-selected";
-
-    totalCasesButton.classList.remove(selectedClassName);
-    newCasesButton.classList.remove(selectedClassName);
-    activeCasesButton.classList.remove(selectedClassName);
-    positivityRateButton.classList.remove(selectedClassName);
+    
+    if(type != 'date_markers') {
+        totalCasesButton.classList.remove(selectedClassName);
+        newCasesButton.classList.remove(selectedClassName);
+        activeCasesButton.classList.remove(selectedClassName);
+        positivityRateButton.classList.remove(selectedClassName);
+    }
 
     if(type == 'total') {
         totalCasesButton.classList.add(selectedClassName);
