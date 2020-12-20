@@ -41,10 +41,11 @@ a {
 
 #top {
     .wrap {
-        padding: 0 0 30px;
+        padding: 0 0 20px;
     }
 
     .message {
+        margin-bottom: 10px;
         padding: 10px;
         border-style: solid;
         border-width: 1px;
@@ -52,10 +53,24 @@ a {
         font-size: 90%;
         line-height: 130%;
 
+        &-info {
+            @extend .message;
+            background: #d1eaff;
+            border-color: #199be6;
+            color: #634900
+        }
+
         &-moderate {
             @extend .message;
             background: #fff3d1;
             border-color: #e6af19;
+            color: #634900
+        }
+
+        &-critical {
+            @extend .message;
+            background: #ffd4d1;
+            border-color: #e62019;
             color: #634900
         }
     }
@@ -357,10 +372,21 @@ footer {
 
     #top {
         .message {
+            color: #fff !important;
+
+            &-info {
+                background: #003b53;
+                border-color: #0e66b9;
+            }
+
             &-moderate {
                 background: #533d00;
                 border-color: #b98c0e;
-                color: #fff;
+            }
+
+            &-critical {
+                background: #530600;
+                border-color: #b93e0e;
             }
         }
     }

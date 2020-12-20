@@ -17,6 +17,7 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **November 24, 2020:** Added a column in the table to show the discrepancy between HCHD and DHSS reported case totals for a given date.
 * **December 8, 2020:** Date markers on the dashboard chart can now be toggled on and off.
 * **December 9, 2020:** Added charts for new cases, active cases, and positivity rate.
+* **December 18, 2020:** Moved the All Data table to its own page and added Dark Mode support.
 
 ## Planned updates
 
