@@ -160,7 +160,6 @@ function isDarkMode() {
 }
 
 function restyleChartForDarkMode() {
-    console.log(chart.options.scales.yAxes )
     if(isDarkMode()) {
         chart.options.scales.xAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
         chart.options.scales.yAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
