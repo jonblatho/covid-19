@@ -529,7 +529,7 @@
             "active": false,
             "deaths": false,
             "hospitalizations": false,
-            "tests": false
+            "tests": true
         },
         "sources": null,
         "date": "2020-12-21"
