@@ -510,5 +510,28 @@
             "https://www.facebook.com/permalink.php?story_fbid=4227895727225201&id=170310842983730"
         ],
         "date": "2020-12-20"
+    },
+    {
+        "new_cases": {
+            "west_plains": 30,
+            "willow_springs": 2,
+            "mountain_view": 2,
+            "other": 2,
+            "unknown": 0
+        },
+        "active_cases": 113,
+        "hospitalizations": 6,
+        "deaths": 82,
+        "tests": 15202,
+        "dhss_total": null,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": false
+        },
+        "sources": null,
+        "date": "2020-12-21"
     }
 ]
