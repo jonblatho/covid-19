@@ -4,6 +4,7 @@
                 <p class="footer">&copy; {{ now.Format "2006"}} &middot; <a href="https://github.com/jonblatho/covid-19">View data on GitHub</a></p>
             </div>
         </footer>
+        {{ if .IsHome }}
         {{ $data := resources.Get "js/chart-data.json" | resources.Minify }}
         {{ $dataJS := resources.Get "js/chart-data.js" | resources.Minify | resources.Fingerprint }}
         {{ $configJS := resources.Get "js/chart-config.js" | resources.Minify | resources.Fingerprint }}
@@ -24,5 +25,6 @@
                 reloadChartForTraitChange('darkMode');
             });
         </script>
+        {{ end }}
     </body>
 </html>
