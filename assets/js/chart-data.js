@@ -28,7 +28,6 @@ function chartData(type, data) {
         sets.push(data.map(day => day["total_cases"]["willow_springs"]));
         sets.push(data.map(day => day["total_cases"]["mountain_view"]));
         sets.push(data.map(day => day["total_cases"]["other"]));
-        sets.push(data.map(day => day["total_cases"]["unknown"]));
         datasets = []
         sets.forEach(function(values, index) {
             datasets.push(
@@ -47,7 +46,6 @@ function chartData(type, data) {
         sets.push(data.map(day => day["new_cases"]["willow_springs"]));
         sets.push(data.map(day => day["new_cases"]["mountain_view"]));
         sets.push(data.map(day => day["new_cases"]["other"]));
-        sets.push(data.map(day => day["new_cases"]["unknown"]));
         datasets = []
         // Add data by town
         sets.forEach(function(values, index) {

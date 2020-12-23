@@ -9,10 +9,10 @@
                         <thead>
                             <tr>
                                 <th rowspan="2">Date</th>
-                                <th colspan="6">Total Cases</th>
-                                <th colspan="6">New Cases</th>
+                                <th colspan="5">Total Cases</th>
+                                <th colspan="5">New Cases</th>
                                 <th rowspan="2">Active<br />Cases</th>
-                                <th rowspan="2">Tests</th>
+                                <th colspan="2">Tests</th>
                                 <th rowspan="2">14D Pos. Rate</th>
                                 <th rowspan="2">Hosp.</th>
                                 <th rowspan="2">Deaths</th>
@@ -20,37 +20,44 @@
                                 <th rowspan="2">Sources</th>
                             </tr>
                             <tr>
-                                {{ range (slice "H.C." "W.P." "W.S." "M.V." "Oth" "Unk" "H.C." "W.P." "W.S." "M.V." "Oth" "Unk") }}
+                                {{ range (slice "H.C." "W.P." "W.S." "M.V." "Other" "H.C." "W.P." "W.S." "M.V." "Other") }}
                                 <th>{{ . }}</th>
                                 {{ end }}
+                                <th>Total</th>
+                                <th>New</th>
                             </tr>
                         </thead>
                         {{ range .Site.Data.daily }}
                         <tr>
                             <td class="date prominent-right-border">{{ dateFormat "1/2/06" .date }}</td>
                             {{ if .estimates.cases }}
-                            {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view .total_cases.other)}}
+                            {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
                             <td class="estimate">{{ lang.NumFmt 0 . }}</td>
                             {{ end }}
                             {{ else }}
-                            {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view .total_cases.other)}}
+                            {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
                             <td>{{ lang.NumFmt 0 . }}</td>
                             {{ end }}
                             {{ end }}
-                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .total_cases.unknown }}</td>
+                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .total_cases.other }}</td>
                             {{ if .estimates.cases }}
-                            {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view .new_cases.other)}}
+                            {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view) }}
                             <td class="estimate">{{ lang.NumFmt 0 . }}</td>
                             {{ end }}
                             {{ else }}
-                            {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view .new_cases.other)}}
+                            {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view) }}
                             <td>{{ lang.NumFmt 0 . }}</td>
                             {{ end }}
                             {{ end }}
-                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .new_cases.unknown }}</td>
+                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .new_cases.other }}</td>
                             <td class="prominent-right-border {{ if .estimates.active }}estimate{{ end }}">{{ lang.NumFmt 0 .active_cases }}</td>
                             {{ if .estimates.tests }}
                             {{ with .tests.total }}
+                            <td class="estimate">{{ lang.NumFmt 0 . }}</td>
+                            {{ else }}
+                            <td class="na">N/A</td>
+                            {{ end }}
+                            {{ with .tests.new }}
                             <td class="estimate">{{ lang.NumFmt 0 . }}</td>
                             {{ else }}
                             <td class="na">N/A</td>
@@ -62,6 +69,11 @@
                             {{ end }}
                             {{ else }}
                             {{ with .tests.total }}
+                            <td class="">{{ lang.NumFmt 0 . }}</td>
+                            {{ else }}
+                            <td class="na">N/A</td>
+                            {{ end }}
+                            {{ with .tests.new }}
                             <td class="">{{ lang.NumFmt 0 . }}</td>
                             {{ else }}
                             <td class="na">N/A</td>

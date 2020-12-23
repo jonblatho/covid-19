@@ -4,8 +4,7 @@
             "west_plains": 2,
             "willow_springs": 0,
             "mountain_view": 2,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 10,
         "hospitalizations": 0,
@@ -29,8 +28,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 10,
         "hospitalizations": 0,
@@ -55,8 +53,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 9,
         "hospitalizations": 0,
@@ -78,8 +75,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 8,
         "hospitalizations": 0,
@@ -101,8 +97,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 7,
         "hospitalizations": 0,
@@ -124,8 +119,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 6,
         "hospitalizations": 0,
@@ -149,8 +143,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 3,
         "hospitalizations": 0,
@@ -174,8 +167,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 2,
         "hospitalizations": 0,
@@ -199,8 +191,7 @@
             "west_plains": 3,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 5,
         "hospitalizations": 0,
@@ -225,8 +216,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 6,
         "hospitalizations": 0,
@@ -250,8 +240,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 6,
         "hospitalizations": 0,
@@ -273,8 +262,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 6,
         "hospitalizations": 0,
@@ -296,8 +284,7 @@
             "west_plains": 2,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 6,
         "hospitalizations": 0,
@@ -322,8 +309,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 6,
         "hospitalizations": 0,
@@ -348,8 +334,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 8,
         "hospitalizations": 0,
@@ -374,8 +359,7 @@
             "west_plains": 4,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 2,
-            "unknown": 0
+            "other": 2
         },
         "active_cases": 13,
         "hospitalizations": 0,
@@ -400,8 +384,7 @@
             "west_plains": 2,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 15,
         "hospitalizations": 0,
@@ -425,8 +408,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 14,
         "hospitalizations": 0,
@@ -448,8 +430,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 14,
         "hospitalizations": 0,
@@ -471,8 +452,7 @@
             "west_plains": 1,
             "willow_springs": 0,
             "mountain_view": 1,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 14,
         "hospitalizations": 3,
@@ -497,8 +477,7 @@
             "west_plains": 2,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 16,
         "hospitalizations": 3,
@@ -523,8 +502,7 @@
             "west_plains": 1,
             "willow_springs": 4,
             "mountain_view": 4,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 23,
         "hospitalizations": 4,
@@ -549,8 +527,7 @@
             "west_plains": 9,
             "willow_springs": 0,
             "mountain_view": 1,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 41,
         "hospitalizations": 5,
@@ -575,8 +552,7 @@
             "west_plains": 5,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 41,
         "hospitalizations": 5,
@@ -598,8 +574,7 @@
             "west_plains": 5,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 41,
         "hospitalizations": 4,
@@ -621,8 +596,7 @@
             "west_plains": 6,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 42,
         "hospitalizations": 3,
@@ -644,8 +618,7 @@
             "west_plains": 6,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 42,
         "hospitalizations": 3,
@@ -669,8 +642,7 @@
             "west_plains": 3,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 44,
         "hospitalizations": 3,
@@ -695,8 +667,7 @@
             "west_plains": 0,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 31,
         "hospitalizations": 3,
@@ -720,8 +691,7 @@
             "west_plains": 4,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 1,
-            "unknown": 0
+            "other": 1
         },
         "active_cases": 30,
         "hospitalizations": 1,
@@ -745,8 +715,7 @@
             "west_plains": 4,
             "willow_springs": 2,
             "mountain_view": 0,
-            "other": 0,
-            "unknown": 0
+            "other": 0
         },
         "active_cases": 23,
         "hospitalizations": 1,
