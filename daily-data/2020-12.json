@@ -567,19 +567,19 @@
     },
     {
         "new_cases": {
-            "west_plains": 0,
+            "west_plains": 6,
             "willow_springs": 0,
             "mountain_view": 0,
             "other": 0
         },
-        "active_cases": 142,
+        "active_cases": 149,
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15560,
         "dhss_total": null,
         "estimates": {
-            "cases": false,
-            "active": false,
+            "cases": true,
+            "active": true,
             "deaths": false,
             "hospitalizations": false,
             "tests": true
@@ -591,19 +591,19 @@
     },
     {
         "new_cases": {
-            "west_plains": 0,
+            "west_plains": 6,
             "willow_springs": 0,
             "mountain_view": 0,
-            "other": 0
+            "other": 1
         },
-        "active_cases": 142,
+        "active_cases": 156,
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15560,
         "dhss_total": null,
         "estimates": {
-            "cases": false,
-            "active": false,
+            "cases": true,
+            "active": true,
             "deaths": false,
             "hospitalizations": false,
             "tests": true
@@ -612,5 +612,29 @@
             "https://web.archive.org/web/20201226053941/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
         ],
         "date": "2020-12-25"
+    },
+    {
+        "new_cases": {
+            "west_plains": 7,
+            "willow_springs": 1,
+            "mountain_view": 1,
+            "other": 1
+        },
+        "active_cases": 163,
+        "hospitalizations": 6,
+        "deaths": 82,
+        "tests": 15560,
+        "dhss_total": null,
+        "estimates": {
+            "cases": true,
+            "active": true,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": [
+            "https://web.archive.org/web/20201227051440/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
+        ],
+        "date": "2020-12-26"
     }
 ]
