@@ -626,8 +626,8 @@
         "tests": 15560,
         "dhss_total": null,
         "estimates": {
-            "cases": true,
-            "active": true,
+            "cases": false,
+            "active": false,
             "deaths": false,
             "hospitalizations": false,
             "tests": true
