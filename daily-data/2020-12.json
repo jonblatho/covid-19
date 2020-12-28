@@ -575,7 +575,7 @@
         "active_cases": 149,
         "hospitalizations": 6,
         "deaths": 82,
-        "tests": 15560,
+        "tests": 15650,
         "dhss_total": null,
         "estimates": {
             "cases": true,
@@ -599,7 +599,7 @@
         "active_cases": 156,
         "hospitalizations": 6,
         "deaths": 82,
-        "tests": 15560,
+        "tests": 15740,
         "dhss_total": null,
         "estimates": {
             "cases": true,
@@ -623,7 +623,7 @@
         "active_cases": 163,
         "hospitalizations": 6,
         "deaths": 82,
-        "tests": 15560,
+        "tests": 15830,
         "dhss_total": null,
         "estimates": {
             "cases": false,
@@ -647,17 +647,18 @@
         "active_cases": 163,
         "hospitalizations": 6,
         "deaths": 82,
-        "tests": 15560,
+        "tests": 15920,
         "dhss_total": null,
         "estimates": {
             "cases": false,
             "active": false,
             "deaths": false,
             "hospitalizations": false,
-            "tests": true
+            "tests": false
         },
         "sources": [
-            "https://web.archive.org/web/20201228061521/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
+            "https://web.archive.org/web/20201228061521/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/",
+            "https://www.facebook.com/permalink.php?story_fbid=4246424068705700&id=170310842983730"
         ],
         "date": "2020-12-27"
     }
