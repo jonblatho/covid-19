@@ -429,7 +429,7 @@
         "hospitalizations": 6,
         "deaths": 81,
         "tests": 15024,
-        "dhss_total": 2168,
+        "dhss_total": 2180,
         "estimates": {
             "cases": false,
             "active": false,
@@ -453,7 +453,7 @@
         "hospitalizations": 6,
         "deaths": 81,
         "tests": 15083,
-        "dhss_total": 2176,
+        "dhss_total": 2194,
         "estimates": {
             "cases": false,
             "active": false,
@@ -477,7 +477,7 @@
         "hospitalizations": 6,
         "deaths": 81,
         "tests": 15142,
-        "dhss_total": 2180,
+        "dhss_total": 2206,
         "estimates": {
             "cases": false,
             "active": false,
@@ -502,7 +502,7 @@
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15357,
-        "dhss_total": null,
+        "dhss_total": 2223,
         "estimates": {
             "cases": false,
             "active": false,
@@ -527,7 +527,7 @@
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15479,
-        "dhss_total": null,
+        "dhss_total": 2236,
         "estimates": {
             "cases": false,
             "active": false,
@@ -552,7 +552,7 @@
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15567,
-        "dhss_total": null,
+        "dhss_total": 2247,
         "estimates": {
             "cases": false,
             "active": false,
@@ -576,7 +576,7 @@
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15655,
-        "dhss_total": null,
+        "dhss_total": 2258,
         "estimates": {
             "cases": true,
             "active": true,
@@ -600,7 +600,7 @@
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15743,
-        "dhss_total": null,
+        "dhss_total": 2259,
         "estimates": {
             "cases": true,
             "active": true,
@@ -624,7 +624,7 @@
         "hospitalizations": 6,
         "deaths": 82,
         "tests": 15831,
-        "dhss_total": null,
+        "dhss_total": 2266,
         "estimates": {
             "cases": false,
             "active": false,
