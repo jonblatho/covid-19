@@ -373,7 +373,7 @@
             "west_plains": 19,
             "willow_springs": 2,
             "mountain_view": 3,
-            "other": 3
+            "other": 4
         },
         "active_cases": 115,
         "hospitalizations": 6,
@@ -398,7 +398,7 @@
             "west_plains": 15,
             "willow_springs": 2,
             "mountain_view": 2,
-            "other": 8
+            "other": 7
         },
         "active_cases": 125,
         "hospitalizations": 6,
