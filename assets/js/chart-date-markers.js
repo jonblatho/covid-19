@@ -74,6 +74,21 @@ markers = {
                 enabled: true,
                 position: "top"
             }
+        },
+        {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x-axis-0",
+            value: "2020-12-25",
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            borderWidth: 1,
+            borderColor: '#ff0000',
+            label: {
+                content: "Christmas",
+                enabled: true,
+                position: "top",
+                xAdjust: 15
+            }
         }
     ]
 }
