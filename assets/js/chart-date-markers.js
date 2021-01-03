@@ -87,7 +87,7 @@ markers = {
                 content: "Christmas",
                 enabled: true,
                 position: "top",
-                xAdjust: 15
+                xAdjust: 9
             }
         }
     ]
