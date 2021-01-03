@@ -32,7 +32,7 @@
                         </thead>
                         {{ range $.Site.Data.monthly }}
                         <tr>
-                            <th class="row-head">{{ dateFormat "January 2006" (print .month "-01") }}</th>
+                            <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
                             {{ range .totals }}
                             <td>{{ lang.NumFmt 0 . }}</td>
                             {{ end }}
