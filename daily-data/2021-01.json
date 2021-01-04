@@ -9,7 +9,7 @@
         "active_cases": 148,
         "hospitalizations": 1,
         "deaths": 84,
-        "tests": 16272,
+        "tests": 16240,
         "dhss_total": null,
         "estimates": {
             "cases": false,
@@ -33,7 +33,7 @@
         "active_cases": 168,
         "hospitalizations": 2,
         "deaths": 84,
-        "tests": 16391,
+        "tests": 16268,
         "dhss_total": null,
         "estimates": {
             "cases": false,
@@ -57,14 +57,14 @@
         "active_cases": 168,
         "hospitalizations": 2,
         "deaths": 84,
-        "tests": 16450,
+        "tests": 16296,
         "dhss_total": null,
         "estimates": {
             "cases": false,
             "active": false,
             "deaths": false,
             "hospitalizations": false,
-            "tests": true
+            "tests": false
         },
         "sources": null,
         "date": "2021-01-03"
