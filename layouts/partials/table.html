@@ -51,38 +51,20 @@
                             {{ end }}
                             <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .new_cases.other }}</td>
                             <td class="prominent-right-border {{ if .estimates.active }}estimate{{ end }}">{{ lang.NumFmt 0 .active_cases }}</td>
-                            {{ if .estimates.tests }}
-                            {{ with .tests.total }}
-                            <td class="estimate">{{ lang.NumFmt 0 . }}</td>
+                            {{ if isset .tests "total" }}
+                            <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.total }}</td>
                             {{ else }}
                             <td class="na">N/A</td>
                             {{ end }}
-                            {{ with .tests.new }}
-                            <td class="estimate">{{ lang.NumFmt 0 . }}</td>
+                            {{ if isset .tests "new" }}
+                            <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.new }}</td>
                             {{ else }}
                             <td class="na">N/A</td>
                             {{ end }}
-                            {{ with .positivity_rate }}
-                            <td class="prominent-right-border estimate">{{ lang.NumFmt 1 . }}%</td>
-                            {{ else }}
-                            <td class="na prominent-right-border">N/A</td>
-                            {{ end }}
-                            {{ else }}
-                            {{ with .tests.total }}
-                            <td class="">{{ lang.NumFmt 0 . }}</td>
+                            {{ if isset . "positivity_rate" }}
+                            <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 1 .positivity_rate }}%</td>
                             {{ else }}
                             <td class="na">N/A</td>
-                            {{ end }}
-                            {{ with .tests.new }}
-                            <td class="">{{ lang.NumFmt 0 . }}</td>
-                            {{ else }}
-                            <td class="na">N/A</td>
-                            {{ end }}
-                            {{ with .positivity_rate }}
-                            <td class="prominent-right-border">{{ lang.NumFmt 1 . }}%</td>
-                            {{ else }}
-                            <td class="na prominent-right-border">N/A</td>
-                            {{ end }}
                             {{ end }}
                             <td class="{{ if .estimates.hospitalizations }}estimate{{ end }}">{{ lang.NumFmt 0 .hospitalizations }}</td>
                             <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
