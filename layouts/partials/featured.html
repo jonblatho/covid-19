@@ -1,5 +1,29 @@
             <section id="dashboard">
                 <div class="wrap">
+                    {{ $new_cases_7d_100k := mul (div .Site.Data.summary.new_cases_7d.value 7.0) (div 100000.0 40117.0) }}
+                    {{ $category := cond (lt $new_cases_7d_100k 1) "low" (cond (lt $new_cases_7d_100k 10) "medium" (cond (lt $new_cases_7d_100k 25) "high" "critical")) }}
+                    <div class="risk-category-{{ $category }}">
+                        <div class="label">Risk Level</div>
+                        <div class="content">
+                            <div class="category-name">{{ humanize $category }}</div>
+                            <div class="category-description">
+                                {{ if eq $category "low" }}
+                                Disease currently contained
+                                {{ else if eq $category "medium" }}
+                                Slow disease growth
+                                {{ else if eq $category "high" }}
+                                At risk of outbreak
+                                {{ else if eq $category "critical" }}
+                                Active or imminent outbreak
+                                {{ end }}
+                            </div>
+                            <div class="category-value">
+                                <strong>{{ lang.NumFmt 1 $new_cases_7d_100k }}</strong> average daily new cases per 100K population over the past week
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap">
                     <div id="dashboard-grid-container">
                         <div class="item">
                             <div class="upper">
