@@ -468,6 +468,26 @@ footer {
         }
     }
 
+    .risk-category {
+        &-low, &-medium, &-high, &-critical {
+            .content {
+                background: #222 !important;
+            }
+
+            .category-name {
+                color: #fff !important;
+            }
+
+            .category-description {
+                color: #aaa;
+            }
+
+            .category-value {
+                color: #888;
+            }
+        }
+    }
+
     #dashboard-grid-container {
         .description {
             color: #bbb;
