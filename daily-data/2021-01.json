@@ -66,7 +66,9 @@
             "hospitalizations": false,
             "tests": false
         },
-        "sources": null,
+        "sources": [
+            "https://www.facebook.com/permalink.php?story_fbid=4264066916941415&id=170310842983730"
+        ],
         "date": "2021-01-03"
     }
 ]
