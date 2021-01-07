@@ -120,5 +120,27 @@
             "https://www.facebook.com/permalink.php?story_fbid=4269444939736946&id=170310842983730"
         ],
         "date": "2021-01-05"
+    },
+    {
+        "new_cases": {
+            "west_plains": 16,
+            "willow_springs": 1,
+            "mountain_view": 2,
+            "other": 6
+        },
+        "active_cases": 172,
+        "hospitalizations": 4,
+        "deaths": 87,
+        "tests": 16842,
+        "dhss_total": null,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": null,
+        "date": "2021-01-06"
     }
 ]
