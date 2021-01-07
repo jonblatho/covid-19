@@ -140,7 +140,9 @@
             "hospitalizations": false,
             "tests": true
         },
-        "sources": null,
+        "sources": [
+            "https://web.archive.org/web/20210107073211/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
+        ],
         "date": "2021-01-06"
     }
 ]
