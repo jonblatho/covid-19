@@ -148,7 +148,7 @@ a {
         font-size: 12px;
     }
 
-    &-low, &-medium, &-high, &-critical {
+    &-low, &-medium, &-high, &-critical, &-extreme{
         @extend .risk-category;
     }
 
@@ -166,6 +166,10 @@ a {
 
     &-critical {
         background: #8A2B2B;
+    }
+
+    &-extreme {
+        background: #DF1995;
     }
 }
 
@@ -469,7 +473,7 @@ footer {
     }
 
     .risk-category {
-        &-low, &-medium, &-high, &-critical {
+        &-low, &-medium, &-high, &-critical, &-extreme {
             .content {
                 background: #222 !important;
             }
