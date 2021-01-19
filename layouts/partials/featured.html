@@ -37,9 +37,9 @@
                                         new case{{ if ne (int .Site.Data.summary.new_cases_7d.value) 1 }}s{{ end }} in the&nbsp;past week{{ if .Site.Data.summary.new_cases_7d.estimate }}*{{ end }}
                                     </div>
                                     <div class="context">
-                                        {{ if gt .Site.Data.summary.new_cases_0 }}
+                                        {{ if gt .Site.Data.summary.new_cases_change.value 0 }}
                                         <span class="change-bad">&uarr; 
-                                        {{ else if lt .Site.Data.summary.new_cases_0 }}
+                                        {{ else if lt .Site.Data.summary.new_cases_change.value 0 }}
                                         <span class="change-good">&darr; 
                                         {{ else }}
                                         <span class="change-neutral">&rarr;
