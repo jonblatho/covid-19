@@ -10,7 +10,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 45,
         "estimates": {
             "cases": false,
             "active": true,
@@ -34,7 +33,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 45,
         "estimates": {
             "cases": false,
             "active": false,
@@ -59,7 +57,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 45,
         "estimates": {
             "cases": false,
             "active": true,
@@ -81,7 +78,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 45,
         "estimates": {
             "cases": false,
             "active": true,
@@ -103,7 +99,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 45,
         "estimates": {
             "cases": false,
             "active": true,
@@ -125,7 +120,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 45,
         "estimates": {
             "cases": false,
             "active": false,
@@ -149,7 +143,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 47,
         "estimates": {
             "cases": false,
             "active": false,
@@ -173,7 +166,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 49,
         "estimates": {
             "cases": false,
             "active": false,
@@ -197,7 +189,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 51,
         "estimates": {
             "cases": false,
             "active": false,
@@ -222,7 +213,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 57,
         "estimates": {
             "cases": true,
             "active": false,
@@ -246,7 +236,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 58,
         "estimates": {
             "cases": false,
             "active": false,
@@ -268,7 +257,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 58,
         "estimates": {
             "cases": false,
             "active": false,
@@ -290,7 +278,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 61,
         "estimates": {
             "cases": false,
             "active": false,
@@ -315,7 +302,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 63,
         "estimates": {
             "cases": true,
             "active": false,
@@ -340,7 +326,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 65,
         "estimates": {
             "cases": false,
             "active": false,
@@ -365,7 +350,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 66,
         "estimates": {
             "cases": false,
             "active": false,
@@ -390,7 +374,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 70,
         "estimates": {
             "cases": false,
             "active": false,
@@ -414,7 +397,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 72,
         "estimates": {
             "cases": true,
             "active": true,
@@ -436,7 +418,6 @@
         "hospitalizations": 0,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 77,
         "estimates": {
             "cases": true,
             "active": true,
@@ -458,7 +439,6 @@
         "hospitalizations": 3,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 92,
         "estimates": {
             "cases": false,
             "active": false,
@@ -483,7 +463,6 @@
         "hospitalizations": 3,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 94,
         "estimates": {
             "cases": true,
             "active": true,
@@ -508,7 +487,6 @@
         "hospitalizations": 4,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 101,
         "estimates": {
             "cases": true,
             "active": true,
@@ -533,7 +511,6 @@
         "hospitalizations": 5,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 112,
         "estimates": {
             "cases": false,
             "active": false,
@@ -558,7 +535,6 @@
         "hospitalizations": 5,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 117,
         "estimates": {
             "cases": true,
             "active": true,
@@ -580,7 +556,6 @@
         "hospitalizations": 4,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 117,
         "estimates": {
             "cases": true,
             "active": true,
@@ -602,7 +577,6 @@
         "hospitalizations": 3,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 120,
         "estimates": {
             "cases": true,
             "active": true,
@@ -624,7 +598,6 @@
         "hospitalizations": 3,
         "deaths": 0,
         "tests": null,
-        "dhss_total": 122,
         "estimates": {
             "cases": false,
             "active": false,
@@ -648,7 +621,6 @@
         "hospitalizations": 3,
         "deaths": 1,
         "tests": null,
-        "dhss_total": 129,
         "estimates": {
             "cases": false,
             "active": false,
@@ -673,7 +645,6 @@
         "hospitalizations": 3,
         "deaths": 1,
         "tests": null,
-        "dhss_total": 136,
         "estimates": {
             "cases": false,
             "active": false,
@@ -697,7 +668,6 @@
         "hospitalizations": 1,
         "deaths": 2,
         "tests": null,
-        "dhss_total": 138,
         "estimates": {
             "cases": false,
             "active": false,
@@ -721,7 +691,6 @@
         "hospitalizations": 1,
         "deaths": 2,
         "tests": null,
-        "dhss_total": 140,
         "estimates": {
             "cases": false,
             "active": false,
