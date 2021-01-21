@@ -508,7 +508,7 @@
         "hospitalizations": 8,
         "deaths": 3,
         "tests": 6779,
-        "dhss_total": 606109,
+        "dhss_total": 610,
         "estimates": {
             "cases": false,
             "active": false,
