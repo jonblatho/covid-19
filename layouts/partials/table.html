@@ -13,10 +13,10 @@
                                 <th colspan="5">New Cases</th>
                                 <th rowspan="2">Active<br />Cases</th>
                                 <th colspan="2">Tests</th>
-                                <th rowspan="2">14-day Pos.&nbsp;Rate</th>
+                                <th rowspan="2">14-day<br />Pos.&nbsp;Rate</th>
                                 <th rowspan="2">Hosp.</th>
                                 <th rowspan="2">Deaths</th>
-                                <th rowspan="2">DHSS<br />Diff.</th>
+                                <th rowspan="2">Risk<br />Level</th>
                                 <th rowspan="2">Sources</th>
                             </tr>
                             <tr>
@@ -68,10 +68,10 @@
                             {{ end }}
                             <td class="{{ if .estimates.hospitalizations }}estimate{{ end }}">{{ lang.NumFmt 0 .hospitalizations }}</td>
                             <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
-                            {{ if (isset . "dhss_diff") }}
-                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .dhss_diff }}</td>
+                            {{ with .risk_level }}
+                            <td class="risk-level-{{ . }}">{{ humanize . }}</td>
                             {{ else }}
-                            <td class="na prominent-right-border">N/A</td>
+                            <td class="na">N/A</td>
                             {{ end }}
                             {{ with .sources }}
                             <td>

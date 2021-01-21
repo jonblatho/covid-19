@@ -368,6 +368,34 @@ table {
     td.estimate {
         font-style: italic;
     }
+
+    .risk-level {
+        font-weight: 600;
+
+        &-low, &-medium, &-high, &-critical, &-extreme {
+            @extend .risk-level;
+        }
+
+        &-low {
+            color: #43B02A;
+        }
+
+        &-medium {
+            color: #E0A526;
+        }
+
+        &-high {
+            color: #DC3513;
+        }
+
+        &-critical {
+            color: #8A2B2B;
+        }
+
+        &-extreme {
+            color: #DF1995;
+        }
+    }
 }
 
 .table-footer {
