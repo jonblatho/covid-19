@@ -71,7 +71,7 @@
                             {{ with .risk_level }}
                             <td class="risk-level-{{ . }}">{{ humanize . }}</td>
                             {{ else }}
-                            <td class="na">N/A</td>
+                            <td class="na" style="text-align: center;">N/A</td>
                             {{ end }}
                             {{ with .sources }}
                             <td>

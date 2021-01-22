@@ -371,6 +371,7 @@ table {
 
     .risk-level {
         font-weight: 600;
+        text-align: center;
 
         &-low, &-medium, &-high, &-critical, &-extreme {
             @extend .risk-level;
