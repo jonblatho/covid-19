@@ -683,5 +683,28 @@
             "https://web.archive.org/web/20210130073454/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
         ],
         "date": "2021-01-29"
+    },
+    {
+        "new_cases": {
+            "west_plains": 1,
+            "willow_springs": 1,
+            "mountain_view": 1,
+            "other": 0
+        },
+        "active_cases": 88,
+        "hospitalizations": 15,
+        "deaths": 93,
+        "tests": 18630,
+        "estimates": {
+            "cases": false,
+            "active": false,
+            "deaths": false,
+            "hospitalizations": false,
+            "tests": true
+        },
+        "sources": [
+            "https://web.archive.org/web/20210131045832/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/"
+        ],
+        "date": "2021-01-30"
     }
 ]
