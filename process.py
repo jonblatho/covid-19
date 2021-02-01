@@ -14,6 +14,7 @@ for month_path in month_files:
     with open(month_path, 'r') as month_file:
         month_data = json.load(month_file)
         daily_data.extend(month_data)
+    month_file.close()
 # Sort daily data by date
 daily_data = sorted(daily_data, key = lambda i : i['date'])
 
@@ -154,111 +155,112 @@ def risk_level(d):
         return "extreme"
     return None
 
-# Calculate date-relative totals
-cases_new = case_sum_list(data_past_n_days(1))
-cases_past_week = case_sum_list(data_past_n_days(7))
-cases_mtd = case_sum_list(mtd_data())
-cases_ytd = case_sum_list(ytd_data())
-cases_cumulative = case_sum_list(daily_data)
-# Save the JSON file
-relative = [
-    {'label': 'Today', 'totals': cases_new},
-    {'label': 'Past Week', 'totals': cases_past_week},
-    {'label': 'MTD', 'totals': cases_mtd},
-    {'label': 'YTD', 'totals': cases_ytd},
-    {'label': 'All', 'totals': cases_cumulative}
-]
-save_json(relative, 'data/relative.json')
+if __name__ == "__main__":
+    # Calculate date-relative totals
+    cases_new = case_sum_list(data_past_n_days(1))
+    cases_past_week = case_sum_list(data_past_n_days(7))
+    cases_mtd = case_sum_list(mtd_data())
+    cases_ytd = case_sum_list(ytd_data())
+    cases_cumulative = case_sum_list(daily_data)
+    # Save the JSON file
+    relative = [
+        {'label': 'Today', 'totals': cases_new},
+        {'label': 'Past Week', 'totals': cases_past_week},
+        {'label': 'MTD', 'totals': cases_mtd},
+        {'label': 'YTD', 'totals': cases_ytd},
+        {'label': 'All', 'totals': cases_cumulative}
+    ]
+    save_json(relative, 'data/relative.json')
 
-# Calculate monthly totals
-monthly_totals = [{'month': month, 'totals': case_sum_list(data_for_month(month))} for month in months]
-save_json(monthly_totals, 'data/monthly.json')
+    # Calculate monthly totals
+    monthly_totals = [{'month': month, 'totals': case_sum_list(data_for_month(month))} for month in months]
+    save_json(monthly_totals, 'data/monthly.json')
 
-# Calculate active cases by town
-active_by_town = [{'town': cities[i+1], 'active': active_cases_by_town()[i]} for i, _ in enumerate(active_cases_by_town())]
-save_json(active_by_town, 'data/active_town.json')
+    # Calculate active cases by town
+    active_by_town = [{'town': cities[i+1], 'active': active_cases_by_town()[i]} for i, _ in enumerate(active_cases_by_town())]
+    save_json(active_by_town, 'data/active_town.json')
 
-# Calculate summary data
-new_cases_7d_change_est = bool(cases_added(today)["estimate"] or cases_added(week_ago)["estimate"])
-new_tests_7d_change_est = bool(tests_added(today, n=7)["estimate"] or tests_added(week_ago, n=7)["estimate"])
-positivity_rate_2w_change_est = bool(positivity_rate(today)["estimate"] or positivity_rate(week_ago)["estimate"])
-summary = {
-    'last_updated': daily_data[-1]["date"],
-    'new_cases_7d': cases_added(today),
-    'new_cases_change': {'value': cases_added(today)["value"] - cases_added(week_ago)["value"], 'estimate': new_cases_7d_change_est},
-    'active_cases': {'value': daily_data[-1]["active_cases"], 'estimate': daily_data[-1]["estimates"]["active"]},
-    'active_cases_change': {'value': daily_data[-1]["active_cases"] - daily_data[-8]["active_cases"], 'estimate': daily_data[-8]["estimates"]["active"]},
-    'hospitalizations': {'value': daily_data[-1]["hospitalizations"], 'estimate': daily_data[-1]["estimates"]["hospitalizations"]},
-    'hospitalizations_change': {'value': daily_data[-1]["hospitalizations"] - daily_data[-8]["hospitalizations"], 'estimate': daily_data[-8]["estimates"]["hospitalizations"]},
-    'deaths': {'value': daily_data[-1]["deaths"], 'estimate': daily_data[-1]["estimates"]["deaths"]},
-    'deaths_change': {'value': daily_data[-1]["deaths"] - daily_data[-8]["deaths"], 'estimate': daily_data[-8]["estimates"]["deaths"]},
-    'positivity_rate_2w': positivity_rate(today),
-    'positivity_rate_2w_change': {'value': positivity_rate(today)["value"] - positivity_rate(week_ago)["value"], 'estimate': positivity_rate_2w_change_est},
-    'new_tests_7d': tests_added(today, n=7),
-    'new_tests_7d_change': {'value': tests_added(today, n=7)["value"] - tests_added(week_ago, n=7)["value"], 'estimate': new_tests_7d_change_est}
-}
-save_json(summary, 'data/summary.json')
+    # Calculate summary data
+    new_cases_7d_change_est = bool(cases_added(today)["estimate"] or cases_added(week_ago)["estimate"])
+    new_tests_7d_change_est = bool(tests_added(today, n=7)["estimate"] or tests_added(week_ago, n=7)["estimate"])
+    positivity_rate_2w_change_est = bool(positivity_rate(today)["estimate"] or positivity_rate(week_ago)["estimate"])
+    summary = {
+        'last_updated': daily_data[-1]["date"],
+        'new_cases_7d': cases_added(today),
+        'new_cases_change': {'value': cases_added(today)["value"] - cases_added(week_ago)["value"], 'estimate': new_cases_7d_change_est},
+        'active_cases': {'value': daily_data[-1]["active_cases"], 'estimate': daily_data[-1]["estimates"]["active"]},
+        'active_cases_change': {'value': daily_data[-1]["active_cases"] - daily_data[-8]["active_cases"], 'estimate': daily_data[-8]["estimates"]["active"]},
+        'hospitalizations': {'value': daily_data[-1]["hospitalizations"], 'estimate': daily_data[-1]["estimates"]["hospitalizations"]},
+        'hospitalizations_change': {'value': daily_data[-1]["hospitalizations"] - daily_data[-8]["hospitalizations"], 'estimate': daily_data[-8]["estimates"]["hospitalizations"]},
+        'deaths': {'value': daily_data[-1]["deaths"], 'estimate': daily_data[-1]["estimates"]["deaths"]},
+        'deaths_change': {'value': daily_data[-1]["deaths"] - daily_data[-8]["deaths"], 'estimate': daily_data[-8]["estimates"]["deaths"]},
+        'positivity_rate_2w': positivity_rate(today),
+        'positivity_rate_2w_change': {'value': positivity_rate(today)["value"] - positivity_rate(week_ago)["value"], 'estimate': positivity_rate_2w_change_est},
+        'new_tests_7d': tests_added(today, n=7),
+        'new_tests_7d_change': {'value': tests_added(today, n=7)["value"] - tests_added(week_ago, n=7)["value"], 'estimate': new_tests_7d_change_est}
+    }
+    save_json(summary, 'data/summary.json')
 
-# Calculate table data
-table_data = []
-for i, day in enumerate(daily_data):
-    table_day = dict()
-    # Transfer date key
-    table_day["date"] = day["date"]
-    # Calculate total and new cases
-    table_day["total_cases"] = dict(zip(city_slugs_county, case_sum_list(daily_data[:i+1])))
-    table_day["new_cases"] = dict(zip(city_slugs_county, case_sum_list([day])))
-    # Transfer active cases, hospitalizations, deaths, source links, and estimates
-    table_day["active_cases"] = day["active_cases"]
-    table_day["hospitalizations"] = day["hospitalizations"]
-    table_day["deaths"] = day["deaths"]
-    table_day["estimates"] = day["estimates"]
-    # Where possible, add in total/new tests
-    table_day["tests"] = dict()
-    if day["tests"] is not None:
-        table_day["tests"]["total"] = day["tests"]
-        if daily_data[i-1]["tests"] is not None:
-            table_day["tests"]["new"] = day["tests"] - daily_data[i-1]["tests"]
-    # Where possible, calculate the 14D positivity rate and risk level
-    if positivity_rate(day["date"]) is not None:
-        table_day["positivity_rate"] = positivity_rate(day["date"])
-    if risk_level(day["date"]) is not None:
-        table_day["risk_level"] = risk_level(day["date"])
-    # Transfer sources key
-    if day["sources"] is not None:
-        table_day["sources"] = [{'number': j, 'url': source} for j, source in enumerate(day["sources"], start=1)]
-    else:
-        table_day["sources"] = None
+    # Calculate table data
+    table_data = []
+    for i, day in enumerate(daily_data):
+        table_day = dict()
+        # Transfer date key
+        table_day["date"] = day["date"]
+        # Calculate total and new cases
+        table_day["total_cases"] = dict(zip(city_slugs_county, case_sum_list(daily_data[:i+1])))
+        table_day["new_cases"] = dict(zip(city_slugs_county, case_sum_list([day])))
+        # Transfer active cases, hospitalizations, deaths, source links, and estimates
+        table_day["active_cases"] = day["active_cases"]
+        table_day["hospitalizations"] = day["hospitalizations"]
+        table_day["deaths"] = day["deaths"]
+        table_day["estimates"] = day["estimates"]
+        # Where possible, add in total/new tests
+        table_day["tests"] = dict()
+        if day["tests"] is not None:
+            table_day["tests"]["total"] = day["tests"]
+            if daily_data[i-1]["tests"] is not None:
+                table_day["tests"]["new"] = day["tests"] - daily_data[i-1]["tests"]
+        # Where possible, calculate the 14D positivity rate and risk level
+        if positivity_rate(day["date"]) is not None:
+            table_day["positivity_rate"] = positivity_rate(day["date"])
+        if risk_level(day["date"]) is not None:
+            table_day["risk_level"] = risk_level(day["date"])
+        # Transfer sources key
+        if day["sources"] is not None:
+            table_day["sources"] = [{'number': j, 'url': source} for j, source in enumerate(day["sources"], start=1)]
+        else:
+            table_day["sources"] = None
 
-    table_data.append(table_day)
-save_json(table_data, 'data/daily.json')
+        table_data.append(table_day)
+    save_json(table_data, 'data/daily.json')
 
-# Calculate chart data
-chart_data = []
-for i, day in enumerate(daily_data):
-    chart_day = dict()
-    # Transfer date key
-    chart_day["date"] = day["date"]
-    # Calculate total and new cases
-    chart_day["total_cases"] = dict(zip(city_slugs_county, case_sum_list(daily_data[:i+1])))
-    chart_day["new_cases"] = dict(zip(city_slugs_county, case_sum_list([day])))
-    # Calculate 7D average new cases
-    if i >= 7:
-        chart_day["average_daily_cases_7d"] = round(sum([sum(day_data["new_cases"].values()) for day_data in daily_data[i-6:i+1]])/7, 1)
-    # Transfer active cases
-    chart_day["active_cases"] = day["active_cases"]
-    # Calculate 7D average active cases
-    chart_day["average_active_cases_7d"] = round(sum([day_data["active_cases"] for day_data in daily_data[i-6:i+1]])/7, 1)
-    # Where possible, add in total/new tests
-    chart_day["tests"] = dict()
-    if day["tests"] is not None:
-        chart_day["tests"]["total"] = day["tests"]
-        if daily_data[i-1]["tests"] is not None:
-            chart_day["tests"]["new"] = day["tests"] - daily_data[i-1]["tests"]
-            if daily_data[i-15]["tests"] is not None:
-                chart_day["tests"]["average_14d"] = round((daily_data[i]["tests"] - daily_data[i-15]["tests"])/14, 1)
-    # Where possible, calculate the 14D positivity rate and risk level
-    if positivity_rate(day["date"]) is not None:
-        chart_day["positivity_rate"] = positivity_rate(day["date"])["value"]
-    chart_data.append(chart_day)
-save_json(chart_data, 'assets/js/chart-data.json')
+    # Calculate chart data
+    chart_data = []
+    for i, day in enumerate(daily_data):
+        chart_day = dict()
+        # Transfer date key
+        chart_day["date"] = day["date"]
+        # Calculate total and new cases
+        chart_day["total_cases"] = dict(zip(city_slugs_county, case_sum_list(daily_data[:i+1])))
+        chart_day["new_cases"] = dict(zip(city_slugs_county, case_sum_list([day])))
+        # Calculate 7D average new cases
+        if i >= 7:
+            chart_day["average_daily_cases_7d"] = round(sum([sum(day_data["new_cases"].values()) for day_data in daily_data[i-6:i+1]])/7, 1)
+        # Transfer active cases
+        chart_day["active_cases"] = day["active_cases"]
+        # Calculate 7D average active cases
+        chart_day["average_active_cases_7d"] = round(sum([day_data["active_cases"] for day_data in daily_data[i-6:i+1]])/7, 1)
+        # Where possible, add in total/new tests
+        chart_day["tests"] = dict()
+        if day["tests"] is not None:
+            chart_day["tests"]["total"] = day["tests"]
+            if daily_data[i-1]["tests"] is not None:
+                chart_day["tests"]["new"] = day["tests"] - daily_data[i-1]["tests"]
+                if daily_data[i-15]["tests"] is not None:
+                    chart_day["tests"]["average_14d"] = round((daily_data[i]["tests"] - daily_data[i-15]["tests"])/14, 1)
+        # Where possible, calculate the 14D positivity rate and risk level
+        if positivity_rate(day["date"]) is not None:
+            chart_day["positivity_rate"] = positivity_rate(day["date"])["value"]
+        chart_data.append(chart_day)
+    save_json(chart_data, 'assets/js/chart-data.json')
