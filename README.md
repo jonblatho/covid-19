@@ -18,9 +18,11 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **December 8, 2020:** Date markers on the dashboard chart can now be toggled on and off.
 * **December 9, 2020:** Added charts for new cases, active cases, and positivity rate.
 * **December 18, 2020:** Moved the All Data table to its own page and added Dark Mode support.
+* **January 5, 2021:** Added a categorical risk level to characterize the status of COVID-19 in the county.
+* **January 21, 2021:** Added historical risk levels to the All Data table.
+* **January 31, 2021:** Open-sourced Python processing script.
 
 ## Planned updates
 
 * Make site responsive to improve legibility on mobile devices.
-* Convert processing code from Python to Swift.
-* Open-source processing source files.
+* Automate for nightly HCHD dashboard updates.
