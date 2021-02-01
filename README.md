@@ -1,5 +1,5 @@
 # COVID-19 in Howell County, Missouri
-This repository contains the daily data files used to generate my [COVID-19 dashboard](https://covid.jonblatho.com/) for Howell County, Missouri, as well as the public source files for the dashboard itself and the [Hugo](https://gohugo.io/) source files needed to generate the page.
+This repository contains the daily data files used to generate my [COVID-19 dashboard](https://covid.jonblatho.com/) for Howell County, Missouri, as well as the public source files for the dashboard itself, the [Hugo](https://gohugo.io/) source files needed to generate the page, and the Python source files for processing and updating the daily data files.
 
 ## How it works
 1. Daily data is entered into the relevant file in the daily-data directory.
