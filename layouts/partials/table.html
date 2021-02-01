@@ -62,7 +62,7 @@
                             <td class="na">N/A</td>
                             {{ end }}
                             {{ if isset . "positivity_rate" }}
-                            <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 1 .positivity_rate }}%</td>
+                            <td{{ if .positivity_rate.estimate }} class="estimate"{{ end }}>{{ lang.NumFmt 1 .positivity_rate.value }}%</td>
                             {{ else }}
                             <td class="na">N/A</td>
                             {{ end }}
