@@ -7,7 +7,7 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 3. [Hugo](https://gohugo.io/) uses these data files and template files to generate HTML.
 4. The HTML is synced via the docs directory in this repository and hosted on GitHub Pages.
 
-## Major updates
+## Notable updates
 
 * **October 25, 2020:** Launched the dashboard site at https://covid.jonblatho.com/.
 * **October 26, 2020:** Added a table with all daily data.
@@ -21,8 +21,8 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **January 5, 2021:** Added a categorical risk level to characterize the status of COVID-19 in the county.
 * **January 21, 2021:** Added historical risk levels to the All Data table.
 * **January 31, 2021:** Open-sourced Python processing script.
+* **February 10, 2021:** Automated nightly updates at 11 PM and 12 AM CST.
 
 ## Planned updates
 
 * Make site responsive to improve legibility on mobile devices.
-* Automate for nightly HCHD dashboard updates.
