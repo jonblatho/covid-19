@@ -43,6 +43,8 @@ jobs:
       ###### UPDATE/BUILD ######
       - name: Auto-Update Data
         run: |
+          python autoupdate.py
+          python process.py
           hugo
 
       ###### COMMIT AND PUSH ######
