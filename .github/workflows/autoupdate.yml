@@ -16,10 +16,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: main
-          token: ${{ secrets.GH_PAT }}
-
-      # Set timezone to Central Time
-      - run: date
+          token: ${{ secrets.GH_PAT }}\
 
       # Bring in GPG key for signing commit
       - name: Import GPG key
