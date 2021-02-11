@@ -1,0 +1,54 @@
+name: GitHub Pages
+
+on:
+  schedule:
+    - cron: "0 5,6 * * *" # Run at 11 PM and 12 AM CST
+    # - cron: "0 4,5 * * *" # Run at 11 PM and 12 AM CDT
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      ###### SETUP ######
+      # Checkout repo from GitHub
+      - uses: actions/checkout@v2
+        with:
+          ref: github-actions
+          token: ${{ secrets.GH_PAT }}
+
+      # Bring in GPG key for signing commit
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+
+      # Set up Python and Hugo
+      - uses: "actions/setup-python@v2"
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      ###### UPDATE/BUILD ######
+      - name: Auto-Update Data
+        run: |
+          python autoupdate.py
+          python process.py
+          hugo
+
+      ###### COMMIT AND PUSH ######
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: '*'
+          author_name: Jonathan Thornton [Automated]
+          author_email: github+bot@jonblatho.com
+          branch: github-actions
+          message: '[automated] regenerate site'
+          signoff: true
+
+      - name: Git Status
+        run: git status
+      
