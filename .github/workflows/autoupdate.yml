@@ -8,18 +8,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
+    env:
+      TZ: America/Chicago
     steps:
       ###### SETUP ######
       # Checkout repo from GitHub
       - uses: actions/checkout@v2
         with:
+          ref: main
           token: ${{ secrets.GH_PAT }}
 
       # Set timezone to Central Time
-      - name: Set Timezone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: "America/Chicago"
+      - run: date
 
       # Bring in GPG key for signing commit
       - name: Import GPG key
@@ -29,8 +29,11 @@ jobs:
           git-user-signingkey: true
           git-commit-gpgsign: true
 
+      - run: git config user.name "Jonathan Thornton [Automated]"
+      - run: git config user.email "github+bot@jonblatho.com"
+
       # Set up Python and Hugo
-      - uses: "actions/setup-python@v2"
+      # - uses: "actions/setup-python@v2"
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -40,12 +43,12 @@ jobs:
       ###### UPDATE/BUILD ######
       - name: Auto-Update Data
         run: |
-          python autoupdate.py
-          python process.py
           hugo
 
       ###### COMMIT AND PUSH ######
-      - run: |
-        git commit -am '[automated] regenerate site'
-        git push
+      - name: Commit Changes
+        run: git commit -am '[automated] regenerate site'
+
+      - name: Push Changes
+        run: git push
       
