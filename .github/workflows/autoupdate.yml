@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: Auto-Update and Rebuild
 
 on:
   schedule:
