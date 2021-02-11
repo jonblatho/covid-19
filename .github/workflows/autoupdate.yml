@@ -13,7 +13,6 @@ jobs:
       # Checkout repo from GitHub
       - uses: actions/checkout@v2
         with:
-          ref: github-actions
           token: ${{ secrets.GH_PAT }}
 
       # Bring in GPG key for signing commit
@@ -45,10 +44,6 @@ jobs:
           add: '*'
           author_name: Jonathan Thornton [Automated]
           author_email: github+bot@jonblatho.com
-          branch: github-actions
           message: '[automated] regenerate site'
           signoff: true
-
-      - name: Git Status
-        run: git status
       
