@@ -15,6 +15,12 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
+      # Set timezone to Central Time
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "America/Chicago"
+
       # Bring in GPG key for signing commit
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v3
@@ -39,11 +45,7 @@ jobs:
           hugo
 
       ###### COMMIT AND PUSH ######
-      - uses: EndBug/add-and-commit@v7
-        with:
-          add: '*'
-          author_name: Jonathan Thornton [Automated]
-          author_email: github+bot@jonblatho.com
-          message: '[automated] regenerate site'
-          signoff: true
+      - run: |
+        git commit -am '[automated] regenerate site'
+        git push
       
