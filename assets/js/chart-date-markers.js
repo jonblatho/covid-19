@@ -44,6 +44,7 @@ markers = {
                 content: "Trump parade/rally",
                 enabled: true,
                 position: "top",
+                yAdjust: 25
             }
         },
         {
@@ -57,8 +58,7 @@ markers = {
             label: {
                 content: "WP mask mandate",
                 enabled: true,
-                position: "top",
-                yAdjust: 25
+                position: "top"
             }
         },
         {
@@ -72,7 +72,8 @@ markers = {
             label: {
                 content: "Thanksgiving",
                 enabled: true,
-                position: "top"
+                position: "top",
+                yAdjust: 25
             }
         },
         {
@@ -85,6 +86,20 @@ markers = {
             borderColor: '#ff0000',
             label: {
                 content: "Christmas",
+                enabled: true,
+                position: "top"
+            }
+        },
+        {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x-axis-0",
+            value: "2021-01-29",
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            borderWidth: 1,
+            borderColor: '#ff0000',
+            label: {
+                content: "Vaccine clinic",
                 enabled: true,
                 position: "top"
             }
