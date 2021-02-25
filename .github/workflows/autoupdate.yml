@@ -46,7 +46,9 @@ jobs:
 
       ###### COMMIT AND PUSH ######
       - name: Commit Changes
-        run: git commit -am '[automated] regenerate site'
+        run: |
+          git add docs/
+          git commit -am '[automated] regenerate site'
 
       - name: Push Changes
         run: git push
