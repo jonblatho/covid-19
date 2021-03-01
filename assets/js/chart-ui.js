@@ -3,6 +3,7 @@ var newCasesButton = document.getElementById("new-cases");
 var activeCasesButton = document.getElementById("active-cases");
 var positivityRateButton = document.getElementById("positivity-rate");
 var dateMarkersButton = document.getElementById("date-markers");
+var yAxisModeButton = document.getElementById("linear-logarithmic");
 
 function changeChart(type, data) {
     let selectedClassName = "button-selected";
@@ -14,7 +15,7 @@ function changeChart(type, data) {
         positivityRateButton.classList.remove(selectedClassName);
     }
 
-    if(type == 'total') {
+    if(type == 'total' || type == 'yAxis') {
         totalCasesButton.classList.add(selectedClassName);
     } else if(type == 'new') {
         newCasesButton.classList.add(selectedClassName);
@@ -25,17 +26,35 @@ function changeChart(type, data) {
     } else if(type == 'date_markers') {
         if(dateMarkersButton.classList.contains(selectedClassName)) {
             dateMarkersButton.classList.remove(selectedClassName);
-            dateMarkersButton.innerHTML = "Date Markers Off";
+            dateMarkersButton.innerHTML = "Date Markers";
             chart.options.annotation = {};
         } else {
             dateMarkersButton.classList.add(selectedClassName);
-            dateMarkersButton.innerHTML = "Date Markers On";
+            dateMarkersButton.innerHTML = "Date Markers";
             chart.options.annotation = markers;
         }
-
     }
 
-    if(type != 'date_markers') {
+    if(type != 'total' && type != 'yAxis') {
+        yAxisModeButton.style = 'display: none';
+        yAxisModeButton.innerHTML = "Linear"
+    } else {
+        yAxisModeButton.style = null;
+
+        if(type == 'yAxis') {
+            if(yAxisModeButton.innerHTML == "Linear") {
+                yAxisModeButton.innerHTML = "Logarithmic"
+                chart.options.scales.yAxes[0].type = 'logarithmic'
+                chart.options.scales.yAxes[0].ticks.max = 10000
+            } else if(yAxisModeButton.innerHTML == "Logarithmic") {
+                yAxisModeButton.innerHTML = "Linear"
+                chart.options.scales.yAxes[0].type = 'linear'
+                chart.options.scales.yAxes[0].ticks.max = chart.options.scales.yAxes[0].ticks.suggestedMax
+            }
+        }
+    }
+
+    if(type != 'date_markers' && type != 'yAxis') {
         reloadChart(type, data);
     } else {
         chart.update();
