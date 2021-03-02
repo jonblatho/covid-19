@@ -5,3 +5,10 @@ publishDir = "docs"
 disableKinds = ["sitemap", "RSS", "taxonomy", "section", "term"]
 [minify]
   minifyOutput = true
+[module]
+  [[module.mounts]]
+  source = "assets"
+  target = "assets"
+  [[module.mounts]]
+  source = "node_modules/chart.js/dist/chart.min.js"
+  target = "assets/js/chart.min.js"
