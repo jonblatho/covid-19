@@ -35,10 +35,10 @@ function changeChart(type, data) {
         }
     }
 
-    if(type != 'total' && type != 'yAxis') {
+    if(type != 'total' && type != 'yAxis' && type != 'date_markers') {
         yAxisModeButton.style = 'display: none';
         yAxisModeButton.innerHTML = "Linear"
-    } else {
+    } else if(type != 'date_markers') {
         yAxisModeButton.style = null;
 
         if(type == 'yAxis') {
