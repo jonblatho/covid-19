@@ -10,8 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         {{ $chartJS := resources.Get "js/chart.min.js" | resources.Fingerprint }}
         <script src="{{ $chartJS.Permalink }}" integrity="{{ $chartJS.Data.Integrity }}"></script>
-        {{ $datefns := resources.Get "js/chartjs-adapter-date-fns.bundle.min.js" | resources.Fingerprint }}
-        <script src="{{ $datefns.Permalink }}" integrity="{{ $datefns.Data.Integrity }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js" integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin="anonymous"></script>
         {{ $annotation := resources.Get "js/chartjs-plugin-annotation.min.js" | resources.Fingerprint }}
         <script src="{{ $annotation.Permalink }}" integrity="{{ $annotation.Data.Integrity }}"></script>
         {{ end }}
