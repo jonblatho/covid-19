@@ -15,3 +15,9 @@ disableKinds = ["sitemap", "RSS", "taxonomy", "section", "term"]
   [[module.mounts]]
   source = "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"
   target = "assets/js/chartjs-plugin-annotation.min.js"
+  [[module.mounts]]
+  source = "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"
+  target = "assets/js/chartjs-plugin-annotation.min.js"
+  [[module.mounts]]
+  source = "node_modules/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"
+  target = "assets/js/chartjs-adapter-date-fns.bundle.min.js"

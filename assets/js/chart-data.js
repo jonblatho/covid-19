@@ -15,7 +15,7 @@ function chartLabels(type, data) {
     var dates = data.map(day => day["date"]);
 
     if(type == 'pos_rate') {
-        dates = dates.slice(154);
+        dates = dates.slice(155);
     }
 
     return dates
@@ -35,7 +35,8 @@ function chartData(type, data) {
                     data: values,
                     label: categories[index],
                     pointRadius: 0,
-                    backgroundColor: categoryColors[index]
+                    backgroundColor: categoryColors[index],
+                    fill: 'origin'
                 }
             )
         });
@@ -109,7 +110,7 @@ function chartData(type, data) {
         datasets = []
         datasets.push(
             {
-                data: data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN),
+                data: data.slice(155).map(day => day["positivity_rate"] ?? Number.NaN),
                 pointRadius: 0,
                 type: 'line',
                 fill: false,
@@ -117,13 +118,12 @@ function chartData(type, data) {
                 borderColor: '#0077cc',
                 borderWidth: 2,
                 order: 1,
-                lineTension: 0,
-                yAxisID: 'pos_rate'
+                lineTension: 0
             }
         );
         datasets.push(
             {
-                data: data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN),
+                data: data.slice(155).map(day => day["tests"]["average_14d"] ?? Number.NaN),
                 pointRadius: 0,
                 type: 'line',
                 fill: false,
@@ -132,9 +132,10 @@ function chartData(type, data) {
                 borderWidth: 1,
                 order: 1,
                 lineTension: 0,
-                yAxisID: 'tests'
+                yAxisID: 'y_tests'
             }
         );
+        console.log(chart.options.scales)
         return datasets
     }
 }

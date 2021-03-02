@@ -44,12 +44,12 @@ function changeChart(type, data) {
         if(type == 'yAxis') {
             if(yAxisModeButton.innerHTML == "Linear") {
                 yAxisModeButton.innerHTML = "Logarithmic"
-                chart.options.scales.yAxes[0].type = 'logarithmic'
-                chart.options.scales.yAxes[0].ticks.max = 10000
+                chart.options.scales['y'].type = 'logarithmic'
+                chart.options.scales['y'].max = 10000
             } else if(yAxisModeButton.innerHTML == "Logarithmic") {
                 yAxisModeButton.innerHTML = "Linear"
-                chart.options.scales.yAxes[0].type = 'linear'
-                chart.options.scales.yAxes[0].ticks.max = chart.options.scales.yAxes[0].ticks.suggestedMax
+                chart.options.scales['y'].type = 'linear'
+                chart.options.scales['y'].max = chart.options.scales['y'].suggestedMax
             }
         }
     }
@@ -76,23 +76,27 @@ function reloadChart(type, data) {
             responsive: true,
             aspectRatio: 2.0,
             scales: {
-                xAxes: [{
+                'x': {
                     type: 'time',
                     time: {
-                        tooltipFormat: 'MMMM D, YYYY',
+                        tooltipFormat: 'MMMM d, yyyy',
                         unit: 'month'
                     }
-                }],
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+                },
+                'y': {
+                    min: 0,
+                    display: 'auto',
+                },
+                'y_tests': {
+                    position: 'right',
+                    display: 'auto',
+                    min: 0
+                }
             },
-            tooltips: {
+            interaction: {
                 mode: 'index',
-                intersect: false,
-            },
+                intersect: false
+            }
         }
     });
 
@@ -100,61 +104,46 @@ function reloadChart(type, data) {
     chart.data.datasets = chartData(type, data);
 
     if(type == 'total') {
-        chart.options.scales.xAxes[0].stacked = true;
-        chart.options.scales.yAxes[0].stacked = true;
-        chart.options.plugins = {
-            filler: {
-                propagate: false
-            }
-        };
+        chart.options.scales['x'].stacked = true;
+        chart.options.scales['y'].stacked = true;
     } else if(type == 'new') {
-        chart.options.scales.xAxes[0].stacked = true;
-        chart.options.scales.yAxes[0].stacked = true;
-        chart.options.plugins = {};
-    } else if(type == 'active') {
-        chart.options.scales.xAxes[0].stacked = false;
-        chart.options.scales.yAxes[0].stacked = false;
-    } else if(type == 'pos_rate') {
-        chart.options.scales.xAxes[0].stacked = false;
-        chart.options.scales.yAxes[0].stacked = false;
+        chart.options.scales['x'].stacked = true;
+        chart.options.scales['y'].stacked = true;
+    } else if(type == 'active' || type == 'pos_rate') {
+        chart.options.scales['x'].stacked = false;
+        chart.options.scales['y'].stacked = false;
     }
 
     if(type == 'pos_rate') {
-        chart.options.scales.yAxes = [
-            {
-                id: 'pos_rate',
+        chart.options.scales = {
+            'x': {
+                type: 'time',
+                time: {
+                    tooltipFormat: 'MMMM d, yyyy',
+                    unit: 'month'
+                }
+            },
+            'y': {
+                type: 'linear',
                 position: 'left',
-                ticks: {
-                    beginAtZero: true
-                },
+                min: 0,
                 gridLines: {
                     display: true
+                },
+                ticks: {
+                    callback: function(value, index, values) {
+                        value = value.toString();
+                        value = value.split(/(?=(?:...)*$)/);
+                        return value + '%';
+                    }
                 }
             },
-            {
-                id: 'tests',
+            'y_tests': {
+                type: 'linear',
                 position: 'right',
-                ticks: {
-                    beginAtZero: true,
-                    lineWidth: 0
-                },
+                min: 0,
                 gridLines: {
                     display: true
-                }
-            },
-        ];
-        chart.options.scales.yAxes[0].ticks.userCallback = function(value, index, values) {
-            value = value.toString();
-            value = value.split(/(?=(?:...)*$)/);
-            return value + '%';
-        };
-        chart.options.tooltips.callbacks = {
-            label: function(tooltipItem, data) {
-                value = tooltipItem.yLabel.toString();
-                if(tooltipItem.datasetIndex == 0) {
-                    return '14-day Positivity Rate: ' + value + '%';
-                } else if (tooltipItem.datasetIndex == 1) {
-                    return '14-day Average Daily Tests: ' + value;
                 }
             }
         };
@@ -180,18 +169,14 @@ function isDarkMode() {
 
 function restyleChartForDarkMode() {
     if(isDarkMode()) {
-        chart.options.scales.xAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
-        chart.options.scales.yAxes[0].gridLines.color = 'rgba(255,255,255,0.1)';
-        try {
-            chart.options.scales.xAxes[1].gridLines.color = 'rgba(255,255,255,0.1)';
-            chart.options.scales.yAxes[1].gridLines.color = 'rgba(255,255,255,0.1)';
-        } catch { }
+        chart.options.scales['y'].gridLines.color = 'rgba(255,255,255,0.1)';
+        chart.options.scales['y'].gridLines.color = 'rgba(255,255,255,0.1)';
     } else {
-        chart.options.scales.xAxes[0].gridLines.color = 'rgba(0,0,0,0.1)';
-        chart.options.scales.yAxes[0].gridLines.color = 'rgba(0,0,0,0.1)';
+        chart.options.scales['y'].gridLines.color = 'rgba(0,0,0,0.1)';
+        chart.options.scales['y'].gridLines.color = 'rgba(0,0,0,0.1)';
         try {
-            chart.options.scales.xAxes[1].gridLines.color = 'rgba(0,0,0,0.1)';
-            chart.options.scales.yAxes[1].gridLines.color = 'rgba(0,0,0,0.1)';
+            chart.options.scales['y_tests'].gridLines.color = 'rgba(0,0,0,0.1)';
+            chart.options.scales['y_tests'].gridLines.color = 'rgba(0,0,0,0.1)';
         } catch { }
     }
 }
