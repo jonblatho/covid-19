@@ -27,11 +27,11 @@ function changeChart(type, data) {
         if(dateMarkersButton.classList.contains(selectedClassName)) {
             dateMarkersButton.classList.remove(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers";
-            chart.options.annotation = {};
+            // chart.options.annotation = {};
         } else {
             dateMarkersButton.classList.add(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers";
-            chart.options.annotation = markers;
+            // chart.options.annotation = markers;
         }
     }
 
@@ -91,6 +91,26 @@ function reloadChart(type, data) {
                     position: 'right',
                     display: 'auto',
                     min: 0
+                }
+            },
+            plugins: {
+                annotation: {
+                    annotations: [
+                        {
+                            type: "line",
+                            mode: "vertical",
+                            scaleID: "x-axis-0",
+                            value: "2020-06-16",
+                            backgroundColor: 'rgba(0,0,0,0.5)',
+                            borderWidth: 1,
+                            borderColor: '#ff0000',
+                            label: {
+                                content: "Missouri reopens",
+                                enabled: true,
+                                position: "top",
+                            }
+                        }
+                    ]
                 }
             },
             interaction: {
