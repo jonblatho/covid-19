@@ -7,8 +7,13 @@ on:
     # - cron: "*/15 15 * * *" # Run at 10 AM CDT and retries at :15, :30, and :45 in case the job fails
 
 jobs:
-  deploy:
+  archive:
     runs-on: ubuntu-20.04
-
+    
     steps:
-      - run: curl https://web.archive.org/save/https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
+    - uses: JamieMagee/wayback@v1.1.1
+      with:
+        url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
+        saveErrors: false
+        saveOutlinks: true
+        saveScreenshot: false
