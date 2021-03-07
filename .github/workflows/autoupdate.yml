@@ -3,11 +3,11 @@ name: Auto-Update and Rebuild
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 4-6 * * *" # Run every 15 min between 10 PM and 12 AM CST
-    # - cron: "*/15 3-5 * * *" # Run every 15 min between 11 PM and 12 AM CDT
+    - cron: "*/30 4-6 * * *" # Run every 15 min between 10 PM and 12 AM CST
+    # - cron: "*/30 3-5 * * *" # Run every 15 min between 11 PM and 12 AM CDT
 
 jobs:
-  deploy:
+  update:
     runs-on: ubuntu-20.04
     env:
       TZ: America/Chicago
