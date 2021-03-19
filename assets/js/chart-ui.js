@@ -94,24 +94,7 @@ function reloadChart(type, data) {
                 }
             },
             plugins: {
-                annotation: {
-                    annotations: [
-                        {
-                            type: "line",
-                            mode: "vertical",
-                            scaleID: "x-axis-0",
-                            value: "2020-06-16",
-                            backgroundColor: 'rgba(0,0,0,0.5)',
-                            borderWidth: 1,
-                            borderColor: '#ff0000',
-                            label: {
-                                content: "Missouri reopens",
-                                enabled: true,
-                                position: "top",
-                            }
-                        }
-                    ]
-                }
+                annotation: markers
             },
             interaction: {
                 mode: 'index',
