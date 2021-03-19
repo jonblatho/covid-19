@@ -27,11 +27,11 @@ function changeChart(type, data) {
         if(dateMarkersButton.classList.contains(selectedClassName)) {
             dateMarkersButton.classList.remove(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers";
-            chart.options.annotation = {};
+            chart.options.plugins.annotation = {};
         } else {
             dateMarkersButton.classList.add(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers";
-            chart.options.annotation = markers;
+            chart.options.plugins.annotation = markers;
         }
     }
 
@@ -155,9 +155,9 @@ function reloadChart(type, data) {
     restyleChartForDarkMode();
 
     if(dateMarkersButton.classList.contains("button-selected")) {
-        chart.options.annotation = markers;
+        chart.options.plugins.annotation = markers;
     } else {
-        chart.options.annotation = {};
+        chart.options.plugins.annotation = {};
     }
 
     chart.update();
