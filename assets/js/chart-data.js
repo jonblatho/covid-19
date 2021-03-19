@@ -135,7 +135,6 @@ function chartData(type, data) {
                 yAxisID: 'y_tests'
             }
         );
-        console.log(chart.options.scales)
         return datasets
     }
 }
