@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-20.04
     
     steps:
-    - uses: JamieMagee/wayback@v1.1.1
+    - uses: JamieMagee/wayback@v1.2.16
       with:
         url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
         saveErrors: false
