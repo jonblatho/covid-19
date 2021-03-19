@@ -27,11 +27,11 @@ function changeChart(type, data) {
         if(dateMarkersButton.classList.contains(selectedClassName)) {
             dateMarkersButton.classList.remove(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers";
-            // chart.options.annotation = {};
+            chart.options.annotation = {};
         } else {
             dateMarkersButton.classList.add(selectedClassName);
             dateMarkersButton.innerHTML = "Date Markers";
-            // chart.options.annotation = markers;
+            chart.options.annotation = markers;
         }
     }
 
