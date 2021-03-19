@@ -79,7 +79,7 @@ function reloadChart(type, data) {
                 'x': {
                     type: 'time',
                     time: {
-                        tooltipFormat: 'MMMM d, yyyy',
+                        tooltipFormat: 'MMMM D, yyyy',
                         unit: 'month'
                     }
                 },
