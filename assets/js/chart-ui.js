@@ -78,6 +78,7 @@ function reloadChart(type, data) {
             scales: {
                 'x': {
                     type: 'time',
+                    min: '2020-04-01',
                     time: {
                         tooltipFormat: 'MMMM D, yyyy',
                         unit: 'month'
@@ -121,6 +122,7 @@ function reloadChart(type, data) {
         chart.options.scales = {
             'x': {
                 type: 'time',
+                min: '2020-09-04',
                 time: {
                     tooltipFormat: 'MMMM d, yyyy',
                     unit: 'month'
@@ -156,6 +158,13 @@ function reloadChart(type, data) {
 
     if(dateMarkersButton.classList.contains("button-selected")) {
         chart.options.plugins.annotation = markers;
+        if(type == 'pos_rate') {
+            chart.options.plugins.annotation.annotations[0].label.enabled = false;
+            chart.options.plugins.annotation.annotations[1].label.enabled = false;
+        } else {
+            chart.options.plugins.annotation.annotations[0].label.enabled = true;
+            chart.options.plugins.annotation.annotations[1].label.enabled = true;
+        }
     } else {
         chart.options.plugins.annotation = {};
     }
