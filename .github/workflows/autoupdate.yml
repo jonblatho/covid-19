@@ -30,7 +30,7 @@ jobs:
       - run: git config user.email "github+bot@jonblatho.com"
 
       # Set up Python and Hugo
-      # - uses: "actions/setup-python@v2"
+      - uses: "actions/setup-python@v2"
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
