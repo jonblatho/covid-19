@@ -38,8 +38,9 @@ jobs:
           extended: true
 
       # Install Chart.js and dependencies
-      - name: Install Chart.js and Dependencies
+      - name: Install NPM
         uses: actions/setup-node@v1
+      - name: Install Chart.js and Dependencies
         run: npm install
 
       ###### UPDATE/BUILD ######
