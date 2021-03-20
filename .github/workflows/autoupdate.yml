@@ -37,6 +37,11 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      # Install Chart.js and dependencies
+      - name: Install Chart.js and Dependencies
+        uses: actions/setup-node@v1
+        run: npm install
+
       ###### UPDATE/BUILD ######
       - name: Auto-Update Data
         run: |
