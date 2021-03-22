@@ -74,6 +74,15 @@ a {
             color: #500000
         }
     }
+
+    .message-concluded {
+        max-width: 600px;
+        margin: 50px auto;
+        color: #888;
+        font-size: 18px;
+        line-height: 28px;
+        text-align: center;
+    }
 } 
 
 #chart-select {
