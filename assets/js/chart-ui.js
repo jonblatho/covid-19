@@ -124,7 +124,7 @@ function reloadChart(type, data) {
                 type: 'time',
                 min: '2020-09-04',
                 time: {
-                    tooltipFormat: 'MMMM d, yyyy',
+                    tooltipFormat: 'MMMM D, yyyy',
                     unit: 'month'
                 }
             },
