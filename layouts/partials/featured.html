@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="description">
-                                        new case{{ if ne (int .Site.Data.summary.new_cases_7d.value) 1 }}s{{ end }} in the&nbsp;past week{{ if .Site.Data.summary.new_cases_7d.estimate }}*{{ end }}
+                                        new case{{ if ne (int .Site.Data.summary.new_cases_7d.value) 1 }}s{{ end }} in <br/>the&nbsp;past week{{ if .Site.Data.summary.new_cases_7d.estimate }}*{{ end }}
                                     </div>
                                     <div class="context">
                                         {{ if gt .Site.Data.summary.new_cases_change.value 0 }}
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="description">
-                                        known active&nbsp;case{{ if ne (int .Site.Data.summary.active_cases.value) 1 }}s{{ end }}{{ if .Site.Data.summary.active_cases.estimate }}*{{ end }}
+                                        known <br />active&nbsp;case{{ if ne (int .Site.Data.summary.active_cases.value) 1 }}s{{ end }}{{ if .Site.Data.summary.active_cases.estimate }}*{{ end }}
                                     </div>
                                     <div class="context">
                                         {{ if gt .Site.Data.summary.active_cases_change.value 0 }}
@@ -67,56 +67,6 @@
                                         <span class="change-neutral">&rarr;
                                         {{ end }}
                                         {{ lang.NumFmt 0 .Site.Data.summary.active_cases_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.active_cases_change.estimate }}*{{ end }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="upper">
-                                <div class="left">
-                                    <div class="highlight">
-                                        {{ with .Site.Data.summary.positivity_rate_2w.value }}
-                                        {{ lang.NumFmt 1 . }}%
-                                        {{ else }}
-                                        N/A
-                                        {{ end }}
-                                    </div>
-                                </div>
-                                <div class="right">
-                                    <div class="description">14-day positivity&nbsp;rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
-                                    {{ with .Site.Data.summary.positivity_rate_2w_change.value }}
-                                    <div class="context">
-                                        {{ if ge . 0 }}
-                                        <span class="change-bad">&uarr; 
-                                        {{ else if lt . 0 }}
-                                        <span class="change-good">&darr; 
-                                        {{ else }}
-                                        <span class="change-neutral">&rarr;
-                                        {{ end }}
-                                        {{ lang.NumFmt 1 . "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if $.Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
-                                    </div>
-                                    {{ end }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="upper">
-                                <div class="left">
-                                    <div class="highlight">{{ lang.NumFmt 0 .Site.Data.summary.hospitalizations.value }}</div>
-                                </div>
-                                <div class="right">
-                                    <div class="description">
-                                        current hospitalization{{ if ne (int .Site.Data.summary.hospitalizations.value) 1 }}s{{ end }}{{ if .Site.Data.summary.hospitalizations.estimate }}*{{ end }}
-                                    </div>
-                                    <div class="context">
-                                        {{ if gt .Site.Data.summary.hospitalizations_change.value 0 }}
-                                        <span class="change-bad">&uarr; 
-                                        {{ else if lt .Site.Data.summary.hospitalizations_change.value 0 }}
-                                        <span class="change-good">&darr;
-                                        {{ else }}
-                                        <span class="change-neutral">&rarr; 
-                                        {{ end }}
-                                        {{ lang.NumFmt 0 .Site.Data.summary.hospitalizations_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.hospitalizations_change.estimate }}*{{ end }}
                                     </div>
                                 </div>
                             </div>
@@ -145,27 +95,25 @@
                             <div class="upper">
                                 <div class="left">
                                     <div class="highlight">
-                                        {{ with .Site.Data.summary.new_tests_7d.value }}
-                                        {{ lang.NumFmt 0 . }}
+                                        {{ with .Site.Data.summary.positivity_rate_2w.value }}
+                                        {{ lang.NumFmt 1 . }}%
                                         {{ else }}
                                         N/A
                                         {{ end }}
                                     </div>
                                 </div>
                                 <div class="right">
-                                    <div class="description">
-                                        new test{{ if ne (int .Site.Data.summary.new_tests_7d.value) 1 }}s{{ end }} in the&nbsp;past week{{ if .Site.Data.summary.new_tests_7d.estimate }}*{{ end }}
-                                    </div>
-                                    {{ with .Site.Data.summary.new_tests_7d_change.value }}
+                                    <div class="description">14-day <br />positivity&nbsp;rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
+                                    {{ with .Site.Data.summary.positivity_rate_2w_change.value }}
                                     <div class="context">
-                                        {{ if gt . 0 }}
-                                        <span class="change-good">&uarr; 
+                                        {{ if ge . 0 }}
+                                        <span class="change-bad">&uarr; 
                                         {{ else if lt . 0 }}
-                                        <span class="change-bad">&darr;
+                                        <span class="change-good">&darr; 
                                         {{ else }}
                                         <span class="change-neutral">&rarr;
                                         {{ end }}
-                                        {{ lang.NumFmt 0 . "|.|," "|"}}</span> from 1w ago{{ if $.Site.Data.summary.new_tests_7d_change.estimate }}*{{ end }}
+                                        {{ lang.NumFmt 1 . "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if $.Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
                                     </div>
                                     {{ end }}
                                 </div>
