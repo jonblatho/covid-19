@@ -190,8 +190,6 @@ if __name__ == "__main__":
         'new_cases_change': {'value': cases_added(today)["value"] - cases_added(week_ago)["value"], 'estimate': new_cases_7d_change_est},
         'active_cases': {'value': daily_data[-1]["active_cases"], 'estimate': daily_data[-1]["estimates"]["active"]},
         'active_cases_change': {'value': daily_data[-1]["active_cases"] - daily_data[-8]["active_cases"], 'estimate': daily_data[-8]["estimates"]["active"]},
-        'hospitalizations': {'value': daily_data[-1]["hospitalizations"], 'estimate': daily_data[-1]["estimates"]["hospitalizations"]},
-        'hospitalizations_change': {'value': daily_data[-1]["hospitalizations"] - daily_data[-8]["hospitalizations"], 'estimate': daily_data[-8]["estimates"]["hospitalizations"]},
         'deaths': {'value': daily_data[-1]["deaths"], 'estimate': daily_data[-1]["estimates"]["deaths"]},
         'deaths_change': {'value': daily_data[-1]["deaths"] - daily_data[-8]["deaths"], 'estimate': daily_data[-8]["estimates"]["deaths"]},
         'positivity_rate_2w': positivity_rate(today),

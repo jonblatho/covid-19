@@ -27,7 +27,6 @@ if not os.path.exists(data_path):
         f.write(json.dumps([]))
 
 cases_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16002?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Active/total cases and deaths
-hospitalizations_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16006?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Hospitalizations
 town_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16007?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Total cases by town
 
 old_wp_total = sum([day["new_cases"]["west_plains"] for day in daily_data])
@@ -44,14 +43,8 @@ with urllib.request.urlopen(cases_uri) as cases_url:
     active_cases = int(cases_data["data"]["summary"]["values"][2].replace(',', ''))
     deaths = int(cases_data["data"]["summary"]["values"][4].replace(',', ''))
 
-with urllib.request.urlopen(hospitalizations_uri) as hospitalizations_url:
-    # Get hospitalizations
-    hospitalizations_data = json.loads(hospitalizations_url.read().decode())
-    hospitalizations = int(hospitalizations_data["data"]["summary"]["values"][1].replace(',', ''))
-
 print('Total cases: '+str(total_cases)+' (+'+str(new_cases)+')')
 print('Active cases: '+str(active_cases))
-print('Hospitalizations: '+str(hospitalizations))
 print('Deaths: '+str(deaths))
 
 with urllib.request.urlopen(town_uri) as town_url:
@@ -84,7 +77,7 @@ new_data = {
         'other': new_other_cases
     },
     'active_cases': active_cases,
-    'hospitalizations': hospitalizations,
+    'hospitalizations': None,
     'deaths': deaths,
     'tests': total_tests_est,
     'estimates': {
