@@ -66,7 +66,11 @@
                             {{ else }}
                             <td class="na">N/A</td>
                             {{ end }}
+                            {{ if isset . "hospitalizations" }}
                             <td class="{{ if .estimates.hospitalizations }}estimate{{ end }}">{{ lang.NumFmt 0 .hospitalizations }}</td>
+                            {{ else }}
+                            <td class="na">N/A</td>
+                            {{ end }}
                             <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
                             {{ with .risk_level }}
                             <td class="risk-level-{{ . }}">{{ humanize . }}</td>

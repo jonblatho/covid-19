@@ -210,7 +210,8 @@ if __name__ == "__main__":
         table_day["new_cases"] = dict(zip(city_slugs_county, case_sum_list([day])))
         # Transfer active cases, hospitalizations, deaths, source links, and estimates
         table_day["active_cases"] = day["active_cases"]
-        table_day["hospitalizations"] = day["hospitalizations"]
+        if day["hospitalizations"] is not None:
+            table_day["hospitalizations"] = day["hospitalizations"]
         table_day["deaths"] = day["deaths"]
         table_day["estimates"] = day["estimates"]
         # Where possible, add in total/new tests
