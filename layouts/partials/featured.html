@@ -137,7 +137,7 @@
                                         {{ if (gt .Site.Data.summary.deaths_change.value 0) }}
                                         <span class="change-bad">&uarr; 
                                         {{ else }}
-                                        <span class="change-neutral">&rarr; 
+                                        <span class="change-good">&rarr; 
                                         {{ end }}
                                         {{ lang.NumFmt 0 .Site.Data.summary.deaths_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.deaths_change.estimate }}*{{ end }}
                                     </div>
