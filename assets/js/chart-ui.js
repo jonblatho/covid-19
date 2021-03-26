@@ -3,11 +3,11 @@ var newCasesButton = document.getElementById("new-cases");
 var activeCasesButton = document.getElementById("active-cases");
 var positivityRateButton = document.getElementById("positivity-rate");
 var dateMarkersButton = document.getElementById("date-markers");
-var yAxisModeButton = document.getElementById("linear-logarithmic");
+let selectedClassName = "button-selected";
+var activeChartType = 'total';
+var prefersDateMarkersOn = true;
 
 function changeChart(type, data) {
-    let selectedClassName = "button-selected";
-    
     if(type != 'date_markers') {
         totalCasesButton.classList.remove(selectedClassName);
         newCasesButton.classList.remove(selectedClassName);
@@ -15,46 +15,33 @@ function changeChart(type, data) {
         positivityRateButton.classList.remove(selectedClassName);
     }
 
-    if(type == 'total' || type == 'yAxis') {
+    if(type == 'total') {
         totalCasesButton.classList.add(selectedClassName);
     } else if(type == 'new') {
+        activeChartType = 'new'
         newCasesButton.classList.add(selectedClassName);
     } else if(type == 'active') {
+        activeChartType = 'active'
         activeCasesButton.classList.add(selectedClassName);
     } else if(type == 'pos_rate') {
+        activeChartType = 'pos_rate'
         positivityRateButton.classList.add(selectedClassName);
     } else if(type == 'date_markers') {
         if(dateMarkersButton.classList.contains(selectedClassName)) {
             dateMarkersButton.classList.remove(selectedClassName);
-            dateMarkersButton.innerHTML = "Date Markers";
-            chart.options.plugins.annotation = {};
         } else {
             dateMarkersButton.classList.add(selectedClassName);
-            dateMarkersButton.innerHTML = "Date Markers";
-            chart.options.plugins.annotation = markers;
+        }
+        if(prefersDateMarkersOn == true) {
+            prefersDateMarkersOn = false;
+            removeDateMarkers();
+        } else {
+            prefersDateMarkersOn = true;
+            addDateMarkers();
         }
     }
 
-    if(type != 'total' && type != 'yAxis' && type != 'date_markers') {
-        yAxisModeButton.style = 'display: none';
-        yAxisModeButton.innerHTML = "Linear"
-    } else if(type != 'date_markers') {
-        yAxisModeButton.style = null;
-
-        if(type == 'yAxis') {
-            if(yAxisModeButton.innerHTML == "Linear") {
-                yAxisModeButton.innerHTML = "Logarithmic"
-                chart.options.scales['y'].type = 'logarithmic'
-                chart.options.scales['y'].max = 10000
-            } else if(yAxisModeButton.innerHTML == "Logarithmic") {
-                yAxisModeButton.innerHTML = "Linear"
-                chart.options.scales['y'].type = 'linear'
-                chart.options.scales['y'].max = chart.options.scales['y'].suggestedMax
-            }
-        }
-    }
-
-    if(type != 'date_markers' && type != 'yAxis') {
+    if(type != 'date_markers') {
         reloadChart(type, data);
     } else {
         chart.update();
@@ -74,7 +61,7 @@ function reloadChart(type, data) {
         type: chartType,
         options: {
             responsive: true,
-            aspectRatio: 2.0,
+            maintainAspectRatio: false,
             scales: {
                 'x': {
                     type: 'time',
@@ -107,10 +94,7 @@ function reloadChart(type, data) {
     chart.data.labels = chartLabels(type, data);
     chart.data.datasets = chartData(type, data);
 
-    if(type == 'total') {
-        chart.options.scales['x'].stacked = true;
-        chart.options.scales['y'].stacked = true;
-    } else if(type == 'new') {
+    if(type == 'total' || type == 'new') {
         chart.options.scales['x'].stacked = true;
         chart.options.scales['y'].stacked = true;
     } else if(type == 'active' || type == 'pos_rate') {
@@ -156,17 +140,10 @@ function reloadChart(type, data) {
 
     restyleChartForDarkMode();
 
-    if(dateMarkersButton.classList.contains("button-selected")) {
-        chart.options.plugins.annotation = markers;
-        if(type == 'pos_rate') {
-            chart.options.plugins.annotation.annotations[0].label.enabled = false;
-            chart.options.plugins.annotation.annotations[1].label.enabled = false;
-        } else {
-            chart.options.plugins.annotation.annotations[0].label.enabled = true;
-            chart.options.plugins.annotation.annotations[1].label.enabled = true;
-        }
+    if(window.innerWidth > 600) {
+        addDateMarkers();
     } else {
-        chart.options.plugins.annotation = {};
+        removeDateMarkers();
     }
 
     chart.update();
@@ -198,5 +175,23 @@ function reloadChartForTraitChange(trait) {
         restyleChartForDarkMode();
     }
 
+    chart.update();
+}
+
+function addDateMarkers() {
+    if(dateMarkersButton.classList.contains(selectedClassName)) {
+        dateMarkersButton.classList.add(selectedClassName);
+    }
+    chart.options.plugins.annotation = markers;
+
+    chart.update();
+}
+
+function removeDateMarkers() {
+    if(dateMarkersButton.classList.contains(selectedClassName)) {
+        dateMarkersButton.classList.remove(selectedClassName);
+    }
+
+    chart.options.plugins.annotation = {};
     chart.update();
 }

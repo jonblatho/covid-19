@@ -1,14 +1,13 @@
             <div id="charts">
                 <div class="wrap">
                     <div id="chart-select">
-                        <div style="float:left;">
+                        <div class="left">
                             <button type="button" class="button button-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
                             <button type="button" class="button" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
                             <button type="button" class="button" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
                             <button type="button" class="button" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
                         </div>
-                        <div style="float:right;">
-                            <button type="button" class="button" id="linear-logarithmic" onclick="changeChart('yAxis', json);">Linear</button>
+                        <div class="right">
                             <button type="button" class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers</button>
                         </div>
                     </div>

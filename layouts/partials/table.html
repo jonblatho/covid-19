@@ -27,67 +27,69 @@
                                 <th>New</th>
                             </tr>
                         </thead>
-                        {{ range .Site.Data.daily }}
-                        <tr>
-                            <td class="date prominent-right-border">{{ dateFormat "1/2/06" .date }}</td>
-                            {{ if .estimates.cases }}
-                            {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
-                            <td class="estimate">{{ lang.NumFmt 0 . }}</td>
-                            {{ end }}
-                            {{ else }}
-                            {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
-                            <td>{{ lang.NumFmt 0 . }}</td>
-                            {{ end }}
-                            {{ end }}
-                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .total_cases.other }}</td>
-                            {{ if .estimates.cases }}
-                            {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view) }}
-                            <td class="estimate">{{ lang.NumFmt 0 . }}</td>
-                            {{ end }}
-                            {{ else }}
-                            {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view) }}
-                            <td>{{ lang.NumFmt 0 . }}</td>
-                            {{ end }}
-                            {{ end }}
-                            <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .new_cases.other }}</td>
-                            <td class="prominent-right-border {{ if .estimates.active }}estimate{{ end }}">{{ lang.NumFmt 0 .active_cases }}</td>
-                            {{ if isset .tests "total" }}
-                            <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.total }}</td>
-                            {{ else }}
-                            <td class="na">N/A</td>
-                            {{ end }}
-                            {{ if isset .tests "new" }}
-                            <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.new }}</td>
-                            {{ else }}
-                            <td class="na">N/A</td>
-                            {{ end }}
-                            {{ if isset . "positivity_rate" }}
-                            <td{{ if .positivity_rate.estimate }} class="estimate"{{ end }}>{{ lang.NumFmt 1 .positivity_rate.value }}%</td>
-                            {{ else }}
-                            <td class="na">N/A</td>
-                            {{ end }}
-                            {{ if isset . "hospitalizations" }}
-                            <td class="{{ if .estimates.hospitalizations }}estimate{{ end }}">{{ lang.NumFmt 0 .hospitalizations }}</td>
-                            {{ else }}
-                            <td class="na">N/A</td>
-                            {{ end }}
-                            <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
-                            {{ with .risk_level }}
-                            <td class="risk-level-{{ . }}">{{ humanize . }}</td>
-                            {{ else }}
-                            <td class="na" style="text-align: center;">N/A</td>
-                            {{ end }}
-                            {{ with .sources }}
-                            <td>
-                                {{ range . }}
-                                <a href="{{ .url }}">[{{ .number }}]</a>
+                        <tbody>
+                            {{ range .Site.Data.daily }}
+                            <tr>
+                                <th class="date prominent-right-border">{{ dateFormat "1/2/06" .date }}</td>
+                                {{ if .estimates.cases }}
+                                {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
+                                <td class="estimate">{{ lang.NumFmt 0 . }}</td>
                                 {{ end }}
-                            </td>
-                            {{ else }}
-                            <td class="na">N/A</td>
+                                {{ else }}
+                                {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
+                                <td>{{ lang.NumFmt 0 . }}</td>
+                                {{ end }}
+                                {{ end }}
+                                <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .total_cases.other }}</td>
+                                {{ if .estimates.cases }}
+                                {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view) }}
+                                <td class="estimate">{{ lang.NumFmt 0 . }}</td>
+                                {{ end }}
+                                {{ else }}
+                                {{ range (slice .new_cases.county .new_cases.west_plains .new_cases.willow_springs .new_cases.mountain_view) }}
+                                <td>{{ lang.NumFmt 0 . }}</td>
+                                {{ end }}
+                                {{ end }}
+                                <td class="prominent-right-border {{ if .estimates.cases }}estimate{{ end }}">{{ lang.NumFmt 0 .new_cases.other }}</td>
+                                <td class="prominent-right-border {{ if .estimates.active }}estimate{{ end }}">{{ lang.NumFmt 0 .active_cases }}</td>
+                                {{ if isset .tests "total" }}
+                                <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.total }}</td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                                {{ if isset .tests "new" }}
+                                <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.new }}</td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                                {{ if isset . "positivity_rate" }}
+                                <td{{ if .positivity_rate.estimate }} class="estimate"{{ end }}>{{ lang.NumFmt 1 .positivity_rate.value }}%</td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                                {{ if isset . "hospitalizations" }}
+                                <td class="{{ if .estimates.hospitalizations }}estimate{{ end }}">{{ lang.NumFmt 0 .hospitalizations }}</td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                                <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
+                                {{ with .risk_level }}
+                                <td class="risk-level-{{ . }}">{{ humanize . }}</td>
+                                {{ else }}
+                                <td class="na" style="text-align: center;">N/A</td>
+                                {{ end }}
+                                {{ with .sources }}
+                                <td>
+                                    {{ range . }}
+                                    <a href="{{ .url }}">[{{ .number }}]</a>
+                                    {{ end }}
+                                </td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                            </tr>
                             {{ end }}
-                        </tr>
-                        {{ end }}
+                        </tbody>
                     </table>
                     <p class="table-footer"><span style="font-style: italic;">Italicized</span> quantities are estimated or impacted by estimated data.</p>
                 </div>

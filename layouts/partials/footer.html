@@ -24,6 +24,19 @@
             window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
                 reloadChartForTraitChange('darkMode');
             });
+
+            window.matchMedia('(max-width: 600px)').addListener(function (e) {
+                chart.options.plugins.annotation = {};
+                chart.update();
+            });
+
+            window.matchMedia('(min-width: 601px)').addListener(function (e) {
+                addDateMarkers();
+                if(!dateMarkersButton.classList.contains(selectedClassName)){
+                    dateMarkersButton.classList.add(selectedClassName);
+                }
+                chart.update();
+            });
         </script>
         {{ end }}
     </body>
