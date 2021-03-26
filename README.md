@@ -22,7 +22,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **January 21, 2021:** Added historical risk levels to the All Data table.
 * **January 31, 2021:** Open-sourced Python processing script.
 * **February 10, 2021:** Automated nightly updates at 11 PM and 12 AM CST.
-
-## Planned updates
-
-* Make site responsive to improve legibility on mobile devices.
+* **March 25, 2021:** Made site responsive to improve legibility on mobile devices.
