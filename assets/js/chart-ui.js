@@ -116,7 +116,7 @@ function reloadChart(type, data) {
                 type: 'linear',
                 position: 'left',
                 min: 0,
-                gridLines: {
+                grid: {
                     display: true
                 },
                 ticks: {
@@ -131,7 +131,7 @@ function reloadChart(type, data) {
                 type: 'linear',
                 position: 'right',
                 min: 0,
-                gridLines: {
+                grid: {
                     display: true
                 }
             }
@@ -158,14 +158,16 @@ function isDarkMode() {
 
 function restyleChartForDarkMode() {
     if(isDarkMode()) {
-        chart.options.scales['y'].gridLines.color = 'rgba(255,255,255,0.1)';
-        chart.options.scales['y'].gridLines.color = 'rgba(255,255,255,0.1)';
+        chart.options.scales['x'].grid.color = 'rgba(255,255,255,0.1)';
+        chart.options.scales['y'].grid.color = 'rgba(255,255,255,0.1)';
+        chart.options.scales['y'].grid.color = 'rgba(255,255,255,0.1)';
     } else {
-        chart.options.scales['y'].gridLines.color = 'rgba(0,0,0,0.1)';
-        chart.options.scales['y'].gridLines.color = 'rgba(0,0,0,0.1)';
+        chart.options.scales['x'].grid.color = 'rgba(0,0,0,0.1)';
+        chart.options.scales['y'].grid.color = 'rgba(0,0,0,0.1)';
+        chart.options.scales['y'].grid.color = 'rgba(0,0,0,0.1)';
         try {
-            chart.options.scales['y_tests'].gridLines.color = 'rgba(0,0,0,0.1)';
-            chart.options.scales['y_tests'].gridLines.color = 'rgba(0,0,0,0.1)';
+            chart.options.scales['y_tests'].grid.color = 'rgba(0,0,0,0.1)';
+            chart.options.scales['y_tests'].grid.color = 'rgba(0,0,0,0.1)';
         } catch { }
     }
 }
