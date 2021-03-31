@@ -3,7 +3,7 @@ name: Auto-Update and Rebuild
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 3-5 * * *" # Run every 15 min between 10 PM and 12 AM CDT
+    - cron: "0 * * * *" # Run every 15 min between 10 PM and 12 AM CDT
 
 jobs:
   update:
@@ -14,40 +14,57 @@ jobs:
     steps:
       ###### SETUP ######
       # Checkout repo from GitHub
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           ref: main
           token: ${{ secrets.GH_PAT }}
 
       # Bring in GPG key for signing commit
-      - name: Import GPG key
+      - name: Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v3
         with:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           git-user-signingkey: true
           git-commit-gpgsign: true
 
-      - run: git config user.name "Jonathan Thornton [Automated]"
-      - run: git config user.email "github+bot@jonblatho.com"
+      - name: Setup Git
+        run: |
+          git config user.name "Jonathan Thornton [Automated]"
+          git config user.email "github+bot@jonblatho.com"
 
       # Set up Python
-      - uses: "actions/setup-python@v2"
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: '3.9.2'
 
       ###### UPDATE DATA ######
       - name: Auto-Update Data
-        run: |
-          python autoupdate.py
-          python process.py
+        run: python autoupdate.py
 
       # Check for changed files
       - name: Check for New Data
         uses: tj-actions/verify-changed-files@v5.5
         id: changed_files
         with:
-          files: |
-             daily-data
-             data
-             assets/js
+          files: daily-data
+
+      # Archive the HCHD dashboard if possible
+      - name: Archive HCHD Dashboard
+        uses: jonblatho/wayback@release
+        id: archive
+        if: steps.changed_files.outputs.files_changed == 'true'
+        with:
+          url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
+          saveErrors: false
+          saveOutlinks: true
+          saveScreenshot: false
+
+      # Insert the archive URL into the daily-data file
+      - name: Add URL to Data
+        if: steps.archive.outputs.wayback_url != ''
+        run: python add-archive-url.py ${{ steps.archive.outputs.wayback_url }}
 
       # Install Hugo and NPM (and dependencies)
       - name: Setup Hugo
@@ -63,21 +80,20 @@ jobs:
         run: npm install
         if: steps.changed_files.outputs.files_changed == 'true'
 
-      ###### REBUILD ######
+      ###### PROCESS AND REBUILD ######
+      - name: Process Data
+        if: steps.changed_files.outputs.files_changed == 'true'
+        run: python process.py
+
       - name: Rebuild Site
         if: steps.changed_files.outputs.files_changed == 'true'
-        run: |
-          hugo
+        run: hugo
 
       ###### COMMIT AND PUSH ######
-      - name: Commit Changes
+      - name: Commit Changes and Push
         if: steps.changed_files.outputs.files_changed == 'true'
         run: |
           git add docs/
           git add daily-data/
           git commit -am 'chore: regenerate site [automated]'
-
-      - name: Push Changes
-        if: steps.changed_files.outputs.files_changed == 'true'
-        run: git push
-      
+          git push

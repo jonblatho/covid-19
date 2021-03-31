@@ -2,8 +2,6 @@ name: Auto-Archive HCHD Dashboard
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/30 13 * * *" # Run at 8 AM CDT and retries at 8:30 in case the job fails
 
 jobs:
   archive:
