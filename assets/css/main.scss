@@ -1,6 +1,16 @@
+$risk-color-low: #43B02A;
+$risk-color-medium: #E0A526;
+$risk-color-high: #DC3513;
+$risk-color-critical: #8A2B2B;
+$risk-color-extreme: #DF1995;
+
 body {
     background: #eee;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.clear {
+    float: none;
 }
 
 header {
@@ -125,43 +135,29 @@ a {
 }
 
 .risk-category {
-    max-width: 430px;
+    position: relative;
+    max-width: 380px;
     margin: 20px auto 0;
-    padding: 4px;
-    border-radius: 8px;
+    padding: 0 20px;
+    border-left-style: solid;
+    border-left-width: 6px;
 
     .label {
-        padding: 10px;
-        color: #fff;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-align: center;
-        text-transform: uppercase;
+        padding-bottom: 10px;
+        color: #666;
+        font-size: 16px;
     }
 
     .content {
-        padding: 10px;
-        background: #fff;
+        padding: 20px 0;
         border-radius: 4px;
         color: #222;
-        text-align: center;
     }
 
     .category-name {
         margin-bottom: 6px;
         font-size: 24px;
         font-weight: bold;
-    }
-
-    .category-description {
-        padding-bottom: 10px;
-        border-bottom: 1px dotted #888;
-        color: #777;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
     }
 
     .category-value {
@@ -171,28 +167,133 @@ a {
         font-size: 12px;
     }
 
+    #meter {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25px;
+    }
+
+    .meter-segment {
+        display: block;
+        position: relative;
+        width: 10px;
+        height: 29px;
+        margin-top: 1px;
+        background: #000;
+        z-index: 2;
+    }
+
+    #meter-critical {
+        background: $risk-color-critical;
+        border-radius: 5px 5px 0 0;
+    }
+
+    #meter-high {
+        background: $risk-color-high;
+    }
+
+    #meter-medium {
+        background: $risk-color-medium;
+    }
+
+    #meter-low {
+        background: $risk-color-low;
+        border-radius: 0 0 5px 5px;
+    }
+
+    #meter-labels {
+        position: absolute;
+        top: 0;
+        left: 13px;
+    }
+
+    .meter-label {
+        color: #666;
+        font-size: 10px;
+    }
+
+    #meter-label-max {
+        position: absolute;
+        top: -3px;
+    }
+
+    #meter-label-critical {
+        position: absolute;
+        top: 25px;
+    }
+
+    #meter-label-high {
+        position: absolute;
+        top: 55px;
+    }
+
+    #meter-label-medium {
+        position: absolute;
+        top: 85px;
+    }
+
+    #meter-label-min {
+        position: absolute;
+        top: 112px;
+    }
+
+    .meter-indicator {
+        position: absolute;
+        left: 1px;
+        width: 4px;
+        height: 4px;
+        border: 2px solid #fff;
+        border-radius: 4px;
+        z-index: 3;
+
+        &-low, &-medium, &-high, &-critical, &-extreme {
+            @extend .meter-indicator;
+        }
+
+        &-low {
+            background: $risk-color-low;
+        }
+
+        &-medium {
+            background: $risk-color-medium;
+        }
+
+        &-high {
+            background: $risk-color-high;
+        }
+
+        &-critical {
+            background: $risk-color-critical;
+        }
+
+        &-extreme {
+            background: $risk-color-extreme;
+        }
+    }
+
     &-low, &-medium, &-high, &-critical, &-extreme{
         @extend .risk-category;
     }
 
     &-low {
-        background: #43B02A;
+        border-left-color: $risk-color-low;
     }
 
     &-medium {
-        background: #F1C400;
+        border-left-color: $risk-color-medium;
     }
 
     &-high {
-        background: #DC3513;
+        border-left-color: $risk-color-high;
     }
 
     &-critical {
-        background: #8A2B2B;
+        border-left-color: $risk-color-critical;
     }
 
     &-extreme {
-        background: #DF1995;
+        border-left-color: $risk-color-extreme;
     }
 }
 
@@ -415,23 +516,23 @@ table {
         }
 
         &-low {
-            color: #43B02A;
+            color: $risk-color-low;
         }
 
         &-medium {
-            color: #E0A526;
+            color: $risk-color-medium;
         }
 
         &-high {
-            color: #DC3513;
+            color: $risk-color-high;
         }
 
         &-critical {
-            color: #8A2B2B;
+            color: $risk-color-critical;
         }
 
         &-extreme {
-            color: #DF1995;
+            color: $risk-color-extreme;
         }
     }
 }
@@ -542,16 +643,8 @@ footer {
 
     .risk-category {
         &-low, &-medium, &-high, &-critical, &-extreme {
-            .content {
-                background: #222 !important;
-            }
-
             .category-name {
                 color: #fff !important;
-            }
-
-            .category-description {
-                color: #aaa;
             }
 
             .category-value {

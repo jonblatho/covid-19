@@ -1,0 +1,7 @@
+.meter-indicator {
+    top: {{ $.Site.Data.summary.risk_meter_offset }};
+
+    &-low, &-medium, &-high, &-critical, &-extreme {
+        @extend .meter-indicator;
+    }
+}
