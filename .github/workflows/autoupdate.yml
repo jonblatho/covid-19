@@ -3,7 +3,7 @@ name: Auto-Update and Rebuild
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *" # Run every 15 min between 10 PM and 12 AM CDT
+    - cron: "0 4,5,15 * * *" # Run at 11 PM, midnight, and 10 AM CDT
 
 jobs:
   update:
