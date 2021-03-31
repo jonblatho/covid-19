@@ -116,6 +116,47 @@ def cases_added(d, n=7):
     estimated = bool(daily_data[start_index]["estimates"]["cases"] or daily_data[end_index]["estimates"]["cases"])
     return {'value': sum([sum(day["new_cases"].values()) for day in daily_data[start_index:end_index+1]]), 'estimate': estimated}
 
+# Returns a categorical risk level describing the risk of COVID-19
+# in the county based on the average daily number of new cases over
+# the past week per 100K population.
+def risk_category(v):
+    if v < 1:
+        return "low"
+    elif v < 10:
+        return "medium"
+    elif v < 25:
+        return "high"
+    elif v < 75:
+        return "critical"
+    else:
+        return "extreme"
+
+# Calculates the vertical offset in pixels from the top of the risk
+# meter on the homepage.
+def risk_meter_offset(v):
+    if risk_category(v) == "extreme":
+        return "1px"
+    elif risk_category(v) == "critical":
+        # Calculate the "progress" between 25 and 75
+        norm_v = 1-(v-25)/50
+        offset = round(norm_v*26, 0)
+        minimum = 1
+    elif risk_category(v) == "high":
+        # Same as above but between 10 and 25
+        norm_v = 1-(v-10)/15
+        offset = round(norm_v*30, 0)
+        minimum = 27
+    elif risk_category(v) == "medium":
+        # ...and between 1 and 10
+        norm_v = 1-(v-1)/9
+        offset = round(norm_v*30, 0)
+        minimum = 57
+    elif risk_category(v) == "low":
+        # By definition, value here is already between 0 and 1
+        offset = round((1-v)*25, 0)
+        minimum = 87
+    return str(int(minimum + offset))+"px"
+
 # Calculates (if possible) the tests added over the n-day period
 # ended on date d. Default is 14 days.
 def tests_added(d, n=14):
@@ -184,10 +225,14 @@ if __name__ == "__main__":
     new_cases_7d_change_est = bool(cases_added(today)["estimate"] or cases_added(week_ago)["estimate"])
     new_tests_7d_change_est = bool(tests_added(today, n=7)["estimate"] or tests_added(week_ago, n=7)["estimate"])
     positivity_rate_2w_change_est = bool(positivity_rate(today)["estimate"] or positivity_rate(week_ago)["estimate"])
+    new_cases_7d_100k = cases_added(today)["value"]/7*100000/40117
     summary = {
         'last_updated': daily_data[-1]["date"],
         'new_cases_7d': cases_added(today),
         'new_cases_change': {'value': cases_added(today)["value"] - cases_added(week_ago)["value"], 'estimate': new_cases_7d_change_est},
+        'new_cases_7d_100k': round(new_cases_7d_100k, 1),
+        'risk_category': risk_category(new_cases_7d_100k),
+        'risk_meter_offset': risk_meter_offset(new_cases_7d_100k),
         'active_cases': {'value': daily_data[-1]["active_cases"], 'estimate': daily_data[-1]["estimates"]["active"]},
         'active_cases_change': {'value': daily_data[-1]["active_cases"] - daily_data[-8]["active_cases"], 'estimate': daily_data[-8]["estimates"]["active"]},
         'hospitalizations': {'value': daily_data[-1]["hospitalizations"], 'estimate': daily_data[-1]["estimates"]["hospitalizations"]},

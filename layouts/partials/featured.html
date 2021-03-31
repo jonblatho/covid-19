@@ -1,27 +1,28 @@
             <section id="dashboard">
                 <div class="wrap">
-                    {{ $new_cases_7d_100k := mul (div .Site.Data.summary.new_cases_7d.value 7.0) (div 100000.0 40117.0) }}
-                    {{ $category := cond (lt $new_cases_7d_100k 1) "low" (cond (lt $new_cases_7d_100k 10) "medium" (cond (lt $new_cases_7d_100k 25) "high" (cond (lt $new_cases_7d_100k 75) "critical" "extreme"))) }}
-                    <div class="risk-category-{{ $category }}">
-                        <div class="label">Risk Level</div>
+                    <div class="risk-category-{{ .Site.Data.summary.risk_category }}">
                         <div class="content">
-                            <div class="category-name">{{ humanize $category }}</div>
-                            <div class="category-description">
-                                {{ if eq $category "low" }}
-                                Disease currently contained
-                                {{ else if eq $category "medium" }}
-                                Slow disease growth
-                                {{ else if eq $category "high" }}
-                                At risk of outbreak
-                                {{ else if eq $category "critical" }}
-                                Active or imminent outbreak
-                                {{ else if eq $category "extreme" }}
-                                Severe outbreak ongoing
-                                {{ end }}
-                            </div>
+                            <div class="label">Risk Level</div>
+                            <div class="category-name">{{ humanize .Site.Data.summary.risk_category }}</div>
                             <div class="category-value">
-                                <strong>{{ lang.NumFmt 1 $new_cases_7d_100k }}</strong> average daily new cases per 100K population over the past week
+                                <strong>{{ lang.NumFmt 1 .Site.Data.summary.new_cases_7d_100k }}</strong> average daily new cases per 100K for past&nbsp;7d
                             </div>
+                        </div>
+                        <div id="meter">
+                            <div id="meter-segments">
+                                <div id="meter-critical" class="meter-segment"></div>
+                                <div id="meter-high" class="meter-segment"></div>
+                                <div id="meter-medium" class="meter-segment"></div>
+                                <div id="meter-low" class="meter-segment"></div>
+                            </div>
+                            <div id="meter-labels">
+                                <div id="meter-label-max" class="meter-label">75</div>
+                                <div id="meter-label-critical" class="meter-label">25</div>
+                                <div id="meter-label-high" class="meter-label">10</div>
+                                <div id="meter-label-medium" class="meter-label">1</div>
+                                <div id="meter-label-min" class="meter-label">0</div>
+                            </div>
+                            <div class="meter-indicator-{{ .Site.Data.summary.risk_category }}"></div>
                         </div>
                     </div>
                 </div>
