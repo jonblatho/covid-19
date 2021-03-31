@@ -63,7 +63,7 @@ jobs:
 
       # Insert the archive URL into the daily-data file
       - name: Add URL to Data
-        if: steps.archive.outputs.wayback_url != ''
+        if: steps.archive.outputs.wayback_url != '' && steps.changed_files.outputs.files_changed == 'true'
         run: python add-archive-url.py ${{ steps.archive.outputs.wayback_url }}
 
       # Install Hugo and NPM (and dependencies)
