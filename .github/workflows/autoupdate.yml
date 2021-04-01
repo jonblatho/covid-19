@@ -52,7 +52,7 @@ jobs:
 
       # Archive the HCHD dashboard if possible
       - name: Archive HCHD Dashboard
-        uses: jonblatho/wayback@release
+        uses: JamieMagee/wayback@v1.3.0
         id: archive
         if: steps.changed_files.outputs.files_changed == 'true'
         with:
