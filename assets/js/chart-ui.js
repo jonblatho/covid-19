@@ -136,6 +136,23 @@ function reloadChart(type, data) {
                 }
             }
         };
+        chart.options.plugins.tooltip = {
+            callbacks: {
+                label: function(context) {
+                    var label = context.dataset.label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.dataset.label == '14-day Positivity Rate') {
+                        label += new Intl.NumberFormat('en-US', { style: 'unit', unit: 'percent' }).format(context.parsed.y);
+                    } else {
+                        label += context.parsed.y;
+                    }
+                    return label;
+                }
+            }
+        }
     }
 
     restyleChartForDarkMode();
