@@ -16,5 +16,6 @@ data_file = "daily-data/" + last_date[:7] + ".json"
 with open(data_file, 'r+') as f:
     days = json.load(f)
     days[-1]["sources"] = [url]
-    f.truncate()
+    f.seek(0)
     f.write(json.dumps(days, separators=(',', ':')))
+    f.truncate()
