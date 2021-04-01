@@ -53,7 +53,7 @@ markers = {
             borderWidth: 1,
             borderColor: '#ff0000',
             label: {
-                content: "WP mask mandate",
+                content: "WP mask mandate begins",
                 backgroundColor: 'rgba(0,0,0,0.5)',
                 enabled: true,
                 position: "start",
