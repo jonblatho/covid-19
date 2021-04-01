@@ -119,6 +119,21 @@ markers = {
                 position: "start",
                 rotation: 90,
             }
+        },
+        {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x",
+            value: "2021-03-31",
+            borderWidth: 1,
+            borderColor: '#ff0000',
+            label: {
+                content: "WP mask mandate ends",
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                enabled: true,
+                position: "start",
+                rotation: 90,
+            }
         }
     ]
 }

@@ -81,6 +81,9 @@ function reloadChart(type, data) {
                     min: 0
                 }
             },
+            grid: {
+                offset: true
+            },
             plugins: {
                 annotation: markers
             },
@@ -154,6 +157,8 @@ function reloadChart(type, data) {
             }
         }
     }
+
+    chart.options.scales['x'].grid.offset = false
 
     restyleChartForDarkMode();
 
