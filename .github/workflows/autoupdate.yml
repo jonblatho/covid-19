@@ -41,8 +41,9 @@ jobs:
 
       ###### UPDATE DATA ######
       - name: Auto-Update Data
-        run: python autoupdate.py
-
+        run: |
+          python autoupdate.py
+          git add daily-data/ --intent-to-add
       # Check for changed files
       - name: Check for New Data
         uses: tj-actions/verify-changed-files@v5.5
