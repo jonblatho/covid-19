@@ -1,7 +1,9 @@
 {{ partial "header.html" . }}
 {{ partial "chart.html" . }}
-{{ partial "featured.html" . }}
+{{ partial "dashboard.html" . }}
+{{ if ge .Site.Data.summary.active_cases.value 10 }}
 {{ partial "active-by-town.html" . }}
+{{ end }}
 {{ partial "new-cases.html" . }}
 {{ partial "notes.html" . }}
 {{ partial "footer.html" . }}
