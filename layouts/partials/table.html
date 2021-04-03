@@ -74,7 +74,7 @@
                                 {{ end }}
                                 <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
                                 {{ with .risk_level }}
-                                <td class="risk-level-{{ . }}">{{ humanize . }}</td>
+                                <td class="risk-level risk-text-{{ . }}">{{ humanize . }}</td>
                                 {{ else }}
                                 <td class="na" style="text-align: center;">N/A</td>
                                 {{ end }}

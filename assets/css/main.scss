@@ -1,8 +1,4 @@
-$risk-color-low: #43B02A;
-$risk-color-medium: #E0A526;
-$risk-color-high: #DC3513;
-$risk-color-critical: #8A2B2B;
-$risk-color-extreme: #DF1995;
+@import 'risk-levels.scss';
 
 body {
     background: #eee;
@@ -176,25 +172,14 @@ a {
         width: 10px;
         height: 29px;
         margin-top: 1px;
-        background: #000;
         z-index: 2;
     }
 
     #meter-critical {
-        background: $risk-color-critical;
         border-radius: 5px 5px 0 0;
     }
 
-    #meter-high {
-        background: $risk-color-high;
-    }
-
-    #meter-medium {
-        background: $risk-color-medium;
-    }
-
     #meter-low {
-        background: $risk-color-low;
         border-radius: 0 0 5px 5px;
     }
 
@@ -205,32 +190,28 @@ a {
     }
 
     .meter-label {
+        position: absolute;
         color: #666;
         font-size: 10px;
     }
 
     #meter-label-max {
-        position: absolute;
         top: -3px;
     }
 
     #meter-label-critical {
-        position: absolute;
         top: 25px;
     }
 
     #meter-label-high {
-        position: absolute;
         top: 55px;
     }
 
     #meter-label-medium {
-        position: absolute;
         top: 85px;
     }
 
     #meter-label-min {
-        position: absolute;
         top: 112px;
     }
 
@@ -242,54 +223,6 @@ a {
         border: 2px solid #fff;
         border-radius: 4px;
         z-index: 3;
-
-        &-low, &-medium, &-high, &-critical, &-extreme {
-            @extend .meter-indicator;
-        }
-
-        &-low {
-            background: $risk-color-low;
-        }
-
-        &-medium {
-            background: $risk-color-medium;
-        }
-
-        &-high {
-            background: $risk-color-high;
-        }
-
-        &-critical {
-            background: $risk-color-critical;
-        }
-
-        &-extreme {
-            background: $risk-color-extreme;
-        }
-    }
-
-    &-low, &-medium, &-high, &-critical, &-extreme{
-        @extend .risk-category;
-    }
-
-    &-low {
-        border-left-color: $risk-color-low;
-    }
-
-    &-medium {
-        border-left-color: $risk-color-medium;
-    }
-
-    &-high {
-        border-left-color: $risk-color-high;
-    }
-
-    &-critical {
-        border-left-color: $risk-color-critical;
-    }
-
-    &-extreme {
-        border-left-color: $risk-color-extreme;
     }
 }
 
@@ -506,30 +439,6 @@ table {
     .risk-level {
         font-weight: 600;
         text-align: center;
-
-        &-low, &-medium, &-high, &-critical, &-extreme {
-            @extend .risk-level;
-        }
-
-        &-low {
-            color: $risk-color-low;
-        }
-
-        &-medium {
-            color: $risk-color-medium;
-        }
-
-        &-high {
-            color: $risk-color-high;
-        }
-
-        &-critical {
-            color: $risk-color-critical;
-        }
-
-        &-extreme {
-            color: $risk-color-extreme;
-        }
     }
 }
 

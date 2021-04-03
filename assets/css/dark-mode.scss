@@ -46,14 +46,12 @@
     }
 
     .risk-category {
-        &-low, &-medium, &-high, &-critical, &-extreme {
-            .category-name {
-                color: #fff !important;
-            }
+        .category-name {
+            color: #fff !important;
+        }
 
-            .category-value {
-                color: #888;
-            }
+        .category-value {
+            color: #888;
         }
     }
 

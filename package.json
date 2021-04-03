@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@primer/css": "^16.1.2",
     "chart.js": "^3.0.0-rc",
     "chartjs-plugin-annotation": "^1.0.0-rc",
     "date-fns": "^2.18.0"

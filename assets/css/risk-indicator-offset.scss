@@ -1,1 +1,3 @@
-.meter-indicator-{{ $.Site.Data.summary.risk_category }}{top:{{ $.Site.Data.summary.risk_meter_offset }};}
+.meter-indicator {
+    top: {{ $.Site.Data.summary.risk_meter_offset }};
+}
