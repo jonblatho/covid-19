@@ -1,14 +1,20 @@
 {{ partial "head.html" . }}
-        <a href="{{ .Site.BaseURL }}">
-            <header>
-                <div class="wrap">
-                    <h1>COVID-19 in Howell County, MO</h1>
-                    <div id="last-updated">
-                        <p>Data as of {{ dateFormat "January 2, 2006" .Site.Data.summary.last_updated }}</p>
-                    </div>
-                </div>
-            </header>
-        </a>
+        <header>
+            <div class="wrap">
+                <a href="{{ .Site.BaseURL }}"><h1>COVID-19 in Howell County, MO</h1></a>
+                <p id="last-updated">as of {{ dateFormat "January 2, 2006" .Site.Data.summary.last_updated }}</p>
+            </div>
+        </header>
+        <nav>
+            <ul class="wrap">
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                <li class="nav-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}nav-item-active{{ end }}">
+                    <a class="nav-link" href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </nav>
         <main>
             <!-- <div id="top">
                 <div class="wrap">

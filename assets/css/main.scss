@@ -1,34 +1,64 @@
 @import 'risk-levels.scss';
 
+$primary: #6415be;
+$secondary: #42107b;
+
 body {
     background: #eee;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-header {
-    padding: 30px 10px;
-    background: #42107b;
-    color: #fff;
-    text-align: center;
-
-    h1 {
-        padding: 10px 0;
-        font-size: 200%;
-        font-weight: bold;
-    }
-
-    #last-updated {
-        color: rgba(255,255,255,0.8);
-        font-size: 80%;
-        font-weight: 600;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-    }
-}
-
 .wrap {
     max-width: 1000px;
     margin: 0 auto;
+    padding: 0 10px;
+}
+
+header {
+    padding: 30px 10px;
+    background: #f6f6f6;
+    border-bottom: 3px solid $secondary;
+    color: #fff;
+
+    a {
+        display: inline-block;
+    }
+
+    h1 {
+        padding: 10px 0 5px;
+        color: $primary;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 30px;
+    }
+
+    #last-updated {
+        color: rgba(0,0,0,0.5);
+        font-size: 16px;
+    }
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    height: 44px;
+    background: $primary;
+    font-size: 16px;
+
+    .nav-item {
+        display: inline-block;
+        padding: 0 10px;
+        line-height: 44px;
+
+        a {
+            color: rgba(255,255,255,0.75);
+        }
+
+        &-active, &-active a {
+            color: #fff;
+            font-weight: bold;
+        }
+    }
 }
 
 main {
@@ -114,7 +144,7 @@ a {
 
         &-selected {
             @extend .button;
-            background: #42107b;
+            background: $primary;
             color: #fff;
             font-weight: bold;
         }
@@ -364,7 +394,7 @@ table {
     .big-button {
         display: inline-block;
         padding: 20px 40px;
-        background: #42107b;
+        background: $primary;
         border-radius: 6px;
         color: #fff;
         font-size: 24px;
