@@ -1,28 +1,22 @@
 <div class="item">
-    <div class="upper">
-        <div class="left">
-            <div class="highlight">
-                {{ with .Site.Data.summary.positivity_rate_2w.value }}
-                {{ lang.NumFmt 1 . }}%
-                {{ else }}
-                N/A
-                {{ end }}
-            </div>
-        </div>
-        <div class="right">
-            <div class="description">14-day <br />positivity&nbsp;rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
-            {{ with .Site.Data.summary.positivity_rate_2w_change.value }}
-            <div class="context">
-                {{ if ge . 0 }}
-                <span class="change-bad">&uarr; 
-                {{ else if lt . 0 }}
-                <span class="change-good">&darr; 
-                {{ else }}
-                <span class="change-neutral">&rarr;
-                {{ end }}
-                {{ lang.NumFmt 1 . "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if $.Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
-            </div>
-            {{ end }}
-        </div>
+    <div class="highlight">
+        {{ with .Site.Data.summary.positivity_rate_2w.value }}
+        {{ lang.NumFmt 1 . }}%
+        {{ else }}
+        N/A
+        {{ end }}
     </div>
+    <div class="description">14-day <br />positivity&nbsp;rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
+    {{ with .Site.Data.summary.positivity_rate_2w_change.value }}
+    <div class="context">
+        {{ if ge . 0 }}
+        <span class="change-bad">&uarr; 
+        {{ else if lt . 0 }}
+        <span class="change-good">&darr; 
+        {{ else }}
+        <span class="change-neutral">&rarr;
+        {{ end }}
+        {{ lang.NumFmt 1 . "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if $.Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
+    </div>
+    {{ end }}
 </div>

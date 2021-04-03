@@ -1,72 +1,72 @@
-                    <h4>New cases</h4>
-                    <table class="totals">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th class="town-label-dark">
-                                    <div class="full">Howell<br />County</div>
-                                    <div class="abbreviation">H.C.</div>
-                                </th>
-                                <th class="town-label-dark">
-                                    <div class="full">West<br />Plains</div>
-                                    <div class="abbreviation">W.P.</div>
-                                </th>
-                                <th class="town-label-dark">
-                                    <div class="full">Willow<br />Springs</div>
-                                    <div class="abbreviation">W.S.</div>
-                                </th>
-                                <th class="town-label-dark">
-                                    <div class="full">Mountain<br />View</div>
-                                    <div class="abbreviation">M.V.</div>
-                                </th>
-                                <th class="town-label-dark">Other</th>
-                            </tr>
-                        </thead>
-                        {{ range $.Site.Data.relative }}
-                        <tr>
-                            <th class="row-head">{{ .label }}</th>
-                            {{ range .totals }}
-                            <td>{{ lang.NumFmt 0 . }}</td>
-                            {{ end }}
-                        </tr>
-                        {{ end }}
-                    </table>
-                    <table class="totals">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th class="town-label-dark">
-                                    <div class="full">Howell<br />County</div>
-                                    <div class="abbreviation">H.C.</div>
-                                </th>
-                                <th class="town-label-dark">
-                                    <div class="full">West<br />Plains</div>
-                                    <div class="abbreviation">W.P.</div>
-                                </th>
-                                <th class="town-label-dark">
-                                    <div class="full">Willow<br />Springs</div>
-                                    <div class="abbreviation">W.S.</div>
-                                </th>
-                                <th class="town-label-dark">
-                                    <div class="full">Mountain<br />View</div>
-                                    <div class="abbreviation">M.V.</div>
-                                </th>
-                                <th class="town-label-dark">Other</th>
-                            </tr>
-                        </thead>
-                        {{ range $.Site.Data.monthly }}
-                        <tr>
-                            <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
-                            {{ range .totals }}
-                            <td>{{ lang.NumFmt 0 . }}</td>
-                            {{ end }}
-                        </tr>
-                        {{ end }}
-                    </table>
-                </div>
-            </section>
-            <div id="big-button-link">
-                <div class="wrap">
-                    <a href="{{ .Site.BaseURL }}all-data" class="big-button">View All Data &rarr;</a>
-                </div>
-            </div>
+<section id="new-cases">
+    <h4>New cases</h4>
+    <table class="totals">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="town-label-dark">
+                    <div class="full">Howell<br />County</div>
+                    <div class="abbreviation">H.C.</div>
+                </th>
+                <th class="town-label-dark">
+                    <div class="full">West<br />Plains</div>
+                    <div class="abbreviation">W.P.</div>
+                </th>
+                <th class="town-label-dark">
+                    <div class="full">Willow<br />Springs</div>
+                    <div class="abbreviation">W.S.</div>
+                </th>
+                <th class="town-label-dark">
+                    <div class="full">Mountain<br />View</div>
+                    <div class="abbreviation">M.V.</div>
+                </th>
+                <th class="town-label-dark">Other</th>
+            </tr>
+        </thead>
+        {{ range $.Site.Data.relative }}
+        <tr>
+            <th class="row-head">{{ .label }}</th>
+            {{ range .totals }}
+            <td>{{ lang.NumFmt 0 . }}</td>
+            {{ end }}
+        </tr>
+        {{ end }}
+    </table>
+    <table class="totals">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="town-label-dark">
+                    <div class="full">Howell<br />County</div>
+                    <div class="abbreviation">H.C.</div>
+                </th>
+                <th class="town-label-dark">
+                    <div class="full">West<br />Plains</div>
+                    <div class="abbreviation">W.P.</div>
+                </th>
+                <th class="town-label-dark">
+                    <div class="full">Willow<br />Springs</div>
+                    <div class="abbreviation">W.S.</div>
+                </th>
+                <th class="town-label-dark">
+                    <div class="full">Mountain<br />View</div>
+                    <div class="abbreviation">M.V.</div>
+                </th>
+                <th class="town-label-dark">Other</th>
+            </tr>
+        </thead>
+        {{ range $.Site.Data.monthly }}
+        <tr>
+            <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
+            {{ range .totals }}
+            <td>{{ lang.NumFmt 0 . }}</td>
+            {{ end }}
+        </tr>
+        {{ end }}
+    </table>
+</section>
+<div id="big-button-link">
+    <div class="wrap">
+        <a href="{{ .Site.BaseURL }}all-data" class="big-button">View All Data &rarr;</a>
+    </div>
+</div>
