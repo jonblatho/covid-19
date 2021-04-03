@@ -1,0 +1,25 @@
+<div class="item">
+    <div class="upper">
+        <div class="left">
+            <div class="highlight">
+                {{ .Site.Data.summary.hospitalizations.value }}</div>
+        </div>
+        <div class="right">
+            <div class="description">
+                current <br />hospitalization{{ if ne (int .Site.Data.summary.hospitalizations.value) 1 }}s{{ end }}{{ if .Site.Data.summary.hospitalizations.estimate }}*{{ end }}
+            </div>
+            <div class="context">
+                <div class="context">
+                    {{ if gt .Site.Data.summary.hospitalizations_change.value 0 }}
+                    <span class="change-bad">&uarr; 
+                    {{ else if lt .Site.Data.summary.hospitalizations_change.value 0 }}
+                    <span class="change-good">&darr; 
+                    {{ else }}
+                    <span class="change-neutral">&rarr;
+                    {{ end }}
+                    {{ lang.NumFmt 0 .Site.Data.summary.hospitalizations_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.hospitalizations_change.estimate }}*{{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

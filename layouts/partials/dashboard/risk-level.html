@@ -1,0 +1,30 @@
+<div class="risk-category risk-border-left-{{ .Site.Data.summary.risk_category }}">
+    <div class="content">
+        <div class="label">Risk Level</div>
+        <div class="category-name">{{ humanize .Site.Data.summary.risk_category }}</div>
+        <div class="category-value">
+            <strong>{{ lang.NumFmt 1 .Site.Data.summary.new_cases_7d_100k }}</strong> average daily new cases per 100K for past&nbsp;7d
+        </div>
+        {{ if eq .Site.Data.summary.risk_category "low" }}
+        <div class="category-value">
+            Please keep masking and social distancing &mdash; just a little while longer &mdash; to help keep our risk level low!
+        </div>
+        {{ end }}
+    </div>
+    <div id="meter">
+        <div id="meter-segments">
+            <div id="meter-critical" class="meter-segment risk-bg-critical"></div>
+            <div id="meter-high" class="meter-segment risk-bg-high"></div>
+            <div id="meter-medium" class="meter-segment risk-bg-medium"></div>
+            <div id="meter-low" class="meter-segment risk-bg-low"></div>
+        </div>
+        <div id="meter-labels">
+            <div id="meter-label-max" class="meter-label">75</div>
+            <div id="meter-label-critical" class="meter-label">25</div>
+            <div id="meter-label-high" class="meter-label">10</div>
+            <div id="meter-label-medium" class="meter-label">1</div>
+            <div id="meter-label-min" class="meter-label">0</div>
+        </div>
+        <div class="meter-indicator risk-bg-{{ .Site.Data.summary.risk_category }}"></div>
+    </div>
+</div>
