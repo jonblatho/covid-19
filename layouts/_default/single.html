@@ -1,4 +1,5 @@
 {{ partial "header.html" . }}
-{{ partial "table.html" . }}
-{{ partial "notes.html" . }}
+<section id="content" class="wrap">
+    {{ .Page.Content }}
+</section>
 {{ partial "footer.html" . }}

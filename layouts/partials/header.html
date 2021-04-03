@@ -5,12 +5,12 @@
                 <p id="last-updated">as of {{ dateFormat "January 2, 2006" .Site.Data.summary.last_updated }}</p>
             </div>
         </header>
-        <nav>
+        <nav {{ if $.IsHome }}style="position:sticky !important;top:0 !important;"{{ end }}>
             <ul class="wrap">
                 {{ $currentPage := . }}
                 {{ range .Site.Menus.main }}
                 <li class="nav-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}nav-item-active{{ end }}">
-                    <a class="nav-link" href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
+                <a class="nav-link" href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
                 </li>
                 {{ end }}
             </ul>
