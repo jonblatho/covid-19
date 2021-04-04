@@ -43,6 +43,7 @@ jobs:
       - name: Auto-Update Data
         run: |
           python autoupdate.py
+          python process.py
           git add daily-data/ --intent-to-add
       # Check for changed files
       - name: Check for New Data
