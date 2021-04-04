@@ -1,7 +1,23 @@
+
+
 @media only screen and (prefers-color-scheme: dark) {
+    $primary: #a153fa;
+
     body, main {
         background: #111;
         color: #eee;
+    }
+
+    header {
+        background: #000;
+
+        h1 {
+            color: $primary;
+        }
+
+        #last-updated {
+            color: rgba(255,255,255,0.4);
+        }
     }
 
     a {
@@ -82,8 +98,7 @@
     }
 
     h3 {
-        background: #444;
-        color: #bbb;
+        color: $primary !important;
     }
 
     h4 {
