@@ -19,7 +19,7 @@ jobs:
           saveOutlinks: true
           saveScreenshot: false
     outputs:
-      archive_url: ${{ steps.archive.wayback_url }}
+      archive_url: ${{ steps.archive.outputs.wayback_url }}
   update:
     name: Update Data with URL
     needs: archive
