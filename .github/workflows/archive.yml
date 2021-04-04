@@ -1,0 +1,19 @@
+name: Archive HCHD Dashboard
+
+on:
+  workflow_dispatch:
+
+jobs:
+  archive:
+    name: Archive HCHD Dashboard
+    runs-on: ubuntu-20.04
+    
+    steps:
+      # Archive HCHD dashboard
+      - name: Archive HCHD Dashboard
+        uses: jonblatho/wayback@release
+        with:
+          url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
+          saveErrors: false
+          saveOutlinks: true
+          saveScreenshot: false
