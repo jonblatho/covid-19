@@ -4,5 +4,8 @@
     "chart.js": "^3.0.0-rc",
     "chartjs-plugin-annotation": "^1.0.0-rc",
     "date-fns": "^2.18.0"
+  },
+  "scripts": {
+    "rebuild": "python process.py; rm -r docs/all-data docs/css docs/js docs/notes; rm docs/index.html; hugo; git add docs"
   }
 }

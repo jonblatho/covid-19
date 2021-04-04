@@ -82,13 +82,9 @@ jobs:
         if: steps.changed_files.outputs.files_changed == 'true'
 
       ###### PROCESS AND REBUILD ######
-      - name: Process Data
-        if: steps.changed_files.outputs.files_changed == 'true'
-        run: python process.py
-
       - name: Rebuild Site
         if: steps.changed_files.outputs.files_changed == 'true'
-        run: hugo
+        run: npm run rebuild
 
       ###### COMMIT AND PUSH ######
       - name: Commit Changes and Push
