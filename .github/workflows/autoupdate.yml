@@ -101,7 +101,8 @@ jobs:
   rebuild:
     name: Rebuild Site
     runs-on: ubuntu-20.04
-    needs: archive
+    needs: [update, archive]
+    if: needs.update.outputs.new_data == 'true'
     env:
       TZ: America/Chicago
     steps:
