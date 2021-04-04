@@ -12,8 +12,49 @@ jobs:
       # Archive HCHD dashboard
       - name: Archive HCHD Dashboard
         uses: jonblatho/wayback@release
+        id: archive
         with:
           url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
           saveErrors: false
           saveOutlinks: true
           saveScreenshot: false
+    outputs:
+      archive_url: ${{ steps.archive.wayback_url }}
+  update:
+    name: Update Data with URL
+    needs: archive
+    if: needs.archive.outputs.archive_url != ''
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+
+      - name: Setup Git
+        run: |
+          git config user.name "Jonathan Thornton [Automated]"
+          git config user.email "github+bot@jonblatho.com"
+
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: '3.9.2'
+
+      - name: Add URL to Data
+        run: python add-archive-url.py ${{ needs.archive.outputs.archive_url }}
+
+      - name: Commit Changes and Push
+        run: |
+          git add daily-data/
+          git commit -am 'chore: add archive URL [automated]'
+          git push
