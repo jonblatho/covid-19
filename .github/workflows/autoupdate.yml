@@ -3,7 +3,7 @@ name: Auto-Update and Rebuild
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 4,5,15 * * *" # Run at 11 PM, midnight, and 10 AM CDT
+    - cron: "0 4,5,15 * * *"
 
 jobs:
   update:
@@ -12,47 +12,71 @@ jobs:
     env:
       TZ: America/Chicago
     steps:
-      ###### SETUP ######
-      # Checkout repo from GitHub
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: main
           token: ${{ secrets.GH_PAT }}
-
-      # Bring in GPG key for signing commit
       - name: Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v3
         with:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           git-user-signingkey: true
           git-commit-gpgsign: true
-
       - name: Setup Git
         run: |
           git config user.name "Jonathan Thornton [Automated]"
           git config user.email "github+bot@jonblatho.com"
-
-      # Set up Python
       - name: Setup Python
         uses: "actions/setup-python@v2"
         with:
           python-version: '3.9.2'
-
-      ###### UPDATE DATA ######
       - name: Auto-Update Data
         run: |
           python autoupdate.py
           python process.py
           git add daily-data/ --intent-to-add
-      # Check for changed files
       - name: Check for New Data
         uses: tj-actions/verify-changed-files@v5.5
         id: changed_files
         with:
           files: daily-data
-
-      # Archive the HCHD dashboard if possible
+      - name: Commit Changes and Push
+        if: steps.changed_files.outputs.files_changed == 'true'
+        run: |
+          git add docs/
+          git add daily-data/
+          git commit -am 'chore: add daily data [automated]'
+          git push
+    outputs:
+      new_data: ${{ steps.changed_files.outputs.files_changed }}
+  archive:
+    name: Archive HCHD Dashboard
+    runs-on: ubuntu-20.04
+    needs: update
+    if: needs.update.outputs.new_data == 'true'
+    env:
+      TZ: America/Chicago
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GH_PAT }}
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+      - name: Setup Git
+        run: |
+          git config user.name "Jonathan Thornton [Automated]"
+          git config user.email "github+bot@jonblatho.com"
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: '3.9.2'
       - name: Archive HCHD Dashboard
         uses: JamieMagee/wayback@v1.3.0
         id: archive
@@ -62,13 +86,42 @@ jobs:
           saveErrors: false
           saveOutlinks: true
           saveScreenshot: false
-
-      # Insert the archive URL into the daily-data file
       - name: Add URL to Data
         if: steps.archive.outputs.wayback_url != '' && steps.changed_files.outputs.files_changed == 'true'
         run: python add-archive-url.py ${{ steps.archive.outputs.wayback_url }}
-
-      # Install Hugo and NPM (and dependencies)
+      - name: Commit Changes and Push
+        if: steps.changed_files.outputs.files_changed == 'true'
+        run: |
+          git add docs/
+          git add daily-data/
+          git commit -am 'chore: add archive URL [automated]'
+          git push
+  rebuild:
+    name: Rebuild Site
+    runs-on: ubuntu-20.04
+    needs: archive
+    env:
+      TZ: America/Chicago
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GH_PAT }}
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+      - name: Setup Git
+        run: |
+          git config user.name "Jonathan Thornton [Automated]"
+          git config user.email "github+bot@jonblatho.com"
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: '3.9.2'
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         if: steps.changed_files.outputs.files_changed == 'true'
@@ -81,17 +134,13 @@ jobs:
       - name: Install Chart.js and Dependencies
         run: npm install
         if: steps.changed_files.outputs.files_changed == 'true'
-
-      ###### PROCESS AND REBUILD ######
       - name: Rebuild Site
         if: steps.changed_files.outputs.files_changed == 'true'
         run: npm run rebuild
-
-      ###### COMMIT AND PUSH ######
       - name: Commit Changes and Push
         if: steps.changed_files.outputs.files_changed == 'true'
         run: |
           git add docs/
           git add daily-data/
-          git commit -am 'chore: regenerate site [automated]'
+          git commit -am 'chore: rebuild site [automated]'
           git push
