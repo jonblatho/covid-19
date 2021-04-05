@@ -82,17 +82,16 @@ jobs:
       - name: Archive HCHD Dashboard
         uses: JamieMagee/wayback@v1.3.0
         id: archive
-        if: steps.changed_files.outputs.files_changed == 'true'
         with:
           url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
           saveErrors: false
           saveOutlinks: true
           saveScreenshot: false
       - name: Add URL to Data
-        if: steps.archive.outputs.wayback_url != '' && steps.changed_files.outputs.files_changed == 'true'
+        if: steps.archive.outputs.wayback_url != ''
         run: python add-archive-url.py ${{ steps.archive.outputs.wayback_url }}
       - name: Commit Changes and Push
-        if: steps.changed_files.outputs.files_changed == 'true'
+        if: steps.archive.outputs.wayback_url != ''
         run: |
           git add docs/
           git add daily-data/
@@ -127,21 +126,16 @@ jobs:
           python-version: '3.9.2'
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
-        if: steps.changed_files.outputs.files_changed == 'true'
         with:
           hugo-version: 'latest'
           extended: true
       - name: Install NPM
         uses: actions/setup-node@v1
-        if: steps.changed_files.outputs.files_changed == 'true'
       - name: Install Chart.js and Dependencies
         run: npm install
-        if: steps.changed_files.outputs.files_changed == 'true'
       - name: Rebuild Site
-        if: steps.changed_files.outputs.files_changed == 'true'
         run: npm run rebuild
       - name: Commit Changes and Push
-        if: steps.changed_files.outputs.files_changed == 'true'
         run: |
           git add docs/
           git add daily-data/
