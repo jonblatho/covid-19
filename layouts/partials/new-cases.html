@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th></th>
-                <th class="town-label-dark">
+                <th class="town-label-dark county">
                     <div class="full">Howell<br />County</div>
                     <div class="abbreviation">H.C.</div>
                 </th>
@@ -26,9 +26,11 @@
         {{ range $.Site.Data.relative }}
         <tr>
             <th class="row-head">{{ .label }}</th>
-            {{ range .totals }}
-            <td>{{ lang.NumFmt 0 . }}</td>
-            {{ end }}
+            <td class="county">{{ lang.NumFmt 0 (index .totals 0) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 1) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 2) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 3) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 4) }}</td>
         </tr>
         {{ end }}
     </table>
@@ -36,7 +38,7 @@
         <thead>
             <tr>
                 <th></th>
-                <th class="town-label-dark">
+                <th class="town-label-dark county">
                     <div class="full">Howell<br />County</div>
                     <div class="abbreviation">H.C.</div>
                 </th>
@@ -58,9 +60,11 @@
         {{ range $.Site.Data.monthly }}
         <tr>
             <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
-            {{ range .totals }}
-            <td>{{ lang.NumFmt 0 . }}</td>
-            {{ end }}
+            <td class="county">{{ lang.NumFmt 0 (index .totals 0) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 1) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 2) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 3) }}</td>
+            <td>{{ lang.NumFmt 0 (index .totals 4) }}</td>
         </tr>
         {{ end }}
     </table>

@@ -115,6 +115,10 @@
         color: rgba(255,255,255,0.7);
         text-align: right;
     }
+
+    .totals th.county, .totals td.county {
+        background: rgba(255,255,255,0.1);
+    }
     
     .all-data {
         color: #ddd;
