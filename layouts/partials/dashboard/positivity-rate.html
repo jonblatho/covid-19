@@ -1,22 +1,32 @@
 <div class="item">
     <div class="highlight">
-        {{ with .Site.Data.summary.positivity_rate_2w.value }}
-        {{ lang.NumFmt 1 . }}%
+        {{ if isset .Site.Data.summary.positivity_rate_2w "value" }}
+        {{ lang.NumFmt 1 .Site.Data.summary.positivity_rate_2w.value }}%
         {{ else }}
         N/A
         {{ end }}
     </div>
-    <div class="description">14-day <br />positivity&nbsp;rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}</div>
-    {{ with .Site.Data.summary.positivity_rate_2w_change.value }}
+    <div class="description">
+        {{ if isset .Site.Data.summary.positivity_rate_2w "value" }}
+        14-day <br />positivity&nbsp;rate{{ if .Site.Data.summary.positivity_rate_2w.estimate }}*{{ end }}
+        {{ else }}
+        14-day <br />positivity&nbsp;rate
+        {{ end }}
+    </div>
     <div class="context">
-        {{ if ge . 0 }}
+    {{ if and (isset .Site.Data.summary.positivity_rate_2w "value") (isset .Site.Data.summary.positivity_rate_2w_change "value") }}
+        {{ if ge .Site.Data.summary.positivity_rate_2w_change.value 0 }}
         <span class="change-bad">&uarr; 
-        {{ else if lt . 0 }}
+        {{ else if lt .Site.Data.summary.positivity_rate_2w_change.value 0 }}
         <span class="change-good">&darr; 
         {{ else }}
         <span class="change-neutral">&rarr;
         {{ end }}
-        {{ lang.NumFmt 1 . "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if $.Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
-    </div>
+        {{ lang.NumFmt 1 .Site.Data.summary.positivity_rate_2w_change.value "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if .Site.Data.summary.positivity_rate_2w_change.estimate }}*{{ end }}
+    {{ else if isset .Site.Data.summary.positivity_rate_2w "value" }}
+    Week-ago data not available
+    {{ else }}
+    Data not available
     {{ end }}
+    </div>
 </div>

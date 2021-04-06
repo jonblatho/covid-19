@@ -1,11 +1,12 @@
-<div class="risk-category risk-border-left-{{ .Site.Data.summary.risk_category }}">
+{{ with .Site.Data.summary.risk_category }}
+<div class="risk-category risk-border-left-{{ $.Site.Data.summary.risk_category }}">
     <div class="content">
         <div class="label">Risk Level</div>
-        <div class="category-name">{{ humanize .Site.Data.summary.risk_category }}</div>
+        <div class="category-name">{{ humanize $.Site.Data.summary.risk_category }}</div>
         <div class="category-value">
-            <strong>{{ lang.NumFmt 1 .Site.Data.summary.new_cases_7d_100k }}</strong> average daily new cases per 100K for past&nbsp;7d
+            <strong>{{ lang.NumFmt 1 $.Site.Data.summary.new_cases_7d_100k }}</strong> average daily new cases per 100K for past&nbsp;7d
         </div>
-        {{ if eq .Site.Data.summary.risk_category "low" }}
+        {{ if eq $.Site.Data.summary.risk_category "low" }}
         <div class="category-value">
             Data currently indicates that COVID-19 poses a <strong>low risk</strong> in Howell County. Please keep masking and social distancing to help keep our risk level low.
         </div>
@@ -25,6 +26,7 @@
             <div id="meter-label-medium" class="meter-label">1</div>
             <div id="meter-label-min" class="meter-label">0</div>
         </div>
-        <div class="meter-indicator risk-bg-{{ .Site.Data.summary.risk_category }}"></div>
+        <div class="meter-indicator risk-bg-{{ $.Site.Data.summary.risk_category }}"></div>
     </div>
 </div>
+{{ end }}

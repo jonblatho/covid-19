@@ -1,8 +1,10 @@
 {{ partial "header.html" . }}
 {{ partial "chart.html" . }}
 {{ partial "dashboard.html" . }}
+{{ if isset .Site.Data.summary.active_cases "value" }}
 {{ if ge .Site.Data.summary.active_cases.value 10 }}
 {{ partial "active-by-town.html" . }}
+{{ end }}
 {{ end }}
 {{ partial "new-cases.html" . }}
 {{ partial "footer.html" . }}

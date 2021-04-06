@@ -1,9 +1,20 @@
 <div class="item">
-    <div class="highlight">{{ lang.NumFmt 0 .Site.Data.summary.active_cases.value }}</div>
+    <div class="highlight">
+        {{ if isset .Site.Data.summary.active_cases "value" }}
+        {{ lang.NumFmt 0 .Site.Data.summary.active_cases.value }}
+        {{ else }}
+        N/A
+        {{ end }}
+    </div>
     <div class="description">
+        {{ if isset .Site.Data.summary.active_cases "value" }}
         known <br />active&nbsp;case{{ if ne (int .Site.Data.summary.active_cases.value) 1 }}s{{ end }}{{ if .Site.Data.summary.active_cases.estimate }}*{{ end }}
+        {{ else }}
+        known <br />active&nbsp;cases
+        {{ end }}
     </div>
     <div class="context">
+        {{ if and (isset .Site.Data.summary.active_cases "value") (isset .Site.Data.summary.active_cases_change "value") }}
         {{ if gt .Site.Data.summary.active_cases_change.value 0 }}
         <span class="change-bad">&uarr; 
         {{ else if lt .Site.Data.summary.active_cases_change.value 0 }}
@@ -12,5 +23,10 @@
         <span class="change-neutral">&rarr;
         {{ end }}
         {{ lang.NumFmt 0 .Site.Data.summary.active_cases_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.active_cases_change.estimate }}*{{ end }}
+        {{ else if isset .Site.Data.summary.active_cases "value" }}
+        Week-ago data not available
+        {{ else }}
+        Data not available
+        {{ end }}
     </div>
 </div>
