@@ -70,48 +70,29 @@ a {
 }
 
 #top {
-    .wrap {
-        padding: 0 0 20px;
-    }
-
     .message {
+        padding: 10px 0;
         margin-bottom: 10px;
-        padding: 10px;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 4px;
-        font-size: 90%;
-        line-height: 130%;
+        font-size: 14px;
+        line-height: 20px;
 
         &-info {
             @extend .message;
-            background: #d1eaff;
-            border-color: #199be6;
-            color: #001e55
+            background:#0f81c4;
+            color: #fff;
         }
 
         &-moderate {
             @extend .message;
-            background: #fff3d1;
-            border-color: #e6af19;
-            color: #634900
+            background: #fabb0e;
+            color: #222;
         }
 
         &-critical {
             @extend .message;
-            background: #ffd4d1;
-            border-color: #e62019;
-            color: #500000
+            background: #ce1609;
+            color: #fff;
         }
-    }
-
-    .message-concluded {
-        max-width: 600px;
-        margin: 50px auto;
-        color: #888;
-        font-size: 18px;
-        line-height: 28px;
-        text-align: center;
     }
 } 
 
