@@ -6,6 +6,6 @@
     "date-fns": "^2.18.0"
   },
   "scripts": {
-    "rebuild": "python process.py; rm -r docs/all-data docs/css docs/js docs/notes; rm docs/index.html; hugo; git add docs"
+    "rebuild": "python process.py; rm -r docs/all-data docs/css docs/js docs/notes; rm docs/index.html; hugo; git add docs; git add content"
   }
 }

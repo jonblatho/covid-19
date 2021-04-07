@@ -1,16 +1,25 @@
-            <div id="charts">
-                <div class="wrap">
-                    <div id="chart-select">
-                        <div class="left">
-                            <button type="button" class="button button-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
-                            <button type="button" class="button" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
-                            <button type="button" class="button" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
-                            <button type="button" class="button" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
-                        </div>
-                        <div class="right">
-                            <button type="button" class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers</button>
-                        </div>
-                    </div>
-                    <canvas id="chart"></canvas>
-                </div>
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
+{{ if ne $data.hide_charts "all" }}
+<div id="charts">
+    <div class="wrap">
+        <div id="chart-select">
+            <div class="left">
+                <button type="button" class="button button-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
+                <button type="button" class="button" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
+                <button type="button" class="button" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
+                {{ if not (or (eq $data.hide_charts "test") (eq $data.hide_charts "pos_rate")) }}
+                <button type="button" class="button" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
+                {{ end }}
             </div>
+            <div class="right">
+                <button type="button" class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers</button>
+            </div>
+        </div>
+        <canvas id="chart"></canvas>
+    </div>
+</div>
+{{ end }}

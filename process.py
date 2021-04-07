@@ -56,28 +56,32 @@ def days_in_month(d):
     return monthrange(y, m)[1]
 
 # Generate a list of months
-months = []
-for date_str in [_["date"] for _ in daily_data]:
-    if date_str[0:7] not in months:
-        months.append(date_str[:7])
+def months_list(d):
+    months = []
+    end_index = index_for_date(d)+1
+    for date_str in [_["date"] for _ in daily_data[:end_index]]:
+        if date_str[0:7] not in months:
+            months.append(date_str[:7])
+    return months
 
 # Returns the start and end indices for the given month (YYYY-MM) 
 # as a tuple.
-def data_for_month(m):
+def data_for_month(m, d=today):
     month_first_day = m+'-01'
+    last_day = m+'-'+str(days_in_month(month_first_day))
     start_index = index_for_date(month_first_day)
-    offset = days_in_month(month_first_day)
-    return daily_data[start_index:start_index+offset]
+    end_index = min(index_for_date(d), index_for_date(last_day))
+    return daily_data[start_index:end_index+1]
     
 # Returns data for the current month up to today.
-def mtd_data():
-    return data_for_month(today[:7])
+def mtd_data(d=today):
+    return data_for_month(d[:7])
 
 # Returns data for the current year up to today.
-def ytd_data():
-    y = date_components_int(today)[0]
-    start_index = index_for_date(str(y)+'-01-01')
-    return daily_data[start_index:]
+def ytd_data(d=today):
+    start_index = max(0, index_for_date(d[:4]+'-01-01'))
+    end_index = index_for_date(d)
+    return daily_data[start_index:end_index+1]
 
 # Returns data for the n days ended on the current date, if 
 # possible.
@@ -99,20 +103,26 @@ def case_sum_list(d):
     return cases
 
 # Calculates estimated active cases by town
-def active_cases_by_town():
+def active_cases_by_town(d=today):
     output = []
-    if cases_past_week[0] > 0:
-        for v in cases_past_week:
-            output.append(round(v/cases_past_week[0]*daily_data[-1]["active_cases"], 2))
+    past_week = case_sum_list(data_days_ended(7, d))
+    end_index = index_for_date(d)
+    if past_week[0] > 0:
+        for v in past_week:
+            output.append(round(v/past_week[0]*daily_data[end_index]["active_cases"], 2))
     else:
         return [0, 0, 0, 0, 0]
     return output[1:]
+
+# Scales a value to n per 100,000 population.
+def per_100k(v):
+    return v*100000/40117
 
 # Calculates (if possible) the cases added by town over the n-day
 # period ended on date d. Default is 7 days.
 def cases_added(d, n=7):
     end_index = min(index_for_date(d), index_for_date(today))
-    start_index = end_index-n+1
+    start_index = max(0, end_index-n+1)
     estimated = bool(daily_data[start_index]["estimates"]["cases"] or daily_data[end_index]["estimates"]["cases"])
     return {'value': sum([sum(day["new_cases"].values()) for day in daily_data[start_index:end_index+1]]), 'estimate': estimated}
 
@@ -161,7 +171,7 @@ def risk_meter_offset(v):
 # ended on date d. Default is 14 days.
 def tests_added(d, n=14):
     end_index = min(index_for_date(d), index_for_date(today))
-    start_index = end_index-n
+    start_index = max(0, end_index-n)
     if daily_data[start_index]["tests"] is not None and daily_data[end_index]["tests"] is not None:
         estimated = bool(daily_data[start_index]["estimates"]["tests"] or daily_data[end_index]["estimates"]["tests"])
         return {'value': daily_data[end_index]["tests"] - daily_data[start_index]["tests"], 'estimate': estimated}
@@ -174,7 +184,7 @@ def positivity_rate(d, n=14):
     tests = tests_added(d, n)
     if tests is not None:
         end_index = min(index_for_date(d), index_for_date(today))
-        start_index = end_index-n
+        start_index = max(0, end_index-n)
         estimated = bool(daily_data[start_index]["estimates"]["tests"] or daily_data[end_index]["estimates"]["tests"]\
             or daily_data[start_index+1]["estimates"]["cases"] or daily_data[end_index]["estimates"]["cases"])
         return {'value': float(round(cases/tests["value"]*100, 2)), 'estimate': estimated}
@@ -184,66 +194,129 @@ def positivity_rate(d, n=14):
 def risk_level(d):
     cases = case_sum_list(data_days_ended(7, d))[0]
     if cases is not None:
-        average_daily_cases_7d_100k = cases/7*100000/40400
-        if average_daily_cases_7d_100k < 1:
-            return "low"
-        if average_daily_cases_7d_100k < 10:
-            return "medium"
-        if average_daily_cases_7d_100k < 25:
-            return "high"
-        if average_daily_cases_7d_100k < 75:
-            return "critical"
-        return "extreme"
+        average_daily_cases_7d_100k = per_100k(cases/7)
+        return risk_category(average_daily_cases_7d_100k)
     return None
 
 if __name__ == "__main__":
     # Calculate date-relative totals
-    cases_new = case_sum_list(data_past_n_days(1))
-    cases_past_week = case_sum_list(data_past_n_days(7))
-    cases_mtd = case_sum_list(mtd_data())
-    cases_ytd = case_sum_list(ytd_data())
-    cases_cumulative = case_sum_list(daily_data)
+    relative = dict()
+    for i, day in enumerate(daily_data):
+        cases_new = case_sum_list([day])
+        cases_past_week = case_sum_list(data_days_ended(7, day["date"]))
+        cases_mtd = case_sum_list(data_for_month(day["date"][:7], day["date"]))
+        cases_ytd = case_sum_list(ytd_data(day["date"]))
+        cases_cumulative = case_sum_list(daily_data[:i+1])
+        cases_relative = [
+            {'label': 'Today', 'totals': cases_new},
+            {'label': 'Past Week', 'totals': cases_past_week},
+            {'label': 'MTD', 'totals': cases_mtd},
+            {'label': 'YTD', 'totals': cases_ytd},
+            {'label': 'All', 'totals': cases_cumulative}
+        ]
+        relative[day["date"]] = cases_relative
     # Save the JSON file
-    relative = [
-        {'label': 'Today', 'totals': cases_new},
-        {'label': 'Past Week', 'totals': cases_past_week},
-        {'label': 'MTD', 'totals': cases_mtd},
-        {'label': 'YTD', 'totals': cases_ytd},
-        {'label': 'All', 'totals': cases_cumulative}
-    ]
     save_json(relative, 'data/relative.json')
 
     # Calculate monthly totals
-    monthly_totals = [{'month': month, 'totals': case_sum_list(data_for_month(month))} for month in months]
+    monthly_totals = dict()
+    for i, day in enumerate(daily_data):
+        monthly_totals[day["date"]] = [{'month': month, 'totals': case_sum_list(data_for_month(month, day["date"]))} for month in months_list(day["date"])]
     save_json(monthly_totals, 'data/monthly.json')
 
     # Calculate active cases by town
-    active_by_town = [{'town': cities[i+1], 'active': active_cases_by_town()[i]} for i, _ in enumerate(active_cases_by_town())]
+    active_by_town = dict()
+    for i, day in enumerate(daily_data):
+        active_by_town[day["date"]] = [{'town': cities[i+1], 'active': active_cases_by_town(day["date"])[i]} for i, _ in enumerate(active_cases_by_town())]
     save_json(active_by_town, 'data/active_town.json')
 
     # Calculate summary data
-    new_cases_7d_change_est = bool(cases_added(today)["estimate"] or cases_added(week_ago)["estimate"])
-    new_tests_7d_change_est = bool(tests_added(today, n=7)["estimate"] or tests_added(week_ago, n=7)["estimate"])
-    positivity_rate_2w_change_est = bool(positivity_rate(today)["estimate"] or positivity_rate(week_ago)["estimate"])
-    new_cases_7d_100k = cases_added(today)["value"]/7*100000/40117
-    summary = {
-        'last_updated': daily_data[-1]["date"],
-        'new_cases_7d': cases_added(today),
-        'new_cases_change': {'value': cases_added(today)["value"] - cases_added(week_ago)["value"], 'estimate': new_cases_7d_change_est},
-        'new_cases_7d_100k': round(new_cases_7d_100k, 1),
-        'risk_category': risk_category(new_cases_7d_100k),
-        'risk_meter_offset': risk_meter_offset(new_cases_7d_100k),
-        'active_cases': {'value': daily_data[-1]["active_cases"], 'estimate': daily_data[-1]["estimates"]["active"]},
-        'active_cases_change': {'value': daily_data[-1]["active_cases"] - daily_data[-8]["active_cases"], 'estimate': daily_data[-8]["estimates"]["active"]},
-        'hospitalizations': {'value': daily_data[-1]["hospitalizations"], 'estimate': daily_data[-1]["estimates"]["hospitalizations"]},
-        'hospitalizations_change': {'value': daily_data[-1]["hospitalizations"] - daily_data[-8]["hospitalizations"], 'estimate': daily_data[-8]["estimates"]["hospitalizations"]},
-        'deaths': {'value': daily_data[-1]["deaths"], 'estimate': daily_data[-1]["estimates"]["deaths"]},
-        'deaths_change': {'value': daily_data[-1]["deaths"] - daily_data[-8]["deaths"], 'estimate': daily_data[-8]["estimates"]["deaths"]},
-        'positivity_rate_2w': positivity_rate(today),
-        'positivity_rate_2w_change': {'value': positivity_rate(today)["value"] - positivity_rate(week_ago)["value"], 'estimate': positivity_rate_2w_change_est},
-        'new_tests_7d': tests_added(today, n=7),
-        'new_tests_7d_change': {'value': tests_added(today, n=7)["value"] - tests_added(week_ago, n=7)["value"], 'estimate': new_tests_7d_change_est}
-    }
+    summary = dict()
+    for i, day in enumerate(daily_data):
+        summary_day = dict()
+
+        if i < 7:
+            week_ago_day = None
+        else:
+            week_ago_day = daily_data[i-7]
+
+        # Risk level and pask week average daily cases per 100K
+        new_cases_7d = cases_added(day["date"])
+        summary_day["risk_category"] = risk_level(day["date"])
+        new_cases_7d_100k = per_100k(new_cases_7d["value"]/7)
+        summary_day["new_cases_7d_100k"] = new_cases_7d_100k
+        summary_day["risk_meter_offset"] = risk_meter_offset(new_cases_7d_100k)
+
+        # New cases past week and change
+        summary_day["new_cases_7d"] = new_cases_7d
+        if week_ago_day is not None:
+            new_cases_7d_week_ago = cases_added(daily_data[i-7]["date"])
+            new_cases_7d_change = new_cases_7d["value"] - new_cases_7d_week_ago["value"]
+            new_cases_7d_change_estimate = bool(new_cases_7d["estimate"] or new_cases_7d_week_ago["estimate"])
+            summary_day["new_cases_7d_change"] = {'value': new_cases_7d_change, 'estimate': new_cases_7d_change_estimate}
+
+        # Active cases
+        summary_day["active_cases"] = {'value': day["active_cases"], 'estimate': day["estimates"]["active"]}
+        if week_ago_day is not None:
+            active_cases_change = day["active_cases"] - week_ago_day["active_cases"]
+            active_cases_change_estimate = bool(day["estimates"]["active"] or week_ago_day["estimates"]["active"])
+            summary_day["active_cases_change"] = {'value': active_cases_change, 'estimate': active_cases_change_estimate}
+
+        # Positivity rate
+        if positivity_rate(day["date"]) is not None:
+            summary_day["positivity_rate_2w"] = positivity_rate(day["date"])
+            if positivity_rate(week_ago_day["date"]) is not None:
+                positivity_rate_2w_change = positivity_rate(day["date"])["value"] - positivity_rate(week_ago_day["date"])["value"]
+                positivity_rate_2w_change_estimate = bool(positivity_rate(day["date"])["estimate"] or positivity_rate(week_ago_day["date"])["estimate"])
+                summary_day["positivity_rate_2w_change"] = {'value': positivity_rate_2w_change, 'estimate': positivity_rate_2w_change_estimate}
+
+        # Hospitalizations
+        if day["hospitalizations"] is not None:
+            summary_day["hospitalizations"] = {'value': day["hospitalizations"], 'estimate': day["estimates"]["hospitalizations"]}
+            if week_ago_day is not None and week_ago_day["hospitalizations"] is not None:
+                hospitalizations_change = day["hospitalizations"] - week_ago_day["hospitalizations"]
+                hospitalizations_change_estimate = bool(day["estimates"]["hospitalizations"] or week_ago_day["estimates"]["hospitalizations"])
+                summary_day["hospitalizations_change"] = {'value': hospitalizations_change, 'estimate': hospitalizations_change_estimate}
+
+        # Deaths
+        if day["deaths"] is not None:
+            summary_day["deaths"] = {'value': day["deaths"], 'estimate': day["estimates"]["deaths"]}
+            if week_ago_day is not None and week_ago_day["deaths"] is not None:
+                deaths_change = day["deaths"] - week_ago_day["deaths"]
+                deaths_change_estimate = bool(day["estimates"]["deaths"] or week_ago_day["estimates"]["deaths"])
+                summary_day["deaths_change"] = {'value': deaths_change, 'estimate': deaths_change_estimate}
+
+        if tests_added(day["date"], n=7) is not None:
+            new_tests_7d = tests_added(day["date"], n=7)
+            summary_day["new_tests_7d"] = tests_added(day["date"], n=7)
+            if week_ago_day is not None and tests_added(week_ago_day["date"], n=7) is not None:
+                new_tests_7d_week_ago = tests_added(week_ago_day["date"], n=7)
+                new_tests_7d_change = new_tests_7d["value"] - new_tests_7d_week_ago["value"]
+                new_tests_7d_change_estimate = bool(new_tests_7d["estimate"] or new_tests_7d_week_ago["estimate"])
+                summary_day["new_tests_7d_change"] = {'value': new_tests_7d_change, 'estimate': new_tests_7d_change_estimate}
+
+        # Set some flags for hiding charts when needed
+        if week_ago_day is None:
+            # Days for which all charts should be hidden
+            summary_day["hide_charts"] = 'all'
+        elif i < 147:
+            # Days for which testing charts should be hidden
+            summary_day["hide_charts"] = 'test'
+        elif i < 161:
+            # Days for which the positivity rate chart should be hidden
+            summary_day["hide_charts"] = 'pos_rate'
+
+        # Add the previous/next dates as appropriate
+        if i == 0:
+            summary_day["next_date"] = daily_data[i+1]["date"]
+        elif i == len(daily_data)-1:
+            summary_day["prev_date"] = daily_data[i-1]["date"]
+        else:
+            summary_day["prev_date"] = daily_data[i-1]["date"]
+            summary_day["next_date"] = daily_data[i+1]["date"]
+
+        summary[day["date"]] = summary_day
+    summary["last_updated"] = today
     save_json(summary, 'data/summary.json')
 
     # Calculate table data
@@ -303,8 +376,8 @@ if __name__ == "__main__":
             chart_day["tests"]["total"] = day["tests"]
             if daily_data[i-1]["tests"] is not None:
                 chart_day["tests"]["new"] = day["tests"] - daily_data[i-1]["tests"]
-                if daily_data[i-15]["tests"] is not None:
-                    chart_day["tests"]["average_14d"] = round((daily_data[i]["tests"] - daily_data[i-15]["tests"])/14, 1)
+                if daily_data[i-14]["tests"] is not None:
+                    chart_day["tests"]["average_14d"] = round((daily_data[i]["tests"] - daily_data[i-14]["tests"])/14, 1)
         # Where possible, calculate the 14D positivity rate and risk level
         if positivity_rate(day["date"]) is not None:
             chart_day["positivity_rate"] = positivity_rate(day["date"])["value"]

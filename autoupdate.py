@@ -113,3 +113,9 @@ mtd.append(new_data)
 with open(data_path, 'w+') as data_file:
     data_file.write(json.dumps(mtd, separators=(',', ':')))
     print('Saved '+data_path)
+
+# Create a file in /content for Time Machine
+time_machine_path = 'content/time-machine/'+date+'.md'
+with open(time_machine_path, 'w+') as time_machine_file:
+    time_machine_file.write('---\ndate: '+date+'\nlayout: time-machine\n---')
+    print('Saved '+time_machine_path)

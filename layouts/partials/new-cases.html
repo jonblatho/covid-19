@@ -1,3 +1,7 @@
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
 <section id="case-tables">
     <h4>New cases</h4>
     <table class="totals">
@@ -23,7 +27,7 @@
                 <th class="town-label-dark">Other</th>
             </tr>
         </thead>
-        {{ range $.Site.Data.relative }}
+        {{ range index $.Site.Data.relative (dateFormat "2006-01-02" $date) }}
         <tr>
             <th class="row-head">{{ .label }}</th>
             <td class="county">{{ lang.NumFmt 0 (index .totals 0) }}</td>
@@ -57,7 +61,7 @@
                 <th class="town-label-dark">Other</th>
             </tr>
         </thead>
-        {{ range $.Site.Data.monthly }}
+        {{ range index $.Site.Data.monthly (dateFormat "2006-01-02" $date) }}
         <tr>
             <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
             <td class="county">{{ lang.NumFmt 0 (index .totals 0) }}</td>

@@ -1,16 +1,21 @@
-                    <h4>Est. active cases by town</h4>
-                    <div class="town-grid-container">
-                        {{ range .Site.Data.active_town }}
-                        <div class="item">
-                            <div class="town-label-light">
-                                {{ .town }}
-                            </div>
-                            <div class="town-number">
-                                {{ lang.NumFmt 0 .active }}
-                            </div>
-                        </div>
-                        {{ end }}
-                    </div>
-                    <div class="wrap">
-                        <p class="table-footer" style="margin-top:20px;">The sum of these values may not match the total number of active cases countywide due to rounding.</p>
-                    </div>
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.active_town (dateFormat "2006-01-02" $date) }}
+<div class="wrap">
+    <h4>Est. active cases by town</h4>
+    <div class="town-grid-container">
+        {{ range $data }}
+        <div class="item">
+            <div class="town-label-light">
+                {{ .town }}
+            </div>
+            <div class="town-number">
+                {{ lang.NumFmt 0 .active }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    <p class="table-footer" style="margin-top:20px;">The sum of these values may not match the total number of active cases countywide due to rounding.</p>
+</div>

@@ -15,7 +15,7 @@ function chartLabels(type, data) {
     var dates = data.map(day => day["date"]);
 
     if(type == 'pos_rate') {
-        dates = dates.slice(155);
+        dates = dates.slice(154);
     }
 
     return dates
@@ -110,7 +110,7 @@ function chartData(type, data) {
         datasets = []
         datasets.push(
             {
-                data: data.slice(155).map(day => day["positivity_rate"] ?? Number.NaN),
+                data: data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN),
                 pointRadius: 0,
                 type: 'line',
                 fill: false,
@@ -123,7 +123,7 @@ function chartData(type, data) {
         );
         datasets.push(
             {
-                data: data.slice(155).map(day => day["tests"]["average_14d"] ?? Number.NaN),
+                data: data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN),
                 pointRadius: 0,
                 type: 'line',
                 fill: false,

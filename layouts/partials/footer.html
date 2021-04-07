@@ -1,10 +1,10 @@
         </main>
         <footer>
             <div class="wrap">
-                <p class="footer">&copy; {{ now.Format "2006"}} &middot; Generated {{ now.Format "3:04 PM MST, January 2, 2006" }} &middot; <a href="https://github.com/jonblatho/covid-19">View on GitHub</a></p>
+                <p class="footer">&copy; {{ now.Format "2006"}} {{ if .IsHome }} &middot; Generated {{ now.Format "3:04 PM MST, January 2, 2006" }} {{ end }}&middot; <a href="https://github.com/jonblatho/covid-19">View on GitHub</a></p>
             </div>
         </footer>
-        {{ if .IsHome }}
+        {{ if or (eq .Params.layout "time-machine") .IsHome }}
         {{ $data := resources.Get "js/chart-data.json" | resources.Minify }}
         {{ $dataJS := resources.Get "js/chart-data.js" | resources.Minify | resources.Fingerprint }}
         {{ $configJS := resources.Get "js/chart-config.js" | resources.Minify | resources.Fingerprint }}

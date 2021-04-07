@@ -1,12 +1,17 @@
 {{ partial "head.html" . }}
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
         <header>
             <div class="wrap">
                 <a href="{{ .Site.BaseURL }}"><h1>COVID-19 in Howell County, MO</h1></a>
-                <p id="last-updated">as of {{ dateFormat "January 2, 2006" .Site.Data.summary.last_updated }}</p>
+                <p id="last-updated">as of {{ dateFormat "January 2, 2006" $date }}</p>
             </div>
         </header>
-        <nav {{ if $.IsHome }}style="position:sticky !important;top:0 !important;"{{ end }}>
-            <ul class="wrap">
+        <nav id="site-nav" {{ if or (ne .Params.layout "table") $.IsHome }}style="position:sticky !important;top:0 !important;"{{ end }}>
+            <ul class="wrap" style="padding:0 0 !important;">
                 {{ $currentPage := . }}
                 {{ range .Site.Menus.main }}
                 <li class="nav-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}nav-item-active{{ end }}">
@@ -15,11 +20,26 @@
                 {{ end }}
             </ul>
         </nav>
-        <!-- <div id="top">
-            <div class="message-critical">
+        <div id="top">
+            {{ if eq .Params.layout "time-machine" }}
+            <div class="message-info" style="text-align:center;">
                 <div class="wrap">
-
+                    Below is the homepage as it would have appeared on {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to return to current data.
                 </div>
             </div>
-        </div> -->
+            {{ end }}
+        </div>
+        {{ if eq .Params.layout "time-machine" }}
+        <nav id="time-machine-nav" class="wrap">
+            {{ if eq .Params.layout "time-machine" }}
+            {{ if isset $data "prev_date" }}
+            <a href="{{ .Site.BaseURL }}time-machine/{{ $data.prev_date }}"style="float:left;">&larr; {{ dateFormat "1/2/06" $data.prev_date }}</a>
+            {{ end }}
+            {{ if isset $data "next_date" }}
+            <a href="{{ .Site.BaseURL }}time-machine/{{ $data.next_date }}" style="float:right;">{{ dateFormat "1/2/06" $data.next_date }} &rarr;</a>
+            {{ end }}
+            {{ end }}
+        </nav>
+        {{ end }}
+        <div class="clear"></div>
         <main>

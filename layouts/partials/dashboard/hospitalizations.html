@@ -1,29 +1,34 @@
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 <div class="item">
     <div class="highlight">
-        {{ if isset .Site.Data.summary.hospitalizations "value" }}
-        {{ lang.NumFmt 0 .Site.Data.summary.hospitalizations.value }}
+        {{ if isset $data.hospitalizations "value" }}
+        {{ lang.NumFmt 0 $data.hospitalizations.value }}
         {{ else }}
         N/A
         {{ end }}
     </div>
     <div class="description">
-        {{ if isset .Site.Data.summary.hospitalizations "value" }}
-        current <br />hospitalization{{ if ne (int .Site.Data.summary.hospitalizations.value) 1 }}s{{ end }}{{ if .Site.Data.summary.hospitalizations.estimate }}*{{ end }}
+        {{ if isset $data.hospitalizations "value" }}
+        current <br />hospitalization{{ if ne (int $data.hospitalizations.value) 1 }}s{{ end }}{{ if $data.estimate }}*{{ end }}
         {{ else }}
         current <br />hospitalizations
         {{ end }}
     </div>
     <div class="context">
-        {{ if and (isset .Site.Data.summary.hospitalizations "value") (isset .Site.Data.summary.hospitalizations_change "value") }}
-        {{ if gt .Site.Data.summary.hospitalizations_change.value 0 }}
+        {{ if and (isset $data.hospitalizations "value") (isset $data.hospitalizations_change "value") }}
+        {{ if gt $data.hospitalizations_change.value 0 }}
         <span class="change-bad">&uarr; 
-        {{ else if lt .Site.Data.summary.hospitalizations_change.value 0 }}
+        {{ else if lt $data.hospitalizations_change.value 0 }}
         <span class="change-good">&darr; 
         {{ else }}
         <span class="change-neutral">&rarr;
         {{ end }}
-        {{ lang.NumFmt 0 .Site.Data.summary.hospitalizations_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.hospitalizations_change.estimate }}*{{ end }}
-        {{ else if isset .Site.Data.summary.hospitalizations "value" }}
+        {{ lang.NumFmt 0 $data.hospitalizations_change.value "|.|," "|"}}</span> from 1w ago{{ if $data.hospitalizations_change.estimate }}*{{ end }}
+        {{ else if isset $data.hospitalizations "value" }}
         Week-ago data not available
         {{ else }}
         Data not available

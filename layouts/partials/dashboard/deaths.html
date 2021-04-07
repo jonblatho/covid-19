@@ -1,27 +1,32 @@
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 <div class="item">
     <div class="highlight">
-        {{ if isset .Site.Data.summary.deaths "value" }}
-        {{ lang.NumFmt 0 .Site.Data.summary.deaths.value }}
+        {{ if isset $data.deaths "value" }}
+        {{ lang.NumFmt 0 $data.deaths.value }}
         {{ else }}
         N/A
         {{ end }}
     </div>
     <div class="description">
-        {{ if isset .Site.Data.summary.deaths "value" }}
-        cumulative <br />death{{ if ne (int .Site.Data.summary.deaths.value) 1 }}s{{ end }}{{ if .Site.Data.summary.deaths.estimate }}*{{ end }}
+        {{ if isset $data.deaths "value" }}
+        cumulative <br />death{{ if ne (int $data.deaths.value) 1 }}s{{ end }}{{ if $data.deaths.estimate }}*{{ end }}
         {{ else }}
         cumulative <br />deaths
         {{ end }}
     </div>
     <div class="context">
-        {{ if and (isset .Site.Data.summary.deaths "value") (isset .Site.Data.summary.deaths_change "value") }}
-        {{ if (gt .Site.Data.summary.deaths_change.value 0) }}
+        {{ if and (isset $data.deaths "value") (isset $data.deaths_change "value") }}
+        {{ if (gt $data.deaths_change.value 0) }}
         <span class="change-bad">&uarr; 
         {{ else }}
         <span class="change-good">&rarr; 
         {{ end }}
-        {{ lang.NumFmt 0 .Site.Data.summary.deaths_change.value "|.|," "|"}}</span> from 1w ago{{ if .Site.Data.summary.deaths_change.estimate }}*{{ end }}
-        {{ else if isset .Site.Data.summary.deaths "value" }}
+        {{ lang.NumFmt 0 $data.deaths_change.value "|.|," "|"}}</span> from 1w ago{{ if $data.deaths_change.estimate }}*{{ end }}
+        {{ else if isset $data.deaths "value" }}
         Week-ago data not available
         {{ else }}
         Data not available
