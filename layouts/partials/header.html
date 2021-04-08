@@ -21,10 +21,14 @@
             </ul>
         </nav>
         <div id="top">
-            {{ if and (eq .Params.layout "time-machine") (ne (dateFormat "2006-01-02" $date) .Site.Data.summary.last_updated) }}
+            {{ if eq .Params.layout "time-machine" }}
             <div class="message-info" style="text-align:center;">
                 <div class="wrap">
+                    {{ if ne (dateFormat "2006-01-02" $date) .Site.Data.summary.last_updated }}
                     Below is the homepage as it would have appeared on {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to return to current data.
+                    {{ else }}
+                    This page is a permanent link to the homepage with data as of {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to go home.
+                    {{ end }}
                 </div>
             </div>
             {{ end }}
@@ -37,6 +41,8 @@
             <a href="{{ .Site.BaseURL }}time-machine/{{ $data.next_date }}" style="float:right;">{{ dateFormat "1/2/06" $data.next_date }} &rarr;</a>
             {{ else if ne .Params.layout "time-machine" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $date }}" style="float:right;">Permalink</a>
+            {{ else }}
+            <a href="{{ .Site.BaseURL }}" style="float:right;">Home</a>
             {{ end }}
         </nav>
         <div class="clear"></div>
