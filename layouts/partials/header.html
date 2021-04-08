@@ -21,7 +21,7 @@
             </ul>
         </nav>
         <div id="top">
-            {{ if eq .Params.layout "time-machine" }}
+            {{ if and (eq .Params.layout "time-machine") (ne (dateFormat "2006-01-02" $date) .Site.Data.summary.last_updated) }}
             <div class="message-info" style="text-align:center;">
                 <div class="wrap">
                     Below is the homepage as it would have appeared on {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to return to current data.
@@ -29,17 +29,15 @@
             </div>
             {{ end }}
         </div>
-        {{ if eq .Params.layout "time-machine" }}
         <nav id="time-machine-nav" class="wrap">
-            {{ if eq .Params.layout "time-machine" }}
             {{ if isset $data "prev_date" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $data.prev_date }}"style="float:left;">&larr; {{ dateFormat "1/2/06" $data.prev_date }}</a>
             {{ end }}
             {{ if isset $data "next_date" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $data.next_date }}" style="float:right;">{{ dateFormat "1/2/06" $data.next_date }} &rarr;</a>
-            {{ end }}
+            {{ else if ne .Params.layout "time-machine" }}
+            <a href="{{ .Site.BaseURL }}time-machine/{{ $date }}" style="float:right;">Permalink</a>
             {{ end }}
         </nav>
-        {{ end }}
         <div class="clear"></div>
         <main>
