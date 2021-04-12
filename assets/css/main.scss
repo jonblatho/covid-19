@@ -16,8 +16,7 @@ body {
 
 header {
     padding: 30px 10px;
-    background: #f6f6f6;
-    border-bottom: 3px solid $secondary;
+    background: $secondary;
     color: #fff;
 
     a {
@@ -26,14 +25,14 @@ header {
 
     h1 {
         padding: 10px 0 5px;
-        color: $primary;
+        color: #fff;
         font-size: 24px;
         font-weight: bold;
         line-height: 30px;
     }
 
     #last-updated {
-        color: rgba(0,0,0,0.5);
+        color: rgba(255,255,255,0.5);
         font-size: 16px;
     }
 }

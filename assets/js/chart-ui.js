@@ -79,7 +79,10 @@ function reloadChart(type, data) {
                 'y_tests': {
                     position: 'right',
                     display: 'auto',
-                    min: 0
+                    min: 0,
+                    grid: {
+                        display: false
+                    }
                 }
             },
             grid: {
@@ -122,7 +125,7 @@ function reloadChart(type, data) {
                 position: 'left',
                 min: 0,
                 grid: {
-                    display: true
+                    display: true,
                 },
                 ticks: {
                     callback: function(value, index, values) {
@@ -137,7 +140,7 @@ function reloadChart(type, data) {
                 position: 'right',
                 min: 0,
                 grid: {
-                    display: true
+                    display: true,
                 }
             }
         };
@@ -161,44 +164,16 @@ function reloadChart(type, data) {
     }
 
     chart.options.scales['x'].grid.offset = false
-
-    restyleChartForDarkMode();
+    chart.options.scales['x'].grid.color = 'rgba(128,128,128,0.5)';
+    chart.options.scales['x'].grid.borderColor = 'rgba(128,128,128,0.5)';
+    chart.options.scales['y'].grid.color = 'rgba(128,128,128,0.5)';
+    chart.options.scales['y'].grid.borderColor = 'rgba(128,128,128,0.5)';
+    chart.options.scales['y_tests'].grid.display = false;
 
     if(window.innerWidth > 600) {
         addDateMarkers();
     } else {
         removeDateMarkers();
-    }
-
-    chart.update();
-}
-
-function isDarkMode() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return true;
-    }
-    return false;
-}
-
-function restyleChartForDarkMode() {
-    if(isDarkMode()) {
-        chart.options.scales['x'].grid.color = 'rgba(255,255,255,0.1)';
-        chart.options.scales['y'].grid.color = 'rgba(255,255,255,0.1)';
-        chart.options.scales['y'].grid.color = 'rgba(255,255,255,0.1)';
-    } else {
-        chart.options.scales['x'].grid.color = 'rgba(0,0,0,0.1)';
-        chart.options.scales['y'].grid.color = 'rgba(0,0,0,0.1)';
-        chart.options.scales['y'].grid.color = 'rgba(0,0,0,0.1)';
-        try {
-            chart.options.scales['y_tests'].grid.color = 'rgba(0,0,0,0.1)';
-            chart.options.scales['y_tests'].grid.color = 'rgba(0,0,0,0.1)';
-        } catch { }
-    }
-}
-
-function reloadChartForTraitChange(trait) {
-    if('trait' == 'darkMode') {
-        restyleChartForDarkMode();
     }
 
     chart.update();

@@ -20,11 +20,6 @@
 
             loadData(url);
 
-            // Listen for dark mode changes
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-                reloadChartForTraitChange('darkMode');
-            });
-
             window.matchMedia('(max-width: 600px)').addListener(function (e) {
                 chart.options.plugins.annotation = {};
                 chart.update();
