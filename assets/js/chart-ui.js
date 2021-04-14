@@ -1,4 +1,5 @@
 var chevron = document.getElementById("chevron");
+var dropdownButton = document.getElementById("dropdown-selected");
 var dropdownMenu = document.getElementById("dropdown-menu");
 var selectedChartName = document.getElementById("selected-chart-name");
 var totalCasesButton = document.getElementById("total-cases");
@@ -12,8 +13,10 @@ var prefersDateMarkersOn = true;
 
 function showDropdownMenu() {
     if(dropdownMenu.classList.contains("hidden")) {
+        dropdownButton.classList.add("dropdown-selected-active")
         dropdownMenu.classList.remove("hidden")
     } else {
+        dropdownButton.classList.remove("dropdown-selected-active")
         dropdownMenu.classList.add("hidden")
     }
 }
@@ -57,7 +60,7 @@ function changeChart(type, data) {
     }
 
     if(!dropdownMenu.classList.contains("hidden")) {
-        dropdownMenu.classList.add("hidden")
+        showDropdownMenu()
     }
 
     if(type != 'date_markers') {

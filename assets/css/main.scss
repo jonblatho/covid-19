@@ -153,9 +153,13 @@ a {
         #chevron {
             width: 12px;
             height: 12px;
-            padding-left: 10px;
+            margin-left: 10px;
             color: #fff;
         }
+    }
+
+    .dropdown-selected-active #chevron {
+        transform: rotate(180deg) !important;
     }
 
     #dropdown-menu {
