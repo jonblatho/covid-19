@@ -1,11 +1,22 @@
+var chevron = document.getElementById("chevron");
+var dropdownMenu = document.getElementById("dropdown-menu");
+var selectedChartName = document.getElementById("selected-chart-name");
 var totalCasesButton = document.getElementById("total-cases");
 var newCasesButton = document.getElementById("new-cases");
 var activeCasesButton = document.getElementById("active-cases");
 var positivityRateButton = document.getElementById("positivity-rate");
 var dateMarkersButton = document.getElementById("date-markers");
-let selectedClassName = "button-selected";
+let selectedClassName = "dropdown-item-selected";
 var activeChartType = 'total';
 var prefersDateMarkersOn = true;
+
+function showDropdownMenu() {
+    if(dropdownMenu.classList.contains("hidden")) {
+        dropdownMenu.classList.remove("hidden")
+    } else {
+        dropdownMenu.classList.add("hidden")
+    }
+}
 
 function changeChart(type, data) {
     if(type != 'date_markers') {
@@ -16,21 +27,25 @@ function changeChart(type, data) {
     }
 
     if(type == 'total') {
+        selectedChartName.innerHTML = 'Total Cases'
         totalCasesButton.classList.add(selectedClassName);
     } else if(type == 'new') {
         activeChartType = 'new'
+        selectedChartName.innerHTML = 'New Cases'
         newCasesButton.classList.add(selectedClassName);
     } else if(type == 'active') {
         activeChartType = 'active'
+        selectedChartName.innerHTML = 'Active Cases'
         activeCasesButton.classList.add(selectedClassName);
     } else if(type == 'pos_rate') {
         activeChartType = 'pos_rate'
+        selectedChartName.innerHTML = 'Testing'
         positivityRateButton.classList.add(selectedClassName);
     } else if(type == 'date_markers') {
-        if(dateMarkersButton.classList.contains(selectedClassName)) {
-            dateMarkersButton.classList.remove(selectedClassName);
+        if(dateMarkersButton.classList.contains("button-selected")) {
+            dateMarkersButton.classList.remove("button-selected");
         } else {
-            dateMarkersButton.classList.add(selectedClassName);
+            dateMarkersButton.classList.add("button-selected");
         }
         if(prefersDateMarkersOn == true) {
             prefersDateMarkersOn = false;
@@ -39,6 +54,10 @@ function changeChart(type, data) {
             prefersDateMarkersOn = true;
             addDateMarkers();
         }
+    }
+
+    if(!dropdownMenu.classList.contains("hidden")) {
+        dropdownMenu.classList.add("hidden")
     }
 
     if(type != 'date_markers') {
@@ -170,7 +189,7 @@ function reloadChart(type, data) {
     chart.options.scales['y'].grid.borderColor = 'rgba(128,128,128,0.5)';
     chart.options.scales['y_tests'].grid.display = false;
 
-    if(window.innerWidth > 600) {
+    if(window.innerWidth > 600 && prefersDateMarkersOn == true) {
         addDateMarkers();
     } else {
         removeDateMarkers();

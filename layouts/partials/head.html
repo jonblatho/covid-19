@@ -18,6 +18,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js" integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin="anonymous"></script>
         {{ $annotation := resources.Get "js/chartjs-plugin-annotation.min.js" }}
         <script src="{{ $annotation.Permalink }}" integrity="{{ $annotation.Data.Integrity }}"></script>
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
         <script>
             var end_date = {{ dateFormat "2006-01-02" $date }};
         </script>

@@ -1,16 +1,3 @@
-// Load the data from chart-data/data.json
-function loadData(url) {
-    if (json == null) {
-        fetch(url)
-        .then(res => res.json())
-        .then((out) => {
-            json = out
-            reloadChart('total', json);
-        })
-        .catch(err => { throw err } );
-    }
-}
-
 function chartLabels(type, data) {
     var dates = data.map(day => day["date"]);
 
@@ -21,50 +8,62 @@ function chartLabels(type, data) {
     return dates
 }
 
+function primaryLineDataset(values, label, color) {
+    return {
+        data: values,
+        pointRadius: 0,
+        type: 'line',
+        fill: false,
+        label: label,
+        borderColor: color,
+        borderWidth: 2,
+        order: 1,
+        lineTension: 0
+    };
+}
+
+function secondaryLineDataset(values, label) {
+    return {
+        data: values,
+        pointRadius: 0,
+        type: 'line',
+        fill: false,
+        label: label,
+        borderColor: '#aaaaaa',
+        borderWidth: 1,
+        order: 1,
+        lineTension: 0
+    };
+}
+
 function chartData(type, data) {
-    if(type == 'total') {
-        var sets = [];
-        sets.push(data.map(day => day["total_cases"]["west_plains"]));
-        sets.push(data.map(day => day["total_cases"]["willow_springs"]));
-        sets.push(data.map(day => day["total_cases"]["mountain_view"]));
-        sets.push(data.map(day => day["total_cases"]["other"]));
-        datasets = []
-        sets.forEach(function(values, index) {
-            datasets.push(
-                {
-                    data: values,
-                    label: categories[index],
-                    pointRadius: 0,
-                    backgroundColor: categoryColors[index],
-                    fill: 'origin'
-                }
-            )
-        });
-        return datasets;
-    } else if(type == 'new') {
-        var sets = [];
-        sets.push(data.map(day => day["new_cases"]["west_plains"]));
-        sets.push(data.map(day => day["new_cases"]["willow_springs"]));
-        sets.push(data.map(day => day["new_cases"]["mountain_view"]));
-        sets.push(data.map(day => day["new_cases"]["other"]));
-        datasets = []
-        // Add data by town
-        sets.forEach(function(values, index) {
-            datasets.push(
-                {
-                    data: values,
-                    label: categories[index],
-                    backgroundColor: categoryColors[index],
-                    borderColor: categoryColors[index],
-                    order: 2,
-                    categoryPercentage: 1.0,
-                    barPercentage: 1.0
-                }
-            )
-        });
-        // Add 7D moving average
-        datasets.push(
-            {
+    datasets = [];
+    if(type == 'total' || type == 'new') {
+        if(type == 'total') {
+            var data_key = "total_cases";
+        } else if(type == 'new') {
+            var data_key = "new_cases";
+        }
+        keys.forEach(function(category_key, index) {
+            var dict = {
+                data: data.map(day => day[data_key][category_key]),
+                label: categories[index],
+                backgroundColor: categoryColors[index],
+            };
+            if(type == 'total') {
+                dict.fill = 'origin';
+                dict.pointRadius = 0;
+            } else if(type == 'new') {
+                dict.borderColor = categoryColors[index];
+                dict.order = 2;
+                dict.categoryPercentage = 1.0;
+                dict.barPercentage = 1.0;
+            }
+            datasets.push(dict);
+        })
+        if(type == 'new') {
+            // Add 7D moving average
+            datasets.push({
                 data: data.map(day => day["average_daily_cases_7d"] ?? Number.NaN),
                 pointRadius: 0,
                 type: 'line',
@@ -74,67 +73,16 @@ function chartData(type, data) {
                 borderWidth: 2,
                 order: 1,
                 lineTension: 0
-            }
-        );
-        return datasets;
-    } else if(type == 'active') {
-        datasets = []
-        datasets.push(
-            {
-                data: data.map(day => day["active_cases"]),
-                pointRadius: 0,
-                type: 'line',
-                fill: false,
-                label: 'Active Cases',
-                borderColor: '#aaaaaa',
-                borderWidth: 1,
-                order: 2,
-                lineTension: 0
-            }
-        );
-        datasets.push(
-            {
-                data: data.map(day => day["average_active_cases_7d"] ?? Number.NaN),
-                pointRadius: 0,
-                type: 'line',
-                fill: false,
-                label: '7-day Average',
-                borderColor: '#bb7700',
-                borderWidth: 2,
-                order: 1,
-                lineTension: 0
-            }
-        );
-        return datasets
+            });
+        }
+    } else if (type == 'active') {
+        datasets.push(primaryLineDataset(data.map(day => day["average_active_cases_7d"] ?? Number.NaN), '7-day Average', '#bb7700'));
+        datasets.push(secondaryLineDataset(data.map(day => day["active_cases"]), 'Active Cases'));
     } else if(type == 'pos_rate') {
-        datasets = []
-        datasets.push(
-            {
-                data: data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN),
-                pointRadius: 0,
-                type: 'line',
-                fill: false,
-                label: '14-day Positivity Rate',
-                borderColor: '#0077cc',
-                borderWidth: 2,
-                order: 1,
-                lineTension: 0
-            }
-        );
-        datasets.push(
-            {
-                data: data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN),
-                pointRadius: 0,
-                type: 'line',
-                fill: false,
-                label: '14-day Average Daily Tests',
-                borderColor: '#aaaaaa',
-                borderWidth: 1,
-                order: 1,
-                lineTension: 0,
-                yAxisID: 'y_tests'
-            }
-        );
-        return datasets
+        datasets.push(primaryLineDataset(data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN), '14-day Positivity Rate', '#0077cc'));
+        var averageDataset = secondaryLineDataset(data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN), '14-day Average Daily Tests');
+        averageDataset.yAxisID = 'y_tests';
+        datasets.push(averageDataset);
     }
+    return datasets;
 }

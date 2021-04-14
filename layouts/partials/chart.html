@@ -8,16 +8,23 @@
     <div class="wrap">
         <div id="chart-select">
             <div class="left">
-                <button type="button" class="button button-selected" id="total-cases" onclick="changeChart('total', json);">Total Cases</button>
-                <button type="button" class="button" id="new-cases" onclick="changeChart('new', json);">New Cases</button>
-                <button type="button" class="button" id="active-cases" onclick="changeChart('active', json);">Active Cases</button>
-                {{ if not (or (eq $data.hide_charts "test") (eq $data.hide_charts "pos_rate")) }}
-                <button type="button" class="button" id="positivity-rate" onclick="changeChart('pos_rate', json);">Testing</button>
-                {{ end }}
+                <div id="dropdown">
+                    <div id="dropdown-selected" onclick="showDropdownMenu();">
+                        <span id="selected-chart-name">Total Cases</span>
+                        <span id="chevron" class="iconify" data-icon="el-chevron-down" data-inline="false"></span>
+                    </div>
+                    <div id="dropdown-menu" class="hidden">
+                        <div id="total-cases" class="dropdown-item dropdown-item-selected" onclick="changeChart('total', json);">Total Cases</div>
+                        <div id="new-cases" class="dropdown-item" onclick="changeChart('new', json);">New Cases</div>
+                        <div id="active-cases" class="dropdown-item" onclick="changeChart('active', json);">Active Cases</div>
+                        <div id="positivity-rate" class="dropdown-item" onclick="changeChart('pos_rate', json);">Testing</div>
+                    </div>
+                </div>
             </div>
             <div class="right">
-                <button type="button" class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers</button>
+                <div class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers</button>
             </div>
+            <div class="clear"></div>
         </div>
         <canvas id="chart"></canvas>
     </div>

@@ -59,17 +59,29 @@ header {
     }
 }
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .clear {
     clear: both;
 }
 
+.hidden {
+    display: none;
+}
+
 #time-machine-nav {
-    padding: 20px;
+    padding: 20px 10px;
 
     a {
         display: inline-block;
         margin-bottom: 10px;
-        padding: 8px 12px;
+        padding: 10px;
         background: #0f81c4;
         border-radius: 6px;
         color: #fff;
@@ -121,24 +133,56 @@ a {
             font-weight: bold;
         }
     }
-} 
+}
 
 #chart-select {
     margin-bottom: 10px;
-    text-align: center;
 
-    .left {
-        float: left;
+    #dropdown {
+        text-align: left;
+        cursor: pointer;
     }
 
-    .right {
-        float: right;
+    #dropdown-selected {
+        padding: 10px;
+        background: $primary;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: 600;
+
+        #chevron {
+            width: 12px;
+            height: 12px;
+            padding-left: 10px;
+            color: #fff;
+        }
+    }
+
+    #dropdown-menu {
+        position: absolute;
+        padding: 4px 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        color: #555;
+    }
+
+    .dropdown-item {
+        padding: 8px 30px 8px 10px;
+
+        &-selected {
+            color: #333;
+            font-weight: 600;
+        }
+
+        &:hover {
+            background: #eee;
+        }
     }
 
     .button {
         display: inline-block;
-        margin: 4px 2px;
-        padding: 8px 12px;
+        padding: 10px;
         background: #ddd;
         border: none;
         border-radius: 6px;
@@ -152,7 +196,7 @@ a {
             @extend .button;
             background: $primary;
             color: #fff;
-            font-weight: bold;
+            font-weight: 600;
         }
     }
 }

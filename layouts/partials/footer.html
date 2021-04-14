@@ -18,20 +18,13 @@
             var chart = new Chart(ctx);
             let url = '{{ $data.Permalink }}';
 
-            loadData(url);
-
-            window.matchMedia('(max-width: 600px)').addListener(function (e) {
-                chart.options.plugins.annotation = {};
-                chart.update();
-            });
-
-            window.matchMedia('(min-width: 601px)').addListener(function (e) {
-                addDateMarkers();
-                if(!dateMarkersButton.classList.contains(selectedClassName)){
-                    dateMarkersButton.classList.add(selectedClassName);
-                }
-                chart.update();
-            });
+            fetch(url)
+            .then(res => res.json())
+            .then((out) => {
+                json = out
+                reloadChart('total', json);
+            })
+            .catch(err => { throw err } );
         </script>
         {{ end }}
     </body>
