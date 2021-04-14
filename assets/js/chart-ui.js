@@ -123,9 +123,19 @@ function reloadChart(type, data) {
     if(type == 'total' || type == 'new') {
         chart.options.scales['x'].stacked = true;
         chart.options.scales['y'].stacked = true;
+        chart.options.plugins.tooltip.callbacks.afterBody = function(context) {
+            filteredContextItems = context.filter(contextItem => contextItem.dataset.label != '7-day Average');
+            values = filteredContextItems.map(contextItem => contextItem["raw"]);
+            return 'Total: ' + Intl.NumberFormat().format(values.reduce(function(a, b) {
+                return a+b;
+            }));
+        }
     } else if(type == 'active' || type == 'pos_rate') {
         chart.options.scales['x'].stacked = false;
         chart.options.scales['y'].stacked = false;
+        chart.options.plugins.tooltip.callbacks.afterBody = function(context) {
+            return null;
+        }
     }
 
     if(type == 'pos_rate') {
