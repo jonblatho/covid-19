@@ -33,6 +33,7 @@
             </div>
             {{ end }}
         </div>
+        {{ if or .IsHome (eq .Params.layout "time-machine") }}
         <nav id="time-machine-nav" class="wrap">
             {{ if isset $data "prev_date" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $data.prev_date }}"style="float:left;">&larr; {{ dateFormat "1/2/06" $data.prev_date }}</a>
@@ -46,4 +47,5 @@
             {{ end }}
         </nav>
         <div class="clear"></div>
+        {{ end }}
         <main>

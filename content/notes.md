@@ -15,5 +15,5 @@ menu: main
 * This page includes both official data and unofficial estimates. For official data, please consult the Howell County Health Department.
 
 ### Update Schedule
-* **Evening updates:** Data is updated automatically around 11 PM each night. Cases are not added on Sundays. Testing data is not available until the morning, so testing numbers are estimated in the evening updates.
-* **Morning updates:** In the morning each weekday, the evening updates are amended to include actual test counts (when available) and source links, which must be added manually.
+* **Evening updates:** Most data is updated automatically around 11 PM each night. Cases are not added on Sundays. Testing data is not available until the morning (on weekdays only), so testing numbers are estimated in the evening updates.
+* **Morning updates:** In the morning each weekday, the evening updates are amended to include actual test counts (when available), which must be added manually.
