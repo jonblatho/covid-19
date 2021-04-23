@@ -27,7 +27,11 @@
         {{ else }}
         <span class="change-neutral">&rarr;
         {{ end }}
-        {{ lang.NumFmt 0 $data.new_tests_7d_change.value "|.|," "|"}}</span> from 1w ago{{ if $data.new_tests_7d_change.estimate }}*{{ end }}
+        {{ lang.NumFmt 0 $data.new_tests_7d_change.value "|.|," "|"}}
+        {{ if isset $data.new_tests_7d_change "percentage" }}
+        ({{ lang.NumFmt 0 $data.new_tests_7d_change.percentage "|.|," "|"}}%)
+        {{ end }}
+        </span> from 1w ago{{ if $data.new_tests_7d_change.estimate }}*{{ end }}
         {{ else if isset $data.new_tests_7d "value" }}
             Week-ago data not available
         {{ else }}

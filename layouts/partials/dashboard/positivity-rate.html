@@ -27,7 +27,11 @@
         {{ else }}
         <span class="change-neutral">&rarr;
         {{ end }}
-        {{ lang.NumFmt 1 $data.positivity_rate_2w_change.value "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr></span> from 1w ago{{ if $data.positivity_rate_2w_change.estimate }}*{{ end }}
+        {{ lang.NumFmt 1 $data.positivity_rate_2w_change.value "|.|," "|"}}<abbr title="percentage points"> p.p.</abbr>
+        {{ if isset $data.positivity_rate_2w_change "percentage" }}
+        ({{ lang.NumFmt 0 $data.positivity_rate_2w_change.percentage "|.|," "|"}}%)
+        {{ end }}
+        </span> from 1w ago{{ if $data.positivity_rate_2w_change.estimate }}*{{ end }}
     {{ else if isset $data.positivity_rate_2w "value" }}
     Week-ago data not available
     {{ else }}

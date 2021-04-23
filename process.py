@@ -253,31 +253,59 @@ if __name__ == "__main__":
         if week_ago_day is not None:
             new_cases_7d_week_ago = cases_added(daily_data[i-7]["date"])
             new_cases_7d_change = new_cases_7d["value"] - new_cases_7d_week_ago["value"]
+            if new_cases_7d_week_ago["value"] != 0:
+                new_cases_7d_change_percent = round(abs((new_cases_7d["value"] - new_cases_7d_week_ago["value"])/new_cases_7d_week_ago["value"])*100, 0)
+            else:
+                new_cases_7d_change_percent = None
             new_cases_7d_change_estimate = bool(new_cases_7d["estimate"] or new_cases_7d_week_ago["estimate"])
-            summary_day["new_cases_7d_change"] = {'value': new_cases_7d_change, 'estimate': new_cases_7d_change_estimate}
+            if new_cases_7d_change_percent is not None:
+                summary_day["new_cases_7d_change"] = {'value': new_cases_7d_change, 'percentage': new_cases_7d_change_percent, 'estimate': new_cases_7d_change_estimate}
+            else:
+                summary_day["new_cases_7d_change"] = {'value': new_cases_7d_change, 'estimate': new_cases_7d_change_estimate}
 
         # Active cases
         summary_day["active_cases"] = {'value': day["active_cases"], 'estimate': day["estimates"]["active"]}
         if week_ago_day is not None:
             active_cases_change = day["active_cases"] - week_ago_day["active_cases"]
+            if week_ago_day["active_cases"] != 0:
+                active_cases_change_percent = round(abs((day["active_cases"] - week_ago_day["active_cases"])/week_ago_day["active_cases"])*100, 0)
+            else:
+                active_cases_change_percent = None
             active_cases_change_estimate = bool(day["estimates"]["active"] or week_ago_day["estimates"]["active"])
-            summary_day["active_cases_change"] = {'value': active_cases_change, 'estimate': active_cases_change_estimate}
+            if active_cases_change_percent is not None:
+                summary_day["active_cases_change"] = {'value': active_cases_change, 'percentage': active_cases_change_percent, 'estimate': active_cases_change_estimate}
+            else:
+                summary_day["active_cases_change"] = {'value': active_cases_change, 'estimate': active_cases_change_estimate}
 
         # Positivity rate
         if positivity_rate(day["date"]) is not None:
             summary_day["positivity_rate_2w"] = positivity_rate(day["date"])
             if positivity_rate(week_ago_day["date"]) is not None:
                 positivity_rate_2w_change = positivity_rate(day["date"])["value"] - positivity_rate(week_ago_day["date"])["value"]
+                if positivity_rate(week_ago_day["date"])["value"] != 0:
+                    positivity_rate_2w_change_percent = round(abs((positivity_rate(day["date"])["value"] - positivity_rate(week_ago_day["date"])["value"])/positivity_rate(week_ago_day["date"])["value"])*100, 0)
+                else:
+                    positivity_rate_2w_change_percent = None
                 positivity_rate_2w_change_estimate = bool(positivity_rate(day["date"])["estimate"] or positivity_rate(week_ago_day["date"])["estimate"])
-                summary_day["positivity_rate_2w_change"] = {'value': positivity_rate_2w_change, 'estimate': positivity_rate_2w_change_estimate}
+                if positivity_rate_2w_change_percent is not None:
+                    summary_day["positivity_rate_2w_change"] = {'value': positivity_rate_2w_change, 'percentage': positivity_rate_2w_change_percent, 'estimate': positivity_rate_2w_change_estimate}
+                else:
+                    summary_day["positivity_rate_2w_change"] = {'value': positivity_rate_2w_change, 'estimate': positivity_rate_2w_change_estimate}
 
         # Hospitalizations
         if day["hospitalizations"] is not None:
             summary_day["hospitalizations"] = {'value': day["hospitalizations"], 'estimate': day["estimates"]["hospitalizations"]}
             if week_ago_day is not None and week_ago_day["hospitalizations"] is not None:
                 hospitalizations_change = day["hospitalizations"] - week_ago_day["hospitalizations"]
+                if week_ago_day["hospitalizations"] != 0:
+                    hospitalizations_change_percent = round(abs((day["hospitalizations"] - week_ago_day["hospitalizations"])/week_ago_day["hospitalizations"])*100, 0)
+                else:
+                    hospitalizations_change_percent = None
                 hospitalizations_change_estimate = bool(day["estimates"]["hospitalizations"] or week_ago_day["estimates"]["hospitalizations"])
-                summary_day["hospitalizations_change"] = {'value': hospitalizations_change, 'estimate': hospitalizations_change_estimate}
+                if hospitalizations_change_percent is not None:
+                    summary_day["hospitalizations_change"] = {'value': hospitalizations_change, 'percentage': hospitalizations_change_percent, 'estimate': hospitalizations_change_estimate}
+                else:
+                    summary_day["hospitalizations_change"] = {'value': hospitalizations_change, 'estimate': hospitalizations_change_estimate}
 
         # Deaths
         if day["deaths"] is not None:
@@ -293,8 +321,15 @@ if __name__ == "__main__":
             if week_ago_day is not None and tests_added(week_ago_day["date"], n=7) is not None:
                 new_tests_7d_week_ago = tests_added(week_ago_day["date"], n=7)
                 new_tests_7d_change = new_tests_7d["value"] - new_tests_7d_week_ago["value"]
+                if new_tests_7d_week_ago["value"] != 0:
+                    new_tests_7d_change_percent = round(abs((new_tests_7d["value"] - new_tests_7d_week_ago["value"])/new_tests_7d_week_ago["value"])*100, 0)
+                else:
+                    new_tests_7d_change_percent = None
                 new_tests_7d_change_estimate = bool(new_tests_7d["estimate"] or new_tests_7d_week_ago["estimate"])
-                summary_day["new_tests_7d_change"] = {'value': new_tests_7d_change, 'estimate': new_tests_7d_change_estimate}
+                if new_tests_7d_change_percent is not None:
+                    summary_day["new_tests_7d_change"] = {'value': new_tests_7d_change, 'percentage': new_tests_7d_change_percent, 'estimate': new_tests_7d_change_estimate}
+                else:
+                    summary_day["new_tests_7d_change"] = {'value': new_tests_7d_change, 'estimate': new_tests_7d_change_estimate}
 
         # Set some flags for hiding charts when needed
         if week_ago_day is None:
