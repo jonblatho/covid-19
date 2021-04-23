@@ -29,9 +29,11 @@
         {{ end }}
         {{ lang.NumFmt 0 $data.new_cases_7d_change.value "|.|," "|"}}
         {{ if isset $data.new_cases_7d_change "percentage" }}
+        {{ if ne $data.new_cases_7d_change.percentage 0.0 }}
         ({{ lang.NumFmt 0 $data.new_cases_7d_change.percentage "|.|," "|" }}%)
-        {{ end }}</span>
-        from 1w ago{{ if $data.new_cases_7d_change.estimate }}*{{ end }}
+        {{ end }}
+        {{ end }}
+        </span> from 1w ago{{ if $data.new_cases_7d_change.estimate }}*{{ end }}
         {{ else if isset $data.new_cases_7d "value" }}
         Week-ago data not available
         {{ else }}

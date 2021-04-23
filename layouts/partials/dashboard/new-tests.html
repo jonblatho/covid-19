@@ -29,7 +29,9 @@
         {{ end }}
         {{ lang.NumFmt 0 $data.new_tests_7d_change.value "|.|," "|"}}
         {{ if isset $data.new_tests_7d_change "percentage" }}
+        {{ if ne $data.new_tests_7d_change.percentage 0.0 }}
         ({{ lang.NumFmt 0 $data.new_tests_7d_change.percentage "|.|," "|"}}%)
+        {{ end }}
         {{ end }}
         </span> from 1w ago{{ if $data.new_tests_7d_change.estimate }}*{{ end }}
         {{ else if isset $data.new_tests_7d "value" }}

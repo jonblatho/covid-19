@@ -29,7 +29,9 @@
         {{ end }}
         {{ lang.NumFmt 0 $data.hospitalizations_change.value "|.|," "|"}}
         {{ if isset $data.hospitalizations_change "percentage" }}
+        {{ if ne $data.hospitalizations_change.percentage 0.0 }}
         ({{ lang.NumFmt 0 $data.hospitalizations_change.percentage "|.|," "|"}}%)
+        {{ end }}
         {{ end }}
         </span> from 1w ago{{ if $data.hospitalizations_change.estimate }}*{{ end }}
         {{ else if isset $data.hospitalizations "value" }}

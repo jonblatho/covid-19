@@ -29,7 +29,9 @@
         {{ end }}
         {{ lang.NumFmt 0 $data.active_cases_change.value "|.|," "|"}}
         {{ if isset $data.active_cases_change "percentage" }}
+        {{ if ne $data.active_cases_change.percentage 0.0 }}
         ({{ lang.NumFmt 0 $data.active_cases_change.percentage "|.|," "|"}}%)
+        {{ end }}
         {{ end }}
         </span> from 1w ago{{ if $data.active_cases_change.estimate }}*{{ end }}
         {{ else if isset $data.active_cases "value" }}
