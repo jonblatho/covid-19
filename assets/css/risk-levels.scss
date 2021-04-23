@@ -1,5 +1,5 @@
 $risk-color-low: #43B02A;
-$risk-color-medium: #E0A526;
+$risk-color-moderate: #E0A526;
 $risk-color-high: #DC3513;
 $risk-color-critical: #8A2B2B;
 $risk-color-extreme: #DF1995;
@@ -19,7 +19,7 @@ $risk-color-extreme: #DF1995;
 }
 
 @include risk-rule(low, $risk_color-low);
-@include risk-rule(medium, $risk_color-medium);
+@include risk-rule(moderate, $risk_color-moderate);
 @include risk-rule(high, $risk_color-high);
 @include risk-rule(critical, $risk_color-critical);
 @include risk-rule(extreme, $risk_color-extreme);

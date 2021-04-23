@@ -133,7 +133,7 @@ def risk_category(v):
     if v < 1:
         return "low"
     elif v < 10:
-        return "medium"
+        return "moderate"
     elif v < 25:
         return "high"
     elif v < 75:
@@ -156,7 +156,7 @@ def risk_meter_offset(v):
         norm_v = 1-(v-10)/15
         offset = round(norm_v*36, 0)
         minimum = 32
-    elif risk_category(v) == "medium":
+    elif risk_category(v) == "moderate":
         # ...and between 1 and 10
         norm_v = 1-(v-1)/9
         offset = round(norm_v*36, 0)
