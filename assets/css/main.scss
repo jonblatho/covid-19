@@ -245,31 +245,22 @@ a {
 
     #meter {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 25px;
+        top: 30px;
+        right: 10px;
     }
 
     .meter-segment {
-        display: block;
+        display: inline-block;
         position: relative;
-        width: 10px;
-        height: 29px;
-        margin-top: 1px;
+        width: 35px;
+        height: 10px;
+        margin-right: 1px;
         z-index: 2;
-    }
-
-    #meter-critical {
-        border-radius: 5px 5px 0 0;
-    }
-
-    #meter-low {
-        border-radius: 0 0 5px 5px;
     }
 
     #meter-labels {
         position: absolute;
-        top: 0;
+        top: 18px;
         left: 13px;
     }
 
@@ -280,28 +271,28 @@ a {
     }
 
     #meter-label-max {
-        top: -3px;
+        left: 124px;
     }
 
     #meter-label-critical {
-        top: 25px;
+        left: 88px;
     }
 
     #meter-label-high {
-        top: 55px;
+        left: 53px;
     }
 
     #meter-label-medium {
-        top: 85px;
+        left: 20px;
     }
 
     #meter-label-min {
-        top: 112px;
+        left: -15px;
     }
 
     .meter-indicator {
         position: absolute;
-        left: 1px;
+        top: 5px;
         width: 4px;
         height: 4px;
         border: 2px solid #fff;

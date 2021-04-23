@@ -9,13 +9,13 @@
         <div class="label">Risk Level</div>
         <div class="category-name">{{ humanize $data.risk_category }}</div>
         <div class="category-value">
-            <strong>{{ lang.NumFmt 1 $data.new_cases_7d_100k }}</strong> average daily new cases per 100K for past&nbsp;7d
+            <strong>{{ lang.NumFmt 1 $data.new_cases_14d_100k }}</strong> average daily new cases per 100K for past&nbsp;14d
         </div>
         <div class="category-value">
         {{ if eq $data.risk_category "low" }}
             Data indicates that COVID-19 poses a <strong>low risk</strong> in Howell County. Please keep masking and social distancing to help keep our risk level low.
         {{ else if eq $data.risk_category "medium" }}
-            Data indicates that COVID-19 poses a <strong>medium risk</strong> in Howell County. The disease is spreading slowly.
+            Data indicates that COVID-19 poses a <strong>medium risk</strong> in Howell County; the disease is spreading slowly and poses an outside risk of an eventual outbreak if not contained.
         {{ else if eq $data.risk_category "high" }}
             Data indicates that COVID-19 poses a <strong>high risk</strong> in Howell County. The disease is spreading quickly, putting the county at risk of an outbreak.
         {{ else if eq $data.risk_category "critical" }}
@@ -27,10 +27,10 @@
     </div>
     <div id="meter">
         <div id="meter-segments">
-            <div id="meter-critical" class="meter-segment risk-bg-critical"></div>
-            <div id="meter-high" class="meter-segment risk-bg-high"></div>
-            <div id="meter-medium" class="meter-segment risk-bg-medium"></div>
             <div id="meter-low" class="meter-segment risk-bg-low"></div>
+            <div id="meter-medium" class="meter-segment risk-bg-medium"></div>
+            <div id="meter-high" class="meter-segment risk-bg-high"></div>
+            <div id="meter-critical" class="meter-segment risk-bg-critical"></div>
         </div>
         <div id="meter-labels">
             <div id="meter-label-max" class="meter-label">75</div>
@@ -39,7 +39,7 @@
             <div id="meter-label-medium" class="meter-label">1</div>
             <div id="meter-label-min" class="meter-label">0</div>
         </div>
-        <div class="meter-indicator risk-bg-{{ $data.risk_category }}" style="top:{{ $data.risk_meter_offset }};"></div>
+        <div class="meter-indicator risk-bg-{{ $data.risk_category }}" style="right:{{ $data.risk_meter_offset }}px;"></div>
     </div>
 </div>
 {{ end }}

@@ -145,27 +145,27 @@ def risk_category(v):
 # meter on the homepage.
 def risk_meter_offset(v):
     if risk_category(v) == "extreme":
-        return "1px"
+        return -3
     elif risk_category(v) == "critical":
         # Calculate the "progress" between 25 and 75
         norm_v = 1-(v-25)/50
-        offset = round(norm_v*26, 0)
-        minimum = 1
+        offset = round(norm_v*36, 0)
+        minimum = -3
     elif risk_category(v) == "high":
         # Same as above but between 10 and 25
         norm_v = 1-(v-10)/15
-        offset = round(norm_v*30, 0)
-        minimum = 27
+        offset = round(norm_v*36, 0)
+        minimum = 32
     elif risk_category(v) == "medium":
         # ...and between 1 and 10
         norm_v = 1-(v-1)/9
-        offset = round(norm_v*30, 0)
-        minimum = 57
+        offset = round(norm_v*36, 0)
+        minimum = 68
     elif risk_category(v) == "low":
         # By definition, value here is already between 0 and 1
-        offset = round((1-v)*25, 0)
-        minimum = 87
-    return str(int(minimum + offset))+"px"
+        offset = round((1-v)*36, 0)
+        minimum = 104
+    return minimum + offset
 
 # Calculates (if possible) the tests added over the n-day period
 # ended on date d. Default is 14 days.
@@ -192,10 +192,10 @@ def positivity_rate(d, n=14):
 
 # Calculates the categorical risk level for the given date.
 def risk_level(d):
-    cases = case_sum_list(data_days_ended(7, d))[0]
+    cases = case_sum_list(data_days_ended(14, d))[0]
     if cases is not None:
-        average_daily_cases_7d_100k = per_100k(cases/7)
-        return risk_category(average_daily_cases_7d_100k)
+        average_daily_cases_14d_100k = per_100k(cases/14)
+        return risk_category(average_daily_cases_14d_100k)
     return None
 
 if __name__ == "__main__":
@@ -242,10 +242,11 @@ if __name__ == "__main__":
 
         # Risk level and pask week average daily cases per 100K
         new_cases_7d = cases_added(day["date"])
+        new_cases_14d = cases_added(day["date"], n=14)
         summary_day["risk_category"] = risk_level(day["date"])
-        new_cases_7d_100k = per_100k(new_cases_7d["value"]/7)
-        summary_day["new_cases_7d_100k"] = new_cases_7d_100k
-        summary_day["risk_meter_offset"] = risk_meter_offset(new_cases_7d_100k)
+        new_cases_14d_100k = per_100k(new_cases_14d["value"]/14)
+        summary_day["new_cases_14d_100k"] = new_cases_14d_100k
+        summary_day["risk_meter_offset"] = risk_meter_offset(new_cases_14d_100k)
 
         # New cases past week and change
         summary_day["new_cases_7d"] = new_cases_7d
