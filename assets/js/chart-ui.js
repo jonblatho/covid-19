@@ -90,7 +90,7 @@ function reloadChart(type, data) {
                     min: '2020-04-01',
                     max: end_date,
                     time: {
-                        tooltipFormat: 'MMMM D, yyyy',
+                        tooltipFormat: 'ddd. MMMM D, yyyy',
                         unit: 'month'
                     }
                 },
@@ -116,7 +116,8 @@ function reloadChart(type, data) {
             interaction: {
                 mode: 'index',
                 intersect: false
-            }
+            },
+            animation: false
         }
     });
 
