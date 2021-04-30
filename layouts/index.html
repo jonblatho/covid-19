@@ -6,8 +6,8 @@
 {{ partial "header.html" . }}
 {{ partial "chart.html" . }}
 {{ partial "dashboard.html" . }}
-{{ if isset $data.active_cases "value" }}
-{{ if ge $data.active_cases.value 10 }}
+{{ if isset $data.new_cases_7d "value" }}
+{{ if ge $data.new_cases_7d.value 20 }}
 {{ partial "active-by-town.html" . }}
 {{ end }}
 {{ end }}
