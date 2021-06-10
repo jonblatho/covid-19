@@ -11,7 +11,7 @@ jobs:
     steps:
       # Archive HCHD dashboard
       - name: Archive HCHD Dashboard
-        uses: jonblatho/wayback@release
+        uses: jonblatho/wayback@1.3.7
         id: archive
         with:
           url: https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/
