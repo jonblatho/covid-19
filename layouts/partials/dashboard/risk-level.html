@@ -4,7 +4,7 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.risk_category }}
-<div class="risk-category risk-border-left-{{ $data.risk_category }}">
+<div id="risk-category" class="risk-border-left-{{ $data.risk_category }}">
     <div class="content">
         <div class="label">Risk Level</div>
         <div class="category-name">{{ humanize $data.risk_category }}</div>

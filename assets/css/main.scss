@@ -38,10 +38,12 @@ header {
 }
 
 #site-nav {
+    position: sticky;
     height: 44px;
     padding: 0 20px;
     background: $primary;
     font-size: 16px;
+    z-index: 1000;
 
     .nav-item {
         display: inline-block;
@@ -210,13 +212,14 @@ a {
     max-height: 500px;
 }
 
-.risk-category {
+#risk-category {
     position: relative;
     max-width: 350px;
     margin: 20px auto 0;
     padding: 0 20px 0 20px;
     border-left-style: solid;
     border-left-width: 6px;
+    z-index: 1;
 
     .label {
         padding-bottom: 10px;
