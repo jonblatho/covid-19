@@ -1,0 +1,44 @@
+name: Rebuild Site
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    name: Rebuild Site
+    runs-on: ubuntu-20.04
+    env:
+      TZ: America/Chicago
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GH_PAT }}
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: '3.9.2'
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+      - name: Install NPM
+        uses: actions/setup-node@v1
+      - name: Install Chart.js and Dependencies
+        run: npm install
+      - name: Rebuild Site
+        run: npm run rebuild
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v7
+        with:
+          add: 'assets/ content/ daily-data/ data/ docs/'
+          default_author: github_actions
+          message: 'chore: rebuild site'
+          signoff: true
+          branch: main
+          push: true
