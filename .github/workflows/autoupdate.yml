@@ -17,16 +17,6 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.GH_PAT }}
-      - name: Import GPG Key
-        uses: crazy-max/ghaction-import-gpg@v3
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git-user-signingkey: true
-          git-commit-gpgsign: true
-      - name: Setup Git
-        run: |
-          git config user.name "Jonathan Thornton [Automated]"
-          git config user.email "github+bot@jonblatho.com"
       - name: Setup Python
         uses: "actions/setup-python@v2"
         with:
@@ -43,6 +33,14 @@ jobs:
           files: |
             daily-data
             data
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: 'assets/ content/ daily-data/ data/ docs/'
+          default_author: github_actions
+          message: 'chore: add daily data'
+          signoff: true
+          branch: main
+          push: true
       - name: Commit Changes and Push
         if: steps.changed_files.outputs.files_changed == 'true'
         run: |
@@ -66,16 +64,6 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.GH_PAT }}
-      - name: Import GPG Key
-        uses: crazy-max/ghaction-import-gpg@v3
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git-user-signingkey: true
-          git-commit-gpgsign: true
-      - name: Setup Git
-        run: |
-          git config user.name "Jonathan Thornton [Automated]"
-          git config user.email "github+bot@jonblatho.com"
       - name: Setup Python
         uses: "actions/setup-python@v2"
         with:
@@ -91,13 +79,14 @@ jobs:
       - name: Add URL to Data
         if: steps.archive.outputs.wayback_url != ''
         run: python add-archive-url.py ${{ steps.archive.outputs.wayback_url }}
-      - name: Commit Changes and Push
-        if: steps.archive.outputs.wayback_url != ''
-        run: |
-          git add docs/
-          git add daily-data/
-          git commit -am 'chore: add archive URL [automated]'
-          git push
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: 'assets/ content/ daily-data/ data/ docs/'
+          default_author: github_actions
+          message: 'chore: add archive URL'
+          signoff: true
+          branch: main
+          push: true
   rebuild:
     name: Rebuild Site
     runs-on: ubuntu-20.04
@@ -111,16 +100,6 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.GH_PAT }}
-      - name: Import GPG Key
-        uses: crazy-max/ghaction-import-gpg@v3
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git-user-signingkey: true
-          git-commit-gpgsign: true
-      - name: Setup Git
-        run: |
-          git config user.name "Jonathan Thornton [Automated]"
-          git config user.email "github+bot@jonblatho.com"
       - name: Setup Python
         uses: "actions/setup-python@v2"
         with:
@@ -136,9 +115,12 @@ jobs:
         run: npm install
       - name: Rebuild Site
         run: npm run rebuild
-      - name: Commit Changes and Push
-        run: |
-          git add docs/
-          git add daily-data/
-          git commit -am 'chore: rebuild site [automated]'
-          git push
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v7
+        with:
+          add: 'assets/ content/ daily-data/ data/ docs/'
+          default_author: github_actions
+          message: 'chore: rebuild site'
+          signoff: true
+          branch: main
+          push: true
