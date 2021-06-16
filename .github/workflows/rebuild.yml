@@ -16,9 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: main
-          token: ${{ secrets.GH_PAT }}
       - name: Setup Python
         uses: "actions/setup-python@v2"
         with:
@@ -39,7 +36,6 @@ jobs:
         with:
           add: 'assets/ content/ daily-data/ data/ docs/'
           default_author: github_actions
-          message: 'chore: rebuild site'
-          signoff: true
+          message: 'chore: rebuild site [skip actions]'
           branch: main
           push: true
