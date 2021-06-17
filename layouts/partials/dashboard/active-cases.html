@@ -24,7 +24,7 @@
         <span class="change-bad">&uarr; 
         {{ else if lt $data.active_cases_change.value 0 }}
         <span class="change-good">&darr; 
-        {{ else if and (lt $data.active_cases_change.value 1) (lt $data.active_cases_change.value 1) }}
+        {{ else if and (lt $data.active_cases.value 1) (lt $data.active_cases_change.value 1) }}
         <span class="change-good">&rarr; 
         {{ else }}
         <span class="change-neutral">&rarr;
