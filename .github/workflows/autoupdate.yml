@@ -47,7 +47,7 @@ jobs:
           default_author: github_actions
           message: 'chore: add daily data'
           branch: main
-          push: true
+          push: false
 
       # Archive the HCHD dashboard to the Wayback Machine
       - name: Archive HCHD Dashboard
