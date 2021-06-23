@@ -562,9 +562,20 @@ footer {
     padding: 30px 15px;
     border-top: 1px solid #ddd;
     color: rgba(0,0,0,0.6);
-    font-size: 80%;
+    font-size: 12px;
     line-height: 20px;
     text-align: center;
+    
+    .wrap {
+        max-width: 400px;
+    }
+
+    .disclaimer {
+        margin-top: 20px;
+        color: #888;
+        font-size: 10px;
+        line-height: 16px;
+    }
 }
 
 @import 'responsive.scss';
