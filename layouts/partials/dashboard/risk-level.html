@@ -13,15 +13,15 @@
         </div>
         <div class="category-value">
         {{ if eq $data.risk_category "low" }}
-            Data indicates that COVID-19 poses a <strong>low risk</strong> in Howell County. Please keep masking and social distancing to help keep our risk level low.
+            Data indicates that COVID-19 poses a limited risk in Howell County at this time.
         {{ else if eq $data.risk_category "moderate" }}
-            Data indicates that COVID-19 poses a <strong>moderate risk</strong> in Howell County. The disease is spreading slowly and poses an outside risk of an eventual outbreak if not contained.
+            COVID-19 is spreading slowly, but poses some risk of an outbreak in Howell County.
         {{ else if eq $data.risk_category "high" }}
-            Data indicates that COVID-19 poses a <strong>high risk</strong> in Howell County. The disease is spreading quickly, putting the county at risk of an outbreak.
+            COVID-19 is spreading quickly in Howell County, with a significant risk of an outbreak.
         {{ else if eq $data.risk_category "critical" }}
-            Data indicates that COVID-19 poses a <strong>critical risk</strong> in Howell County. The disease is spreading very rapidly, and an outbreak is imminent or ongoing.
+            COVID-19 is spreading very rapidly in Howell County; an outbreak is imminent or ongoing.
         {{ else if eq $data.risk_category "extreme" }}
-            Data indicates that COVID-19 poses an <strong>extreme risk</strong> in Howell County. The disease is spreading freely &mdash; a severe outbreak is ongoing.
+            A severe outbreak of COVID-19 is ongoing in Howell County.
         {{ end }}
         </div>
     </div>
