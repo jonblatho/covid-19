@@ -18,6 +18,13 @@ for month_path in month_files:
 # Sort daily data by date
 daily_data = sorted(daily_data, key = lambda i : i['date'])
 
+# Temporarily ignore new new_cases keys for smaller towns
+for day in daily_data:
+    keys = list(day["new_cases"].keys())[:]
+    for key in keys:
+        if key not in ["west_plains", "willow_springs", "mountain_view", "other"]:
+            day["new_cases"].pop(key, None)
+
 # Outputs JSON for the given dictionary or list to the given path.
 def save_json(x, path):
     with open(path, 'w+') as output_file:
