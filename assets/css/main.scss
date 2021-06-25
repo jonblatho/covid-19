@@ -246,10 +246,21 @@ a {
         font-size: 12px;
     }
 
+    .button {
+        display: block;
+        margin-top: 12px;
+        padding: 10px 0;
+        background: #0f81c4;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+
     #meter {
         position: absolute;
         top: 30px;
-        right: 10px;
+        right: 19px;
     }
 
     .meter-segment {
