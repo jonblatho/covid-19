@@ -4,12 +4,14 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-        <header>
-            <div class="wrap">
-                <a href="{{ .Site.BaseURL }}"><h1>COVID-19 in Howell County, MO</h1></a>
-                <p id="last-updated">as of {{ dateFormat "January 2, 2006" $date }}</p>
-            </div>
-        </header>
+        <a href="{{ .Site.BaseURL }}">
+            <header>
+                <div class="wrap">
+                    <h1>COVID-19 in Howell County</h1>
+                    <p id="last-updated">as of {{ dateFormat "January 2, 2006" $date }}</p>
+                </div>
+            </header>
+        </a>
         <nav id="site-nav" {{ if or (ne .Params.layout "table") $.IsHome }}style="position:sticky !important;top:0 !important;"{{ end }}>
             <ul class="wrap" style="padding:0 0 !important;">
                 {{ $currentPage := . }}
