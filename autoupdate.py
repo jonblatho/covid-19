@@ -5,7 +5,7 @@ sys.path.append(os.path.realpath('.'))
 from process import cases_added, tests_added, daily_data, mtd_data
 import urllib.request
 
-last_date = daily_data[-1]["date"]
+last_date = daily_data[-1]
 
 # URLs for the necessary data from the HCHD dashboard API
 date_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16005?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Update date
@@ -16,7 +16,7 @@ with urllib.request.urlopen(date_uri) as date_url:
     date = date_json["data"]["summary"]["values"][1][:10]
     if date in [day["date"] for day in daily_data]:
         print('Already have data for '+date+'. Exiting.')
-        sys.exit()
+        # sys.exit()
     else:
         print('Updating daily data file for '+date+'...')
 
@@ -60,19 +60,50 @@ print('Deaths: '+str(deaths))
 with urllib.request.urlopen(town_uri) as town_url:
     # Get total cases by town
     town_data = json.loads(town_url.read().decode())
-    new_wp_cases = int(town_data["data"]["county_list"][13]["values"][2].replace(',', '')) - old_wp_total
-    new_ws_cases = int(town_data["data"]["county_list"][14]["values"][2].replace(',', '')) - old_ws_total
-    new_mv_cases = int(town_data["data"]["county_list"][8]["values"][2].replace(',', '')) - old_mv_total
-    new_other_cases = new_cases - new_wp_cases - new_ws_cases - new_mv_cases
+
+    towns = [item["values"][1] for item in town_data["data"]["county_list"]]
+    town_dict = {
+        "bakersfield": towns.index("Bakersfield"),
+        "brandsville": towns.index("Brandsville"),
+        "cabool": towns.index("Cabool"),
+        "caulfield": towns.index("Caulfield"),
+        "dora": towns.index("Dora"),
+        "koshkonong": towns.index("Koshkonong"),
+        "moody": towns.index("Moody"),
+        "mountain_view": towns.index("Mountain View"),
+        "peace_valley": towns.index("Peace Valley"),
+        "pomona": towns.index("Pomona"),
+        "pottersville": towns.index("Pottersville"),
+        "summersville": towns.index("Summersville"),
+        "west_plains": towns.index("West Plains"),
+        "willow_springs": towns.index("Willow Springs"),
+        "unknown": towns.index("No City Specified")
+    }
+
+    town_cases_dict = {}
+
+    for town in town_dict:
+        town_cases_dict[town] = 0
+        old_total = sum([day["new_cases"][town] for day in daily_data])
+        try:
+            new_total = int(town_data["data"]["county_list"][town_dict[town]]["values"][2].replace(',', ''))
+        except ValueError:
+            # Assume the new total is unchanged for now if the value is "Less than 10"
+            new_total = old_total
+        town_cases_dict[town] = new_total - old_total
+
+    if sum(town_cases_dict.values()) < new_cases:
+        # If there is a gap between the known total of new cases and the per-town totals, add them into "unknown"
+        town_cases_dict["unknown"] += new_cases - sum(town_cases_dict.values())
 
 # Estimate new tests
-old_cases_added_14d = cases_added(last_date, n=14)["value"]
-old_tests_added_14d = tests_added(last_date, n=14)["value"]
-new_cases_added_14d = cases_added(last_date, n=13)["value"] + total_cases - old_hc_total
+old_cases_added_14d = cases_added(last_date["date"], n=14)["value"]
+old_tests_added_14d = tests_added(last_date["date"], n=14)["value"]
+new_cases_added_14d = cases_added(last_date["date"], n=13)["value"] + total_cases - old_hc_total
 # 14D positivity rate maintained by tests_new = cases_new / cases_old * tests_old
 new_tests_added_14d = int(round(new_cases_added_14d / old_cases_added_14d * old_tests_added_14d, 0))
 # Tests to subtract for the prior 13 days to get to the estimated new tests
-new_tests_added_13d = tests_added(last_date, n=13)["value"]
+new_tests_added_13d = tests_added(last_date["date"], n=13)["value"]
 new_tests_est = max(total_cases - old_hc_total, new_tests_added_14d - new_tests_added_13d)
 total_tests_est = daily_data[-1]["tests"] + new_tests_est
 print('Tests (est.): '+str(total_tests_est)+' (+'+str(new_tests_est)+')')
@@ -80,12 +111,7 @@ print('Tests (est.): '+str(total_tests_est)+' (+'+str(new_tests_est)+')')
 # Create new data dictionary to append to the daily data file
 new_data = {
     'date': date,
-    'new_cases': {
-        'west_plains': new_wp_cases,
-        'willow_springs': new_ws_cases,
-        'mountain_view': new_mv_cases,
-        'other': new_other_cases
-    },
+    'new_cases': town_cases_dict,
     'active_cases': active_cases,
     'hospitalizations': hospitalizations,
     'deaths': deaths,
@@ -100,7 +126,7 @@ new_data = {
     'sources': None
 }
 
-if date[:7] != last_date[:7]:
+if date[:7] != last_date["date"][:7]:
     # If we have entered a new month, MTD data will be empty (the mtd_data() function 
     # from process.py will return the previous month's data, which is fine for that 
     # script but not this one)
