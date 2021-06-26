@@ -15,25 +15,25 @@ body {
 }
 
 header {
-    padding: 30px 10px;
+    padding: 20px 10px;
     background: $secondary;
     color: #fff;
+    text-align: center;
 
     a {
         display: inline-block;
     }
 
     h1 {
-        padding: 10px 0 5px;
+        margin-bottom: 6px;
         color: #fff;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
-        line-height: 30px;
     }
 
     #last-updated {
         color: rgba(255,255,255,0.5);
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
@@ -43,11 +43,12 @@ header {
     padding: 0 20px;
     background: $primary;
     font-size: 16px;
+    text-align: center;
     z-index: 1000;
 
     .nav-item {
         display: inline-block;
-        padding-right: 20px;
+        padding: 0 10px;
         line-height: 44px;
 
         a {
@@ -78,16 +79,45 @@ header {
 }
 
 #time-machine-nav {
-    padding: 20px 10px;
+    position: relative;
+    max-width: 300px;
+    height: 34px;
+    margin: 10px auto;
+    padding: 0;
+    background: #0d6da5;
+    border-radius: 17px;
+    box-shadow: 0 0.3em 1em rgba(0,0,0,0.2);
+    font-size: 12px;
+    text-align: center;
+    z-index: 8;
+
+    .label {
+        color: rgba(255,255,255,0.6);
+        letter-spacing: 1px;
+        line-height: 34px;
+        text-transform: uppercase;
+    }
 
     a {
+        position: absolute;
+        top: 0;
         display: inline-block;
-        margin-bottom: 10px;
-        padding: 10px;
+        height: 12px;
+        margin: 3px;
+        padding: 8px;
         background: #0f81c4;
-        border-radius: 6px;
+        border-radius: 14px;
         color: #fff;
         font-weight: 600;
+        float: none !important;
+
+        &.left {
+            left: 0;
+        }
+
+        &.right {
+            right: 0;
+        }
     }
 }
 
