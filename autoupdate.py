@@ -30,11 +30,7 @@ cases_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCo
 hospitalizations_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16006?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Hospitalizations
 town_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16007?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Total cases by town
 
-old_wp_total = sum([day["new_cases"]["west_plains"] for day in daily_data])
-old_ws_total = sum([day["new_cases"]["willow_springs"] for day in daily_data])
-old_mv_total = sum([day["new_cases"]["mountain_view"] for day in daily_data])
-old_other_total = sum([day["new_cases"]["other"] for day in daily_data])
-old_hc_total = old_wp_total + old_ws_total + old_mv_total + old_other_total
+old_hc_total = sum([sum(day["new_cases"].values()) for day in daily_data])
 
 with urllib.request.urlopen(cases_uri) as cases_url:
     # Get total cases, active cases, and deaths
@@ -134,6 +130,11 @@ if date[:7] != last_date["date"][:7]:
 else:
     mtd = mtd_data()
 mtd.append(new_data)
+
+# Filter out "total" and "other" keys
+for day in mtd:
+    for key in ["total", "other"]:
+        day["new_cases"].pop(key, None)
 
 # Append the new data to the data file
 with open(data_path, 'w+') as data_file:
