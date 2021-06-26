@@ -9,6 +9,7 @@ body {
 }
 
 .wrap {
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 10px;
 }
@@ -98,6 +99,8 @@ header {
     }
 
     a {
+        position: absolute;
+        top: 0;
         display: inline-block;
         height: 12px;
         margin: 3px;
@@ -106,6 +109,15 @@ header {
         border-radius: 14px;
         color: #fff;
         font-weight: 600;
+        float: none !important;
+
+        &.left {
+            left: 0;
+        }
+
+        &.right {
+            right: 0;
+        }
     }
 }
 

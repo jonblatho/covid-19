@@ -38,15 +38,15 @@
         {{ if or .IsHome (eq .Params.layout "time-machine") }}
         <nav id="time-machine-nav" class="wrap">
             {{ if isset $data "prev_date" }}
-            <a href="{{ .Site.BaseURL }}time-machine/{{ $data.prev_date }}"style="float:left;">&larr; {{ dateFormat "1/2/06" $data.prev_date }}</a>
+            <a href="{{ .Site.BaseURL }}time-machine/{{ $data.prev_date }}" class="left">&larr; {{ dateFormat "1/2/06" $data.prev_date }}</a>
             {{ end }}
             <span class="label">Time Machine</span>
             {{ if isset $data "next_date" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $data.next_date }}" style="float:right;">{{ dateFormat "1/2/06" $data.next_date }} &rarr;</a>
             {{ else if ne .Params.layout "time-machine" }}
-            <a href="{{ .Site.BaseURL }}time-machine/{{ $date }}" style="float:right;">Permalink</a>
+            <a href="{{ .Site.BaseURL }}time-machine/{{ $date }}" class="right">Permalink</a>
             {{ else }}
-            <a href="{{ .Site.BaseURL }}" style="float:right;">Home</a>
+            <a href="{{ .Site.BaseURL }}" class="right">Home</a>
             {{ end }}
         </nav>
         <div class="clear"></div>
