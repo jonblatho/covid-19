@@ -131,10 +131,9 @@ else:
     mtd = mtd_data()
 mtd.append(new_data)
 
-# Filter out "total" and "other" keys
+# Filter out "other" keys
 for day in mtd:
-    for key in ["total", "other"]:
-        day["new_cases"].pop(key, None)
+    day["new_cases"].pop("other", None)
 
 # Append the new data to the data file
 with open(data_path, 'w+') as data_file:
