@@ -29,7 +29,7 @@ date_index = index_for_date(args.date)
 data = daily_data[:date_index+1]
 
 # Find the most recent day with a confirmed test count
-most_recent_confirmed = [d for d in data if not d["estimates"]["tests"]][-1]["date"]
+most_recent_confirmed = [d for d in data[:-1] if not d["estimates"]["tests"]][-1]["date"]
 i0 = index_for_date(most_recent_confirmed)
 # Create range of indices over which we'll be applying estimates
 index_range = range(i0+1, date_index+1)
