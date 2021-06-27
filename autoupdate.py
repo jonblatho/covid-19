@@ -16,7 +16,7 @@ with urllib.request.urlopen(date_uri) as date_url:
     date = date_json["data"]["summary"]["values"][1][:10]
     if date in [day["date"] for day in daily_data]:
         print('Already have data for '+date+'. Exiting.')
-        # sys.exit()
+        sys.exit()
     else:
         print('Updating daily data file for '+date+'...')
 
