@@ -30,7 +30,7 @@ cases_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCo
 hospitalizations_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16006?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Hospitalizations
 town_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16007?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Total cases by town
 
-old_hc_total = sum([sum(day["new_cases"].values()) for day in daily_data])
+old_hc_total = sum([sum(day["new_cases"].values()) - day["new_cases"]["other"] for day in daily_data])
 
 with urllib.request.urlopen(cases_uri) as cases_url:
     # Get total cases, active cases, and deaths

@@ -20,8 +20,7 @@ daily_data = sorted(daily_data, key = lambda i : i['date'])
 
 # Calculate "other" new cases by summing smaller towns' new cases.
 for day in daily_data:
-    day["new_cases"]["total"] = sum(day["new_cases"].values())
-    day["new_cases"]["other"] = day["new_cases"]["total"] - day["new_cases"]["west_plains"] - day["new_cases"]["willow_springs"] - day["new_cases"]["mountain_view"]
+    day["new_cases"]["other"] = sum(day["new_cases"].values()) - day["new_cases"]["west_plains"] - day["new_cases"]["willow_springs"] - day["new_cases"]["mountain_view"]
 
 # Outputs JSON for the given dictionary or list to the given path.
 def save_json(x, path):
@@ -102,7 +101,7 @@ def data_past_n_days(n):
 # Returns a list of summed new cases for the county and by town 
 # for the given data slice.
 def case_sum_list(d):
-    cases = [sum([day["new_cases"]["total"] for day in d])]
+    cases = [sum([sum(day["new_cases"].values()) - day["new_cases"]["other"] for day in d])]
     for slug in city_slugs:
         cases.append(sum([day["new_cases"][slug] for day in d]))
     return cases
@@ -129,7 +128,7 @@ def cases_added(d, n=7):
     end_index = min(index_for_date(d), index_for_date(today))
     start_index = max(0, end_index-n+1)
     estimated = bool(daily_data[start_index]["estimates"]["cases"] or daily_data[end_index]["estimates"]["cases"])
-    return {'value': sum([day["new_cases"]["total"] for day in daily_data[start_index:end_index+1]]), 'estimate': estimated}
+    return {'value': sum([sum(day["new_cases"].values()) - day["new_cases"]["other"] for day in daily_data[start_index:end_index+1]]), 'estimate': estimated}
 
 # Returns a categorical risk level describing the risk of COVID-19
 # in the county based on the average daily number of new cases over
@@ -406,7 +405,7 @@ if __name__ == "__main__":
         chart_day["new_cases"] = dict(zip(city_slugs_county, case_sum_list([day])))
         # Calculate 7D average new cases
         if i >= 7:
-            chart_day["average_daily_cases_7d"] = round(sum([day_data["new_cases"]["total"] for day_data in daily_data[i-6:i+1]])/7, 1)
+            chart_day["average_daily_cases_7d"] = round(sum([sum(day_data["new_cases"].values()) - day_data["new_cases"]["other"] for day_data in daily_data[i-6:i+1]])/7, 1)
         # Transfer active cases
         chart_day["active_cases"] = day["active_cases"]
         # Calculate 7D average active cases
