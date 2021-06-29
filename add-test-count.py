@@ -49,6 +49,10 @@ if url is not None and daily_data[date_index]["sources"] is not None:
 elif url is not None:
     data[date_index]["sources"] = [url]
 
+for day in daily_data:
+    if "other" in day["new_cases"]:
+        day["new_cases"].pop("other", None)
+
 # Split modified data by month and save
 months = __unique__([d["date"][:7] for d in data[index_start:index_end]])
 for month in months:
