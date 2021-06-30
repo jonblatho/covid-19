@@ -2,6 +2,7 @@ import json
 from calendar import monthrange
 from datetime import date
 from glob import glob
+from utilities import utilities
 
 cities = ["Howell County", "West Plains", "Willow Springs", "Mountain View", "Other"]
 city_slugs = ["west_plains", "willow_springs", "mountain_view", "other"]
@@ -203,36 +204,6 @@ def risk_level(d):
     return None
 
 if __name__ == "__main__":
-    # Calculate date-relative totals
-    relative = dict()
-    for i, day in enumerate(daily_data):
-        cases_new = case_sum_list([day])
-        cases_past_week = case_sum_list(data_days_ended(7, day["date"]))
-        cases_mtd = case_sum_list(data_for_month(day["date"][:7], day["date"]))
-        cases_ytd = case_sum_list(ytd_data(day["date"]))
-        cases_cumulative = case_sum_list(daily_data[:i+1])
-        cases_relative = [
-            {'label': 'Today', 'totals': cases_new},
-            {'label': 'Past Week', 'totals': cases_past_week},
-            {'label': 'MTD', 'totals': cases_mtd},
-            {'label': 'YTD', 'totals': cases_ytd},
-            {'label': 'All', 'totals': cases_cumulative}
-        ]
-        relative[day["date"]] = cases_relative
-    # Save the JSON file
-    save_json(relative, 'data/relative.json')
-
-    # Calculate monthly totals
-    monthly_totals = dict()
-    for i, day in enumerate(daily_data):
-        monthly_totals[day["date"]] = [{'month': month, 'totals': case_sum_list(data_for_month(month, day["date"]))} for month in months_list(day["date"])]
-    save_json(monthly_totals, 'data/monthly.json')
-
-    # Calculate active cases by town
-    active_by_town = dict()
-    for i, day in enumerate(daily_data):
-        active_by_town[day["date"]] = [{'town': cities[i+1], 'active': active_cases_by_town(day["date"])[i]} for i, _ in enumerate(active_cases_by_town())]
-    save_json(active_by_town, 'data/active_town.json')
 
     # Calculate summary data
     summary = dict()
@@ -423,3 +394,62 @@ if __name__ == "__main__":
             chart_day["positivity_rate"] = positivity_rate(day["date"])["value"]
         chart_data.append(chart_day)
     save_json(chart_data, 'assets/js/chart-data.json')
+
+data = utilities.data.all
+
+if __name__ == "__main__":
+    # Temporary compatibility for expected output format in Hugo source files for some data
+    def __case_sum_list__(case_sums):
+        return [case_sums["howell_county"], case_sums["west_plains"], case_sums["willow_springs"], case_sums["mountain_view"], case_sums["other"]]
+
+    # Returns a list of months for the date
+    def __months_list__(d):
+        months = utilities.unique([day["date"][:7] for day in utilities.data.cumulative_data(d)])
+        return months
+
+    relative = {}
+    monthly = {}
+    active_by_town = {}
+
+    for i, day in enumerate(utilities.data.all):
+        date = day["date"]
+        print(f"Processing summary data for {date}...")
+
+        # Calculate date-relative totals
+        cases_new = utilities.calc.case_sums([utilities.data.data_for_date(date)])
+        cases_past_week = utilities.calc.case_sums(utilities.data.data_for_days_ended(7, date))
+        cases_mtd = utilities.calc.case_sums(utilities.data.mtd_data(date))
+        cases_ytd = utilities.calc.case_sums(utilities.data.ytd_data(date))
+        cases_all = utilities.calc.case_sums(utilities.data.cumulative_data(date))
+        relative[date] = [
+            {'label': 'Today', 'totals': __case_sum_list__(cases_new)},
+            {'label': 'Past Week', 'totals': __case_sum_list__(cases_past_week)},
+            {'label': 'MTD', 'totals': __case_sum_list__(cases_mtd)},
+            {'label': 'YTD', 'totals': __case_sum_list__(cases_ytd)},
+            {'label': 'All', 'totals': __case_sum_list__(cases_all)},
+        ]
+
+        # Calculate monthly totals
+        monthly[date] = [{'month': month, 'totals': __case_sum_list__(utilities.calc.case_sums(utilities.data.data_for_month(month, date)))} for month in __months_list__(date)]
+
+        # Calculate estimated active cases by town
+        active_by_town_estimates = utilities.calc.active_cases_by_town(date)
+        active_by_town[date] = []
+        for town in ["west_plains", "willow_springs", "mountain_view"]:
+            active_by_town[date].append({
+                'town': utilities.geo.towns[town]["formatted"],
+                'active': active_by_town_estimates[town]
+            })
+        for group in ["other"]:
+            group_dict = {
+                'town': utilities.geo.groups[group]["formatted"],
+                'active': 0
+            }
+            for town in utilities.geo.groups[group]["towns"]:
+                group_dict["active"] += active_by_town_estimates[town]
+            active_by_town[date].append(group_dict)
+    
+    utilities.save_json(relative, 'data/relative.json')
+    utilities.save_json(monthly, 'data/monthly.json')
+    utilities.save_json(active_by_town, 'data/active_town.json')
+    utilities.save_json(summary, 'data/summary.json')
