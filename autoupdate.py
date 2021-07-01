@@ -1,11 +1,13 @@
 import json
 import os
 import sys
+from utilities.calc import case_sums
 sys.path.append(os.path.realpath('.'))
-from process import cases_added, tests_added, daily_data, mtd_data
+# from process import cases_added, tests_added, daily_data, mtd_data
+from utilities import utilities
 import urllib.request
 
-last_date = daily_data[-1]
+last_date = utilities.data.today
 
 # URLs for the necessary data from the HCHD dashboard API
 date_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16005?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Update date
@@ -14,7 +16,7 @@ with urllib.request.urlopen(date_uri) as date_url:
     # If the most recent update is already present the data files, exit immediately
     date_json = json.loads(date_url.read().decode())
     date = date_json["data"]["summary"]["values"][1][:10]
-    if date in [day["date"] for day in daily_data]:
+    if date in [day["date"] for day in utilities.data.all]:
         print('Already have data for '+date+'. Exiting.')
         sys.exit()
     else:
@@ -30,7 +32,7 @@ cases_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCo
 hospitalizations_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16006?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Hospitalizations
 town_uri = "https://services.engagementnetwork.org/api-report/v1/indicator/MOCountyCovid/16007?area_ids=05000US29091&area_type=geoid&output_chart=0&output_desc=0&output_source=0" # Total cases by town
 
-old_hc_total = sum([sum(day["new_cases"].values()) - day["new_cases"]["other"] for day in daily_data])
+old_hc_total = case_sums(utilities.data.all)["howell_county"]
 
 with urllib.request.urlopen(cases_uri) as cases_url:
     # Get total cases, active cases, and deaths
@@ -80,7 +82,7 @@ with urllib.request.urlopen(town_uri) as town_url:
 
     for town in town_dict:
         town_cases_dict[town] = 0
-        old_total = sum([day["new_cases"][town] for day in daily_data])
+        old_total = sum([day["new_cases"][town] for day in utilities.data.all])
         try:
             new_total = int(town_data["data"]["county_list"][town_dict[town]]["values"][2].replace(',', ''))
         except ValueError:
@@ -93,15 +95,15 @@ with urllib.request.urlopen(town_uri) as town_url:
         town_cases_dict["unknown"] += new_cases - sum(town_cases_dict.values())
 
 # Estimate new tests
-old_cases_added_14d = cases_added(last_date["date"], n=14)["value"]
-old_tests_added_14d = tests_added(last_date["date"], n=14)["value"]
-new_cases_added_14d = cases_added(last_date["date"], n=13)["value"] + total_cases - old_hc_total
+old_cases_added_14d = utilities.calc.cases_added(last_date["date"], n=14)["cases"]["howell_county"]
+old_tests_added_14d = utilities.calc.tests_added(last_date["date"], n=14)["tests"]
+new_cases_added_14d = utilities.calc.cases_added(last_date["date"], n=13)["cases"]["howell_county"] + total_cases - old_hc_total
 # 14D positivity rate maintained by tests_new = cases_new / cases_old * tests_old
 new_tests_added_14d = int(round(new_cases_added_14d / old_cases_added_14d * old_tests_added_14d, 0))
 # Tests to subtract for the prior 13 days to get to the estimated new tests
-new_tests_added_13d = tests_added(last_date["date"], n=13)["value"]
+new_tests_added_13d = utilities.calc.tests_added(last_date["date"], n=13)["tests"]
 new_tests_est = max(total_cases - old_hc_total, new_tests_added_14d - new_tests_added_13d)
-total_tests_est = daily_data[-1]["tests"] + new_tests_est
+total_tests_est = last_date["tests"] + new_tests_est
 print('Tests (est.): '+str(total_tests_est)+' (+'+str(new_tests_est)+')')
 
 # Create new data dictionary to append to the daily data file
@@ -128,12 +130,8 @@ if date[:7] != last_date["date"][:7]:
     # script but not this one)
     mtd = []
 else:
-    mtd = mtd_data()
+    mtd = utilities.data.mtd_data(date)
 mtd.append(new_data)
-
-# Filter out "other" keys
-for day in mtd:
-    day["new_cases"].pop("other", None)
 
 # Append the new data to the data file
 with open(data_path, 'w+') as data_file:
