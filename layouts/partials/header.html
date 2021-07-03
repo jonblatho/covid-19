@@ -42,7 +42,7 @@
             {{ end }}
             <span class="label">Time Machine</span>
             {{ if isset $data "next_date" }}
-            <a href="{{ .Site.BaseURL }}time-machine/{{ $data.next_date }}" style="float:right;">{{ dateFormat "1/2/06" $data.next_date }} &rarr;</a>
+            <a href="{{ .Site.BaseURL }}time-machine/{{ $data.next_date }}" class="right">{{ dateFormat "1/2/06" $data.next_date }} &rarr;</a>
             {{ else if ne .Params.layout "time-machine" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $date }}" class="right">Permalink</a>
             {{ else }}
