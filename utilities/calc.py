@@ -269,7 +269,7 @@ def table_dict(d):
     # Transfer date key
     table_day["date"] = data["date"]
     # Calculate total and new cases
-    total_cases = __case_sum_list__(utilities.calc.case_sums(utilities.data.all))
+    total_cases = __case_sum_list__(utilities.calc.case_sums(utilities.data.cumulative_data(d)))
     new_cases = __case_sum_list__(utilities.calc.case_sums([utilities.data.data_for_date(d)]))
     table_day["total_cases"] = dict(zip(__city_slugs_county__, total_cases))
     table_day["new_cases"] = dict(zip(__city_slugs_county__, new_cases))
