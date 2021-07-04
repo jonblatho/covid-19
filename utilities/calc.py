@@ -326,4 +326,15 @@ def chart_dict(d):
     # Where possible, calculate the 14D positivity rate and risk level
     if positivity_rate(data["date"]) is not None:
         chart_day["positivity_rate"] = positivity_rate(data["date"])["positivity_rate"]
+    # Calculate vaccine doses and vaccinated residents
+    if data["vaccinations"] is not None:
+        chart_day["doses"] = data["vaccinations"]["doses"]
+        vaccine_data = [day["vaccinations"] for day in utilities.data.cumulative_data(d) if day["vaccinations"] is not None]
+        chart_day["doses_average_7d"] = round(sum([day["doses"] for day in vaccine_data[-7:]])/7, 1)
+        chart_day["initiated"] = sum([day["initiated"] for day in vaccine_data])
+        chart_day["completed"] = sum([day["completed"] for day in vaccine_data])
+    else:
+        chart_day["doses"] = None
+        chart_day["initiated"] = None
+        chart_day["completed"] = None
     return chart_day

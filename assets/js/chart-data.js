@@ -3,9 +3,24 @@ function chartLabels(type, data) {
 
     if(type == 'pos_rate') {
         dates = dates.slice(154);
+    } else if (type == 'vaccine_doses' || type == 'vaccine_residents') {
+        dates = dates.slice(154);
     }
 
     return dates
+}
+function fillDataset(values, label, color) {
+    return {
+        data: values,
+        pointRadius: 0,
+        type: 'line',
+        fill: 'origin',
+        label: label,
+        backgroundColor: color,
+        borderWidth: 2,
+        order: 1,
+        lineTension: 0
+    };
 }
 
 function primaryLineDataset(values, label, color) {
@@ -82,6 +97,14 @@ function chartData(type, data) {
         datasets.push(primaryLineDataset(data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN), '14-day Positivity Rate', '#0077cc'));
         var averageDataset = secondaryLineDataset(data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN), '14-day Average Daily Tests');
         averageDataset.yAxisID = 'y_tests';
+        datasets.push(averageDataset);
+    } else if(type == 'vaccine_doses') {
+        datasets.push(primaryLineDataset(data.slice(154).map(day => day["doses_average_7d"] ?? Number.NaN), '7-day Average', '#8915b0'));
+        var averageDataset = secondaryLineDataset(data.slice(154).map(day => day["doses"] ?? Number.NaN), 'Doses Administered');
+        datasets.push(averageDataset);
+    } else if(type == 'vaccine_residents') {
+        datasets.push(fillDataset(data.slice(154).map(day => day["completed"] ?? Number.NaN), 'Fully Vaccinated', '#13d694'));
+        var averageDataset = fillDataset(data.slice(154).map(day => day["initiated"] ?? Number.NaN), 'Initiated Vaccination', '#0fa673');
         datasets.push(averageDataset);
     }
     return datasets;

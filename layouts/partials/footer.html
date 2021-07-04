@@ -27,7 +27,7 @@
             .then(res => res.json())
             .then((out) => {
                 json = out
-                reloadChart('total', json);
+                reloadChart('new', json);
             })
             .catch(err => { throw err } );
         </script>
