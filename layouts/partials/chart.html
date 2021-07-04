@@ -10,19 +10,21 @@
             <div class="left">
                 <div id="dropdown">
                     <div id="dropdown-selected" onclick="showDropdownMenu();">
-                        <span id="selected-chart-name">Total Cases</span>
+                        <span id="selected-chart-name">New Cases</span>
                         <span id="chevron" class="iconify" data-icon="el-chevron-down" data-inline="false"></span>
                     </div>
                     <div id="dropdown-menu" class="hidden">
-                        <div id="total-cases" class="dropdown-item dropdown-item-selected" onclick="changeChart('total', json);">Total Cases</div>
-                        <div id="new-cases" class="dropdown-item" onclick="changeChart('new', json);">New Cases</div>
+                        <div id="new-cases" class="dropdown-item dropdown-item-selected" onclick="changeChart('new', json);">New Cases</div>
+                        <div id="total-cases" class="dropdown-item" onclick="changeChart('total', json);">Total Cases</div>
                         <div id="active-cases" class="dropdown-item" onclick="changeChart('active', json);">Active Cases</div>
                         <div id="positivity-rate" class="dropdown-item" onclick="changeChart('pos_rate', json);">Testing</div>
+                        <div id="vaccine-doses" class="dropdown-item" onclick="changeChart('vaccine_doses', json);">Vaccine Doses</div>
+                        <div id="vaccine-residents" class="dropdown-item" onclick="changeChart('vaccine_residents', json);">Vaccinated Residents</div>
                     </div>
                 </div>
             </div>
             <div class="right">
-                <div class="button button-selected" id="date-markers" onclick="changeChart('date_markers', json);">Date Markers</button>
+                <div class="button" id="date-markers" onclick="changeChart('date_markers', json);">Events</button>
             </div>
             <div class="clear"></div>
         </div>

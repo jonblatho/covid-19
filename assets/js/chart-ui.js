@@ -6,10 +6,12 @@ var totalCasesButton = document.getElementById("total-cases");
 var newCasesButton = document.getElementById("new-cases");
 var activeCasesButton = document.getElementById("active-cases");
 var positivityRateButton = document.getElementById("positivity-rate");
+var vaccineDosesButton = document.getElementById("vaccine-doses");
+var vaccineResidentsButton = document.getElementById("vaccine-residents");
 var dateMarkersButton = document.getElementById("date-markers");
 let selectedClassName = "dropdown-item-selected";
-var activeChartType = 'total';
-var prefersDateMarkersOn = true;
+var activeChartType = 'new';
+var prefersDateMarkersOn = false;
 
 function showDropdownMenu() {
     if(dropdownMenu.classList.contains("hidden")) {
@@ -27,6 +29,8 @@ function changeChart(type, data) {
         newCasesButton.classList.remove(selectedClassName);
         activeCasesButton.classList.remove(selectedClassName);
         positivityRateButton.classList.remove(selectedClassName);
+        vaccineDosesButton.classList.remove(selectedClassName);
+        vaccineResidentsButton.classList.remove(selectedClassName);
     }
 
     if(type == 'total') {
@@ -44,6 +48,14 @@ function changeChart(type, data) {
         activeChartType = 'pos_rate'
         selectedChartName.innerHTML = 'Testing'
         positivityRateButton.classList.add(selectedClassName);
+    } else if(type == 'vaccine_doses') {
+        activeChartType = 'vaccine_doses'
+        selectedChartName.innerHTML = 'Vaccine Doses'
+        vaccineDosesButton.classList.add(selectedClassName);
+    } else if(type == 'vaccine_residents') {
+        activeChartType = 'vaccine_residents'
+        selectedChartName.innerHTML = 'Vaccinated Residents'
+        vaccineResidentsButton.classList.add(selectedClassName);
     } else if(type == 'date_markers') {
         if(dateMarkersButton.classList.contains("button-selected")) {
             dateMarkersButton.classList.remove("button-selected");
@@ -139,6 +151,33 @@ function reloadChart(type, data) {
         chart.options.scales['y'].stacked = false;
         chart.options.plugins.tooltip.callbacks.afterBody = function(context) {
             return null;
+        }
+    } else if(type == 'vaccine_doses' || type == 'vaccine_residents') {
+        console.log("Setting minimum x-axis value to 2020-12-15.")
+        chart.options.scales = {
+            'x': {
+                type: 'time',
+                min: '2020-12-15',
+                max: end_date,
+                time: {
+                    tooltipFormat: 'MMMM D, yyyy',
+                    unit: 'month'
+                }
+            },
+            'y': {
+                type: 'linear',
+                position: 'left',
+                min: 0,
+                grid: {
+                    display: true,
+                }
+            },
+            'y_tests': {
+                type: 'linear',
+                position: 'right',
+                min: 0,
+                display: false
+            }
         }
     }
 
