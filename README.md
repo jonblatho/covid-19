@@ -23,3 +23,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **January 31, 2021:** Open-sourced Python processing script.
 * **February 10, 2021:** Automated nightly updates at 11 PM and 12 AM CST.
 * **March 25, 2021:** Made site responsive to improve legibility on mobile devices.
+* **July 4, 2021:** Added two vaccination charts to the homepage.
