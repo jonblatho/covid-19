@@ -329,10 +329,10 @@ def chart_dict(d):
     # Calculate vaccine doses and vaccinated residents
     if data["vaccinations"] is not None:
         chart_day["doses"] = data["vaccinations"]["doses"]
-        vaccine_data = [day["vaccinations"] for day in utilities.data.cumulative_data(d) if day["vaccinations"] is not None]
-        chart_day["doses_average_7d"] = round(sum([day["doses"] for day in vaccine_data[-7:]])/7, 1)
-        chart_day["initiated"] = sum([day["initiated"] for day in vaccine_data])
-        chart_day["completed"] = sum([day["completed"] for day in vaccine_data])
+        vaccine_data = [day["vaccinations"] for day in utilities.data.cumulative_data(d) if day["vaccinations"] is not None and None not in day["vaccinations"]]
+        chart_day["doses_average_7d"] = round(sum([day["doses"] for day in vaccine_data[-7:] if day["doses"] is not None])/7, 1)
+        chart_day["initiated"] = sum([day["initiated"] for day in vaccine_data if day["initiated"] is not None])
+        chart_day["completed"] = sum([day["completed"] for day in vaccine_data if day["completed"] is not None])
     else:
         chart_day["doses"] = None
         chart_day["initiated"] = None
