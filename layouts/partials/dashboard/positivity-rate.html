@@ -27,7 +27,7 @@
         {{ else }}
         <span class="change-neutral">&rarr;
         {{ end }}
-        {{ lang.NumFmt 1 $data.positivity_rate_2w_change.value "|.|," "|"}} <abbr title="percentage points">p.p.</abbr>
+        {{ lang.NumFmt 1 $data.positivity_rate_2w_change.value "|.|," "|"}} pts.
         {{ if isset $data.positivity_rate_2w_change "percentage" }}
         {{ if ne $data.positivity_rate_2w_change.percentage 0.0 }}
         ({{ lang.NumFmt 0 $data.positivity_rate_2w_change.percentage "|.|," "|"}}%)
