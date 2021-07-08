@@ -4,45 +4,4 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.risk_category }}
-<div id="risk-category" class="risk-border-left-{{ $data.risk_category }}">
-    <div class="content">
-        <div class="label">Risk Level</div>
-        <div class="category-name">{{ humanize $data.risk_category }}</div>
-        <div class="category-value">
-            <strong>{{ lang.NumFmt 1 $data.new_cases_14d_100k }}</strong> average daily new cases per 100K for past&nbsp;14d
-        </div>
-        <div class="category-value">
-        {{ if eq $data.risk_category "low" }}
-            Data indicates that COVID-19 poses a limited risk in Howell County at this time.
-        {{ else if eq $data.risk_category "moderate" }}
-            COVID-19 is spreading slowly, but poses some risk of an outbreak in Howell County.
-        {{ else if eq $data.risk_category "high" }}
-            COVID-19 is spreading quickly in Howell County, with a significant risk of an outbreak.
-        {{ else if eq $data.risk_category "critical" }}
-            COVID-19 is spreading very rapidly in Howell County; an outbreak is imminent or ongoing.
-        {{ else if eq $data.risk_category "extreme" }}
-            A severe outbreak of COVID-19 is ongoing in Howell County.
-        {{ end }}
-        </div>
-        <a class="button" href="https://www.vaccines.gov/results/?zipcode=65775&medications=779bfe52-0dd8-4023-a183-457eb100fccc,a84fb9ed-deb4-461c-b785-e17c782ef88b,784db609-dc1f-45a5-bad6-8db02e79d44f&radius=25">
-            Find a Vaccine
-        </a>
-    </div>
-    <div id="meter">
-        <div id="meter-segments">
-            <div id="meter-low" class="meter-segment risk-bg-low"></div>
-            <div id="meter-moderate" class="meter-segment risk-bg-moderate"></div>
-            <div id="meter-high" class="meter-segment risk-bg-high"></div>
-            <div id="meter-critical" class="meter-segment risk-bg-critical"></div>
-        </div>
-        <div id="meter-labels">
-            <div id="meter-label-max" class="meter-label">75</div>
-            <div id="meter-label-critical" class="meter-label">25</div>
-            <div id="meter-label-high" class="meter-label">10</div>
-            <div id="meter-label-moderate" class="meter-label">1</div>
-            <div id="meter-label-min" class="meter-label">0</div>
-        </div>
-        <div class="meter-indicator risk-bg-{{ $data.risk_category }}" style="right:{{ $data.risk_meter_offset }}px;"></div>
-    </div>
-</div>
 {{ end }}
