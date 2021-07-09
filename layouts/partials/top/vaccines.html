@@ -1,0 +1,26 @@
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
+{{ if isset $data "completed_percentage" }}
+<div id="vaccinations">
+    <div id="vaccination-meter">
+        <span id="fully-vaccinated" style="width:{{ lang.NumFmt 1 $data.completed_percentage }}%;"></span>
+        <span id="initiated-vaccination" style="width:{{ lang.NumFmt 1 $data.initiated_percentage }}%;"></span>
+    </div>
+    <div id="vaccination-details">
+        <div>
+            <div class="percentage">{{ lang.NumFmt 1 $data.completed_percentage }}%</div>
+            <div class="label">fully vaccinated</div>
+        </div>
+        <div>
+            <div class="percentage">{{ lang.NumFmt 1 $data.initiated_percentage }}%</div>
+            <div class="label">initiated vaccination</div>
+        </div>
+    </div>
+</div>
+{{ end }}
+<a id="vaccine-button" href="https://www.vaccines.gov/results/?zipcode=65775&medications=779bfe52-0dd8-4023-a183-457eb100fccc,a84fb9ed-deb4-461c-b785-e17c782ef88b,784db609-dc1f-45a5-bad6-8db02e79d44f&radius=25">
+    Find a Vaccine
+</a>

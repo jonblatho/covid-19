@@ -64,7 +64,6 @@ if __name__ == "__main__":
         
         # Risk level
         summary_day["risk_category"] = utilities.calc.risk_level(d)
-        summary_day["risk_meter_offset"] = utilities.calc.risk_meter_offset(d)
         summary_day["new_cases_14d_100k"] = utilities.calc.per_100k(utilities.calc.cases_added(day["date"], n=14)["cases"]["howell_county"]/14)
 
         # 7-day new cases and change
@@ -75,6 +74,12 @@ if __name__ == "__main__":
         # Active cases
         summary_day["active_cases"] = utilities.calc.summary_active_cases(d)
         summary_day["active_cases_change"] = utilities.calc.summary_active_cases_change(d)
+
+        # Vaccinations
+        vaccinations_summary = utilities.calc.summary_vaccinations(d)
+        if vaccinations_summary is not None:
+            summary_day["completed_percentage"] = vaccinations_summary["completed_percentage"]
+            summary_day["initiated_percentage"] = vaccinations_summary["initiated_percentage"]
 
         # Positivity rate
         positivity_rate_2w = utilities.calc.summary_positivity_rate(d)

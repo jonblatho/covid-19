@@ -3,7 +3,7 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-<div class="item">
+<div class="col-md-3">
     <div class="highlight">
         {{ if isset $data.new_tests_7d "value" }}
         {{ lang.NumFmt 0 $data.new_tests_7d.value }}
@@ -13,9 +13,9 @@
     </div>
     <div class="description">
         {{ with $data.new_tests_7d }}
-        new test{{ if ne (int $data.new_tests_7d.value) 1 }}s{{ end }} in <br />the&nbsp;past week{{ if $data.new_tests_7d.estimate }}*{{ end }}
+        test{{ if ne (int $data.new_tests_7d.value) 1 }}s{{ end }} in the&nbsp;past week{{ if $data.new_tests_7d.estimate }}*{{ end }}
         {{ else }}
-        new tests in <br />the&nbsp;past week
+        tests in the&nbsp;past week
         {{ end }}
     </div>
     <div class="context">
@@ -33,7 +33,7 @@
         ({{ lang.NumFmt 0 $data.new_tests_7d_change.percentage "|.|," "|"}}%)
         {{ end }}
         {{ end }}
-        </span> from 1w ago{{ if $data.new_tests_7d_change.estimate }}*{{ end }}
+        </span> from a week ago{{ if $data.new_tests_7d_change.estimate }}*{{ end }}
         {{ else if isset $data.new_tests_7d "value" }}
             Week-ago data not available
         {{ else }}

@@ -1,0 +1,11 @@
+<div id="dashboard">
+    <div class="container-fluid">
+        <div id="dashboard-grid-container" class="row">
+            {{ partial "top/dashboard/active-cases.html" . }}
+            {{ partial "top/dashboard/hospitalizations.html" . }}
+            {{ partial "top/dashboard/new-tests.html" . }}
+            {{ partial "top/dashboard/positivity-rate.html" . }}
+        </div>
+        <p class="table-footer">* Quantity estimated or impacted by estimated data.</p>
+    </div>
+</div>
