@@ -121,7 +121,7 @@ new_data = {
         'deaths': False,
         'tests': True
     },
-    'vaccinations': {'doses': None, 'initiated': None, 'completed': None},
+    'vaccinations': None,
     'sources': None
 }
 
