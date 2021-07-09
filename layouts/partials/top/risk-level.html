@@ -1,0 +1,23 @@
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
+{{ with $data.risk_category }}
+<div id="risk-category" class="row">
+    <div id="category-name"><span id="category-indicator" class="risk-bg-{{ $data.risk_category }}"></span>{{ humanize $data.risk_category }} Risk</div>
+    <div id="category-value">
+    {{ if eq $data.risk_category "low" }}
+        Data indicates that COVID-19 poses a limited risk at this time,
+    {{ else if eq $data.risk_category "moderate" }}
+        There is some risk of a COVID-19 outbreak,
+    {{ else if eq $data.risk_category "high" }}
+        There is a significant risk of a COVID-19 outbreak,
+    {{ else if eq $data.risk_category "critical" }}
+        A COVID-19 outbreak is imminent or ongoing,
+    {{ else if eq $data.risk_category "extreme" }}
+        A severe outbreak of COVID-19 is ongoing,
+    {{ end }} with <strong>{{ lang.NumFmt 1 $data.new_cases_14d_100k }}</strong> average daily new cases per 100K population over the past two weeks.
+    </div>
+</div>
+{{ end }}

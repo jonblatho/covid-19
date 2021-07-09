@@ -131,33 +131,6 @@ def risk_level(d):
             return "extreme"
     return None
 
-# Calculates the horizontal offset in pixels from the top of the risk
-# meter on the homepage.
-def risk_meter_offset(d):
-    v = __risk_level_value__(d)
-    if risk_level(d) == "extreme":
-        return -3
-    elif risk_level(d) == "critical":
-        # Calculate the "progress" between 25 and 75
-        norm_v = 1-(v-25)/50
-        offset = round(norm_v*36, 0)
-        minimum = -3
-    elif risk_level(d) == "high":
-        # Same as above but between 10 and 25
-        norm_v = 1-(v-10)/15
-        offset = round(norm_v*36, 0)
-        minimum = 32
-    elif risk_level(d) == "moderate":
-        # ...and between 1 and 10
-        norm_v = 1-(v-1)/9
-        offset = round(norm_v*36, 0)
-        minimum = 68
-    elif risk_level(d) == "low":
-        # By definition, value here is already between 0 and 1
-        offset = round((1-v)*36, 0)
-        minimum = 104
-    return minimum + offset
-
 ########### TESTS/POSITIVITY RATE #############
 
 # Calculates (if possible) the tests added by town over the n-day
@@ -259,6 +232,17 @@ def summary_deaths_change(d):
         deaths_change = data["deaths"] - week_ago_day["deaths"]
         deaths_change_estimate = bool(data["estimates"]["deaths"] or week_ago_day["estimates"]["deaths"])
         return __summary_dict__(deaths_change, deaths_change_estimate)
+    return None
+
+################ VACCINATIONS #################
+
+def summary_vaccinations(d):
+    data = utilities.data.cumulative_data(d)
+    vaccine_data = [day for day in data if day["vaccinations"] is not None]
+    if len(vaccine_data) > 0:
+        fully_vaccinated_sum = sum([day["vaccinations"]["completed"] for day in vaccine_data])
+        initiated_vaccination_sum = sum([day["vaccinations"]["initiated"] for day in vaccine_data]) - fully_vaccinated_sum
+        return {'completed_percentage': round(fully_vaccinated_sum/40400*100, 1), 'initiated_percentage': round(initiated_vaccination_sum/40400*100, 2)}
     return None
 
 ############## TABLE/CHART DATA ###############
