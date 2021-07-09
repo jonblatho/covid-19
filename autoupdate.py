@@ -59,23 +59,23 @@ with urllib.request.urlopen(town_uri) as town_url:
     # Get total cases by town
     town_data = json.loads(town_url.read().decode())
 
-    towns = [item["values"][1] for item in town_data["data"]["county_list"]]
+    towns = [item["values"][1].lower() for item in town_data["data"]["county_list"]]
     town_dict = {
-        "bakersfield": towns.index("Bakersfield"),
-        "brandsville": towns.index("Brandsville"),
-        "cabool": towns.index("Cabool"),
-        "caulfield": towns.index("Caulfield"),
-        "dora": towns.index("Dora"),
-        "koshkonong": towns.index("Koshkonong"),
-        "moody": towns.index("Moody"),
-        "mountain_view": towns.index("Mountain View"),
-        "peace_valley": towns.index("Peace Valley"),
-        "pomona": towns.index("Pomona"),
-        "pottersville": towns.index("Pottersville"),
-        "summersville": towns.index("Summersville"),
-        "west_plains": towns.index("West Plains"),
-        "willow_springs": towns.index("Willow Springs"),
-        "unknown": towns.index("No City Specified")
+        "bakersfield": towns.index("bakersfield"),
+        "brandsville": towns.index("brandsville"),
+        "cabool": towns.index("cabool"),
+        "caulfield": towns.index("caulfield"),
+        "dora": towns.index("dora"),
+        "koshkonong": towns.index("koshkonong"),
+        "moody": towns.index("moody"),
+        "mountain_view": towns.index("mountain view"),
+        "peace_valley": towns.index("peace valley"),
+        "pomona": towns.index("pomona"),
+        "pottersville": towns.index("pottersville"),
+        "summersville": towns.index("summersville"),
+        "west_plains": towns.index("west plains"),
+        "willow_springs": towns.index("willow springs"),
+        "unknown": towns.index("no city specified")
     }
 
     town_cases_dict = {}
