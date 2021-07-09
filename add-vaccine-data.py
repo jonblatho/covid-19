@@ -48,7 +48,7 @@ with open(args.file, 'r', encoding='utf-16') as csv_file:
         value = sum([int(v[value_index].replace(',','')) for v in date_rows])
         cumulative_total += value
         # Store data
-        if "vaccinations" not in day:
+        if "vaccinations" not in day or day["vaccinations"] is None:
             day["vaccinations"] = {"doses": None, "initiated": None, "completed": None}
         day["vaccinations"][args.type] = value
 
