@@ -131,33 +131,6 @@ def risk_level(d):
             return "extreme"
     return None
 
-# Calculates the horizontal offset in pixels from the top of the risk
-# meter on the homepage.
-def risk_meter_offset(d):
-    v = __risk_level_value__(d)
-    if risk_level(d) == "extreme":
-        return -3
-    elif risk_level(d) == "critical":
-        # Calculate the "progress" between 25 and 75
-        norm_v = 1-(v-25)/50
-        offset = round(norm_v*36, 0)
-        minimum = -3
-    elif risk_level(d) == "high":
-        # Same as above but between 10 and 25
-        norm_v = 1-(v-10)/15
-        offset = round(norm_v*36, 0)
-        minimum = 32
-    elif risk_level(d) == "moderate":
-        # ...and between 1 and 10
-        norm_v = 1-(v-1)/9
-        offset = round(norm_v*36, 0)
-        minimum = 68
-    elif risk_level(d) == "low":
-        # By definition, value here is already between 0 and 1
-        offset = round((1-v)*36, 0)
-        minimum = 104
-    return minimum + offset
-
 ########### TESTS/POSITIVITY RATE #############
 
 # Calculates (if possible) the tests added by town over the n-day
