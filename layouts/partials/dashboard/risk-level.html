@@ -1,7 +1,0 @@
-{{ $date := .Site.Data.summary.last_updated }}
-{{ if isset .Params "date" }}
-{{ $date = .Params.date }}
-{{ end }}
-{{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-{{ with $data.risk_category }}
-{{ end }}

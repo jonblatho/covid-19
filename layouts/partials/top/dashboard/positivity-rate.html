@@ -3,7 +3,7 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-<div class="item">
+<div class="col-md-3">
     <div class="highlight">
         {{ if isset $data.positivity_rate_2w "value" }}
         {{ lang.NumFmt 1 $data.positivity_rate_2w.value }}%
@@ -13,9 +13,9 @@
     </div>
     <div class="description">
         {{ if isset $data.positivity_rate_2w "value" }}
-        14-day <br />positivity&nbsp;rate{{ if $data.positivity_rate_2w.estimate }}*{{ end }}
+        14-day positivity&nbsp;rate{{ if $data.positivity_rate_2w.estimate }}*{{ end }}
         {{ else }}
-        14-day <br />positivity&nbsp;rate
+        14-day positivity&nbsp;rate
         {{ end }}
     </div>
     <div class="context">
@@ -33,7 +33,7 @@
         ({{ lang.NumFmt 0 $data.positivity_rate_2w_change.percentage "|.|," "|"}}%)
         {{ end }}
         {{ end }}
-        </span> from 1w ago{{ if $data.positivity_rate_2w_change.estimate }}*{{ end }}
+        </span> from a week ago{{ if $data.positivity_rate_2w_change.estimate }}*{{ end }}
     {{ else if isset $data.positivity_rate_2w "value" }}
     Week-ago data not available
     {{ else }}

@@ -76,6 +76,12 @@ if __name__ == "__main__":
         summary_day["active_cases"] = utilities.calc.summary_active_cases(d)
         summary_day["active_cases_change"] = utilities.calc.summary_active_cases_change(d)
 
+        # Vaccinations
+        vaccinations_summary = utilities.calc.summary_vaccinations(d)
+        if vaccinations_summary is not None:
+            summary_day["completed_percentage"] = vaccinations_summary["completed_percentage"]
+            summary_day["initiated_percentage"] = vaccinations_summary["initiated_percentage"]
+
         # Positivity rate
         positivity_rate_2w = utilities.calc.summary_positivity_rate(d)
         positivity_rate_change = utilities.calc.summary_positivity_rate_change(d)

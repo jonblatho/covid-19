@@ -4,58 +4,7 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ partial "header.html" . }}
-<div class="grid grid-two-thirds-left grid-md">
-    <div id="chart-container">
-        <div id="chart-select">
-            <div class="left">
-                <div id="dropdown">
-                    <div id="dropdown-selected" onclick="showDropdownMenu();">
-                        <span id="selected-chart-name">New Cases</span>
-                        <span id="chevron" class="iconify" data-icon="el-chevron-down" data-inline="false"></span>
-                    </div>
-                    <div id="dropdown-menu" class="hidden">
-                        <div id="new-cases" class="dropdown-item dropdown-item-selected" onclick="changeChart('new', json);">New Cases</div>
-                        <div id="total-cases" class="dropdown-item" onclick="changeChart('total', json);">Total Cases</div>
-                        <div id="active-cases" class="dropdown-item" onclick="changeChart('active', json);">Active Cases</div>
-                        <div id="positivity-rate" class="dropdown-item" onclick="changeChart('pos_rate', json);">Testing</div>
-                        <div id="vaccine-doses" class="dropdown-item" onclick="changeChart('vaccine_doses', json);">Vaccine Doses</div>
-                        <div id="vaccine-residents" class="dropdown-item" onclick="changeChart('vaccine_residents', json);">Vaccinated Residents</div>
-                    </div>
-                </div>
-            </div>
-            <div class="right">
-                <div class="button" id="date-markers" onclick="changeChart('date_markers', json);">Events</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <canvas id="chart"></canvas>
-    </div>
-    <div>
-        <a id="vaccine-button" href="https://www.vaccines.gov/results/?zipcode=65775&medications=779bfe52-0dd8-4023-a183-457eb100fccc,a84fb9ed-deb4-461c-b785-e17c782ef88b,784db609-dc1f-45a5-bad6-8db02e79d44f&radius=25">
-            Find a Vaccine
-        </a>
-        <div id="risk-category">
-            <div class="content">
-                <div class="category-name"><span class="category-indicator risk-bg-{{ $data.risk_category }}"></span>{{ humanize $data.risk_category }} Risk</div>
-                <div class="category-value">
-                {{ if eq $data.risk_category "low" }}
-                    Data indicates that COVID-19 poses a limited risk at this time,
-                {{ else if eq $data.risk_category "moderate" }}
-                    There is some risk of a COVID-19 outbreak,
-                {{ else if eq $data.risk_category "high" }}
-                    There is a significant risk of a COVID-19 outbreak,
-                {{ else if eq $data.risk_category "critical" }}
-                    A COVID-19 outbreak is imminent or ongoing,
-                {{ else if eq $data.risk_category "extreme" }}
-                    A severe outbreak of COVID-19 is ongoing,
-                {{ end }} with <strong>{{ lang.NumFmt 1 $data.new_cases_14d_100k }}</strong> average daily new cases per 100K population over the past two weeks.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{{ partial "chart.html" . }}
-{{ partial "dashboard.html" . }}
+{{ partial "top/top.html" . }}
 {{ if isset $data.new_cases_7d "value" }}
 {{ if ge $data.new_cases_7d.value 20 }}
 {{ partial "active-by-town.html" . }}

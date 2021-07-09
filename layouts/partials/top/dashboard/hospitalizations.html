@@ -3,7 +3,7 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-<div class="item">
+<div class="col-md-3">
     <div class="highlight">
         {{ if isset $data.hospitalizations "value" }}
         {{ lang.NumFmt 0 $data.hospitalizations.value }}
@@ -13,9 +13,9 @@
     </div>
     <div class="description">
         {{ if isset $data.hospitalizations "value" }}
-        current <br />hospitalization{{ if ne (int $data.hospitalizations.value) 1 }}s{{ end }}{{ if $data.estimate }}*{{ end }}
+        currently hospitalized{{ if $data.estimate }}*{{ end }}
         {{ else }}
-        current <br />hospitalizations
+        currently hospitalized
         {{ end }}
     </div>
     <div class="context">
@@ -35,7 +35,7 @@
         ({{ lang.NumFmt 0 $data.hospitalizations_change.percentage "|.|," "|"}}%)
         {{ end }}
         {{ end }}
-        </span> from 1w ago{{ if $data.hospitalizations_change.estimate }}*{{ end }}
+        </span> from a week ago{{ if $data.hospitalizations_change.estimate }}*{{ end }}
         {{ else if isset $data.hospitalizations "value" }}
         Week-ago data not available
         {{ else }}

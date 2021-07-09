@@ -261,6 +261,17 @@ def summary_deaths_change(d):
         return __summary_dict__(deaths_change, deaths_change_estimate)
     return None
 
+################ VACCINATIONS #################
+
+def summary_vaccinations(d):
+    data = utilities.data.cumulative_data(d)
+    vaccine_data = [day for day in data if day["vaccinations"] is not None]
+    if len(vaccine_data) > 0:
+        fully_vaccinated_sum = sum([day["vaccinations"]["completed"] for day in vaccine_data])
+        initiated_vaccination_sum = sum([day["vaccinations"]["initiated"] for day in vaccine_data]) - fully_vaccinated_sum
+        return {'completed_percentage': round(fully_vaccinated_sum/40400*100, 1), 'initiated_percentage': round(initiated_vaccination_sum/40400*100, 2)}
+    return None
+
 ############## TABLE/CHART DATA ###############
 def table_dict(d):
     data = utilities.data.data_for_date(d)

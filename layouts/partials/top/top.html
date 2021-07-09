@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="row" style="margin-top: 10px;">
+        {{ partial "top/chart.html" . }}
+        <div id="sidebar" class="col-md-4">
+            {{ partial "top/vaccines.html" . }}
+            {{ partial "top/risk-level.html" . }}
+            {{ partial "top/totals.html" . }}
+        </div>
+    </div>
+</div>
+{{ partial "top/dashboard.html" . }}

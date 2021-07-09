@@ -1,4 +1,3 @@
-@import 'layout.scss';
 @import 'risk-levels.scss';
 
 $primary: #6415be;
@@ -19,7 +18,6 @@ header {
     padding: 20px 10px;
     background: $secondary;
     color: #fff;
-    text-align: center;
 
     a {
         display: inline-block;
@@ -41,10 +39,8 @@ header {
 #site-nav {
     position: sticky;
     height: 44px;
-    padding: 0 20px;
     background: $primary;
     font-size: 16px;
-    text-align: center;
     z-index: 1000;
 
     .nav-item {
@@ -103,7 +99,6 @@ header {
         position: absolute;
         top: 0;
         display: inline-block;
-        height: 12px;
         margin: 3px;
         padding: 8px;
         background: #0f81c4;
@@ -166,6 +161,10 @@ a {
             font-weight: bold;
         }
     }
+}
+
+#chart-container, #sidebar {
+    margin-top: 10px;
 }
 
 #chart-select {
@@ -260,26 +259,18 @@ a {
 }
 
 #risk-category {
-    position: relative;
     margin: 20px auto 0;
-    z-index: 1;
     text-align: center;
 
-    .label {
-        padding-bottom: 10px;
-        color: #666;
-        font-size: 14px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    .category-name {
+    #category-name {
+        display: block;
+        width: 100%;
         margin-bottom: 6px;
         font-size: 24px;
         font-weight: bold;
     }
 
-    .category-indicator {
+    #category-indicator {
         display: inline-block;
         width: 18px;
         height: 18px;
@@ -287,7 +278,7 @@ a {
         border-radius: 12px;
     }
 
-    .category-value {
+    #category-value {
         margin: 10px 0 0;
         color: #666;
         line-height: 20px;
@@ -295,12 +286,76 @@ a {
     }
 }
 
+#vaccinations {
+    margin: 0 0 20px;
+
+    #vaccination-meter {
+        height: 16px;
+        background: #d6d6d6;
+
+        span {
+            height: 16px;
+            display: inline-block;
+            background: #ccc;
+        }
+
+        #fully-vaccinated {
+            background: #13d694;
+        }
+
+        #initiated-vaccination {
+            background: #0fa673;
+        }
+    }
+
+    #vaccination-details {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr;
+        column-gap: 10px;
+
+        .percentage {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .label {
+            margin-top: 4px;
+            color: #888;
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+}
+
+#totals {
+    margin-top: 20px;
+    text-align: center;
+
+    .total {
+        margin: 30px 0;
+
+        .value {
+            margin: 10px 0;
+            font-size: 48px;
+            font-weight: bold;
+        }
+    
+        .label {
+            font-size: 16px;
+        }
+
+        .context {
+            margin-top: 8px;
+            color: #888;
+            font-size: 14px;
+        }
+    }
+}
+
 #dashboard-grid-container {
-    max-width: 650px;
-    display: grid;
-    grid-template-columns: 0.333fr 0.333fr 0.333fr;
-    grid-gap: 20px;
-    margin: 20px auto;
+    margin: 20px 0;
+    text-align: center;
 
     .highlight {
         margin-bottom: 6px;
@@ -311,16 +366,14 @@ a {
     .description {
         color: #555;
         font-size: 15px;
-        font-weight: 500;
-        letter-spacing: 0.5px;
         line-height: 18px;
-        text-transform: uppercase;
     }
 
     .context {
         margin-top: 6px;
-        font-size: 12px;
         color: #888;
+        font-size: 12px;
+        line-height: 16px;
     }
 }
 
