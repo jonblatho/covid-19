@@ -25,7 +25,7 @@
                         <tbody>
                             {{ range .Site.Data.daily }}
                             <tr>
-                                <th class="date prominent-right-border"><a href="{{ $.Site.BaseURL }}time-machine/{{ .date }}">{{ dateFormat "1/2/06" .date }}</a></td>
+                                <th class="date prominent-right-border"><a href="{{ $.Site.BaseURL }}time-machine/{{ .date }}">{{ dateFormat "1/2/06" .date }}</a></th>
                                 {{ if .estimates.cases }}
                                 {{ range (slice .total_cases.county .total_cases.west_plains .total_cases.willow_springs .total_cases.mountain_view) }}
                                 <td class="estimate">{{ lang.NumFmt 0 . }}</td>
