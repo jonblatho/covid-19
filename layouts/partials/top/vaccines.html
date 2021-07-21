@@ -6,8 +6,7 @@
 {{ if isset $data "completed_percentage" }}
 <div id="vaccinations">
     <div id="vaccination-meter">
-        <span id="fully-vaccinated" style="width:{{ lang.NumFmt 1 $data.completed_percentage }}%;"></span>
-        <span id="initiated-vaccination" style="width:{{ lang.NumFmt 1 $data.initiated_percentage }}%;"></span>
+        <span id="fully-vaccinated" style="width:{{ lang.NumFmt 1 $data.completed_percentage }}%;"></span><span id="initiated-vaccination" style="width:{{ lang.NumFmt 1 $data.initiated_percentage }}%;"></span>
     </div>
     <div id="vaccination-details">
         <div>
