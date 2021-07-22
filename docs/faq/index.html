@@ -1,0 +1,71 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<title>COVID-19 in Howell County, MO</title>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.min.css integrity="sha256-a9IsPTN4VpotlG2vObEGfRlhhdnopFhx0nVJS0E5L3A=" crossorigin=anonymous>
+<link rel=stylesheet href=https://covid.jonblatho.com/css/main.min.5b8c0e5ad36cb5abf4dc72f3c293f0799d688098e1de377a81900596e3622aa9.css>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#42107b">
+</head>
+<body>
+<a href=https://covid.jonblatho.com/>
+<header>
+<div class=container-fluid>
+<h1>COVID-19 in Howell County</h1>
+<p id=last-updated>as of July 21, 2021</p>
+</div>
+</header>
+</a>
+<nav id=site-nav style=position:sticky!important;top:0!important>
+<ul class=container-fluid>
+<li class=nav-item>
+<a class=nav-link href=/ title=Home>Home</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/all-data/ title="All Data">All Data</a>
+</li>
+<li class="nav-item nav-item-active">
+<a class=nav-link href=/faq/ title=FAQ>FAQ</a>
+</li>
+</ul>
+</nav>
+<div id=top>
+</div>
+<main>
+<section id=content class=wrap>
+<h3 id=frequently-asked-questions>Frequently Asked Questions</h3>
+<h4 id=where-does-this-data-come-from>Where does this data come from?</h4>
+<p>Most data here comes from daily reports published by the Howell County Health Department (HCHD) on their <a href=https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/>dashboard</a> and their <a href=https://www.facebook.com/Howell-County-Health-Department-170310842983730>Facebook page</a>. Vaccination data comes from the Missouri Department of Health and Senior Services (DHSS) <a href=https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download-vaccine.php>vaccine metrics page</a>. Sources corresponding to data, when available, are linked in the <a href=../all-data>All Data</a> table.</p>
+<h4 id=why-dont-daily-case-counts-here-match-the-hchd-dashboard>Why don&rsquo;t daily case counts here match the HCHD dashboard?</h4>
+<p>Since case data on this dashboard is stored by town and the HCHD only reports the total number of cases per town each day, cases fall under the report date here, while on the HCHD dashboard dates cases correspond to the test date. Usually, the difference is within a few days.</p>
+<h4 id=when-is-this-site-updated>When is this site updated?</h4>
+<p>Subject to the availability of new data, the site is updated twice a day, with an automatic update occurring overnight and a manual update occurring by early afternoon following the corresponding automatic update. Automatic updates occur every night (with the first attempt usually occurring around 11:15 PM Central) and include data on cases, hospitalizations, and deaths, but new data is only available on weekdays. Manual updates include data on testing and vaccinations, and they only occur on weekdays.</p>
+<p>I am a human, so sometimes I must run late or miss a day on manual updates. If I do, I will catch things up as soon as I can.</p>
+<p>You can always confirm the time the site was most recently updated by checking the &ldquo;Site last updated&rdquo; line in the footer on the homepage.</p>
+<h4 id=what-data-is-estimated-and-how>What data is estimated, and how?</h4>
+<p>Testing data is estimated on automatic updates because the actual test count is not published until the following weekday. In the absense of an actual test count, the number of new tests is estimated by holding the 14-day positivity rate as close to constant as possible.</p>
+<p>When there is a gap in data reporting, such as a weekend, I may apply estimates by assuming the number changed linearly between the start and end values across the reporting gap. Estimated data is reflected in the <a href=../all-data>All Data</a> table with italic text.</p>
+<p>Data for active cases by town is estimated by normalizing the 7-day total new cases for the county and categories (cities and “other”) and multiplying the county total active cases by those normalized values. Rounding may cause the sum of the by-town values not to exactly equal the county total. Estimates for active cases by town are hidden when there are few active cases in the county.</p>
+<h4 id=how-does-data-by-town-work>How does data by town work?</h4>
+<p>Data by town is based on ZIP Code, not city limits. Therefore, for example, while the population of the city of West Plains is about 12,000, its ZIP Code population is actually 24,554 based on 2010 Census data (for the sections of the 65775 ZIP code within Howell County). For Willow Springs and Mountain View, these populations are 5,414 and 5,382, respectively, by <a href=https://gist.github.com/jonblatho/003174508c09c2001d38e386a95fe9cd>my calculations</a>.</p>
+<h4 id=is-there-any-missing-or-unavailable-data>Is there any missing or unavailable data?</h4>
+<ul>
+<li>The HCHD did not begin providing an active case count until April 23, 2020. Active cases before that date are estimated by assuming that cases were considered active for 10 days following the report date.</li>
+<li>The HCHD did not begin consistently publishing the number of tests conducted until August 19, 2020. Testing data is not available prior to that date.</li>
+<li>The HCHD published updates only to its dashboard, which I was unable to archive at the time, for several days in late November 2020. All data is estimated for that period.</li>
+<li>Due to a prolonged and intense winter weather event, the HCHD was closed for several days in mid-February 2021, so testing data is estimated for that period.</li>
+<li>Due to an Internet Archive error, the HCHD dashboard for March 5, 2021, could not be archived, so its source link is unavailable.</li>
+<li>There are two Howell County cases for which, after a thorough review of publicly available data, I have been unable to conclusively identify a corresponding town.</li>
+</ul>
+</section>
+</main>
+<footer>
+<div class=wrap>
+<p>&copy; 2021 Jonathan Thornton &#183; <a href=https://github.com/jonblatho/covid-19/blob/main/LICENSE>MIT License</a></p>
+<p><a href=https://github.com/jonblatho/covid-19>View on GitHub</a></p>
+<p class=disclaimer>To the fullest extent permitted by applicable law, no warranty or guarantee is made regarding the timeliness, accuracy, or availability of the content of this webpage or updates thereto. This webpage is maintained on a best-effort, as-is basis. Data provided on this webpage are intended strictly for informational purposes; may be incorrect, incomplete, or outdated; and should not be used to make health care decisions.</p>
+</div>
+</footer>
+</body>
+</html>
