@@ -2,8 +2,9 @@ var chevron = document.getElementById("chevron");
 var dropdownButton = document.getElementById("dropdown-selected");
 var dropdownMenu = document.getElementById("dropdown-menu");
 var selectedChartName = document.getElementById("selected-chart-name");
-var totalCasesButton = document.getElementById("total-cases");
 var newCasesButton = document.getElementById("new-cases");
+var riskLevelButton = document.getElementById("risk-level-chart");
+var totalCasesButton = document.getElementById("total-cases");
 var activeCasesButton = document.getElementById("active-cases");
 var positivityRateButton = document.getElementById("positivity-rate");
 var vaccineDosesButton = document.getElementById("vaccine-doses");
@@ -12,6 +13,43 @@ var dateMarkersButton = document.getElementById("date-markers");
 let selectedClassName = "dropdown-item-selected";
 var activeChartType = 'new';
 var prefersDateMarkersOn = false;
+
+// Set up gradient for Risk Level chart
+let width, height, riskLevelGradient;
+function riskLevelGradientColor(ctx, chartArea) {
+    const chartWidth = chartArea.right - chartArea.left;
+    const chartHeight = chartArea.bottom - chartArea.top;
+    if (riskLevelGradient === null || width !== chartWidth || height !== chartHeight) {
+        // Create the gradient because this is either the first render
+        // or the size of the chart has changed
+        width = chartWidth;
+        height = chartHeight;
+        const minScaleValue = chart.scales.y.min;
+        const maxScaleValue = chart.scales.y.max;
+        if(maxScaleValue == 1.0) {
+            return null;
+        }
+        const scaleRange = maxScaleValue - minScaleValue;
+        const lowCutoff = 0.0 / scaleRange;
+        const mediumCutoff = 1.0 / scaleRange;
+        const highCutoff = 10.0 / scaleRange;
+        const criticalCutoff = 25.0 / scaleRange;
+        const extremeCutoff = 75.0 / scaleRange;
+        console.log(lowCutoff, mediumCutoff, highCutoff, criticalCutoff, extremeCutoff)
+        riskLevelGradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+        riskLevelGradient.addColorStop(lowCutoff, '#43B02A');
+        riskLevelGradient.addColorStop(mediumCutoff-0.00001, '#43B02A');
+        riskLevelGradient.addColorStop(mediumCutoff, '#E0A526');
+        riskLevelGradient.addColorStop(highCutoff, '#E0A526');
+        riskLevelGradient.addColorStop(highCutoff, '#DC3513');
+        riskLevelGradient.addColorStop(criticalCutoff-0.00001, '#DC3513');
+        riskLevelGradient.addColorStop(criticalCutoff, '#8A2B2B');
+        riskLevelGradient.addColorStop(extremeCutoff-0.00001, '#8A2B2B');
+        riskLevelGradient.addColorStop(extremeCutoff, '#DF1995');
+    }
+    
+    return riskLevelGradient;    
+}
 
 function showDropdownMenu() {
     if(dropdownMenu.classList.contains("hidden")) {
@@ -27,6 +65,7 @@ function changeChart(type, data) {
     if(type != 'date_markers') {
         totalCasesButton.classList.remove(selectedClassName);
         newCasesButton.classList.remove(selectedClassName);
+        riskLevelButton.classList.remove(selectedClassName);
         activeCasesButton.classList.remove(selectedClassName);
         positivityRateButton.classList.remove(selectedClassName);
         vaccineDosesButton.classList.remove(selectedClassName);
@@ -40,6 +79,10 @@ function changeChart(type, data) {
         activeChartType = 'new'
         selectedChartName.innerHTML = 'New Cases'
         newCasesButton.classList.add(selectedClassName);
+    } else if(type == 'risk_level') {
+        activeChartType = 'risk_level'
+        selectedChartName.innerHTML = 'Risk Level'
+        riskLevelButton.classList.add(selectedClassName);
     } else if(type == 'active') {
         activeChartType = 'active'
         selectedChartName.innerHTML = 'Active Cases'
@@ -146,11 +189,37 @@ function reloadChart(type, data) {
                 return a+b;
             }));
         }
-    } else if(type == 'active' || type == 'pos_rate') {
+    } else if(type == 'risk_level' || type == 'active' || type == 'pos_rate') {
         chart.options.scales['x'].stacked = false;
         chart.options.scales['y'].stacked = false;
+        if(type == 'risk_level') {
+            chart.data.datasets[0].borderColor = function(context) {
+                const chartObject = context.chart;
+                const {ctx, chartArea} = chartObject;
+                if (!chartArea) {
+                    // This case happens on initial chart load
+                    return null;
+                }
+                return riskLevelGradientColor(ctx, chartArea);
+            }
+        }
         chart.options.plugins.tooltip.callbacks.afterBody = function(context) {
-            return null;
+            if(type == 'risk_level') {
+                value = context[0].raw
+                if(value < 1) {
+                    return 'Low Risk';
+                } else if(value < 10) {
+                    return 'Medium Risk'
+                } else if(value < 25) {
+                    return 'High Risk'
+                } else if(value < 75) {
+                    return 'Critical Risk'
+                } else {
+                    return 'Extreme Risk';
+                }
+            } else {
+                return null;
+            }
         }
     } else if(type == 'vaccine_doses' || type == 'vaccine_residents') {
         console.log("Setting minimum x-axis value to 2020-12-15.")
