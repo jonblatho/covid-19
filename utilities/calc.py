@@ -284,6 +284,7 @@ def table_dict(d):
 def chart_dict(d):
     data = utilities.data.data_for_date(d)
     data_past_week = utilities.data.data_for_days_ended(7, d)
+    data_past_2w = utilities.data.data_for_days_ended(14, d)
     prev_day = utilities.data.data_for_date(utilities.date._date_advanced_by_(d, -1))
     prev_2w_ago = utilities.data.data_for_date(utilities.date._date_advanced_by_(d, -14))
     # Chart data
@@ -295,6 +296,8 @@ def chart_dict(d):
     chart_day["new_cases"] = dict(zip(__city_slugs_county__, __case_sum_list__(case_sums([utilities.data.data_for_date(d)]))))
     # Calculate 7D average new cases
     chart_day["average_daily_cases_7d"] = round(case_sums(data_past_week)["howell_county"]/7, 1)
+    # Calculate 14D average new cases per 100K for Risk Level chart
+    chart_day["average_daily_cases_14d_100k"] = round(case_sums(data_past_2w)["howell_county"]/14/404*1000, 1)
     # Transfer active cases
     chart_day["active_cases"] = data["active_cases"]
     # Calculate 7D average active cases

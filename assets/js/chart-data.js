@@ -9,6 +9,7 @@ function chartLabels(type, data) {
 
     return dates
 }
+
 function fillDataset(values, label, color) {
     return {
         data: values,
@@ -90,6 +91,8 @@ function chartData(type, data) {
                 lineTension: 0
             });
         }
+    } else if (type == 'risk_level') {
+        datasets.push(primaryLineDataset(data.map(day => day["average_daily_cases_14d_100k"] ?? Number.NaN), '14-day Average Daily Cases per 100K', '#000'));
     } else if (type == 'active') {
         datasets.push(primaryLineDataset(data.map(day => day["average_active_cases_7d"] ?? Number.NaN), '7-day Average', '#bb7700'));
         datasets.push(secondaryLineDataset(data.map(day => day["active_cases"]), 'Active Cases'));
