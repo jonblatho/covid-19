@@ -35,3 +35,7 @@ Data by town is based on ZIP Code, not city limits. Therefore, for example, whil
 * Due to a prolonged and intense winter weather event, the HCHD was closed for several days in mid-February 2021, so testing data is estimated for that period.
 * Due to an Internet Archive error, the HCHD dashboard for March 5, 2021, could not be archived, so its source link is unavailable.
 * There are two Howell County cases for which, after a thorough review of publicly available data, I have been unable to conclusively identify a corresponding town.
+
+### Are there any other data anomalies?
+
+* On December 15, 2020, the HCHD reported a large number of previously uncounted tests with no corresponding impact on case data. This dropped the test positivity rate by more than 20 percentage points, and without knowing the dates over which these additional tests occured, I cannot apply estimates to smooth out this data anomaly.
