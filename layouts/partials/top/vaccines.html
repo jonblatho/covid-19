@@ -5,15 +5,15 @@
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ if isset $data "completed_percentage" }}
 <div id="vaccinations">
-    <div id="vaccination-meter">
+    <div id="vaccination-meter" aria-hidden="true">
         <span id="fully-vaccinated" style="width:{{ lang.NumFmt 1 $data.completed_percentage }}%;"></span><span id="initiated-vaccination" style="width:{{ lang.NumFmt 1 $data.initiated_percentage }}%;"></span>
     </div>
-    <div id="vaccination-details">
-        <div>
+    <div id="vaccination-details" role="list">
+        <div role="listitem">
             <div class="percentage">{{ lang.NumFmt 1 $data.completed_percentage }}%</div>
             <div class="label">fully vaccinated</div>
         </div>
-        <div>
+        <div role="listitem">
             <div class="percentage">{{ lang.NumFmt 1 $data.initiated_percentage }}%</div>
             <div class="label">initiated vaccination</div>
         </div>
