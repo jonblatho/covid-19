@@ -16,7 +16,7 @@
 </head>
 <body>
 <a href=https://covid.jonblatho.com/>
-<header>
+<header role=banner>
 <div class=container-fluid>
 <h1>COVID-19 in Howell County</h1>
 <p id=last-updated>as of May 14, 2021</p>
@@ -55,8 +55,8 @@ Below is the homepage as it would have appeared on May 14, 2021. Click <a href=h
 <div id=chart-container class=col-md-8>
 <div id=chart-select>
 <div class=left>
-<div id=dropdown>
-<div id=dropdown-selected onclick=showDropdownMenu()>
+<div id=dropdown aria-hidden=true>
+<div id=dropdown-selected onclick=showDropdownMenu() aria-hidden=true>
 <span id=selected-chart-name>New Cases</span>
 <span id=chevron class=iconify data-icon=el-chevron-down data-inline=false></span>
 </div>
@@ -72,11 +72,11 @@ Below is the homepage as it would have appeared on May 14, 2021. Click <a href=h
 </div>
 </div>
 <div class=right>
-<div class=button id=date-markers onclick="changeChart('date_markers',json)">Events</div>
+<div class=button id=date-markers onclick="changeChart('date_markers',json)" aria-hidden=true>Events</div>
 </div>
 <div class=clear></div>
 </div>
-<canvas id=chart></canvas>
+<canvas id=chart aria-hidden=true></canvas>
 </div>
 <div id=sidebar class=col-md-4>
 <div id=vaccinations>
@@ -104,8 +104,8 @@ There is some risk of a COVID-19 outbreak,
 with <strong>2.3</strong> average daily new cases per 100K population over the past two weeks.
 </div>
 </div>
-<div id=totals>
-<div class=total>
+<div id=totals role=list aria-label="Cumulative data">
+<div class=total role=listitem aria-label="Total cases">
 <div class=value>3,775</div>
 <div class=label>cases</div>
 <div class=context>
@@ -113,7 +113,7 @@ with <strong>2.3</strong> average daily new cases per 100K population over the p
 &uarr; 10</span> from a week ago
 </div>
 </div>
-<div class=total>
+<div class=total role=listitem aria-label="Total deaths">
 <div class=value>98</div>
 <div class=label>deaths</div>
 <div class=context>
@@ -127,8 +127,8 @@ with <strong>2.3</strong> average daily new cases per 100K population over the p
 </div>
 <div id=dashboard>
 <div class=container-fluid>
-<div id=dashboard-grid-container class=row>
-<div class="item col-md-3">
+<div id=dashboard-grid-container class=row role=list aria-label="Current data">
+<div class="item col-md-3" role=listitem aria-label="Active cases">
 <div class=highlight>
 10
 </div>
@@ -142,7 +142,7 @@ active cases
 </span> from a week ago
 </div>
 </div>
-<div class="item col-md-3">
+<div class="item col-md-3" role=listitem label=Hospitalizations>
 <div class=highlight>
 1
 </div>
@@ -155,7 +155,7 @@ currently hospitalized
 </span> from a week ago
 </div>
 </div>
-<div class="item col-md-3">
+<div class="item col-md-3" role=listitem aria-label=Testing>
 <div class=highlight>
 79
 </div>
@@ -169,7 +169,7 @@ tests in the&nbsp;past week*
 </span> from a week ago*
 </div>
 </div>
-<div class="item col-md-3">
+<div class="item col-md-3" role=listitem aria-label="Positivity rate">
 <div class=highlight>
 9.6%
 </div>
@@ -189,8 +189,8 @@ tests in the&nbsp;past week*
 </div>
 <div class=wrap>
 <h4>Est. active cases by town</h4>
-<div class=town-grid-container>
-<div class=item>
+<div class=town-grid-container role=list aria-label="Estimated active cases by town">
+<div class=item role=listitem aria-label="West Plains">
 <div class=town-label-light>
 West Plains
 </div>
@@ -198,7 +198,7 @@ West Plains
 8
 </div>
 </div>
-<div class=item>
+<div class=item role=listitem aria-label="Willow Springs">
 <div class=town-label-light>
 Willow Springs
 </div>
@@ -206,7 +206,7 @@ Willow Springs
 1
 </div>
 </div>
-<div class=item>
+<div class=item role=listitem aria-label="Mountain View">
 <div class=town-label-light>
 Mountain View
 </div>
@@ -214,7 +214,7 @@ Mountain View
 0
 </div>
 </div>
-<div class=item>
+<div class=item role=listitem aria-label=Other>
 <div class=town-label-light>
 Other
 </div>
@@ -227,24 +227,24 @@ Other
 </div>
 <section id=case-tables>
 <h4>New cases</h4>
-<table class=totals>
+<table class=totals role=grid>
 <thead>
 <tr>
-<th></th>
-<th class="town-label-dark county">
-<div class=full>Howell<br>County</div>
+<th aria-hidden=true></th>
+<th class="town-label-dark county" aria-label="Howell County">
+<div class=full>Howell<br aria-hidden=true>County</div>
 <div class=abbreviation>H.C.</div>
 </th>
-<th class=town-label-dark>
-<div class=full>West<br>Plains</div>
+<th class=town-label-dark aria-label="West Plains">
+<div class=full>West<br aria-hidden=true>Plains</div>
 <div class=abbreviation>W.P.</div>
 </th>
-<th class=town-label-dark>
-<div class=full>Willow<br>Springs</div>
+<th class=town-label-dark aria-label="Willow Springs">
+<div class=full>Willow<br aria-hidden=true>Springs</div>
 <div class=abbreviation>W.S.</div>
 </th>
-<th class=town-label-dark>
-<div class=full>Mountain<br>View</div>
+<th class=town-label-dark aria-label="Mountain View">
+<div class=full>Mountain<br aria-hidden=true>View</div>
 <div class=abbreviation>M.V.</div>
 </th>
 <th class=town-label-dark>Other</th>
@@ -294,20 +294,20 @@ Other
 <table class=totals>
 <thead>
 <tr>
-<th></th>
-<th class="town-label-dark county">
+<th aria-hidden=true></th>
+<th class="town-label-dark county" aria-label="Howell County">
 <div class=full>Howell<br>County</div>
 <div class=abbreviation>H.C.</div>
 </th>
-<th class=town-label-dark>
+<th class=town-label-dark aria-label="West Plains">
 <div class=full>West<br>Plains</div>
 <div class=abbreviation>W.P.</div>
 </th>
-<th class=town-label-dark>
+<th class=town-label-dark aria-label="Willow Springs">
 <div class=full>Willow<br>Springs</div>
 <div class=abbreviation>W.S.</div>
 </th>
-<th class=town-label-dark>
+<th class=town-label-dark aria-label="Mountain View">
 <div class=full>Mountain<br>View</div>
 <div class=abbreviation>M.V.</div>
 </th>
