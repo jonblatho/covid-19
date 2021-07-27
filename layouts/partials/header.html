@@ -5,7 +5,7 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
         <a href="{{ .Site.BaseURL }}">
-            <header>
+            <header role="banner">
                 <div class="container-fluid">
                     <h1>COVID-19 in Howell County</h1>
                     <p id="last-updated">as of {{ dateFormat "January 2, 2006" $date }}</p>

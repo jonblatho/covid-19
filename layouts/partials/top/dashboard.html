@@ -1,6 +1,6 @@
 <div id="dashboard">
     <div class="container-fluid">
-        <div id="dashboard-grid-container" class="row">
+        <div id="dashboard-grid-container" class="row" role="list" aria-label="Current data">
             {{ partial "top/dashboard/active-cases.html" . }}
             {{ partial "top/dashboard/hospitalizations.html" . }}
             {{ partial "top/dashboard/new-tests.html" . }}

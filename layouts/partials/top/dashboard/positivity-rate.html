@@ -3,7 +3,7 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-<div class="item col-md-3">
+<div class="item col-md-3" role="listitem" aria-label="Positivity rate">
     <div class="highlight">
         {{ if isset $data.positivity_rate_2w "value" }}
         {{ lang.NumFmt 1 $data.positivity_rate_2w.value }}%

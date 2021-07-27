@@ -5,9 +5,9 @@
 {{ $data := index .Site.Data.active_town (dateFormat "2006-01-02" $date) }}
 <div class="wrap">
     <h4>Est. active cases by town</h4>
-    <div class="town-grid-container">
+    <div class="town-grid-container" role="list" aria-label="Estimated active cases by town">
         {{ range $data }}
-        <div class="item">
+        <div class="item" role="listitem" aria-label="{{ .town }}">
             <div class="town-label-light">
                 {{ .town }}
             </div>

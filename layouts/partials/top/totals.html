@@ -3,8 +3,8 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-<div id="totals">
-    <div class="total">
+<div id="totals" role="list" aria-label="Cumulative data">
+    <div class="total" role="listitem" aria-label="Total cases">
         <div class="value">{{ lang.NumFmt 0 (index (index (index (index $.Site.Data.relative (dateFormat "2006-01-02" $date)) 4).totals) 0) }}</div>
         <div class="label">cases</div>
         <div class="context">
@@ -17,7 +17,7 @@
             {{ end }}
         </div>
     </div>
-    <div class="total">
+    <div class="total" role="listitem" aria-label="Total deaths">
         <div class="value">{{ lang.NumFmt 0 ($data.deaths.value) }}</div>
         <div class="label">deaths</div>
         <div class="context">

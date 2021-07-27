@@ -2,8 +2,8 @@
 <div id="chart-container" class="col-md-8">
     <div id="chart-select">
         <div class="left">
-            <div id="dropdown">
-                <div id="dropdown-selected" onclick="showDropdownMenu();">
+            <div id="dropdown" aria-hidden="true">
+                <div id="dropdown-selected" onclick="showDropdownMenu();" aria-hidden="true">
                     <span id="selected-chart-name">New Cases</span>
                     <span id="chevron" class="iconify" data-icon="el-chevron-down" data-inline="false"></span>
                 </div>
@@ -19,9 +19,9 @@
             </div>
         </div>
         <div class="right">
-            <div class="button" id="date-markers" onclick="changeChart('date_markers', json);">Events</div>
+            <div class="button" id="date-markers" onclick="changeChart('date_markers', json);" aria-hidden="true">Events</div>
         </div>
         <div class="clear"></div>
     </div>
-    <canvas id="chart"></canvas>
+    <canvas id="chart" aria-hidden="true"></canvas>
 </div>
