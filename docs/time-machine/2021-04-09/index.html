@@ -80,15 +80,15 @@ Below is the homepage as it would have appeared on April 9, 2021. Click <a href=
 </div>
 <div id=sidebar class=col-md-4>
 <div id=vaccinations>
-<div id=vaccination-meter>
+<div id=vaccination-meter aria-hidden=true>
 <span id=fully-vaccinated style=width:12.2%></span><span id=initiated-vaccination style=width:4.4%></span>
 </div>
-<div id=vaccination-details>
-<div>
+<div id=vaccination-details role=list>
+<div role=listitem>
 <div class=percentage>12.2%</div>
 <div class=label>fully vaccinated</div>
 </div>
-<div>
+<div role=listitem>
 <div class=percentage>4.4%</div>
 <div class=label>initiated vaccination</div>
 </div>
@@ -98,7 +98,7 @@ Below is the homepage as it would have appeared on April 9, 2021. Click <a href=
 Find a Vaccine
 </a>
 <div id=risk-category class=row>
-<div id=category-name><span id=category-indicator class=risk-bg-moderate></span>Moderate Risk</div>
+<div id=category-name><span id=category-indicator class=risk-bg-moderate aria-hidden=true></span>Moderate Risk</div>
 <div id=category-value>
 There is some risk of a COVID-19 outbreak,
 with <strong>1.9</strong> average daily new cases per 100K population over the past two weeks.

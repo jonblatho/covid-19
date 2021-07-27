@@ -70,15 +70,15 @@
 </div>
 <div id=sidebar class=col-md-4>
 <div id=vaccinations>
-<div id=vaccination-meter>
+<div id=vaccination-meter aria-hidden=true>
 <span id=fully-vaccinated style=width:19.6%></span><span id=initiated-vaccination style=width:6.4%></span>
 </div>
-<div id=vaccination-details>
-<div>
+<div id=vaccination-details role=list>
+<div role=listitem>
 <div class=percentage>19.6%</div>
 <div class=label>fully vaccinated</div>
 </div>
-<div>
+<div role=listitem>
 <div class=percentage>6.4%</div>
 <div class=label>initiated vaccination</div>
 </div>
@@ -88,7 +88,7 @@
 Find a Vaccine
 </a>
 <div id=risk-category class=row>
-<div id=category-name><span id=category-indicator class=risk-bg-extreme></span>Extreme Risk</div>
+<div id=category-name><span id=category-indicator class=risk-bg-extreme aria-hidden=true></span>Extreme Risk</div>
 <div id=category-value>
 A severe outbreak of COVID-19 is ongoing,
 with <strong>78.3</strong> average daily new cases per 100K population over the past two weeks.
@@ -439,7 +439,7 @@ Other
 <footer>
 <div class=wrap>
 <p>&copy; 2021 Jonathan Thornton &#183; <a href=https://github.com/jonblatho/covid-19/blob/main/LICENSE>MIT License</a></p>
-<p>Site last updated: 9:45 PM CDT July 26</p>
+<p>Site last updated: 9:49 PM CDT July 26</p>
 <p><a href=https://github.com/jonblatho/covid-19>View on GitHub</a></p>
 <p class=disclaimer>To the fullest extent permitted by applicable law, no warranty or guarantee is made regarding the timeliness, accuracy, or availability of the content of this webpage or updates thereto. This webpage is maintained on a best-effort, as-is basis. Data provided on this webpage are intended strictly for informational purposes; may be incorrect, incomplete, or outdated; and should not be used to make health care decisions.</p>
 </div>
