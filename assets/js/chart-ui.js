@@ -254,7 +254,6 @@ function reloadChart(type, data) {
         chart.options.scales = {
             'x': {
                 type: 'time',
-                min: '2020-09-02',
                 max: end_date,
                 time: {
                     tooltipFormat: 'MMMM D, yyyy',

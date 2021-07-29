@@ -137,20 +137,26 @@ def risk_level(d):
 # period ended on date d. Default is 7 days.
 def tests_added(end_date, n=7):
     data_slice = utilities.data.data_for_days_ended(n+1, end_date)
-    if data_slice[0]["tests"] is not None:
-        # Find whether the return value is impacted by estimated data
-        start_estimated = data_slice[0]["estimates"]["tests"]
-        end_estimated = data_slice[-1]["estimates"]["tests"]
-        estimated = bool(start_estimated or end_estimated)
-        # Return tests added for the specified period
+    # Find whether the return value is impacted by estimated data
+    start_estimated = data_slice[0]["estimates"]["tests"]
+    end_estimated = data_slice[-1]["estimates"]["tests"]
+    estimated = bool(start_estimated or end_estimated)
+    if len(data_slice) > 1:
         return {"tests": data_slice[-1]["tests"] - data_slice[0]["tests"], "estimated": estimated}
+    else:
+        # Find whether the return value is impacted by estimated data
+        # Return tests added for the specified period
+        return {"tests": data_slice[0]["tests"], "estimated": estimated}
     return None
 
 # Calculates the positivity rate over the n days ended on date d.
 # Default is 14 days.
 def positivity_rate(end_date, n=14):
+    print(end_date)
     new_cases = cases_added(end_date, n)
+    print(new_cases["cases"])
     new_tests = tests_added(end_date, n)
+    print(new_tests["tests"])
     if new_tests is not None:
         # Find whether the return value is impacted by estimated data
         estimated = bool(new_cases["estimated"] or new_tests["estimated"])
@@ -306,9 +312,9 @@ def chart_dict(d):
     chart_day["tests"] = dict()
     if data["tests"] is not None:
         chart_day["tests"]["total"] = data["tests"]
-        if prev_day["tests"] is not None:
+        if prev_day is not None and prev_day["tests"] is not None:
             chart_day["tests"]["new"] = data["tests"] - prev_day["tests"]
-            if prev_2w_ago["tests"] is not None:
+            if prev_2w_ago is not None and prev_2w_ago["tests"] is not None:
                 chart_day["tests"]["average_14d"] = round((data["tests"] - prev_2w_ago["tests"])/14, 1)
     # Where possible, calculate the 14D positivity rate and risk level
     if positivity_rate(data["date"]) is not None:

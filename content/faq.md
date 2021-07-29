@@ -6,7 +6,7 @@ menu: main
 ### Frequently Asked Questions
 
 #### Where does this data come from?
-Most data here comes from daily reports published by the Howell County Health Department (HCHD) on their [dashboard](https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/) and their [Facebook page](https://www.facebook.com/Howell-County-Health-Department-170310842983730). Vaccination data comes from the Missouri Department of Health and Senior Services (DHSS) [vaccine metrics page](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download-vaccine.php). Sources corresponding to data, when available, are linked in the [All Data](../all-data) table.
+Most data here comes from daily reports published by the Howell County Health Department (HCHD) on their [dashboard](https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/) and their [Facebook page](https://www.facebook.com/Howell-County-Health-Department-170310842983730). Vaccination and testing data comes from the Missouri Department of Health and Senior Services (DHSS) [vaccine metrics](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download-vaccine.php) and [public health metrics](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download.php) pages. Sources corresponding to data, when available, are linked in the [All Data](../all-data) table.
 
 #### Why don't daily case counts here match the HCHD dashboard?
 Since case data on this dashboard is stored by town and the HCHD only reports the total number of cases per town each day, cases fall under the report date here, while on the HCHD dashboard dates cases correspond to the test date. Usually, the difference is within a few days.
@@ -30,12 +30,8 @@ Data by town is based on ZIP Code, not city limits. Therefore, for example, whil
 
 #### Is there any missing or unavailable data?
 * The HCHD did not begin providing an active case count until April 23, 2020. Active cases before that date are estimated by assuming that cases were considered active for 10 days following the report date.
-* The HCHD did not begin consistently publishing the number of tests conducted until August 19, 2020. Testing data is not available prior to that date.
 * The HCHD published updates only to its dashboard, which I was unable to archive at the time, for several days in late November 2020. All data is estimated for that period.
+* Vaccination data is unavailable prior to December 15, 2020.
 * Due to a prolonged and intense winter weather event, the HCHD was closed for several days in mid-February 2021, so testing data is estimated for that period.
 * Due to an Internet Archive error, the HCHD dashboard for March 5, 2021, could not be archived, so its source link is unavailable.
 * There are two Howell County cases for which, after a thorough review of publicly available data, I have been unable to conclusively identify a corresponding town.
-
-### Are there any other data anomalies?
-
-* On December 15, 2020, the HCHD reported a large number of previously uncounted tests with no corresponding impact on case data. This dropped the test positivity rate by more than 20 percentage points, and without knowing the dates over which these additional tests occured, I cannot apply estimates to smooth out this data anomaly.

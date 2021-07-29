@@ -1,12 +1,6 @@
 function chartLabels(type, data) {
     var dates = data.map(day => day["date"]);
 
-    if(type == 'pos_rate') {
-        dates = dates.slice(154);
-    } else if (type == 'vaccine_doses' || type == 'vaccine_residents') {
-        dates = dates.slice(154);
-    }
-
     return dates
 }
 
@@ -97,17 +91,17 @@ function chartData(type, data) {
         datasets.push(primaryLineDataset(data.map(day => day["average_active_cases_7d"] ?? Number.NaN), '7-day Average', '#bb7700'));
         datasets.push(secondaryLineDataset(data.map(day => day["active_cases"]), 'Active Cases'));
     } else if(type == 'pos_rate') {
-        datasets.push(primaryLineDataset(data.slice(154).map(day => day["positivity_rate"] ?? Number.NaN), '14-day Positivity Rate', '#0077cc'));
-        var averageDataset = secondaryLineDataset(data.slice(154).map(day => day["tests"]["average_14d"] ?? Number.NaN), '14-day Average Daily Tests');
+        datasets.push(primaryLineDataset(data.map(day => day["positivity_rate"] ?? Number.NaN), '14-day Positivity Rate', '#0077cc'));
+        var averageDataset = secondaryLineDataset(data.map(day => day["tests"]["average_14d"] ?? Number.NaN), '14-day Average Daily Tests');
         averageDataset.yAxisID = 'y_tests';
         datasets.push(averageDataset);
     } else if(type == 'vaccine_doses') {
-        datasets.push(primaryLineDataset(data.slice(154).map(day => day["doses_average_7d"] ?? Number.NaN), '7-day Average', '#8915b0'));
-        var averageDataset = secondaryLineDataset(data.slice(154).map(day => day["doses"] ?? Number.NaN), 'Doses Administered');
+        datasets.push(primaryLineDataset(data.map(day => day["doses_average_7d"] ?? Number.NaN), '7-day Average', '#8915b0'));
+        var averageDataset = secondaryLineDataset(data.map(day => day["doses"] ?? Number.NaN), 'Doses Administered');
         datasets.push(averageDataset);
     } else if(type == 'vaccine_residents') {
-        datasets.push(fillDataset(data.slice(154).map(day => day["completed"] ?? Number.NaN), 'Fully Vaccinated', '#13d694'));
-        var averageDataset = fillDataset(data.slice(154).map(day => day["initiated"] ?? Number.NaN), 'Initiated Vaccination', '#0fa673');
+        datasets.push(fillDataset(data.map(day => day["completed"] ?? Number.NaN), 'Fully Vaccinated', '#13d694'));
+        var averageDataset = fillDataset(data.map(day => day["initiated"] ?? Number.NaN), 'Initiated Vaccination', '#0fa673');
         datasets.push(averageDataset);
     }
     return datasets;
