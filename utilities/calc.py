@@ -152,11 +152,8 @@ def tests_added(end_date, n=7):
 # Calculates the positivity rate over the n days ended on date d.
 # Default is 14 days.
 def positivity_rate(end_date, n=14):
-    print(end_date)
     new_cases = cases_added(end_date, n)
-    print(new_cases["cases"])
     new_tests = tests_added(end_date, n)
-    print(new_tests["tests"])
     if new_tests is not None:
         # Find whether the return value is impacted by estimated data
         estimated = bool(new_cases["estimated"] or new_tests["estimated"])
