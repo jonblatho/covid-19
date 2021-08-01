@@ -4,7 +4,7 @@
 <title>COVID-19 in Howell County, MO</title>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin=anonymous>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.min.css integrity="sha256-a9IsPTN4VpotlG2vObEGfRlhhdnopFhx0nVJS0E5L3A=" crossorigin=anonymous>
-<link rel=stylesheet href=https://covid.jonblatho.com/css/main.min.d3eef5247917af74bce1e0c51d8fffeaab290177363252d0952e81e8f62badff.css>
+<link rel=stylesheet href=https://covid.jonblatho.com/css/main.min.3a72f23c98a314b22db84ffc58bed7e7839f93361b643d10eed2f62e1397b7d6.css>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=theme-color content="#42107b">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin=anonymous></script>
@@ -49,7 +49,7 @@ Below is the homepage as it would have appeared on March 23, 2021. Click <a href
 <a href=https://covid.jonblatho.com/time-machine/2021-03-24 class=right>3/24/21 &rarr;</a>
 </nav>
 <div class=clear></div>
-<main>
+<main id=home>
 <div class=container-fluid>
 <div class=row style=margin-top:10px>
 <div id=chart-container class=col-md-8>
@@ -189,28 +189,24 @@ tests in the&nbsp;past week
 </div>
 </div>
 <section id=case-tables>
-<h4>New cases</h4>
+<h3>New cases</h3>
 <table class=totals role=grid>
 <thead>
 <tr>
 <th aria-hidden=true></th>
-<th class="town-label-dark county" aria-label="Howell County">
-<div class=full>Howell<br aria-hidden=true>County</div>
-<div class=abbreviation>H.C.</div>
+<th class="town-label-dark county" aria-label=Total>
+<div class=abbreviation aria-hidden=true>Total</div>
 </th>
 <th class=town-label-dark aria-label="West Plains">
-<div class=full>West<br aria-hidden=true>Plains</div>
-<div class=abbreviation>W.P.</div>
+<div class=abbreviation aria-hidden=true>W.P.</div>
 </th>
 <th class=town-label-dark aria-label="Willow Springs">
-<div class=full>Willow<br aria-hidden=true>Springs</div>
-<div class=abbreviation>W.S.</div>
+<div class=abbreviation aria-hidden=true>W.S.</div>
 </th>
 <th class=town-label-dark aria-label="Mountain View">
-<div class=full>Mountain<br aria-hidden=true>View</div>
-<div class=abbreviation>M.V.</div>
+<div class=abbreviation aria-hidden=true>M.V.</div>
 </th>
-<th class=town-label-dark>Other</th>
+<th class=town-label-dark><span aria-hidden=true>Other</span></th>
 </tr>
 </thead>
 <tr>
@@ -258,23 +254,19 @@ tests in the&nbsp;past week
 <thead>
 <tr>
 <th aria-hidden=true></th>
-<th class="town-label-dark county" aria-label="Howell County">
-<div class=full>Howell<br>County</div>
-<div class=abbreviation>H.C.</div>
+<th class="town-label-dark county" aria-label=Total>
+<div class=abbreviation aria-hidden=true>Total</div>
 </th>
 <th class=town-label-dark aria-label="West Plains">
-<div class=full>West<br>Plains</div>
-<div class=abbreviation>W.P.</div>
+<div class=abbreviation aria-hidden=true>W.P.</div>
 </th>
 <th class=town-label-dark aria-label="Willow Springs">
-<div class=full>Willow<br>Springs</div>
-<div class=abbreviation>W.S.</div>
+<div class=abbreviation aria-hidden=true>W.S.</div>
 </th>
 <th class=town-label-dark aria-label="Mountain View">
-<div class=full>Mountain<br>View</div>
-<div class=abbreviation>M.V.</div>
+<div class=abbreviation aria-hidden=true>M.V.</div>
 </th>
-<th class=town-label-dark>Other</th>
+<th class=town-label-dark><span aria-hidden=true>Other</span></th>
 </tr>
 </thead>
 <tr>
