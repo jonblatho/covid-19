@@ -45,21 +45,19 @@ if __name__ == "__main__":
 
         # Calculate estimated active cases by town
         active_by_town_estimates = utilities.calc.active_cases_by_town(d)
-        active_by_town[d] = []
-        for town in ["west_plains", "willow_springs", "mountain_view"]:
-            active_by_town[d].append({
-                'town': utilities.geo.towns[town]["formatted"],
-                'active': active_by_town_estimates[town]
+        active_list = []
+        for town in utilities.geo.towns:
+            if active_by_town_estimates[town] > 0:
+                town_name = utilities.geo.towns[town]["formatted"]
+                if not utilities.geo.towns[town]["in_county"]:
+                    town_name += "**"
+                active_list.append({
+                    'key': town.replace('_', '-'),
+                    'town': town_name,
+                    'active': active_by_town_estimates[town]
             })
-        for group in ["other"]:
-            group_dict = {
-                'town': utilities.geo.groups[group]["formatted"],
-                'active': 0
-            }
-            for town in utilities.geo.groups[group]["towns"]:
-                group_dict["active"] += active_by_town_estimates[town]
-            active_by_town[d].append(group_dict)
-
+        active_list = sorted(active_list, key=lambda i: i["town"])
+        active_by_town[d] = active_list
         summary_day = {}
         
         # Risk level

@@ -51,4 +51,4 @@
         </nav>
         <div class="clear"></div>
         {{ end }}
-        <main>
+        <main {{ if or .IsHome (eq .Params.layout "time-machine") }}id="home"{{ end }}>

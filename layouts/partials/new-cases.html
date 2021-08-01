@@ -3,28 +3,24 @@
 {{ $date = .Params.date }}
 {{ end }}
 <section id="case-tables">
-    <h4>New cases</h4>
+    <h3>New cases</h3>
     <table class="totals" role="grid">
         <thead>
             <tr>
                 <th aria-hidden="true"></th>
-                <th class="town-label-dark county" aria-label="Howell County">
-                    <div class="full">Howell<br aria-hidden="true" />County</div>
-                    <div class="abbreviation">H.C.</div>
+                <th class="town-label-dark county" aria-label="Total">
+                    <div class="abbreviation" aria-hidden="true">Total</div>
                 </th>
                 <th class="town-label-dark" aria-label="West Plains">
-                    <div class="full">West<br aria-hidden="true" />Plains</div>
-                    <div class="abbreviation">W.P.</div>
+                    <div class="abbreviation" aria-hidden="true">W.P.</div>
                 </th>
                 <th class="town-label-dark" aria-label="Willow Springs">
-                    <div class="full">Willow<br aria-hidden="true" />Springs</div>
-                    <div class="abbreviation">W.S.</div>
+                    <div class="abbreviation" aria-hidden="true">W.S.</div>
                 </th>
                 <th class="town-label-dark" aria-label="Mountain View">
-                    <div class="full">Mountain<br aria-hidden="true" />View</div>
-                    <div class="abbreviation">M.V.</div>
+                    <div class="abbreviation" aria-hidden="true">M.V.</div>
                 </th>
-                <th class="town-label-dark">Other</th>
+                <th class="town-label-dark"><span aria-hidden="true">Other</span></th>
             </tr>
         </thead>
         {{ range index $.Site.Data.relative (dateFormat "2006-01-02" $date) }}
@@ -42,23 +38,19 @@
         <thead>
             <tr>
                 <th aria-hidden="true"></th>
-                <th class="town-label-dark county" aria-label="Howell County">
-                    <div class="full">Howell<br />County</div>
-                    <div class="abbreviation">H.C.</div>
+                <th class="town-label-dark county" aria-label="Total">
+                    <div class="abbreviation" aria-hidden="true">Total</div>
                 </th>
                 <th class="town-label-dark" aria-label="West Plains">
-                    <div class="full">West<br />Plains</div>
-                    <div class="abbreviation">W.P.</div>
+                    <div class="abbreviation" aria-hidden="true">W.P.</div>
                 </th>
                 <th class="town-label-dark" aria-label="Willow Springs">
-                    <div class="full">Willow<br />Springs</div>
-                    <div class="abbreviation">W.S.</div>
+                    <div class="abbreviation" aria-hidden="true">W.S.</div>
                 </th>
                 <th class="town-label-dark" aria-label="Mountain View">
-                    <div class="full">Mountain<br />View</div>
-                    <div class="abbreviation">M.V.</div>
+                    <div class="abbreviation" aria-hidden="true">M.V.</div>
                 </th>
-                <th class="town-label-dark">Other</th>
+                <th class="town-label-dark"><span aria-hidden="true">Other</span></th>
             </tr>
         </thead>
         {{ range index $.Site.Data.monthly (dateFormat "2006-01-02" $date) }}

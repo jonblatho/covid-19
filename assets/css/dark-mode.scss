@@ -111,8 +111,25 @@
         color: $primary !important;
     }
 
-    h4 {
-        color: #aaa;
+    #county-map {
+        #background {
+            fill: #222 !important;
+        }
+
+        #county {
+            fill: #444 !important;
+            stroke: #666 !important;
+        }
+    }
+
+    .active-label {
+        background: rgba(0,0,0,0.4) !important;
+        border: 1px solid #000;
+    }
+
+    .active-cases-placeholder {
+        background: #222;
+        color: #999;
     }
 
     table {
@@ -153,14 +170,12 @@
         color: rgba(255,255,255,0.4);
     }
 
-    #content {
-        h3 {
-            color: #a759ff;
-        }
-        
-        h4 {
-            color: #8f44e6;
-        }
+    h3 {
+        color: $primary !important;
+    }
+    
+    h4 {
+        color: #8f44e6 !important;
     }
 
     footer {

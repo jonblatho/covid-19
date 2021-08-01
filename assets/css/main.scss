@@ -14,6 +14,11 @@ body {
     padding: 0 10px;
 }
 
+.container-fluid div {
+    min-width: 0;
+    min-height: 0;
+}
+
 header {
     padding: 20px 10px;
     background: $secondary;
@@ -400,20 +405,7 @@ a {
     }
 }
 
-.town-grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    column-gap: 20px;
-    margin: 30px - 0;
-    padding: 30px;
-    background: #222;
-    border-radius: 8px;
-    color: #fff;
-
-    .item {
-        text-align: center;
-    }
-}
+@import 'active-map.scss';
 
 .town-label {
     font-size: 12px;
@@ -452,34 +444,23 @@ table {
 }
 
 .totals {
+    overflow: scroll;
+    font-size: 13px;
+
     th, td {
-        padding: 4px 24px;
+        padding: 4px 10px;
         vertical-align: middle;
     }
 
-    thead th {
-        padding-top: 10px;
-        padding-bottom: 10px;
-
-        .abbreviation {
-            display: none;
-        }
-    }
-
     th.row-head {
-        padding: 8px 20px;
+        padding: 8px 0;
         color: rgba(0,0,0,0.6);
-        line-height: 20px;
         text-align: right;
     }
 
-    tr {
-        padding: 0 30px;
-    }
-
     td {
-        padding: 16px;
-        font-size: 22px;
+        padding: 4px;
+        font-size: 15px;
         font-weight: 600;
         text-align: center;
     }
@@ -562,40 +543,32 @@ table {
 }
 
 .table-footer {
+    margin: 10px 0;
     color: rgba(0,0,0,0.4);
     font-size: 80%;
     line-height: 20px;
     text-align: center;
 }
 
-h4 {
-    margin: 50px 0 30px;
-    color: #333;
-    font-size: 120%;
+h3 {
+    margin: 20px 0;
+    color: $primary;
+    font-size: 24px;
     font-weight: 600;
-    letter-spacing: 2px;
+}
+
+h4 {
+    margin: 20px 0;
+    color: $primary;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#home h3 {
     text-align: center;
-    text-transform: uppercase;
 }
 
 #content {
-    h3 {
-        margin: 20px 0;
-        color: $primary;
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-    h4 {
-        margin: 20px 0;
-        color: $primary;
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0;
-        text-align: left;
-        text-transform: none;
-    }
-
     p {
         margin-bottom: 10px;
     }
@@ -617,6 +590,7 @@ strong {
 }
 
 footer {
+    margin-top: 20px;
     padding: 30px 15px;
     border-top: 1px solid #ddd;
     color: rgba(0,0,0,0.6);

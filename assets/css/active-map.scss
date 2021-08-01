@@ -1,0 +1,140 @@
+#county-map {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+
+    svg {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+#active-labels {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 20px;
+    z-index: 8;
+}
+
+.active-label {
+    position: absolute;
+    padding: 6px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    .active-town {
+        margin-bottom: 3px;
+        font-size: 12px;
+        opacity: 0.7;
+    }
+
+    .active-value {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+#active-west-plains {
+    top: 46%;
+    left: 52%;
+    z-index: 20;
+}
+
+#active-willow-springs {
+    top: 7%;
+    left: 32%;
+    z-index: 19;
+}
+
+#active-mountain-view {
+    top: 7%;
+    left: 73%;
+    z-index: 18;
+}
+
+#active-pomona {
+    top: 27%;
+    left: 42%;
+}
+
+#active-peace-valley {
+    top: 29%;
+    left: 69%;
+}
+
+#active-caulfield {
+    top: 66%;
+    left: 23%;
+}
+
+#active-koshkonong {
+    top: 72%;
+    right: 22%;
+    text-align: right;
+}
+
+#active-moody {
+    top: 80%;
+    left: 40%;
+}
+
+#active-pottersville {
+    top: 54%;
+    left: 32%;
+}
+
+#active-summersville {
+    top: 1px;
+    left: 60%;
+    z-index: 1;
+}
+
+#active-cabool {
+    top: 1px;
+    left: 18%;
+}
+
+#active-dora {
+    top: 43%;
+    left: 16%;
+}
+
+#active-brandsville {
+    top: 60%;
+    left: 73%;
+}
+
+#active-bakersfield {
+    top: 80%;
+    left: 18%;
+}
+
+#active-unknown {
+    right: 6px;
+    bottom: 6px;
+
+    .active-town, .active-town:after, .active-value {
+        display: inline-block;
+    }
+
+    .active-town:after {
+        content: " ";
+        white-space: pre;
+    }
+}
+
+.active-cases-placeholder {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #ddd;
+    border-radius: 6px;
+    color: #555;
+    font-size: 12px;
+    text-align: center;
+}
