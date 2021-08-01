@@ -188,18 +188,13 @@ tests in the&nbsp;past week
 <p class=table-footer>* Quantity estimated or impacted by estimated data.</p>
 </div>
 </div>
-<div id=county-map aria-label="Map of Howell County displaying active cases by town" role=list><svg viewBox="0 0 1e3 1e3" xmlns="http://www.w3.org/2000/svg"><title>county</title><g fill-rule="evenodd"><rect id="background" width="1e3" height="1e3" fill="#e3e3e3"/><polygon id="county" points="777.13 62.198 777.26 79.855 777.8 303.73 776.59 355.22 775.51 452.27 760.28 452.94 756.77 723.59 765.13 723.59 766.21 885.87 662.97 886.54 333.15 892.07 222.22 893.01 226.8 586.24 229.9 452.53 249.31 451.86 254.3 257.23 255.65 223.27 258.75 98.455 255.24 93.738 256.46 51.011 390.57 51.955 518.48 54.246 650.57 57.211 732.92 60.985" fill="#f8f8f8" fill-rule="nonzero" stroke="#979797" stroke-width="2"/></g></svg>
-<div id=active-labels>
-<div id=active-bakersfield class=active-label aria-label=Bakersfield** role=listitem><div class=active-town>Bakersfield**</div><div class=active-value>1</div></div>
-<div id=active-caulfield class=active-label aria-label=Caulfield role=listitem><div class=active-town>Caulfield</div><div class=active-value>1</div></div>
-<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>1</div></div>
-<div id=active-pomona class=active-label aria-label=Pomona role=listitem><div class=active-town>Pomona</div><div class=active-value>1</div></div>
-<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>13</div></div>
-<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>1</div></div>
-</div>
-</div>
-<p class=table-footer>The sum of these values may not match the total number of active cases countywide due to rounding.</p>
-<p class=table-footer>** Town located outside Howell County but with a ZIP Code area which extends into Howell County. Only Howell County residents with this town’s ZIP Code are counted.</p>
+<div class=container-fluid>
+<div class=row>
+<section id=active-cases class=col-md-6>
+<h3>Estimated active cases by town</h3>
+<p class=active-cases-placeholder>Estimates for active cases by town are not available because there are too few recent cases.</p>
+</section>
+<section id=new-cases class=col-md-6>
 <section id=case-tables>
 <h3>New cases</h3>
 <table class=totals role=grid>
@@ -403,6 +398,9 @@ tests in the&nbsp;past week
 </tr>
 </table>
 </section>
+</section>
+</div>
+</div>
 </main>
 <footer>
 <div class=wrap>
