@@ -5,10 +5,5 @@
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ partial "header.html" . }}
 {{ partial "top/top.html" . }}
-{{ if isset $data.active_cases "value" }}
-{{ if ge $data.active_cases.value 10 }}
-{{ partial "active-by-town.html" . }}
-{{ end }}
-{{ end }}
-{{ partial "new-cases.html" . }}
+{{ partial "new-active-cases.html" . }}
 {{ partial "footer.html" . }}
