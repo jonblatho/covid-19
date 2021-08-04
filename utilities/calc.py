@@ -293,39 +293,39 @@ def chart_dict(d):
     # Chart data
     chart_day = {}
     # Transfer date key
-    chart_day["date"] = data["date"]
+    chart_day["d"] = data["date"]
     # Calculate total and new cases
-    chart_day["total_cases"] = dict(zip(__city_slugs_county__, __case_sum_list__(case_sums(utilities.data.cumulative_data(d)))))
-    chart_day["new_cases"] = dict(zip(__city_slugs_county__, __case_sum_list__(case_sums([utilities.data.data_for_date(d)]))))
+    chart_day["c"] = dict(zip(__city_slugs_county__, __case_sum_list__(case_sums(utilities.data.cumulative_data(d)))))
+    chart_day["n"] = dict(zip(__city_slugs_county__, __case_sum_list__(case_sums([utilities.data.data_for_date(d)]))))
+    chart_day["c"].pop("county", None)
+    chart_day["n"].pop("county", None)
     # Calculate 7D average new cases
-    chart_day["average_daily_cases_7d"] = round(case_sums(data_past_week)["howell_county"]/7, 1)
+    chart_day["n_7d_av"] = round(case_sums(data_past_week)["howell_county"]/7, 1)
     # Calculate 14D average new cases per 100K for Risk Level chart
-    chart_day["average_daily_cases_14d_100k"] = round(case_sums(data_past_2w)["howell_county"]/14/404*1000, 1)
+    chart_day["n_14d_av_100k"] = round(case_sums(data_past_2w)["howell_county"]/14/404*1000, 1)
     # Transfer active cases and hospitalizations
-    chart_day["active_cases"] = data["active_cases"]
-    chart_day["hospitalizations"] = data["hospitalizations"]
+    chart_day["a"] = data["active_cases"]
+    chart_day["h"] = data["hospitalizations"]
     # Calculate 7D average active cases
-    chart_day["average_active_cases_7d"] = round(sum([day_data["active_cases"] for day_data in data_past_week])/7, 1)
+    chart_day["a_7d_av"] = round(sum([day_data["active_cases"] for day_data in data_past_week])/7, 1)
     # Where possible, add in total/new tests
-    chart_day["tests"] = dict()
+    chart_day["t"] = dict()
     if data["tests"] is not None:
-        chart_day["tests"]["total"] = data["tests"]
         if prev_day is not None and prev_day["tests"] is not None:
-            chart_day["tests"]["new"] = data["tests"] - prev_day["tests"]
             if prev_2w_ago is not None and prev_2w_ago["tests"] is not None:
-                chart_day["tests"]["average_14d"] = round((data["tests"] - prev_2w_ago["tests"])/14, 1)
+                chart_day["t"]["14d_av"] = round((data["tests"] - prev_2w_ago["tests"])/14, 1)
     # Where possible, calculate the 14D positivity rate and risk level
     if positivity_rate(data["date"]) is not None:
-        chart_day["positivity_rate"] = positivity_rate(data["date"])["positivity_rate"]
+        chart_day["p"] = positivity_rate(data["date"])["positivity_rate"]
     # Calculate vaccine doses and vaccinated residents
     if data["vaccinations"] is not None:
-        chart_day["doses"] = data["vaccinations"]["doses"]
+        chart_day["vd"] = data["vaccinations"]["doses"]
         vaccine_data = [day["vaccinations"] for day in utilities.data.cumulative_data(d) if day["vaccinations"] is not None and None not in day["vaccinations"]]
-        chart_day["doses_average_7d"] = round(sum([day["doses"] for day in vaccine_data[-7:] if day["doses"] is not None])/7, 1)
-        chart_day["initiated"] = sum([day["initiated"] for day in vaccine_data if day["initiated"] is not None])
-        chart_day["completed"] = sum([day["completed"] for day in vaccine_data if day["completed"] is not None])
-    else:
-        chart_day["doses"] = None
-        chart_day["initiated"] = None
-        chart_day["completed"] = None
+        chart_day["vd_7d_av"] = round(sum([day["doses"] for day in vaccine_data[-7:] if day["doses"] is not None])/7, 1)
+        chart_day["vi"] = sum([day["initiated"] for day in vaccine_data if day["initiated"] is not None])
+        chart_day["vc"] = sum([day["completed"] for day in vaccine_data if day["completed"] is not None])
+    # else:
+    #     chart_day["doses"] = None
+    #     chart_day["initiated"] = None
+    #     chart_day["completed"] = None
     return chart_day
