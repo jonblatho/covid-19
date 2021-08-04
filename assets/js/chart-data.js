@@ -32,15 +32,15 @@ function primaryLineDataset(values, label, color) {
     };
 }
 
-function secondaryLineDataset(values, label) {
+function secondaryLineDataset(values, label, color='#aaaaaa', width=1) {
     return {
         data: values,
         pointRadius: 0,
         type: 'line',
         fill: false,
         label: label,
-        borderColor: '#aaaaaa',
-        borderWidth: 1,
+        borderColor: color,
+        borderWidth: width,
         order: 1,
         lineTension: 0
     };
@@ -90,6 +90,7 @@ function chartData(type, data) {
     } else if (type == 'active') {
         datasets.push(primaryLineDataset(data.map(day => day["average_active_cases_7d"] ?? Number.NaN), '7-day Average', '#bb7700'));
         datasets.push(secondaryLineDataset(data.map(day => day["active_cases"]), 'Active Cases'));
+        datasets.push(secondaryLineDataset(data.map(day => day["hospitalizations"]), 'Hospitalizations', color='#0bc6c0', width=2));
     } else if(type == 'pos_rate') {
         datasets.push(primaryLineDataset(data.map(day => day["positivity_rate"] ?? Number.NaN), '14-day Positivity Rate', '#0077cc'));
         var averageDataset = secondaryLineDataset(data.map(day => day["tests"]["average_14d"] ?? Number.NaN), '14-day Average Daily Tests');

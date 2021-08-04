@@ -301,8 +301,9 @@ def chart_dict(d):
     chart_day["average_daily_cases_7d"] = round(case_sums(data_past_week)["howell_county"]/7, 1)
     # Calculate 14D average new cases per 100K for Risk Level chart
     chart_day["average_daily_cases_14d_100k"] = round(case_sums(data_past_2w)["howell_county"]/14/404*1000, 1)
-    # Transfer active cases
+    # Transfer active cases and hospitalizations
     chart_day["active_cases"] = data["active_cases"]
+    chart_day["hospitalizations"] = data["hospitalizations"]
     # Calculate 7D average active cases
     chart_day["average_active_cases_7d"] = round(sum([day_data["active_cases"] for day_data in data_past_week])/7, 1)
     # Where possible, add in total/new tests

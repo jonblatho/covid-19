@@ -132,8 +132,6 @@ if __name__ == "__main__":
 
         # Chart data
         chart_data.append(utilities.calc.chart_dict(d))
-
-        print(d, cases_all)
     
     utilities.save_json(relative, 'data/relative.json')
     utilities.save_json(monthly, 'data/monthly.json')
