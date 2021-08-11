@@ -59,8 +59,9 @@ def active_cases_by_town(date):
 
 # Calculates (if possible) the cases added by town over the n-day
 # period ended on date d. Default is 7 days.
-def cases_added(end_date, n=7):
-    data_slice = utilities.data.data_for_days_ended(n, end_date)
+def cases_added(end_date, n=7, lag_days=0):
+    end_date_with_lag = utilities.date._date_advanced_by_(end_date, -1*lag_days)
+    data_slice = utilities.data.data_for_days_ended(n, end_date_with_lag)
     # Find whether the return value is impacted by estimated data
     start_estimated = data_slice[0]["estimates"]["cases"]
     end_estimated = data_slice[-1]["estimates"]["cases"]
@@ -135,8 +136,9 @@ def risk_level(d):
 
 # Calculates (if possible) the tests added by town over the n-day
 # period ended on date d. Default is 7 days.
-def tests_added(end_date, n=7):
-    data_slice = utilities.data.data_for_days_ended(n+1, end_date)
+def tests_added(end_date, n=7, lag_days=0):
+    end_date_with_lag = utilities.date._date_advanced_by_(end_date, -1*lag_days)
+    data_slice = utilities.data.data_for_days_ended(n+1, end_date_with_lag)
     # Find whether the return value is impacted by estimated data
     start_estimated = data_slice[0]["estimates"]["tests"]
     end_estimated = data_slice[-1]["estimates"]["tests"]
@@ -151,9 +153,9 @@ def tests_added(end_date, n=7):
 
 # Calculates the positivity rate over the n days ended on date d.
 # Default is 14 days.
-def positivity_rate(end_date, n=14):
-    new_cases = cases_added(end_date, n)
-    new_tests = tests_added(end_date, n)
+def positivity_rate(end_date, n=14, lag_days=0):
+    new_cases = cases_added(end_date, n, lag_days)
+    new_tests = tests_added(end_date, n, lag_days)
     if new_tests is not None:
         # Find whether the return value is impacted by estimated data
         estimated = bool(new_cases["estimated"] or new_tests["estimated"])
@@ -161,17 +163,17 @@ def positivity_rate(end_date, n=14):
         return {"positivity_rate": round(new_cases["cases"]["howell_county"]/new_tests["tests"]*100, 2), "estimated": estimated}
     return None
 
-def summary_positivity_rate(d):
-    current_positivity_rate = positivity_rate(d)
+def summary_positivity_rate(d, lag_days=0):
+    current_positivity_rate = positivity_rate(d, lag_days=lag_days)
     if current_positivity_rate is not None:
         return __summary_dict__(current_positivity_rate["positivity_rate"], current_positivity_rate["estimated"])
     return None
 
-def summary_positivity_rate_change(d):
-    current_positivity_rate = positivity_rate(d)
+def summary_positivity_rate_change(d, lag_days=0):
+    current_positivity_rate = positivity_rate(d, lag_days=lag_days)
     week_ago_day = __week_ago_day__(d)
     if week_ago_day is not None and current_positivity_rate is not None:
-        week_ago_positivity_rate = positivity_rate(week_ago_day["date"])
+        week_ago_positivity_rate = positivity_rate(week_ago_day["date"], lag_days=lag_days)
         if week_ago_positivity_rate is not None:
             positivity_rate_2w_change = current_positivity_rate["positivity_rate"] - week_ago_positivity_rate["positivity_rate"]
             if week_ago_positivity_rate["positivity_rate"] != 0:
@@ -182,16 +184,16 @@ def summary_positivity_rate_change(d):
             return __summary_dict__(positivity_rate_2w_change, positivity_rate_2w_change_estimate, positivity_rate_2w_change_percent)
     return None
 
-def summary_new_tests_7d(d):
-    if tests_added(d, n=7) is not None:
-        new_tests_7d = tests_added(d, n=7)
+def summary_new_tests_7d(d, lag_days=0):
+    if tests_added(d, n=7, lag_days=lag_days) is not None:
+        new_tests_7d = tests_added(d, n=7, lag_days=lag_days)
         return __summary_dict__(new_tests_7d["tests"], new_tests_7d["estimated"])
 
-def summary_new_tests_7d_change(d):
-    new_tests_7d = tests_added(d, n=7)
+def summary_new_tests_7d_change(d, lag_days=0):
+    new_tests_7d = tests_added(d, n=7, lag_days=lag_days)
     week_ago_day = __week_ago_day__(d)
     if new_tests_7d is not None and week_ago_day is not None and tests_added(week_ago_day["date"], n=7) is not None:
-        new_tests_7d_week_ago = tests_added(week_ago_day["date"], n=7)
+        new_tests_7d_week_ago = tests_added(week_ago_day["date"], n=7, lag_days=lag_days)
         new_tests_7d_change = new_tests_7d["tests"] - new_tests_7d_week_ago["tests"]
         if new_tests_7d_week_ago["tests"] != 0:
             new_tests_7d_change_percent = round(abs((new_tests_7d["tests"] - new_tests_7d_week_ago["tests"])/new_tests_7d_week_ago["tests"])*100, 0)
@@ -268,12 +270,12 @@ def table_dict(d):
     table_day["estimates"] = data["estimates"]
     # Where possible, add in total/new tests
     table_day["tests"] = dict()
-    if data["tests"] is not None:
+    if data["tests"] is not None and utilities.date._days_between_dates_(d, utilities.data.today["date"]) >= 3:
         table_day["tests"]["total"] = data["tests"]
         if prev_day is not None and prev_day["tests"] is not None:
             table_day["tests"]["new"] = data["tests"] - prev_day["tests"]
     # Where possible, calculate the 14D positivity rate and risk level
-    if utilities.calc.positivity_rate(d) is not None:
+    if utilities.calc.positivity_rate(d) is not None and utilities.date._days_between_dates_(d, utilities.data.today["date"]) >= 3:
         table_day["positivity_rate"] = utilities.calc.summary_positivity_rate(d)
     if utilities.calc.risk_level(d) is not None:
         table_day["risk_level"] = utilities.calc.risk_level(d)
@@ -310,12 +312,12 @@ def chart_dict(d):
     chart_day["a_7d_av"] = round(sum([day_data["active_cases"] for day_data in data_past_week])/7, 1)
     # Where possible, add in total/new tests
     chart_day["t"] = dict()
-    if data["tests"] is not None:
+    if data["tests"] is not None and utilities.date._days_between_dates_(d, utilities.data.today["date"]) >= 3:
         if prev_day is not None and prev_day["tests"] is not None:
             if prev_2w_ago is not None and prev_2w_ago["tests"] is not None:
                 chart_day["t"]["14d_av"] = round((data["tests"] - prev_2w_ago["tests"])/14, 1)
     # Where possible, calculate the 14D positivity rate and risk level
-    if positivity_rate(data["date"]) is not None:
+    if positivity_rate(data["date"]) is not None and utilities.date._days_between_dates_(d, utilities.data.today["date"]) >= 3:
         chart_day["p"] = positivity_rate(data["date"])["positivity_rate"]
     # Calculate vaccine doses and vaccinated residents
     if data["vaccinations"] is not None:

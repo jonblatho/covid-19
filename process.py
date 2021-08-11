@@ -80,8 +80,8 @@ if __name__ == "__main__":
             summary_day["initiated_percentage"] = vaccinations_summary["initiated_percentage"]
 
         # Positivity rate
-        positivity_rate_2w = utilities.calc.summary_positivity_rate(d)
-        positivity_rate_change = utilities.calc.summary_positivity_rate_change(d)
+        positivity_rate_2w = utilities.calc.summary_positivity_rate(d, lag_days=3)
+        positivity_rate_change = utilities.calc.summary_positivity_rate_change(d, lag_days=3)
         if positivity_rate_2w is not None:
             summary_day["positivity_rate_2w"] = positivity_rate_2w
         if positivity_rate_change is not None:
@@ -101,9 +101,9 @@ if __name__ == "__main__":
 
         # 7-day new tests
         if utilities.calc.summary_new_tests_7d(d) is not None:
-            summary_day["new_tests_7d"] = utilities.calc.summary_new_tests_7d(d)
+            summary_day["new_tests_7d"] = utilities.calc.summary_new_tests_7d(d, lag_days=3)
         if utilities.calc.summary_new_tests_7d_change(d) is not None:
-            summary_day["new_tests_7d_change"] = utilities.calc.summary_new_tests_7d_change(d)
+            summary_day["new_tests_7d_change"] = utilities.calc.summary_new_tests_7d_change(d, lag_days=3)
 
         # Add the previous/next dates as appropriate
         if i == 0:
