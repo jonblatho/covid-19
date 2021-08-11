@@ -263,11 +263,11 @@ a {
     text-align: center;
 }
 
-#risk-category {
-    margin: 20px auto 0;
+.risk-category {
+    margin: 15px auto 0;
     text-align: center;
 
-    #category-name {
+    .category-name {
         display: block;
         width: 100%;
         margin-bottom: 6px;
@@ -275,7 +275,7 @@ a {
         font-weight: bold;
     }
 
-    #category-indicator {
+    .category-indicator {
         display: inline-block;
         width: 18px;
         height: 18px;
@@ -283,7 +283,7 @@ a {
         border-radius: 12px;
     }
 
-    #category-value {
+    .category-value {
         margin: 10px 0 0;
         color: #666;
         line-height: 20px;
@@ -338,11 +338,11 @@ a {
     text-align: center;
 
     .total {
-        margin: 30px 0;
+        margin: 15px 0;
 
         .value {
-            margin: 10px 0;
-            font-size: 48px;
+            margin: 6px 0;
+            font-size: 36px;
             font-weight: bold;
         }
     

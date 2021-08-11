@@ -4,9 +4,9 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.risk_category }}
-<div id="risk-category" class="row">
-    <div id="category-name"><span id="category-indicator" class="risk-bg-{{ $data.risk_category }}" aria-hidden="true"></span>{{ humanize $data.risk_category }} Risk</div>
-    <div id="category-value">
+<div class="row risk-category">
+    <div class="category-name"><span class="category-indicator risk-bg-{{ $data.risk_category }}" aria-hidden="true"></span>{{ humanize $data.risk_category }} Risk</div>
+    <div class="category-value">
     {{ if eq $data.risk_category "low" }}
         Data indicates that COVID-19 poses a limited risk at this time,
     {{ else if eq $data.risk_category "moderate" }}

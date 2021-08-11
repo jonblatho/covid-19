@@ -3,6 +3,10 @@ $risk-color-moderate: #E0A526;
 $risk-color-high: #DC3513;
 $risk-color-critical: #8A2B2B;
 $risk-color-extreme: #DF1995;
+$ct-color-low: #1D8AFF;
+$ct-color-moderate: #FFF70e;
+$ct-color-considerable: #FF7134;
+$ct-color-high: #FF0000;
 
 @mixin risk-rule($level, $color) {
     .risk-bg-#{$level} {
@@ -18,8 +22,26 @@ $risk-color-extreme: #DF1995;
     }
 }
 
+@mixin ct-rule($level, $color) {
+    .ct-bg-#{$level} {
+        background-color: $color
+    }
+
+    .ct-border-left-#{$level} {
+        border-left: $color
+    }
+
+    .ct-text-#{$level} {
+        color: $color
+    }
+}
+
 @include risk-rule(low, $risk_color-low);
 @include risk-rule(moderate, $risk_color-moderate);
 @include risk-rule(high, $risk_color-high);
 @include risk-rule(critical, $risk_color-critical);
 @include risk-rule(extreme, $risk_color-extreme);
+@include ct-rule(low, $ct_color-low);
+@include ct-rule(moderate, $ct_color-moderate);
+@include ct-rule(considerable, $ct_color-considerable);
+@include ct-rule(high, $ct_color-high);
