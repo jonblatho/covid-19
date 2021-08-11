@@ -63,6 +63,9 @@ if __name__ == "__main__":
         # Risk level
         summary_day["risk_category"] = utilities.calc.risk_level(d)
         summary_day["new_cases_14d_100k"] = utilities.calc.per_100k(utilities.calc.cases_added(day["date"], n=14)["cases"]["howell_county"]/14)
+        
+        # CDC Level of Community Transmission
+        summary_day["community_transmission"] = utilities.calc.community_transmission(d)
 
         # 7-day new cases and change
         new_cases_7d = utilities.calc.cases_added(d)

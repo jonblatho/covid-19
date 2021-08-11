@@ -250,6 +250,37 @@ def summary_vaccinations(d):
         return {'completed_percentage': round(fully_vaccinated_sum/40400*100, 1), 'initiated_percentage': round(initiated_vaccination_sum/40400*100, 2)}
     return None
 
+def summary_vaccinations(d):
+    data = utilities.data.cumulative_data(d)
+    vaccine_data = [day for day in data if day["vaccinations"] is not None]
+    if len(vaccine_data) > 0:
+        fully_vaccinated_sum = sum([day["vaccinations"]["completed"] for day in vaccine_data])
+        initiated_vaccination_sum = sum([day["vaccinations"]["initiated"] for day in vaccine_data]) - fully_vaccinated_sum
+        return {'completed_percentage': round(fully_vaccinated_sum/40400*100, 1), 'initiated_percentage': round(initiated_vaccination_sum/40400*100, 2)}
+    return None
+
+######### CDC COMMUNITY TRANSMISSION ##########
+def community_transmission(d):
+    new_cases_7d = cases_added(d, n=7)
+    if new_cases_7d == None:
+        return None
+    else:
+        new_cases_7d = new_cases_7d["cases"]["howell_county"]
+    new_cases_100k_7d = per_100k(new_cases_7d)
+    positivity_rate_7d = positivity_rate(d, n=7, lag_days=3)
+    if positivity_rate_7d == None:
+        return None
+    else:
+        positivity_rate_7d = positivity_rate_7d["positivity_rate"]
+    if new_cases_100k_7d >= 100 or positivity_rate_7d >= 10:
+        return 'high'
+    elif new_cases_100k_7d >= 50 or positivity_rate_7d >= 8:
+        return 'considerable'
+    elif new_cases_100k_7d >= 10 or positivity_rate_7d >= 5:
+        return 'moderate'
+    else:
+        return 'low'
+
 ############## TABLE/CHART DATA ###############
 def table_dict(d):
     data = utilities.data.data_for_date(d)
