@@ -38,4 +38,10 @@ def _days_in_month_(d):
 def _index_for_date_(d):
     start = date.fromisoformat('2020-04-01')
     end = date.fromisoformat(d)
+    return max(0, (end - start).days)
+
+# Returns the expected index for a given date.
+def _days_between_dates_(start_d, end_d):
+    start = date.fromisoformat(start_d)
+    end = date.fromisoformat(end_d)
     return (end - start).days
