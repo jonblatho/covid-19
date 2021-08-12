@@ -1,5 +1,5 @@
             <section id="table">
-                <div class="wrap">
+                <div class="container-fluid">
                     <table class="all-data">
                         <thead>
                             <tr>
@@ -11,7 +11,9 @@
                                 <th rowspan="2">14-day<br />Pos.&nbsp;Rate</th>
                                 <th rowspan="2">Hosp.</th>
                                 <th rowspan="2">Deaths</th>
-                                <th rowspan="2">Risk<br />Level</th>
+                                <th colspan="3">Vaccines</th>
+                                <th rowspan="2">Risk Level</th>
+                                <th rowspan="2">Community<br aria-hidden="true" />Transmission</th>
                                 <th rowspan="2">Sources</th>
                             </tr>
                             <tr>
@@ -20,6 +22,9 @@
                                 {{ end }}
                                 <th>Total</th>
                                 <th>New</th>
+                                <th>Doses</th>
+                                <th>Initiated</th>
+                                <th>Completed</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,10 +73,30 @@
                                 <td class="na">N/A</td>
                                 {{ end }}
                                 <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
-                                {{ with .risk_level }}
-                                <td class="risk-level risk-text-{{ . }}">{{ humanize . }}</td>
+                                {{ if isset . "doses" }}
+                                <td>{{ lang.NumFmt 0 .doses }}</td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                                {{ if isset . "initiated" }}
+                                <td>{{ lang.NumFmt 0 .initiated }}</td>
+                                {{ else }}
+                                <td class="na">N/A</td>
+                                {{ end }}
+                                {{ if isset . "completed" }}
+                                <td class="prominent-right-border">{{ lang.NumFmt 0 .completed }}</td>
+                                {{ else }}
+                                <td class="na prominent-right-border">N/A</td>
+                                {{ end }}
+                                {{ if isset . "risk_level" }}
+                                <td class="risk-level"><span class="risk-bg-{{ .risk_level }}"></span> {{ humanize .risk_level }}</span></td>
                                 {{ else }}
                                 <td class="na" style="text-align: center;">N/A</td>
+                                {{ end }}
+                                {{ if isset . "community_transmission" }}
+                                <td class="ct prominent-right-border"><span class="ct-bg-{{ .community_transmission }}"></span> {{ humanize .community_transmission }}</td>
+                                {{ else }}
+                                <td class="na prominent-right-border" style="text-align: center;">N/A</td>
                                 {{ end }}
                                 {{ with .sources }}
                                 <td>
@@ -87,5 +112,5 @@
                         </tbody>
                     </table>
                 </div>
-                <p class="table-footer wrap"><span style="font-style: italic;">Italicized</span> quantities are estimated or impacted by estimated data.</p>
+                <p class="table-footer container-fluid" style="text-align: left;"><span style="font-style: italic;">Italicized</span> quantities are estimated or impacted by estimated data.</p>
             </section>

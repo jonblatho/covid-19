@@ -536,9 +536,17 @@ table {
         font-style: italic;
     }
 
-    .risk-level {
-        font-weight: 600;
+    .risk-level, .ct {
         text-align: center;
+
+        span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
     }
 }
 
