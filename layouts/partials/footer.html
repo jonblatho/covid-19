@@ -1,6 +1,6 @@
         </main>
         <footer>
-            <div class="wrap">
+            <div class="container-fluid">
                 <p>&copy; {{ now.Format "2006"}} Jonathan Thornton &middot; <a href="https://github.com/jonblatho/covid-19/blob/main/LICENSE">MIT License</a></p>
                 {{ if or .IsHome (eq .Params.layout "table") }}
                 <p>Site last updated: {{ now.Format "3:04 PM MST January 2" }}</p>
