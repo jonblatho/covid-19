@@ -8,12 +8,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.wrap {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
-
 .container-fluid div {
     min-width: 0;
     min-height: 0;
@@ -470,17 +464,6 @@ table {
     }
 }
 
-#table {
-    padding-bottom: 20px;
-
-    div.wrap {
-        height: 600px;
-        margin-bottom: 20px;
-        padding: 0 !important;
-        overflow: auto;
-    }
-}
-
 .all-data {
     position: relative;
     margin: 0;
@@ -525,7 +508,7 @@ table {
     }
 
     td.prominent-right-border {
-        border-right: 2px solid #888;
+        border-right: 1px solid #000;
     }
 
     td.na {
@@ -536,9 +519,25 @@ table {
         font-style: italic;
     }
 
-    .risk-level {
-        font-weight: 600;
+    .risk-level, .ct {
         text-align: center;
+
+        span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+    }
+
+    .risk-level {
+        min-width: 110px;
+    }
+
+    .ct {
+        min-width: 140px;
     }
 }
 
@@ -550,14 +549,14 @@ table {
     text-align: center;
 }
 
-h3 {
+h2 {
     margin: 20px 0;
     color: $primary;
     font-size: 24px;
     font-weight: 600;
 }
 
-h4 {
+h3 {
     margin: 20px 0;
     color: $primary;
     font-size: 20px;
@@ -569,6 +568,8 @@ h4 {
 }
 
 #content {
+    max-width: 900px;
+
     p {
         margin-bottom: 10px;
     }
@@ -597,13 +598,10 @@ footer {
     font-size: 12px;
     line-height: 20px;
     text-align: center;
-    
-    .wrap {
-        max-width: 400px;
-    }
 
     .disclaimer {
-        margin-top: 20px;
+        max-width: 400px;
+        margin: 20px auto 0;
         color: #888;
         font-size: 10px;
         line-height: 16px;

@@ -289,10 +289,9 @@ def table_dict(d):
     # Transfer date key
     table_day["date"] = data["date"]
     # Calculate total and new cases
-    total_cases = __case_sum_list__(utilities.calc.case_sums(utilities.data.cumulative_data(d)))
-    new_cases = __case_sum_list__(utilities.calc.case_sums([utilities.data.data_for_date(d)]))
-    table_day["total_cases"] = dict(zip(__city_slugs_county__, total_cases))
-    table_day["new_cases"] = dict(zip(__city_slugs_county__, new_cases))
+    total_cases = utilities.calc.case_sums(utilities.data.cumulative_data(d))
+    table_day["total_cases"] = total_cases
+    table_day["new_cases"] = utilities.calc.case_sums([utilities.data.data_for_date(d)])["howell_county"]
     # Transfer active cases, hospitalizations, deaths, source links, and estimates
     table_day["active_cases"] = data["active_cases"]
     if data["hospitalizations"] is not None:
@@ -310,6 +309,15 @@ def table_dict(d):
         table_day["positivity_rate"] = utilities.calc.summary_positivity_rate(d)
     if utilities.calc.risk_level(d) is not None:
         table_day["risk_level"] = utilities.calc.risk_level(d)
+        table_day["risk_level_value"] = per_100k(cases_added(d, 14)["cases"]["howell_county"])/14
+    # CDC Level of Community Transmission
+    table_day["community_transmission"] = utilities.calc.community_transmission(d)
+    # Vaccinations
+    if data["vaccinations"] is not None:
+        table_day["doses"] = data["vaccinations"]["doses"]
+        vaccine_data = [day["vaccinations"] for day in utilities.data.cumulative_data(d) if day["vaccinations"] is not None and None not in day["vaccinations"]]
+        table_day["initiated"] = sum([day["initiated"] for day in vaccine_data if day["initiated"] is not None])
+        table_day["completed"] = sum([day["completed"] for day in vaccine_data if day["completed"] is not None])
     # Transfer sources key
     if data["sources"] is not None:
         table_day["sources"] = [{'number': j, 'url': source} for j, source in enumerate(data["sources"], start=1)]
