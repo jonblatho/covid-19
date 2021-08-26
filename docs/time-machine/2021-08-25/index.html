@@ -12,14 +12,14 @@
 <script src=https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin=anonymous></script>
 <script src=https://covid.jonblatho.com/js/chartjs-plugin-annotation.min.e2ebaa60c0a4abdc570ad46f414e0bbc5eb18e9cbfda8c9ced40eb22a353409ef91fbd69354822e5b9d62405bfb0a853a16f825177861e5f13b60f9df58b0311.js integrity="sha512-4uuqYMCkq9xXCtRvQU4LvF6xjpy/2oyc7UDrIqNTQJ75H71pNUgi5bnWJAW/sKhToW+CUXeGHl8Ttg+d9YsDEQ=="></script>
 <script src=https://code.iconify.design/1/1.0.7/iconify.min.js></script>
-<script>var end_date="2021-08-24"</script>
+<script>var end_date="2021-08-25"</script>
 </head>
 <body>
 <a href=https://covid.jonblatho.com/>
 <header role=banner>
 <div class=container-fluid>
 <h1>COVID-19 in Howell County</h1>
-<p id=last-updated>as of August 24, 2021</p>
+<p id=last-updated>as of August 25, 2021</p>
 </div>
 </header>
 </a>
@@ -39,14 +39,14 @@
 <div id=top>
 <div class=message-info style=text-align:center>
 <div class=container-fluid>
-Below is the homepage as it would have appeared on August 24, 2021. Click <a href=https://covid.jonblatho.com/>here</a> to return to current data.
+This page is a permanent link to the homepage with data as of August 25, 2021. Click <a href=https://covid.jonblatho.com/>here</a> to go home.
 </div>
 </div>
 </div>
 <nav id=time-machine-nav class=wrap>
-<a href=https://covid.jonblatho.com/time-machine/2021-08-23 class=left>&larr; 8/23/21</a>
+<a href=https://covid.jonblatho.com/time-machine/2021-08-24 class=left>&larr; 8/24/21</a>
 <span class=label>Time Machine</span>
-<a href=https://covid.jonblatho.com/time-machine/2021-08-25 class=right>8/25/21 &rarr;</a>
+<a href=https://covid.jonblatho.com/ class=right>Home</a>
 </nav>
 <div class=clear></div>
 <main id=home>
@@ -101,7 +101,7 @@ Find a Vaccine
 <div class=category-name><span class="category-indicator risk-bg-critical" aria-hidden=true></span>Critical Risk</div>
 <div class=category-value>
 A COVID-19 outbreak is imminent or ongoing,
-with <strong>48.3</strong> average daily new cases per 100K population over the past two weeks.
+with <strong>43.3</strong> average daily new cases per 100K population over the past two weeks.
 </div>
 </div>
 <div class="row risk-category">
@@ -113,11 +113,11 @@ All individuals should wear masks in indoor public settings.
 </div>
 <div id=totals role=list aria-label="Cumulative data">
 <div class=total role=listitem aria-label="Total cases">
-<div class=value>5,443</div>
+<div class=value>5,457</div>
 <div class=label>cases</div>
 <div class=context>
 <span class=change-bad>
-&uarr; 111</span> from a week ago
+&uarr; 98</span> from a week ago
 </div>
 </div>
 <div class=total role=listitem aria-label="Total deaths">
@@ -137,14 +137,14 @@ All individuals should wear masks in indoor public settings.
 <div id=dashboard-grid-container class=row role=list aria-label="Current data">
 <div class="item col-md-3" role=listitem aria-label="Active cases">
 <div class=highlight>
-113
+111
 </div>
 <div class=description>
 active cases
 </div>
 <div class=context>
 <span class=change-good>&darr;
-45
+44
 (28%)
 </span> from a week ago
 </div>
@@ -158,22 +158,22 @@ currently hospitalized
 </div>
 <div class=context>
 <span class=change-good>&darr;
-8
-(33%)
+6
+(27%)
 </span> from a week ago
 </div>
 </div>
 <div class="item col-md-3" role=listitem aria-label=Testing>
 <div class=highlight>
-1,255
+1,239
 </div>
 <div class=description>
 tests in the&nbsp;past week
 </div>
 <div class=context>
 <span class=change-bad>&darr;
-230
-(15%)
+177
+(12%)
 </span> from a week ago
 </div>
 <div class=context>
@@ -182,16 +182,16 @@ tests in the&nbsp;past week
 </div>
 <div class="item col-md-3" role=listitem aria-label="Positivity rate">
 <div class=highlight>
-12.5%
+13.3%
 </div>
 <div class=description>
-14-day positivity&nbsp;rate*
+14-day positivity&nbsp;rate
 </div>
 <div class=context>
 <span class=change-good>&darr;
-2.2 pts.
-(15%)
-</span> from a week ago*
+1.7 pts.
+(11%)
+</span> from a week ago
 </div>
 <div class=context>
 (3-day lag for reporting delays)
@@ -208,13 +208,14 @@ tests in the&nbsp;past week
 <div id=county-map aria-label="Map of Howell County displaying active cases by town" role=list><svg viewBox="0 0 1e3 1e3" xmlns="http://www.w3.org/2000/svg"><title>county</title><g fill-rule="evenodd"><rect id="background" width="1e3" height="1e3" fill="#e3e3e3"/><polygon id="county" points="777.13 62.198 777.26 79.855 777.8 303.73 776.59 355.22 775.51 452.27 760.28 452.94 756.77 723.59 765.13 723.59 766.21 885.87 662.97 886.54 333.15 892.07 222.22 893.01 226.8 586.24 229.9 452.53 249.31 451.86 254.3 257.23 255.65 223.27 258.75 98.455 255.24 93.738 256.46 51.011 390.57 51.955 518.48 54.246 650.57 57.211 732.92 60.985" fill="#f8f8f8" fill-rule="nonzero" stroke="#979797" stroke-width="2"/></g></svg>
 <div id=active-labels>
 <div id=active-bakersfield class=active-label aria-label=Bakersfield** role=listitem><div class=active-town>Bakersfield**</div><div class=active-value>2</div></div>
-<div id=active-caulfield class=active-label aria-label=Caulfield role=listitem><div class=active-town>Caulfield</div><div class=active-value>4</div></div>
-<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>12</div></div>
+<div id=active-caulfield class=active-label aria-label=Caulfield role=listitem><div class=active-town>Caulfield</div><div class=active-value>6</div></div>
+<div id=active-moody class=active-label aria-label=Moody role=listitem><div class=active-town>Moody</div><div class=active-value>1</div></div>
+<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>14</div></div>
 <div id=active-peace-valley class=active-label aria-label="Peace Valley" role=listitem><div class=active-town>Peace Valley</div><div class=active-value>1</div></div>
 <div id=active-pomona class=active-label aria-label=Pomona role=listitem><div class=active-town>Pomona</div><div class=active-value>2</div></div>
 <div id=active-unknown class=active-label aria-label=Unknown role=listitem><div class=active-town>Unknown</div><div class=active-value>1</div></div>
-<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>76</div></div>
-<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>14</div></div>
+<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>71</div></div>
+<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>12</div></div>
 </div>
 </div>
 <p class=table-footer>The sum of these values may differ from the number of active cases countywide due to rounding.</p>
@@ -244,43 +245,43 @@ tests in the&nbsp;past week
 </thead>
 <tr>
 <th class=row-head>Today</th>
-<td class=county>17</td>
-<td>11</td>
-<td>4</td>
-<td>1</td>
-<td>1</td>
+<td class=county>14</td>
+<td>10</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
 </tr>
 <tr>
 <th class=row-head>Past Week</th>
-<td class=county>111</td>
-<td>75</td>
-<td>14</td>
+<td class=county>98</td>
+<td>63</td>
+<td>11</td>
 <td>12</td>
-<td>10</td>
+<td>12</td>
 </tr>
 <tr>
 <th class=row-head>MTD</th>
-<td class=county>623</td>
-<td>409</td>
+<td class=county>637</td>
+<td>419</td>
 <td>67</td>
-<td>77</td>
-<td>70</td>
+<td>79</td>
+<td>72</td>
 </tr>
 <tr>
 <th class=row-head>YTD</th>
-<td class=county>2,424</td>
-<td>1,573</td>
+<td class=county>2,438</td>
+<td>1,583</td>
 <td>304</td>
-<td>318</td>
-<td>229</td>
+<td>320</td>
+<td>231</td>
 </tr>
 <tr>
 <th class=row-head>All</th>
-<td class=county>5,443</td>
-<td>3,522</td>
+<td class=county>5,457</td>
+<td>3,532</td>
 <td>698</td>
-<td>687</td>
-<td>536</td>
+<td>689</td>
+<td>538</td>
 </tr>
 </table>
 <table class=totals>
@@ -432,11 +433,11 @@ tests in the&nbsp;past week
 </tr>
 <tr>
 <th class=row-head>Aug. 2021</th>
-<td class=county>623</td>
-<td>409</td>
+<td class=county>637</td>
+<td>419</td>
 <td>67</td>
-<td>77</td>
-<td>70</td>
+<td>79</td>
+<td>72</td>
 </tr>
 </table>
 </section>
