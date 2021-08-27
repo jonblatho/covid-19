@@ -59,7 +59,7 @@ with urllib.request.urlopen(town_uri) as town_url:
     # Get total cases by town
     town_data = json.loads(town_url.read().decode())
 
-    towns = [item["values"][1].lower() for item in town_data["data"]["county_list"]]
+    towns = [item["values"][1].lower().strip() for item in town_data["data"]["county_list"]]
     town_dict = {
         "bakersfield": towns.index("bakersfield"),
         "brandsville": towns.index("brandsville"),
