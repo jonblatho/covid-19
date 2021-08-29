@@ -4,6 +4,6 @@
     "chartjs-plugin-annotation": "github:jonblatho/chartjs-plugin-annotation#master"
   },
   "scripts": {
-    "rebuild": "python process.py; rm -r docs/all-data docs/css docs/js docs/notes; rm docs/index.html; hugo; git add docs; git add content"
+    "rebuild": "python process.py; rm -r docs/all-data docs/css docs/js docs/notes; rm docs/index.html; hugo -e production; git add docs; git add content"
   }
 }
