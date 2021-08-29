@@ -25,6 +25,8 @@
             var end_date = {{ dateFormat "2006-01-02" $date }};
         </script>
         {{ end }}
+        {{ if eq .Hugo.Environment "production" }}
         <script async defer data-website-id="f52691f1-33ca-4d90-a13f-9a472396fcd5" src="https://stats.jonblatho.com/umami.js"></script>
+        {{ end }}
     </head>
     <body>
