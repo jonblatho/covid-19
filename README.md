@@ -24,3 +24,7 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **February 10, 2021:** Automated nightly updates at 11 PM and 12 AM CST.
 * **March 25, 2021:** Made site responsive to improve legibility on mobile devices.
 * **July 4, 2021:** Added two vaccination charts to the homepage.
+* **July 9, 2021:** Redesigned the chart and dashboard section of the homepage with a new full-width layout.
+* **August 1, 2021:** Redesigned the Active Cases by Town section as a map with estimates available for all Howell County towns.
+* **August 10, 2021:** Adds a customized calculation of the CDC Level of Community Transmission parameter including antigen tests, which are anomalously common in Howell County.
+* **August 12, 2021:** Redesigned and expanded All Data table with support for new cases by town for all towns, vaccination data, and a new CDC Level of Community Transmission column.
