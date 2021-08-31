@@ -12,7 +12,7 @@
 <script src=https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin=anonymous></script>
 <script src=https://covid.jonblatho.com/js/chartjs-plugin-annotation.min.e2ebaa60c0a4abdc570ad46f414e0bbc5eb18e9cbfda8c9ced40eb22a353409ef91fbd69354822e5b9d62405bfb0a853a16f825177861e5f13b60f9df58b0311.js integrity="sha512-4uuqYMCkq9xXCtRvQU4LvF6xjpy/2oyc7UDrIqNTQJ75H71pNUgi5bnWJAW/sKhToW+CUXeGHl8Ttg+d9YsDEQ=="></script>
 <script src=https://code.iconify.design/1/1.0.7/iconify.min.js></script>
-<script>var end_date="2020-08-29"</script>
+<script>var end_date="2021-08-30"</script>
 <script async defer data-website-id=f52691f1-33ca-4d90-a13f-9a472396fcd5 src=https://stats.jonblatho.com/umami.js></script>
 </head>
 <body>
@@ -20,7 +20,7 @@
 <header role=banner>
 <div class=container-fluid>
 <h1>COVID-19 in Howell County</h1>
-<p id=last-updated>as of August 29, 2020</p>
+<p id=last-updated>as of August 30, 2021</p>
 </div>
 </header>
 </a>
@@ -40,14 +40,14 @@
 <div id=top>
 <div class=message-info style=text-align:center>
 <div class=container-fluid>
-Below is the homepage as it would have appeared on August 29, 2020. Click <a href=https://covid.jonblatho.com/>here</a> to return to current data.
+This page is a permanent link to the homepage with data as of August 30, 2021. Click <a href=https://covid.jonblatho.com/>here</a> to go home.
 </div>
 </div>
 </div>
 <nav id=time-machine-nav class=wrap>
-<a href=https://covid.jonblatho.com/time-machine/2020-08-28 class=left>&larr; 8/28/20</a>
+<a href=https://covid.jonblatho.com/time-machine/2021-08-29 class=left>&larr; 8/29/21</a>
 <span class=label>Time Machine</span>
-<a href=https://covid.jonblatho.com/time-machine/2020-08-30 class=right>8/30/20 &rarr;</a>
+<a href=https://covid.jonblatho.com/ class=right>Home</a>
 </nav>
 <div class=clear></div>
 <main id=home>
@@ -80,14 +80,29 @@ Below is the homepage as it would have appeared on August 29, 2020. Click <a hre
 <canvas id=chart aria-hidden=true></canvas>
 </div>
 <div id=sidebar class=col-md-4>
+<div id=vaccinations>
+<div id=vaccination-meter aria-hidden=true>
+<span id=fully-vaccinated style=width:25.4%></span><span id=initiated-vaccination style=width:5.9%></span>
+</div>
+<div id=vaccination-details role=list>
+<div role=listitem>
+<div class=percentage>25.4%</div>
+<div class=label>fully vaccinated</div>
+</div>
+<div role=listitem>
+<div class=percentage>5.9%</div>
+<div class=label>initiated vaccination</div>
+</div>
+</div>
+</div>
 <a id=vaccine-button href="https://www.vaccines.gov/results/?zipcode=65775&medications=779bfe52-0dd8-4023-a183-457eb100fccc,a84fb9ed-deb4-461c-b785-e17c782ef88b,784db609-dc1f-45a5-bad6-8db02e79d44f&radius=25">
 Find a Vaccine
 </a>
 <div class="row risk-category">
-<div class=category-name><span class="category-indicator risk-bg-high" aria-hidden=true></span>High Risk</div>
+<div class=category-name><span class="category-indicator risk-bg-critical" aria-hidden=true></span>Critical Risk</div>
 <div class=category-value>
-There is a significant risk of a COVID-19 outbreak,
-with <strong>17.0</strong> average daily new cases per 100K population over the past two weeks.
+A COVID-19 outbreak is imminent or ongoing,
+with <strong>38.2</strong> average daily new cases per 100K population over the past two weeks.
 </div>
 </div>
 <div class="row risk-category">
@@ -99,19 +114,19 @@ All individuals should wear masks in indoor public settings.
 </div>
 <div id=totals role=list aria-label="Cumulative data">
 <div class=total role=listitem aria-label="Total cases">
-<div class=value>261</div>
+<div class=value>5,503</div>
 <div class=label>cases</div>
 <div class=context>
 <span class=change-bad>
-&uarr; 64</span> from a week ago*
+&uarr; 77</span> from a week ago
 </div>
 </div>
 <div class=total role=listitem aria-label="Total deaths">
-<div class=value>3</div>
+<div class=value>122</div>
 <div class=label>deaths</div>
 <div class=context>
 <span class=change-bad>
-&uarr; 1</span> from a week ago
+&uarr; 5</span> from a week ago
 </div>
 </div>
 </div>
@@ -123,42 +138,43 @@ All individuals should wear masks in indoor public settings.
 <div id=dashboard-grid-container class=row role=list aria-label="Current data">
 <div class="item col-md-3" role=listitem aria-label="Active cases">
 <div class=highlight>
-72
+85
 </div>
 <div class=description>
 active cases
 </div>
 <div class=context>
-<span class=change-bad>&uarr;
-41
-(132%)
-</span> from a week ago*
+<span class=change-good>&darr;
+32
+(27%)
+</span> from a week ago
 </div>
 </div>
 <div class="item col-md-3" role=listitem label=Hospitalizations>
 <div class=highlight>
-2
+13
 </div>
 <div class=description>
 currently hospitalized
 </div>
 <div class=context>
-<span class=change-neutral>&rarr;
-0
+<span class=change-good>&darr;
+8
+(38%)
 </span> from a week ago
 </div>
 </div>
 <div class="item col-md-3" role=listitem aria-label=Testing>
 <div class=highlight>
-461
+1,221
 </div>
 <div class=description>
 tests in the&nbsp;past week
 </div>
 <div class=context>
-<span class=change-good>&uarr;
-92
-(25%)
+<span class=change-bad>&darr;
+44
+(3%)
 </span> from a week ago
 </div>
 <div class=context>
@@ -167,16 +183,16 @@ tests in the&nbsp;past week
 </div>
 <div class="item col-md-3" role=listitem aria-label="Positivity rate">
 <div class=highlight>
-7.4%
+8.4%
 </div>
 <div class=description>
 14-day positivity&nbsp;rate
 </div>
 <div class=context>
-<span class=change-bad>&uarr;
-2.9 pts.
-(65%)
-</span> from a week ago
+<span class=change-good>&darr;
+4.5 pts.
+(35%)
+</span> from a week ago*
 </div>
 <div class=context>
 (3-day lag for reporting delays)
@@ -192,10 +208,14 @@ tests in the&nbsp;past week
 <h3>Estimated active cases by town</h3>
 <div id=county-map aria-label="Map of Howell County displaying active cases by town" role=list><svg viewBox="0 0 1e3 1e3" xmlns="http://www.w3.org/2000/svg"><title>county</title><g fill-rule="evenodd"><rect id="background" width="1e3" height="1e3" fill="#e3e3e3"/><polygon id="county" points="777.13 62.198 777.26 79.855 777.8 303.73 776.59 355.22 775.51 452.27 760.28 452.94 756.77 723.59 765.13 723.59 766.21 885.87 662.97 886.54 333.15 892.07 222.22 893.01 226.8 586.24 229.9 452.53 249.31 451.86 254.3 257.23 255.65 223.27 258.75 98.455 255.24 93.738 256.46 51.011 390.57 51.955 518.48 54.246 650.57 57.211 732.92 60.985" fill="#f8f8f8" fill-rule="nonzero" stroke="#979797" stroke-width="2"/></g></svg>
 <div id=active-labels>
-<div id=active-koshkonong class=active-label aria-label=Koshkonong** role=listitem><div class=active-town>Koshkonong**</div><div class=active-value>2</div></div>
-<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>1</div></div>
-<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>64</div></div>
-<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>4</div></div>
+<div id=active-caulfield class=active-label aria-label=Caulfield role=listitem><div class=active-town>Caulfield</div><div class=active-value>3</div></div>
+<div id=active-moody class=active-label aria-label=Moody role=listitem><div class=active-town>Moody</div><div class=active-value>1</div></div>
+<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>7</div></div>
+<div id=active-peace-valley class=active-label aria-label="Peace Valley" role=listitem><div class=active-town>Peace Valley</div><div class=active-value>1</div></div>
+<div id=active-pomona class=active-label aria-label=Pomona role=listitem><div class=active-town>Pomona</div><div class=active-value>1</div></div>
+<div id=active-pottersville class=active-label aria-label=Pottersville role=listitem><div class=active-town>Pottersville</div><div class=active-value>2</div></div>
+<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>60</div></div>
+<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>10</div></div>
 </div>
 </div>
 <p class=table-footer>The sum of these values may differ from the number of active cases countywide due to rounding.</p>
@@ -225,43 +245,43 @@ tests in the&nbsp;past week
 </thead>
 <tr>
 <th class=row-head>Today</th>
-<td class=county>7</td>
-<td>7</td>
-<td>0</td>
+<td class=county>20</td>
+<td>18</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th class=row-head>Past Week</th>
-<td class=county>64</td>
-<td>57</td>
-<td>4</td>
-<td>1</td>
-<td>2</td>
+<td class=county>77</td>
+<td>54</td>
+<td>9</td>
+<td>6</td>
+<td>8</td>
 </tr>
 <tr>
 <th class=row-head>MTD</th>
-<td class=county>133</td>
-<td>113</td>
-<td>12</td>
-<td>5</td>
-<td>3</td>
+<td class=county>683</td>
+<td>452</td>
+<td>72</td>
+<td>82</td>
+<td>77</td>
 </tr>
 <tr>
 <th class=row-head>YTD</th>
-<td class=county>261</td>
-<td>198</td>
-<td>18</td>
-<td>21</td>
-<td>24</td>
+<td class=county>2,484</td>
+<td>1,616</td>
+<td>309</td>
+<td>323</td>
+<td>236</td>
 </tr>
 <tr>
 <th class=row-head>All</th>
-<td class=county>261</td>
-<td>198</td>
-<td>18</td>
-<td>21</td>
-<td>24</td>
+<td class=county>5,503</td>
+<td>3,565</td>
+<td>703</td>
+<td>692</td>
+<td>543</td>
 </tr>
 </table>
 <table class=totals>
@@ -317,11 +337,107 @@ tests in the&nbsp;past week
 </tr>
 <tr>
 <th class=row-head>Aug. 2020</th>
-<td class=county>133</td>
-<td>113</td>
-<td>12</td>
+<td class=county>156</td>
+<td>129</td>
+<td>13</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<th class=row-head>Sep. 2020</th>
+<td class=county>514</td>
+<td>354</td>
+<td>58</td>
+<td>49</td>
+<td>53</td>
+</tr>
+<tr>
+<th class=row-head>Oct. 2020</th>
+<td class=county>990</td>
+<td>615</td>
+<td>174</td>
+<td>130</td>
+<td>71</td>
+</tr>
+<tr>
+<th class=row-head>Nov. 2020</th>
+<td class=county>604</td>
+<td>332</td>
+<td>64</td>
+<td>126</td>
+<td>82</td>
+</tr>
+<tr>
+<th class=row-head>Dec. 2020</th>
+<td class=county>627</td>
+<td>434</td>
+<td>79</td>
+<td>41</td>
+<td>73</td>
+</tr>
+<tr>
+<th class=row-head>Jan. 2021</th>
+<td class=county>472</td>
+<td>332</td>
+<td>63</td>
+<td>40</td>
+<td>37</td>
+</tr>
+<tr>
+<th class=row-head>Feb. 2021</th>
+<td class=county>160</td>
+<td>108</td>
+<td>20</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<th class=row-head>Mar. 2021</th>
+<td class=county>71</td>
+<td>58</td>
+<td>6</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<th class=row-head>Apr. 2021</th>
+<td class=county>40</td>
+<td>30</td>
+<td>2</td>
 <td>5</td>
 <td>3</td>
+</tr>
+<tr>
+<th class=row-head>May 2021</th>
+<td class=county>39</td>
+<td>29</td>
+<td>4</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<th class=row-head>Jun. 2021</th>
+<td class=county>148</td>
+<td>73</td>
+<td>24</td>
+<td>35</td>
+<td>16</td>
+</tr>
+<tr>
+<th class=row-head>Jul. 2021</th>
+<td class=county>871</td>
+<td>534</td>
+<td>118</td>
+<td>140</td>
+<td>79</td>
+</tr>
+<tr>
+<th class=row-head>Aug. 2021</th>
+<td class=county>683</td>
+<td>452</td>
+<td>72</td>
+<td>82</td>
+<td>77</td>
 </tr>
 </table>
 </section>
