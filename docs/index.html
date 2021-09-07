@@ -13,7 +13,7 @@
 <script src=https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin=anonymous></script>
 <script src=https://covid.jonblatho.com/js/chartjs-plugin-annotation.min.e2ebaa60c0a4abdc570ad46f414e0bbc5eb18e9cbfda8c9ced40eb22a353409ef91fbd69354822e5b9d62405bfb0a853a16f825177861e5f13b60f9df58b0311.js integrity="sha512-4uuqYMCkq9xXCtRvQU4LvF6xjpy/2oyc7UDrIqNTQJ75H71pNUgi5bnWJAW/sKhToW+CUXeGHl8Ttg+d9YsDEQ=="></script>
 <script src=https://code.iconify.design/1/1.0.7/iconify.min.js></script>
-<script>var end_date="2021-09-05"</script>
+<script>var end_date="2021-09-06"</script>
 <script async defer data-website-id=f52691f1-33ca-4d90-a13f-9a472396fcd5 src=https://stats.jonblatho.com/umami.js></script>
 </head>
 <body>
@@ -21,7 +21,7 @@
 <header role=banner>
 <div class=container-fluid>
 <h1>COVID-19 in Howell County</h1>
-<p id=last-updated>as of September 5, 2021</p>
+<p id=last-updated>as of September 6, 2021</p>
 </div>
 </header>
 </a>
@@ -92,7 +92,7 @@ Find a Vaccine
 <div class=category-name><span class="category-indicator risk-bg-critical" aria-hidden=true></span>Critical Risk</div>
 <div class=category-value>
 A COVID-19 outbreak is imminent or ongoing,
-with <strong>32.0</strong> average daily new cases per 100K population over the past two weeks.
+with <strong>29.2</strong> average daily new cases per 100K population over the past two weeks.
 </div>
 </div>
 <div class="row risk-category">
@@ -108,7 +108,7 @@ All individuals should wear masks in indoor public settings.
 <div class=label>cases</div>
 <div class=context>
 <span class=change-bad>
-&uarr; 108</span> from a week ago
+&uarr; 88</span> from a week ago
 </div>
 </div>
 <div class=total role=listitem aria-label="Total deaths">
@@ -116,7 +116,7 @@ All individuals should wear masks in indoor public settings.
 <div class=label>deaths</div>
 <div class=context>
 <span class=change-bad>
-&uarr; 3</span> from a week ago
+&uarr; 2</span> from a week ago
 </div>
 </div>
 </div>
@@ -135,8 +135,8 @@ active cases
 </div>
 <div class=context>
 <span class=change-bad>&uarr;
-4
-(4%)
+28
+(33%)
 </span> from a week ago
 </div>
 </div>
@@ -156,16 +156,16 @@ currently hospitalized
 </div>
 <div class="item col-md-3" role=listitem aria-label=Testing>
 <div class=highlight>
-899
+1,147
 </div>
 <div class=description>
-tests in the&nbsp;past week
+tests in the&nbsp;past week*
 </div>
 <div class=context>
 <span class=change-bad>&darr;
-344
-(28%)
-</span> from a week ago
+125
+(10%)
+</span> from a week ago*
 </div>
 <div class=context>
 (3-day lag for reporting delays)
@@ -179,9 +179,9 @@ tests in the&nbsp;past week
 14-day positivity&nbsp;rate*
 </div>
 <div class=context>
-<span class=change-good>&darr;
-0.2 pts.
-(3%)
+<span class=change-bad>&uarr;
+0.1 pts.
+(1%)
 </span> from a week ago*
 </div>
 <div class=context>
@@ -198,14 +198,14 @@ tests in the&nbsp;past week
 <h3>Estimated active cases by town</h3>
 <div id=county-map aria-label="Map of Howell County displaying active cases by town" role=list><svg viewBox="0 0 1e3 1e3" xmlns="http://www.w3.org/2000/svg"><title>county</title><g fill-rule="evenodd"><rect id="background" width="1e3" height="1e3" fill="#e3e3e3"/><polygon id="county" points="777.13 62.198 777.26 79.855 777.8 303.73 776.59 355.22 775.51 452.27 760.28 452.94 756.77 723.59 765.13 723.59 766.21 885.87 662.97 886.54 333.15 892.07 222.22 893.01 226.8 586.24 229.9 452.53 249.31 451.86 254.3 257.23 255.65 223.27 258.75 98.455 255.24 93.738 256.46 51.011 390.57 51.955 518.48 54.246 650.57 57.211 732.92 60.985" fill="#f8f8f8" fill-rule="nonzero" stroke="#979797" stroke-width="2"/></g></svg>
 <div id=active-labels>
-<div id=active-caulfield class=active-label aria-label=Caulfield role=listitem><div class=active-town>Caulfield</div><div class=active-value>3</div></div>
+<div id=active-caulfield class=active-label aria-label=Caulfield role=listitem><div class=active-town>Caulfield</div><div class=active-value>4</div></div>
 <div id=active-moody class=active-label aria-label=Moody role=listitem><div class=active-town>Moody</div><div class=active-value>1</div></div>
-<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>10</div></div>
+<div id=active-mountain-view class=active-label aria-label="Mountain View" role=listitem><div class=active-town>Mountain View</div><div class=active-value>13</div></div>
 <div id=active-peace-valley class=active-label aria-label="Peace Valley" role=listitem><div class=active-town>Peace Valley</div><div class=active-value>1</div></div>
-<div id=active-pomona class=active-label aria-label=Pomona role=listitem><div class=active-town>Pomona</div><div class=active-value>3</div></div>
+<div id=active-pomona class=active-label aria-label=Pomona role=listitem><div class=active-town>Pomona</div><div class=active-value>4</div></div>
 <div id=active-pottersville class=active-label aria-label=Pottersville role=listitem><div class=active-town>Pottersville</div><div class=active-value>1</div></div>
-<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>88</div></div>
-<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>5</div></div>
+<div id=active-west-plains class=active-label aria-label="West Plains" role=listitem><div class=active-town>West Plains</div><div class=active-value>85</div></div>
+<div id=active-willow-springs class=active-label aria-label="Willow Springs" role=listitem><div class=active-town>Willow Springs</div><div class=active-value>4</div></div>
 </div>
 </div>
 <p class=table-footer>The sum of these values may differ from the number of active cases countywide due to rounding.</p>
@@ -235,17 +235,17 @@ tests in the&nbsp;past week
 </thead>
 <tr>
 <th class=row-head>Today</th>
-<td class=county>11</td>
-<td>10</td>
+<td class=county>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
 <th class=row-head>Past Week</th>
-<td class=county>108</td>
-<td>84</td>
-<td>5</td>
+<td class=county>88</td>
+<td>66</td>
+<td>3</td>
 <td>10</td>
 <td>9</td>
 </tr>
@@ -446,7 +446,7 @@ tests in the&nbsp;past week
 <footer>
 <div class=container-fluid>
 <p>&copy; 2021 Jonathan Thornton &#183; <a href=https://github.com/jonblatho/covid-19/blob/main/LICENSE>MIT License</a></p>
-<p>Site last updated: 11:12 PM CDT September 5</p>
+<p>Site last updated: 11:12 PM CDT September 6</p>
 <p><a href=https://github.com/jonblatho/covid-19>View on GitHub</a> &#183; <a href=/privacy>Privacy</a></p>
 <p class=disclaimer>To the fullest extent permitted by applicable law, no warranty or guarantee is made regarding the timeliness, accuracy, or availability of the content of this webpage or updates thereto. This webpage is maintained on a best-effort, as-is basis. Data provided on this webpage are intended strictly for informational purposes; may be incorrect, incomplete, or outdated; and should not be used to make health care decisions.</p>
 </div>
