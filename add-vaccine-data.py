@@ -6,11 +6,28 @@ from utilities import utilities
 
 # Argument parsing setup
 parser = ArgumentParser()
-parser.add_argument('file', type=str, help='The vaccination CSV data file to process.')
-parser.add_argument('type', type=str, choices=['doses', 'initiated', 'completed'], help='The vaccination data file type.')
+parser.add_argument('path', type=str, help='The path to the vaccination CSV data file to process.')
+parser.add_argument('--type', type=str, choices=['doses', 'initiated', 'completed'], help='The vaccination data file type. This argument is optional if the path is provided and the data file names are present and unchanged from what was received from the DHSS server.')
 args = parser.parse_args()
 
-with open(args.file, 'r', encoding='utf-16') as csv_file:
+# Pull arguments from arg parser
+data_path = args.path
+data_type = args.type
+
+# If type isn't provided, attempt to guess the type
+if data_type is None and data_path is not None:
+    if "doses" in data_path.lower():
+        data_type = "doses"
+    elif "initiated" in data_path.lower():
+        data_type = "initiated"
+    elif "completed" in data_path.lower():
+        data_type = "completed"
+    else:
+        print("Unable to guess the type of vaccine data file provided.")
+        print('Please retry and explicitly provide the type as "--type doses", "--type initiated", or "--type completed" following the file path. Exiting.')
+        exit(1)
+
+with open(data_path, 'r', encoding='utf-16') as csv_file:
     dates = [d["date"] for d in utilities.data.all]
 
     def __reformatted_date__(d: str):
@@ -40,9 +57,9 @@ with open(args.file, 'r', encoding='utf-16') as csv_file:
             continue
         # Filter to rows for the current date
         date_rows = [row for row in rows if row[0] == day["date"]]
-        if args.type == 'doses':
+        if data_type == 'doses':
             value_index = 2
-        elif args.type == 'initiated' or args.type =='completed':
+        elif data_type == 'initiated' or data_type =='completed':
             value_index = 3
         # Sum the filtered values 
         value = sum([int(v[value_index].replace(',','')) for v in date_rows])
@@ -50,7 +67,7 @@ with open(args.file, 'r', encoding='utf-16') as csv_file:
         # Store data
         if "vaccinations" not in day or day["vaccinations"] is None:
             day["vaccinations"] = {"doses": None, "initiated": None, "completed": None}
-        day["vaccinations"][args.type] = value
+        day["vaccinations"][data_type] = value
 
 # Save monthly data
 months = utilities.unique([d["date"][:7] for d in utilities.data.all])
