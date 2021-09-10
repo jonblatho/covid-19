@@ -73,7 +73,7 @@ jobs:
       # If the archive was successful, add the archive URL to the data
       - name: Add Archive URL to Data
         if: steps.archive.outcome == 'success' && steps.archive.outputs.wayback_url != ''
-        run: python add-archive-url.py ${{ steps.archive.outputs.wayback_url }}
+        run: python add-source-url.py ${{ steps.archive.outputs.wayback_url }}
 
       - name: Commit and Push (Archive)
         uses: EndBug/add-and-commit@v7
