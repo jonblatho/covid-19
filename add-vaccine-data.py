@@ -8,6 +8,7 @@ from utilities import utilities
 parser = ArgumentParser()
 parser.add_argument('path', type=str, help='The path to the vaccination CSV data file to process.')
 parser.add_argument('--type', type=str, choices=['doses', 'initiated', 'completed'], help='The vaccination data file type. This argument is optional if the path is provided and the data file names are present and unchanged from what was received from the DHSS server.')
+parser.add_argument('--quiet', action='store_true', help='Suppress non-error output.')
 args = parser.parse_args()
 
 # Pull arguments from arg parser
@@ -52,7 +53,8 @@ with open(data_path, 'r', encoding='utf-16') as csv_file:
     for day in utilities.data.all:
         if utilities.date._date_is_before_(day["date"], '2020-12-15'):
             # No doses were administered before 2020-12-15
-            print(day["date"], "is before 2020-12-14. Skipping.")
+            if not args.quiet:
+                print(day["date"], "is before 2020-12-14. Skipping.")
             day["vaccinations"] = None
             continue
         # Filter to rows for the current date
@@ -72,4 +74,4 @@ with open(data_path, 'r', encoding='utf-16') as csv_file:
 # Save monthly data
 months = utilities.unique([d["date"][:7] for d in utilities.data.all])
 for month in months:
-    utilities.save_json(utilities.data.data_for_month(month), f'daily-data/{month}.json')
+    utilities.save_json(utilities.data.data_for_month(month), f'daily-data/{month}.json', quiet=args.quiet)

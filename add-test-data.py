@@ -7,6 +7,7 @@ from utilities import date, utilities
 # Argument parsing setup
 parser = ArgumentParser()
 parser.add_argument('file', type=str, help='The vaccination CSV data file to process.')
+parser.add_argument('--quiet', action='store_true', help='Suppress non-error output.')
 args = parser.parse_args()
 
 with open(args.file, 'r', encoding='utf-16') as csv_file:
@@ -47,4 +48,4 @@ with open(args.file, 'r', encoding='utf-16') as csv_file:
 # Save monthly data
 months = utilities.unique([d["date"][:7] for d in utilities.data.all])
 for month in months:
-    utilities.save_json(utilities.data.data_for_month(month), f'daily-data/{month}.json')
+    utilities.save_json(utilities.data.data_for_month(month), f'daily-data/{month}.json', quiet=args.quiet)
