@@ -9,7 +9,7 @@ data = data
 calc = calc
 
 # Outputs JSON for the given dictionary or list to the given path.
-def save_json(x, path, quiet=False):
+def save_json(x, path, quiet=False): # pragma: no cover
     with open(path, 'w+') as output_file:
         output_file.write(json.dumps(x, separators=(',', ':')))
         if not quiet:

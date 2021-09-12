@@ -12,12 +12,12 @@ def per_100k(v):
 
 ################# UTILITIES ###################
 
-def __summary_dict__(value, estimated, percentage=None):
-    if percentage is None:
+def __summary_dict__(value, estimated, percentage=None): # pragma: no cover
+    if percentage is None: # pragma: no cover
         return {'value': value, 'estimate': estimated}
     return {'value': value, 'percentage': percentage, 'estimate': estimated}
 
-def __week_ago_day__(d):
+def __week_ago_day__(d): # pragma: no cover
     return utilities.data.week_ago(d)
 
 # Temporary compatibility for expected output format in Hugo source files for some data
@@ -62,32 +62,20 @@ def active_cases_by_town(date):
 def cases_added(end_date, n=7, lag_days=0):
     end_date_with_lag = utilities.date._date_advanced_by_(end_date, -1*lag_days)
     data_slice = utilities.data.data_for_days_ended(n, end_date_with_lag)
-    # Find whether the return value is impacted by estimated data
-    start_estimated = data_slice[0]["estimates"]["cases"]
-    end_estimated = data_slice[-1]["estimates"]["cases"]
-    estimated = bool(start_estimated or end_estimated)
-    # Return case sums by town for the specified period
-    return {"cases": case_sums(data_slice), "estimated": estimated}
+    if utilities.date._date_is_before_(end_date, utilities.data.all[0]["date"]):
+        return {"cases": 0, "estimated": False}
+    elif len(data_slice) > 0:
+        # Find whether the return value is impacted by estimated data
+        start_estimated = data_slice[0]["estimates"]["cases"]
+        end_estimated = data_slice[-1]["estimates"]["cases"]
+        estimated = bool(start_estimated or end_estimated)
+        # Return case sums by town for the specified period
+        return {"cases": case_sums(data_slice), "estimated": estimated}
 
 # Returns a dictionary for new cases added in the week prior to the given date.
 def summary_new_cases_7d(d):
     new_cases_7d = cases_added(d)
     return __summary_dict__(new_cases_7d["cases"]["howell_county"], new_cases_7d["estimated"])
-
-# Returns a dictionary for the change in new cases added in the past week
-# relative to one week prior to the given date.
-def summary_new_cases_7d_change(d):
-    new_cases_7d = cases_added(d)
-    week_ago_day = __week_ago_day__(d)
-    if week_ago_day is not None:
-        new_cases_7d_week_ago = cases_added(utilities.date._date_advanced_by_(d, -7))
-        new_cases_7d_change = new_cases_7d["cases"]["howell_county"] - new_cases_7d_week_ago["cases"]["howell_county"]
-        if new_cases_7d_week_ago["cases"]["howell_county"] != 0:
-            new_cases_7d_change_percent = int(round(abs((new_cases_7d["cases"]["howell_county"] - new_cases_7d_week_ago["cases"]["howell_county"])/new_cases_7d_week_ago["cases"]["howell_county"])*100, 0))
-        else:
-            new_cases_7d_change_percent = None
-        new_cases_7d_change_estimate = bool(new_cases_7d["estimated"] or new_cases_7d_week_ago["estimated"])
-        return __summary_dict__(new_cases_7d_change, new_cases_7d_change_estimate, new_cases_7d_change_percent)
 
 # Returns a dictionary for active cases on the given date.
 def summary_active_cases(d):
@@ -111,26 +99,20 @@ def summary_active_cases_change(d):
 
 def __risk_level_value__(d):
     cases = case_sums(utilities.data.data_for_days_ended(14, d))["howell_county"]
-    if cases is not None:
-        return per_100k(cases/14)
-    return None
+    return per_100k(cases/14)
 
 # Finds the categorical risk level for the given date.
 def risk_level(d):
-    cases = case_sums(utilities.data.data_for_days_ended(14, d))["howell_county"]
-    if cases is not None:
-        average_daily_cases_14d_100k = per_100k(cases/14)
-        if average_daily_cases_14d_100k < 1:
-            return "low"
-        elif average_daily_cases_14d_100k < 10:
-            return "moderate"
-        elif average_daily_cases_14d_100k < 25:
-            return "high"
-        elif average_daily_cases_14d_100k < 75:
-            return "critical"
-        else:
-            return "extreme"
-    return None
+    if __risk_level_value__(d) < 1:
+        return "low"
+    elif __risk_level_value__(d) < 10:
+        return "moderate"
+    elif __risk_level_value__(d) < 25:
+        return "high"
+    elif __risk_level_value__(d) < 75:
+        return "critical"
+    else:
+        return "extreme"
 
 ########### TESTS/POSITIVITY RATE #############
 
@@ -140,28 +122,26 @@ def tests_added(end_date, n=7, lag_days=0):
     end_date_with_lag = utilities.date._date_advanced_by_(end_date, -1*lag_days)
     data_slice = utilities.data.data_for_days_ended(n+1, end_date_with_lag)
     # Find whether the return value is impacted by estimated data
-    start_estimated = data_slice[0]["estimates"]["tests"]
-    end_estimated = data_slice[-1]["estimates"]["tests"]
-    estimated = bool(start_estimated or end_estimated)
-    if len(data_slice) > 1:
-        return {"tests": data_slice[-1]["tests"] - data_slice[0]["tests"], "estimated": estimated}
-    else:
-        # Find whether the return value is impacted by estimated data
-        # Return tests added for the specified period
+    if utilities.date._date_is_before_(end_date, utilities.data.all[0]["date"]):
+        return {"tests": 0, "estimated": False}
+    elif len(data_slice) > 0:
+        start_estimated = data_slice[0]["estimates"]["tests"]
+        end_estimated = data_slice[-1]["estimates"]["tests"]
+        estimated = bool(start_estimated or end_estimated)
+        if len(data_slice) > 1:
+            return {"tests": data_slice[-1]["tests"] - data_slice[0]["tests"], "estimated": estimated}
         return {"tests": data_slice[0]["tests"], "estimated": estimated}
-    return None
 
 # Calculates the positivity rate over the n days ended on date d.
 # Default is 14 days.
 def positivity_rate(end_date, n=14, lag_days=0):
     new_cases = cases_added(end_date, n, lag_days)
     new_tests = tests_added(end_date, n, lag_days)
-    if new_tests is not None:
-        # Find whether the return value is impacted by estimated data
+    # Find whether the return value is impacted by estimated data
+    if new_cases is not None and new_tests is not None and new_tests["tests"] != 0:
         estimated = bool(new_cases["estimated"] or new_tests["estimated"])
         # Return tests added for the specified period
         return {"positivity_rate": round(new_cases["cases"]["howell_county"]/new_tests["tests"]*100, 2), "estimated": estimated}
-    return None
 
 def summary_positivity_rate(d, lag_days=0):
     current_positivity_rate = positivity_rate(d, lag_days=lag_days)
@@ -178,7 +158,7 @@ def summary_positivity_rate_change(d, lag_days=0):
             positivity_rate_2w_change = current_positivity_rate["positivity_rate"] - week_ago_positivity_rate["positivity_rate"]
             if week_ago_positivity_rate["positivity_rate"] != 0:
                 positivity_rate_2w_change_percent = int(round(abs((current_positivity_rate["positivity_rate"] - week_ago_positivity_rate["positivity_rate"])/week_ago_positivity_rate["positivity_rate"])*100, 0))
-            else:
+            else: # pragma: no cover
                 positivity_rate_2w_change_percent = None
             positivity_rate_2w_change_estimate = bool(current_positivity_rate["estimated"] or week_ago_positivity_rate["estimated"])
             return __summary_dict__(positivity_rate_2w_change, positivity_rate_2w_change_estimate, positivity_rate_2w_change_percent)
@@ -194,21 +174,21 @@ def summary_new_tests_7d_change(d, lag_days=0):
     week_ago_day = __week_ago_day__(d)
     if new_tests_7d is not None and week_ago_day is not None and tests_added(week_ago_day["date"], n=7) is not None:
         new_tests_7d_week_ago = tests_added(week_ago_day["date"], n=7, lag_days=lag_days)
-        new_tests_7d_change = new_tests_7d["tests"] - new_tests_7d_week_ago["tests"]
-        if new_tests_7d_week_ago["tests"] != 0:
-            new_tests_7d_change_percent = round(abs((new_tests_7d["tests"] - new_tests_7d_week_ago["tests"])/new_tests_7d_week_ago["tests"])*100, 0)
-        else:
-            new_tests_7d_change_percent = None
+        if new_tests_7d_week_ago is not None:
+            new_tests_7d_change = new_tests_7d["tests"] - new_tests_7d_week_ago["tests"]
+            if new_tests_7d_week_ago["tests"] != 0:
+                new_tests_7d_change_percent = round(abs((new_tests_7d["tests"] - new_tests_7d_week_ago["tests"])/new_tests_7d_week_ago["tests"])*100, 0)
+            else: # pragma: no cover
+                new_tests_7d_change_percent = None
+        else: # pragma: no cover
+            return None
         new_tests_7d_change_estimate = bool(new_tests_7d["estimated"] or new_tests_7d_week_ago["estimated"])
         return __summary_dict__(new_tests_7d_change, new_tests_7d_change_estimate, new_tests_7d_change_percent)
-    return None
 
 ############## HOSPITALIZATIONS ###############
 def summary_hospitalizations(d):
     data = utilities.data.data_for_date(d)
-    if data["hospitalizations"] is not None:
-        return __summary_dict__(data["hospitalizations"], data["estimates"]["hospitalizations"])
-    return None
+    return __summary_dict__(data["hospitalizations"], data["estimates"]["hospitalizations"])
 
 def summary_hospitalizations_change(d):
     data = utilities.data.data_for_date(d)
@@ -226,9 +206,7 @@ def summary_hospitalizations_change(d):
 ################### DEATHS ####################
 def summary_deaths(d):
     data = utilities.data.data_for_date(d)
-    if data["deaths"] is not None:
-        return __summary_dict__(data["deaths"], data["estimates"]["deaths"])
-    return None
+    return __summary_dict__(data["deaths"], data["estimates"]["deaths"])
 
 def summary_deaths_change(d):
     data = utilities.data.data_for_date(d)
@@ -250,25 +228,16 @@ def summary_vaccinations(d):
         return {'completed_percentage': round(fully_vaccinated_sum/40400*100, 1), 'initiated_percentage': round(initiated_vaccination_sum/40400*100, 2)}
     return None
 
-def summary_vaccinations(d):
-    data = utilities.data.cumulative_data(d)
-    vaccine_data = [day for day in data if day["vaccinations"] is not None]
-    if len(vaccine_data) > 0:
-        fully_vaccinated_sum = sum([day["vaccinations"]["completed"] for day in vaccine_data])
-        initiated_vaccination_sum = sum([day["vaccinations"]["initiated"] for day in vaccine_data]) - fully_vaccinated_sum
-        return {'completed_percentage': round(fully_vaccinated_sum/40400*100, 1), 'initiated_percentage': round(initiated_vaccination_sum/40400*100, 2)}
-    return None
-
 ######### CDC COMMUNITY TRANSMISSION ##########
 def community_transmission(d):
     new_cases_7d = cases_added(d, n=7)
-    if new_cases_7d == None:
+    if new_cases_7d == None: # pragma: no cover
         return None
     else:
         new_cases_7d = new_cases_7d["cases"]["howell_county"]
     new_cases_100k_7d = per_100k(new_cases_7d)
     positivity_rate_7d = positivity_rate(d, n=7, lag_days=3)
-    if positivity_rate_7d == None:
+    if positivity_rate_7d == None: # pragma: no cover
         return None
     else:
         positivity_rate_7d = positivity_rate_7d["positivity_rate"]
@@ -365,8 +334,4 @@ def chart_dict(d):
         chart_day["vd_7d_av"] = round(sum([day["doses"] for day in vaccine_data[-7:] if day["doses"] is not None])/7, 1)
         chart_day["vi"] = sum([day["initiated"] for day in vaccine_data if day["initiated"] is not None])
         chart_day["vc"] = sum([day["completed"] for day in vaccine_data if day["completed"] is not None])
-    # else:
-    #     chart_day["doses"] = None
-    #     chart_day["initiated"] = None
-    #     chart_day["completed"] = None
     return chart_day

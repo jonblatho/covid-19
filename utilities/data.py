@@ -4,18 +4,21 @@ from glob import glob
 import json
 from . import utilities
 
+# Load data from JSON string
+def _data_in_file_(path):
+    with open(path, 'r') as month_file:
+        data = json.load(month_file)
+        month_file.close()
+        return data
+
 # Load in daily data
 __daily_data__ = []
 __month_files__ = glob('daily-data/*.json')
 for month_path in __month_files__:
-    with open(month_path, 'r') as month_file:
-        month_data = json.load(month_file)
-        __daily_data__.extend(month_data)
-    month_file.close()
+    __daily_data__.extend(_data_in_file_(month_path))
 
 # All daily data in the dataset, sorted by date in ascending order.
 all = sorted(__daily_data__, key = lambda i : i['date'])
-
 
 # Returns data for the specified date.
 def data_for_date(date):
@@ -54,12 +57,12 @@ def ytd_data(end_date=today["date"]):
 
 # Returns the data for the given month, through the given end date.
 def data_for_month(month, end_date=today["date"]):
+    month_start_date = f'{month}-01'
     if month == end_date[:7]:
-        start_date = f'{month}-01'
-        return data_for_date_range(start_date, end_date)
+        return data_for_date_range(month_start_date, end_date)
     else:
-        month_date = f'{month}-01'
-        return data_for_month(month, f'{month}-{utilities.date._days_in_month_(month_date)}')
+        month_end_date = f'{month}-{utilities.date._days_in_month_(month_start_date)}'
+        return data_for_date_range(month_start_date, month_end_date)
 
 # Returns month-to-date data for the given end date.
 def mtd_data(end_date=today["date"]):

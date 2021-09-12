@@ -24,6 +24,7 @@ if __name__ == "__main__":
 
     for i, day in enumerate(utilities.data.all):
         d = day["date"]
+        print(f"Processing data for {d}...")
         week_ago_day = utilities.data.week_ago(d)
 
         # Calculate date-relative totals
@@ -70,7 +71,6 @@ if __name__ == "__main__":
         # 7-day new cases and change
         new_cases_7d = utilities.calc.cases_added(d)
         summary_day["new_cases_7d"] = utilities.calc.summary_new_cases_7d(d)
-        summary_day["new_cases_7d_change"] = utilities.calc.summary_new_cases_7d_change(d)
 
         # Active cases
         summary_day["active_cases"] = utilities.calc.summary_active_cases(d)
