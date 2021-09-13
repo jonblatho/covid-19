@@ -17,10 +17,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install Miniconda
-        uses: conda-incubator/setup-miniconda@v2
+      - name: Install Anaconda
+        uses: fdiblen/anaconda-action@0.1.20
         with:
-          activate-environment: covid-19
+          envFileName: 'environment.yml'
 
       - name: Install Python Dependencies
         run: conda install --file requirements.txt --channel default --channel anaconda
