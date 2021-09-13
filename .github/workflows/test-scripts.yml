@@ -23,7 +23,7 @@ jobs:
           activate-environment: covid-19
 
       - name: Install Python Dependencies
-        run: conda install --file requirements.txt
+        run: conda install --file requirements.txt --channel default --channel anaconda
 
       - name: Run Tests
         run: python -m pytest utilities/test.py
