@@ -4,10 +4,10 @@ import pytest
 import json
 from . import utilities
 
-data_1 = utilities.data._data_in_file_("utilities/resources/data-01.json")
-data_2 = utilities.data._data_in_file_("utilities/resources/data-02.json")
-data_3 = utilities.data._data_in_file_("utilities/resources/data-03.json")
-data_all = utilities.data._data_in_file_("utilities/resources/data-all.json")
+data_1 = utilities.data._data_in_file_("utilities/test-data/data-01.json")
+data_2 = utilities.data._data_in_file_("utilities/test-data/data-02.json")
+data_3 = utilities.data._data_in_file_("utilities/test-data/data-03.json")
+data_all = utilities.data._data_in_file_("utilities/test-data/data-all.json")
 utilities.data.all = data_all
 
 class TestGenericMethods(unittest.TestCase):
