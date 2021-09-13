@@ -15,3 +15,16 @@ disableKinds = ["sitemap", "RSS", "taxonomy", "section", "term"]
   [[module.mounts]]
   source = "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"
   target = "assets/js/chartjs-plugin-annotation.min.js"
+
+[deployment]
+  [[deployment.targets]]
+  name = "covid-19"
+  URL = "s3://covid.jonblatho.com?region=us-west-2"
+  cloudFrontDistributionID = "E2MHGA725T05JX"
+  [[deployment.matchers]]
+  pattern = "^sitemap\\.xml$"
+  contentType = "application/xml"
+  gzip = true
+  [[deployment.matchers]]
+  pattern = "^.+\\.(html|xml|json)$"
+  gzip = true
