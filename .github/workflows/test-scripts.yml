@@ -29,7 +29,9 @@ jobs:
         run: python -m pytest utilities/test.py
 
       - name: Gather Coverage
-        run: coverage run -m pytest utilities/test.py
+        run: |
+          coverage run -m pytest utilities/test.py
+          coverage xml
 
       - name: Upload Coverage
         uses: codecov/codecov-action@v2
