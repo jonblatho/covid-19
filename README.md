@@ -1,11 +1,11 @@
 # COVID-19 in Howell County, Missouri
-This repository contains the daily data files used to generate my [COVID-19 dashboard](https://covid.jonblatho.com/) for Howell County, Missouri, as well as the public source files for the dashboard itself, the [Hugo](https://gohugo.io/) source files needed to generate the page, and the Python source files for processing and updating the daily data files.
+This repository contains the daily data files used to generate my [COVID-19 dashboard](https://covid.jonblatho.com/) for Howell County, Missouri, as well as the [Hugo](https://gohugo.io/) source files needed to generate the page, and the Python source files for processing and updating the daily data files.
 
 ## How it works
 1. Daily data is entered into the relevant file in the daily-data directory.
-2. A Python script processes the daily data into files for the dashboard.
+2. Python scripts process the daily data into files for the dashboard.
 3. [Hugo](https://gohugo.io/) uses these data files and template files to generate HTML.
-4. The HTML is synced via the docs directory in this repository and hosted on GitHub Pages.
+4. The generated HTML is deployed to AWS.
 
 ## Notable updates
 
@@ -28,3 +28,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **August 1, 2021:** Redesigned the Active Cases by Town section as a map with estimates available for all Howell County towns.
 * **August 10, 2021:** Adds a customized calculation of the CDC Level of Community Transmission parameter including antigen tests, which are anomalously common in Howell County.
 * **August 12, 2021:** Redesigned and expanded All Data table with support for new cases by town for all towns, vaccination data, and a new CDC Level of Community Transmission column.
+* **September 13, 2021:** Migrated the site from GitHub Pages to AWS using S3 and CloudFront.
