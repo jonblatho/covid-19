@@ -20,9 +20,7 @@ jobs:
       - name: Install Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          auto-activate-base: true
-          activate-environment: ""
-          python-version: 3.9.6
+          activate-environment: covid-19
 
       - name: Install Python Dependencies
         run: conda install --file requirements.txt
