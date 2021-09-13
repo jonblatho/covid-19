@@ -17,15 +17,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install Miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: covid-19
-
-      - name: Activate Environment
-        run: |
-          conda init
-          conda activate covid-19
+      - name: Install Dependencies
+        run: python -m pip install -r requirements.txt
 
       - name: Run Tests
         run: python -m pytest utilities/test.py
