@@ -43,7 +43,7 @@ if __name__ == "__main__":
         print('Could not find all four files in their expected locations. Exiting.')
         exit(1)
 
-    s3_key = f'mo-dhss-data-{date}.zip'
+    s3_key = f'mo-dhss-data/{date}.zip'
     
     with NamedTemporaryFile('w+') as temp, ZipFile(temp.name, 'w', compression=ZIP_DEFLATED) as zip:
         for path in paths:
