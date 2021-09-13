@@ -22,10 +22,8 @@ jobs:
         with:
           activate-environment: covid-19
 
-      - name: Conda Info
-        run: |
-          conda info
-          conda list
+      - name: Activate Environment
+        run: conda activate covid-19
 
       - name: Run Tests
         run: python -m pytest utilities/test.py
