@@ -42,10 +42,7 @@
         <script src="{{ $dateMarkersJS.Permalink }}" integrity="{{ $dateMarkersJS.Data.Integrity }}" defer></script>
         <script>
             var ctx = chartElement.getContext("2d");
-
-            function chartJSHasLoaded(_callback) {
-            }
-
+            
             var interval = setInterval(function() {
                 if(typeof(Chart) != 'undefined') {
                     window.clearInterval(interval); // Stop executing repeatedly
