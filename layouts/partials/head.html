@@ -1,7 +1,3 @@
-{{ $date := .Site.Data.summary.last_updated }}
-{{ if isset .Params "date" }}
-{{ $date = .Params.date }}
-{{ end }}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,18 +11,6 @@
         <link rel="stylesheet" href="{{ $style.Permalink }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#42107b">
-        {{ if or (eq .Params.layout "time-machine") .IsHome }}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-        {{ $chartJS := resources.Get "js/chart.min.js" | resources.Fingerprint "sha512" }}
-        <script src="{{ $chartJS.Permalink }}" integrity="{{ $chartJS.Data.Integrity }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js" integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin="anonymous"></script>
-        {{ $annotation := resources.Get "js/chartjs-plugin-annotation.min.js" | resources.Fingerprint "sha512" }}
-        <script src="{{ $annotation.Permalink }}" integrity="{{ $annotation.Data.Integrity }}" async></script>
-        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js" async defer></script>
-        <script>
-            var end_date = {{ dateFormat "2006-01-02" $date }};
-        </script>
-        {{ end }}
         {{ if eq .Hugo.Environment "production" }}
         <script async defer data-website-id="f52691f1-33ca-4d90-a13f-9a472396fcd5" src="https://stats.jonblatho.com/umami.js"></script>
         {{ end }}

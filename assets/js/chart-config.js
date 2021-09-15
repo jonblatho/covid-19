@@ -10,7 +10,5 @@ var color4 = '#13bf80'; // Other
 var color5 = '#808080'; // Unknown
 var categoryColors = [color1, color2, color3, color4, color5];
 
-var ctx = document.getElementById('chart').getContext('2d');
-
 let categories = ["West Plains", "Willow Springs", "Mountain View", "Other"]
 let keys = ["west_plains", "willow_springs", "mountain_view", "other"]

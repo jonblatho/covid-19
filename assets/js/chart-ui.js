@@ -35,7 +35,6 @@ function riskLevelGradientColor(ctx, chartArea) {
         const highCutoff = 10.0 / scaleRange;
         const criticalCutoff = 25.0 / scaleRange;
         const extremeCutoff = 75.0 / scaleRange;
-        console.log(lowCutoff, mediumCutoff, highCutoff, criticalCutoff, extremeCutoff)
         riskLevelGradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
         riskLevelGradient.addColorStop(lowCutoff, '#43B02A');
         riskLevelGradient.addColorStop(mediumCutoff-0.00001, '#43B02A');
@@ -61,7 +60,7 @@ function showDropdownMenu() {
     }
 }
 
-function changeChart(type, data) {
+function changeChart(c, type, data) {
     if(type != 'date_markers') {
         totalCasesButton.classList.remove(selectedClassName);
         newCasesButton.classList.remove(selectedClassName);
@@ -119,14 +118,14 @@ function changeChart(type, data) {
     }
 
     if(type != 'date_markers') {
-        reloadChart(type, data);
+        reloadChart(c, type, data);
     } else {
         chart.update();
     }
 }
 
-function reloadChart(type, data) {
-    chart.destroy();
+function reloadChart(c, type, data) {
+    c.destroy();
 
     if(type == 'new') {
         chartType = 'bar';
@@ -222,7 +221,6 @@ function reloadChart(type, data) {
             }
         }
     } else if(type == 'vaccine_doses' || type == 'vaccine_residents') {
-        console.log("Setting minimum x-axis value to 2020-12-15.")
         chart.options.scales = {
             'x': {
                 type: 'time',

@@ -8,13 +8,13 @@
                     <span id="chevron" class="iconify" data-icon="el-chevron-down" data-inline="false"></span>
                 </div>
                 <div id="dropdown-menu" class="hidden">
-                    <div id="new-cases" class="dropdown-item dropdown-item-selected" onclick="changeChart('new', json);">New Cases</div>
-                    <div id="risk-level-chart" class="dropdown-item" onclick="changeChart('risk_level', json);">Risk Level</div>
-                    <div id="total-cases" class="dropdown-item" onclick="changeChart('total', json);">Total Cases</div>
-                    <div id="active-cases" class="dropdown-item" onclick="changeChart('active', json);">Active Cases</div>
-                    <div id="positivity-rate" class="dropdown-item" onclick="changeChart('pos_rate', json);">Testing</div>
-                    <div id="vaccine-doses" class="dropdown-item" onclick="changeChart('vaccine_doses', json);">Vaccine Doses</div>
-                    <div id="vaccine-residents" class="dropdown-item" onclick="changeChart('vaccine_residents', json);">Vaccinated Residents</div>
+                    <div id="new-cases" class="dropdown-item dropdown-item-selected" onclick="changeChart(chart, 'new', json);">New Cases</div>
+                    <div id="risk-level-chart" class="dropdown-item" onclick="changeChart(chart, 'risk_level', json);">Risk Level</div>
+                    <div id="total-cases" class="dropdown-item" onclick="changeChart(chart, 'total', json);">Total Cases</div>
+                    <div id="active-cases" class="dropdown-item" onclick="changeChart(chart, 'active', json);">Active Cases</div>
+                    <div id="positivity-rate" class="dropdown-item" onclick="changeChart(chart, 'pos_rate', json);">Testing</div>
+                    <div id="vaccine-doses" class="dropdown-item" onclick="changeChart(chart, 'vaccine_doses', json);">Vaccine Doses</div>
+                    <div id="vaccine-residents" class="dropdown-item" onclick="changeChart(chart, 'vaccine_residents', json);">Vaccinated Residents</div>
                 </div>
             </div>
         </div>
@@ -23,5 +23,4 @@
         </div>
         <div class="clear"></div>
     </div>
-    <canvas id="chart" aria-hidden="true"></canvas>
 </div>
