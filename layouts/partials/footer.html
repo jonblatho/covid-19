@@ -44,12 +44,11 @@
             var ctx = chartElement.getContext("2d");
             
             var interval = setInterval(function() {
-                if(typeof(Chart) != 'undefined') {
+                if(typeof(Chart) != 'undefined' && typeof(reloadChart) != 'undefined' && typeof(primaryColor) != 'undefined' && typeof(chartLabels) != 'undefined' && typeof(markers) != 'undefined') {
                     window.clearInterval(interval); // Stop executing repeatedly
 
                     var chart = new Chart(ctx);
                     let url = '{{ $data.Permalink }}';
-
 
                     fetch(url)
                     .then(res => res.json())
