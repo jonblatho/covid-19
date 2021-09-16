@@ -21,11 +21,6 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Setup Python
-        uses: "actions/setup-python@v2"
-        with:
-          python-version: '3.9.2'
-
       - name: Auto-Update Data
         run: |
           python autoupdate.py
@@ -38,7 +33,6 @@ jobs:
         with:
           files: |
             daily-data
-            data
 
       - name: Commit and Push (Update)
         uses: EndBug/add-and-commit@v7
