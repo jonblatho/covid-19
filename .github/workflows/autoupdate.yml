@@ -57,12 +57,15 @@ jobs:
       
       # Notify of archive step failure if needed
       - name: Create Issue for Archive Failure
-        uses: peter-evans/create-issue-from-file@v3
-        if: steps.archive.outcome == 'failure'
+        uses: imjohnbo/issue-bot@v3.3.3
         with:
-          title: HCHD Dashboard archive failed
-          labels: bug
           assignees: jonblatho
+          title: HCHD dashboard archive failed
+          labels: bug
+          body: |-
+            Encountered an error when attempting to archive the HCHD dashboard to the Wayback Machine.
+          pinned: true
+          token: ${{ secrets.GH_PAT }}
 
       # If the archive was successful, add the archive URL to the data
       - name: Add Archive URL to Data
