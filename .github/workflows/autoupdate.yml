@@ -58,6 +58,7 @@ jobs:
       # Notify of archive step failure if needed
       - name: Create Issue for Archive Failure
         uses: imjohnbo/issue-bot@v3.3.3
+        if: steps.archive.outcome == 'failure'
         with:
           assignees: jonblatho
           title: HCHD dashboard archive failed
