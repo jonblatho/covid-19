@@ -106,9 +106,9 @@ class TestDataMethods(unittest.TestCase):
 
 class TestDateMethods(unittest.TestCase):
     def test_is_before(self):
-        assert not utilities.date._date_is_before_('2021-01-01', '2021-01-01')
-        assert not utilities.date._date_is_before_('2021-01-08', '2021-01-01')
-        assert utilities.date._date_is_before_('2021-01-01', '2021-01-08')
+        assert not utilities.date.date_is_before('2021-01-01', '2021-01-01')
+        assert not utilities.date.date_is_before('2021-01-08', '2021-01-01')
+        assert utilities.date.date_is_before('2021-01-01', '2021-01-08')
 
     def test_date_components_int(self):
         assert utilities.date._date_components_int_('2021-01-08') == (2021, 1, 8)
