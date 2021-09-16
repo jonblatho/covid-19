@@ -22,9 +22,7 @@ if __name__ == "__main__":
     # Last updated date
     summary["last_updated"] = utilities.data.today["date"]
 
-    dataset = [d for d in utilities.data.all if not utilities.date.date_is_before(d["date"], '2020-04-01')]
-
-    for i, day in enumerate(dataset):
+    for i, day in enumerate(utilities.data.calculation):
         d = day["date"]
         print(f"Processing data for {d}...")
         week_ago_day = utilities.data.week_ago(d)

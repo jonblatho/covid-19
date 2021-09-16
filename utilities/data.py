@@ -2,6 +2,7 @@ from calendar import monthrange
 from datetime import date, timedelta
 from glob import glob
 import json
+from utilities.date import date_is_before
 from . import utilities
 
 # Load data from JSON string
@@ -19,6 +20,7 @@ for month_path in __month_files__:
 
 # All daily data in the dataset, sorted by date in ascending order.
 all = sorted(__daily_data__, key = lambda i : i['date'])
+calculation = [d for d in all if not utilities.date.date_is_before(d["date"], '2020-04-01')]
 
 # Returns data for the specified date.
 def data_for_date(date):

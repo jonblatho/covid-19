@@ -36,7 +36,7 @@ def _days_in_month_(d):
 
 # Returns the expected index for a given date.
 def _index_for_date_(d):
-    start = date.fromisoformat('2020-04-01')
+    start = date.fromisoformat('2020-03-01')
     end = date.fromisoformat(d)
     return (end - start).days
 
