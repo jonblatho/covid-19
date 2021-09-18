@@ -9,7 +9,7 @@ if __name__ == "__main__":
     # Argument parsing setup
     parser = ArgumentParser()
     parser.add_argument('url', type=str, help='The source URL to be added.')
-    parser.add_argument('--date', type=str, default=__last_date__, help='The date to which this source URL should be added. Defaults to the latest day in the dataset.')
+    parser.add_argument('-d', '--date', type=str, default=__last_date__, help='The date to which this source URL should be added. Defaults to the latest day in the dataset.')
     args = parser.parse_args()
 
     url = args.url
