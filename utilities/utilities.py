@@ -1,7 +1,5 @@
 import json
-from . import geo
-from . import date
-from . import data, calc
+from . import geo, date, data, calc
 
 geo = geo
 date = date

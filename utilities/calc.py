@@ -1,7 +1,6 @@
 from calendar import week
 from copy import deepcopy
-from utilities.data import week_ago
-from . import utilities
+import utilities
 
 ################# ARITHMETIC ##################
 

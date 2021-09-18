@@ -2,8 +2,7 @@ from calendar import monthrange
 from datetime import date, timedelta
 from glob import glob
 import json
-from utilities.date import date_is_before
-from . import utilities
+import utilities
 
 # Load data from JSON string
 def _data_in_file_(path):
