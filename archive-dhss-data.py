@@ -57,7 +57,7 @@ if __name__ == "__main__":
     try:
         s3_client.get_object(Bucket='covid.jonblatho.com', Key=s3_key)
         url = f"https://s3.us-west-2.amazonaws.com/covid.jonblatho.com/{s3_key}"
-        os.system(f"python add-source-url.py {url} -d")
+        os.system(f"python add-source-url.py {url} -d {date}")
 
         # Unless told not to, delete the original data files.
         if not args.keep_files:
