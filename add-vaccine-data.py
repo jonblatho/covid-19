@@ -51,7 +51,7 @@ with open(data_path, 'r', encoding='utf-16') as csv_file:
     # Set up cumulative total variable for initiated/completed vaccinations
     cumulative_total = 0
     for day in utilities.data.all:
-        if utilities.date._date_is_before_(day["date"], '2020-12-15'):
+        if utilities.date.date_is_before(day["date"], '2020-12-15'):
             # No doses were administered before 2020-12-15
             if not args.quiet:
                 print(day["date"], "is before 2020-12-14. Skipping.")

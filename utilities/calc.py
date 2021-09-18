@@ -1,7 +1,6 @@
 from calendar import week
 from copy import deepcopy
-from utilities.data import week_ago
-from . import utilities
+import utilities
 
 ################# ARITHMETIC ##################
 
@@ -62,7 +61,7 @@ def active_cases_by_town(date):
 def cases_added(end_date, n=7, lag_days=0):
     end_date_with_lag = utilities.date._date_advanced_by_(end_date, -1*lag_days)
     data_slice = utilities.data.data_for_days_ended(n, end_date_with_lag)
-    if utilities.date._date_is_before_(end_date, utilities.data.all[0]["date"]):
+    if utilities.date.date_is_before(end_date, utilities.data.all[0]["date"]):
         return {"cases": 0, "estimated": False}
     elif len(data_slice) > 0:
         # Find whether the return value is impacted by estimated data
@@ -122,7 +121,7 @@ def tests_added(end_date, n=7, lag_days=0):
     end_date_with_lag = utilities.date._date_advanced_by_(end_date, -1*lag_days)
     data_slice = utilities.data.data_for_days_ended(n+1, end_date_with_lag)
     # Find whether the return value is impacted by estimated data
-    if utilities.date._date_is_before_(end_date, utilities.data.all[0]["date"]):
+    if utilities.date.date_is_before(end_date, utilities.data.all[0]["date"]):
         return {"tests": 0, "estimated": False}
     elif len(data_slice) > 0:
         start_estimated = data_slice[0]["estimates"]["tests"]

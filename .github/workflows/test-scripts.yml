@@ -27,11 +27,11 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Run Tests
-        run: python -m pytest utilities/test.py
+        run: python -m pytest test.py
 
       - name: Gather Coverage
         run: |
-          coverage run -m pytest utilities/test.py
+          coverage run -m pytest test.py
           coverage xml
 
       - name: Upload Coverage

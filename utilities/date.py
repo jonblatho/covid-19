@@ -8,7 +8,7 @@ def _date_advanced_by_(d, n_days):
     return end_date.strftime("%Y-%m-%d")
 
 # Whether the first given date is before the second given date.
-def _date_is_before_(d, compare):
+def date_is_before(d, compare):
     first_date = date.fromisoformat(d)
     second_date = date.fromisoformat(compare)
     return bool(first_date < second_date)
@@ -36,7 +36,7 @@ def _days_in_month_(d):
 
 # Returns the expected index for a given date.
 def _index_for_date_(d):
-    start = date.fromisoformat('2020-04-01')
+    start = date.fromisoformat('2020-03-01')
     end = date.fromisoformat(d)
     return (end - start).days
 

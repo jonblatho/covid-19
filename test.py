@@ -1,8 +1,7 @@
 import unittest
-from utilities.calc import case_sums
 import pytest
 import json
-from . import utilities
+from utilities import utilities
 
 data_1 = utilities.data._data_in_file_("utilities/test-data/data-01.json")
 data_2 = utilities.data._data_in_file_("utilities/test-data/data-02.json")
@@ -73,7 +72,7 @@ class TestDataMethods(unittest.TestCase):
         test_inclusive = utilities.data.week_ago(test_date, inclusive=True)
         assert test_inclusive["date"] == "2020-06-08"
         # Test a date for which week-ago data does not exist
-        test_nonexistent_date = "2020-04-01"
+        test_nonexistent_date = "2020-03-01"
         test_exclusive = utilities.data.week_ago(test_nonexistent_date)
         assert test_exclusive is None
         test_inclusive = utilities.data.week_ago(test_nonexistent_date, inclusive=True)
@@ -84,7 +83,7 @@ class TestDataMethods(unittest.TestCase):
         assert len(utilities.data.cumulative_data('2020-06-30')) == 91
 
     def test_ytd_data(self):
-        assert len(utilities.data.ytd_data('2020-06-30')) == 91
+        assert len(utilities.data.ytd_data('2020-06-30')) == 122
         assert len(utilities.data.ytd_data('2021-02-14')) == 45
 
     def test_mtd_data(self):
@@ -96,7 +95,7 @@ class TestDataMethods(unittest.TestCase):
         assert len(utilities.data.data_for_month('2021-02', end_date='2021-02-14')) == 14
 
     def test_all_data(self):
-        assert len(utilities.data.all) == 529
+        assert len(utilities.data.all) == 565
 
     def test_data_for_days_ended(self):
         data_days_ended = utilities.data.data_for_days_ended(7, end_date='2021-02-14')
@@ -106,9 +105,9 @@ class TestDataMethods(unittest.TestCase):
 
 class TestDateMethods(unittest.TestCase):
     def test_is_before(self):
-        assert not utilities.date._date_is_before_('2021-01-01', '2021-01-01')
-        assert not utilities.date._date_is_before_('2021-01-08', '2021-01-01')
-        assert utilities.date._date_is_before_('2021-01-01', '2021-01-08')
+        assert not utilities.date.date_is_before('2021-01-01', '2021-01-01')
+        assert not utilities.date.date_is_before('2021-01-08', '2021-01-01')
+        assert utilities.date.date_is_before('2021-01-01', '2021-01-08')
 
     def test_date_components_int(self):
         assert utilities.date._date_components_int_('2021-01-08') == (2021, 1, 8)
@@ -128,7 +127,7 @@ class TestCalculationMethods(unittest.TestCase):
 
     def test_cases_added(self):
         # Test a date from before the dataset begins
-        assert utilities.calc.cases_added('2020-03-30')["cases"] == 0
+        assert utilities.calc.cases_added('2020-02-14')["cases"] == 0
 
     def test_case_sums(self):
         assert utilities.calc.case_sums(data_1)["howell_county"] == 32
@@ -163,36 +162,41 @@ class TestCalculationMethods(unittest.TestCase):
     def test_summary_active_cases(self):
         assert utilities.calc.summary_active_cases('2020-04-01')["value"] == 1
         assert utilities.calc.summary_active_cases('2021-07-01')["value"] == 77
-        assert utilities.calc.summary_active_cases_change('2020-04-01') is None
+        assert utilities.calc.summary_active_cases_change('2020-04-01')["value"] == 1
+        assert utilities.calc.summary_active_cases_change('2020-03-01') is None
         assert "percentage" not in utilities.calc.summary_active_cases_change('2020-05-31')
         assert utilities.calc.summary_active_cases_change('2021-07-01')["value"] == 41
         assert round(utilities.calc.summary_active_cases_change('2021-07-01')["percentage"], 1) == 114.0
 
     def test_summary_tests(self):
         assert utilities.calc.summary_new_tests_7d('2020-03-04', lag_days=3)["value"] == 0
-        assert utilities.calc.summary_new_tests_7d('2020-04-04', lag_days=3)["value"] == 17
-        assert utilities.calc.summary_new_tests_7d_change('2020-04-01', lag_days=3) is None
+        assert utilities.calc.summary_new_tests_7d('2020-04-04', lag_days=3)["value"] == 107
+        assert utilities.calc.summary_new_tests_7d_change('2020-04-01', lag_days=3)["value"] == 56
         assert utilities.calc.summary_new_tests_7d('2021-02-05', lag_days=3)["value"] == 896
-        assert utilities.calc.summary_new_tests_7d_change('2021-02-05', lag_days=3)["value"] == 29
+        assert utilities.calc.summary_new_tests_7d_change('2021-02-05', lag_days=3)["value"] == 28
         assert round(utilities.calc.summary_new_tests_7d_change('2021-02-05', lag_days=3)["percentage"], 1) == 3.0
 
     def test_summary_positivity_rate(self):
-        assert utilities.calc.summary_positivity_rate('2020-03-30', lag_days=3) is None
+        assert utilities.calc.summary_positivity_rate('2020-02-14', lag_days=3) is None
+        assert utilities.calc.summary_positivity_rate('2020-03-30', lag_days=3)["value"] == 0.0
         assert round(utilities.calc.summary_positivity_rate('2021-02-05', lag_days=3)["value"], 2) == 8.62
-        assert utilities.calc.summary_positivity_rate_change('2020-04-02', lag_days=3) is None
+        assert utilities.calc.summary_positivity_rate_change('2020-04-02', lag_days=3)["value"] == 0.0
         assert round(utilities.calc.summary_positivity_rate_change('2021-02-05', lag_days=3)["value"], 1) == -0.4
+        assert utilities.calc.summary_positivity_rate_change('2020-03-02', lag_days=3) is None
 
     def test_summary_hospitalizations(self):
         assert utilities.calc.summary_hospitalizations('2021-08-01')["value"] == 24
         assert utilities.calc.summary_hospitalizations('2020-04-01')["value"] == 0
-        assert utilities.calc.summary_hospitalizations_change('2020-04-01') is None
+        assert utilities.calc.summary_hospitalizations_change('2020-04-01')["value"] == 0
+        assert utilities.calc.summary_hospitalizations_change('2020-03-01') is None
         assert "percentage" not in utilities.calc.summary_hospitalizations_change('2020-07-21')
         assert utilities.calc.summary_hospitalizations_change('2021-07-01')["value"] == 0
 
     def test_summary_deaths(self):
         assert utilities.calc.summary_deaths('2021-08-01')["value"] == 103
         assert utilities.calc.summary_deaths('2020-04-01')["value"] == 0
-        assert utilities.calc.summary_deaths_change('2020-04-01') is None
+        assert utilities.calc.summary_deaths_change('2020-04-01')["value"] == 0
+        assert utilities.calc.summary_deaths_change('2020-03-01') is None
         assert utilities.calc.summary_deaths_change('2021-07-01')["value"] == 1
 
     def test_summary_vaccinations(self):
@@ -212,12 +216,12 @@ class TestCalculationMethods(unittest.TestCase):
         assert test_data["new_cases"] == 2
         assert test_data["active_cases"] == 26
         assert test_data["hospitalizations"] == 7
-        assert test_data["tests"]["total"] == 30780
-        assert test_data["tests"]["new"] == 59
-        assert test_data["positivity_rate"]["value"] == 4.48
+        assert test_data["tests"]["total"] == 30785
+        assert test_data["tests"]["new"] == 60
+        assert test_data["positivity_rate"]["value"] == 4.47
         assert test_data["doses"] == 309
-        assert test_data["initiated"] == 4670
-        assert test_data["completed"] == 2915
+        assert test_data["initiated"] == 4679
+        assert test_data["completed"] == 2919
         test_no_sources = utilities.calc.table_dict('2020-11-28')
         assert test_no_sources["sources"] is None
 
@@ -230,9 +234,9 @@ class TestCalculationMethods(unittest.TestCase):
         assert test_data["a"] == 26
         assert test_data["a_7d_av"] == 34.1
         assert test_data["h"] == 7
-        assert test_data["t"]["14d_av"] == 110.1
-        assert test_data["p"] == 4.48
+        assert test_data["t"]["14d_av"] == 110.3
+        assert test_data["p"] == 4.47
         assert test_data["vd"] == 309
-        assert test_data["vd_7d_av"] == 300.9
-        assert test_data["vi"] == 4670
-        assert test_data["vc"] == 2915
+        assert test_data["vd_7d_av"] == 301.4
+        assert test_data["vi"] == 4679
+        assert test_data["vc"] == 2919

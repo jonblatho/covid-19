@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # Last updated date
     summary["last_updated"] = utilities.data.today["date"]
 
-    for i, day in enumerate(utilities.data.all):
+    for i, day in enumerate(utilities.data.calculation):
         d = day["date"]
         print(f"Processing data for {d}...")
         week_ago_day = utilities.data.week_ago(d)
@@ -110,12 +110,12 @@ if __name__ == "__main__":
 
         # Add the previous/next dates as appropriate
         if i == 0:
-            summary_day["next_date"] = utilities.data.all[i+1]["date"]
-        elif i == len(utilities.data.all)-1:
-            summary_day["prev_date"] = utilities.data.all[i-1]["date"]
+            summary_day["next_date"] = utilities.data.calculation[i+1]["date"]
+        elif i == len(utilities.data.calculation)-1:
+            summary_day["prev_date"] = utilities.data.calculation[i-1]["date"]
         else:
-            summary_day["prev_date"] = utilities.data.all[i-1]["date"]
-            summary_day["next_date"] = utilities.data.all[i+1]["date"]
+            summary_day["prev_date"] = utilities.data.calculation[i-1]["date"]
+            summary_day["next_date"] = utilities.data.calculation[i+1]["date"]
 
         # Set some flags for hiding charts when needed
         if week_ago_day is None:
