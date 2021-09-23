@@ -25,5 +25,8 @@ disableKinds = ["sitemap", "RSS", "taxonomy", "section", "term"]
   contentType = "application/xml"
   gzip = true
   [[deployment.matchers]]
-  pattern = "^.+\\.(html|xml|json)$"
+  pattern = "^.+\\.(html|xml|css|js|json)$"
   gzip = true
+  [[deployment.matchers]]
+  pattern = "^.+\\.(css|js|json)$"
+  cacheControl = "max-age=31536000, public"
