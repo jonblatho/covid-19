@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
     if day_data["sources"] is None:
         day_data["sources"] = [url]
-    else:
+    elif url not in day_data["sources"]:
         day_data["sources"].append(url)
     utilities.save_json(data, data_file)
