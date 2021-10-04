@@ -29,3 +29,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **August 10, 2021:** Adds a customized calculation of the CDC Level of Community Transmission parameter including antigen tests, which are anomalously common in Howell County.
 * **August 12, 2021:** Redesigned and expanded All Data table with support for new cases by town for all towns, vaccination data, and a new CDC Level of Community Transmission column.
 * **September 13, 2021:** Migrated the site from GitHub Pages to AWS using S3 and CloudFront.
+* **October 3, 2021:** Added an automation to pull in state DHSS data daily.
