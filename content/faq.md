@@ -12,7 +12,10 @@ Most data here comes from daily reports published by the Howell County Health De
 Since case data on this dashboard is stored by town and the HCHD only reports the total number of cases per town each day, cases fall under the report date here, while on the HCHD dashboard dates cases correspond to the test date. Usually, the difference is within a few days.
 
 ### When is this site updated?
-Subject to the availability of new data, the site is updated twice a day, with an automatic update occurring overnight and a manual update occurring by early afternoon following the corresponding automatic update. Automatic updates occur every night (with the first attempt usually occurring around 11:15 PM Central) and include data on cases, hospitalizations, and deaths, with new data available daily. Manual updates include data on testing and vaccinations, and they only occur on weekdays.
+Subject to the availability of new data, the site is updated three times a day, twice automatically and once manually:
+* **Automatic update #1:** Every day, data on cases, hospitalizations, and deaths is pulled in from the HCHD dashboard automatically. To allow for possible failures, three attempts are made to pull in data automatically, the first of which occurs around 10:35 PM CDT.
+* **Automatic update #2:** Overnight each day, data on testing and vaccinations is pulled in from the state DHSS website automatically. This occurs shortly around 5 AM CDT or 4 AM CST.
+* **Manual update:** By each non-holiday weekday evening, the site is updated to add a link to the HCHD Facebook post corresponding to the most recent automatic updates, if available.
 
 I am a human, so sometimes I must run late or miss a day on manual updates. If I do, I will catch things up as soon as I can.
 
