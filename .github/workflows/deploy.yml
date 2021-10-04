@@ -34,6 +34,8 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
+      - name: Create data/ Directory
+        run: mkdir data/
       - name: Install NPM
         uses: actions/setup-node@v1
       - name: Install Chart.js and Dependencies
