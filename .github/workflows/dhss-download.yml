@@ -1,0 +1,39 @@
+name: Download DHSS Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  dhss_download:
+    name: Download DHSS Data
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/Chicago
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: '3.9.7'
+      - name: Setup chromedriver
+        uses: nanasess/setup-chromedriver@master
+      - name: Configure chromedriver
+        run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+      - name: Install Dependencies
+        run: |
+          pip install requests selenium
+      - name: Download DHSS Data
+        id: download
+        run: python download-dhss-data.py
+      - name: Archive DHSS Data
+        if: ${{ steps.download.outcome == 'success' }}
+        run: python archive-dhss-data.py
