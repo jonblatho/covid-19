@@ -10,7 +10,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument('-p', '--path', type=str, default='~/Downloads', help='The path to the directory where data files are stored. Defaults to ~/Downloads.')
     parser.add_argument('-d', '--date', type=str, default=utilities.data.today["date"], help='The date to which the files should be added. Defaults to the latest day in the dataset.')
-    parser.add_argument('-f', '--force', type='store_true', help='Upload the archive to S3 even if the associated key already exists, overwriting the existing file on S3.')
+    parser.add_argument('-f', '--force', action='store_true', help='Upload the archive to S3 even if the associated key already exists, overwriting the existing file on S3.')
     parser.add_argument('--keep_files', action='store_true', help='Retain the original data files after successful upload.')
     args = parser.parse_args()
 
