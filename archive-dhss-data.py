@@ -10,6 +10,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument('-p', '--path', type=str, default='~/Downloads', help='The path to the directory where data files are stored. Defaults to ~/Downloads.')
     parser.add_argument('-d', '--date', type=str, default=utilities.data.today["date"], help='The date to which the files should be added. Defaults to the latest day in the dataset.')
+    parser.add_argument('-f', '--force', type='store_true', help='Upload the archive to S3 even if the associated key already exists, overwriting the existing file on S3.')
     parser.add_argument('--keep_files', action='store_true', help='Retain the original data files after successful upload.')
     args = parser.parse_args()
 
@@ -51,7 +52,12 @@ if __name__ == "__main__":
             dir, filename = os.path.split(path)
             zip.write(path, filename)
         zip.close()
-        s3_client.upload_file(temp.name, 'covid.jonblatho.com', s3_key)
+        # Get existing S3 keys to check whether we would be overwriting an existing key
+        objects = s3_client.list_objects_v2(Bucket='covid.jonblatho.com', Prefix=f"mo-dhss-data/{date[:4]}")
+        keys = [o["Key"] for o in objects["Contents"]]
+        if s3_key not in keys or args.force:
+            # Only upload if the key is not already present
+            s3_client.upload_file(temp.name, 'covid.jonblatho.com', s3_key)
 
     # Check for the completed upload and, if successful, add the URL as a source URL
     try:
@@ -65,4 +71,3 @@ if __name__ == "__main__":
                 os.remove(path)
     except s3_client.exceptions.NoSuchKey:
         print(f"Expected key {s3_key} was not found in S3 bucket. Try again.")
-        exit(1)
