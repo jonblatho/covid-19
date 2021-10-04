@@ -23,6 +23,7 @@ jobs:
           python-version: '3.9.7'
       - name: Setup chromedriver
         uses: nanasess/setup-chromedriver@master
+      - name: Configure chromedriver
         run: |
           export DISPLAY=:99
           chromedriver --url-base=/wd/hub &
