@@ -2,6 +2,7 @@ name: Test Site Build
 
 on:
   pull_request:
+  push:
   workflow_dispatch:
 
 permissions:
