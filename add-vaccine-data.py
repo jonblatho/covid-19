@@ -28,7 +28,7 @@ if data_type is None and data_path is not None:
         print('Please retry and explicitly provide the type as "--type doses", "--type initiated", or "--type completed" following the file path. Exiting.')
         exit(1)
 
-with open(data_path, 'r', encoding='utf-16') as csv_file:
+with open(data_path, 'r', encoding='utf-8') as csv_file:
     dates = [d["date"] for d in utilities.data.all]
 
     def __reformatted_date__(d: str):
@@ -40,7 +40,7 @@ with open(data_path, 'r', encoding='utf-16') as csv_file:
                 components[k] = str(component)
         return f"{components[2]}-{components[0]}-{components[1]}"
 
-    reader = csv.reader(csv_file, delimiter='\t')
+    reader = csv.reader(csv_file, delimiter=',')
     # Filter to Howell County rows only
     howell_rows = [row for row in reader if row[1] == "Howell"]
     for row in howell_rows:

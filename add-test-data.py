@@ -10,7 +10,7 @@ parser.add_argument('file', type=str, help='The vaccination CSV data file to pro
 parser.add_argument('--quiet', action='store_true', help='Suppress non-error output.')
 args = parser.parse_args()
 
-with open(args.file, 'r', encoding='utf-16') as csv_file:
+with open(args.file, 'r', encoding='utf-8') as csv_file:
     dates = [d["date"] for d in utilities.data.all]
 
     def __reformatted_date__(d: str):
@@ -22,7 +22,7 @@ with open(args.file, 'r', encoding='utf-16') as csv_file:
                 components[k] = str(component)
         return f"{components[2]}-{components[0]}-{components[1]}"
 
-    reader = csv.reader(csv_file, delimiter='\t')
+    reader = csv.reader(csv_file, delimiter=',')
     # Filter to Howell County rows only
     howell_rows = [row for row in reader if row[1] == "HOWELL"]
     for row in howell_rows:
