@@ -12,7 +12,7 @@ permissions:
 jobs:
   deploy:
     name: Deploy Site
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       TZ: America/Chicago
     steps:

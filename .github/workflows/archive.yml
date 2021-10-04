@@ -6,7 +6,7 @@ on:
 jobs:
   archive:
     name: Archive HCHD Dashboard
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     
     steps:
       # Archive HCHD dashboard
