@@ -1,4 +1,4 @@
-name: Rebuild Site
+name: Download DHSS Data
 
 on:
   workflow_dispatch:
