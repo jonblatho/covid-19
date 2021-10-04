@@ -2,7 +2,8 @@ name: Rebuild Site
 
 on:
   workflow_dispatch:
-  cron: "0 10 * * *"
+  schedule:
+    - cron: "0 10 * * *"
 
 permissions:
   contents: read
