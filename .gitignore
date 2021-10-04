@@ -8,3 +8,5 @@ node_modules/
 .vscode/
 .coverage
 public/
+data/
+assets/js/chart-data.json
