@@ -28,4 +28,4 @@ jobs:
       - name: Install Chart.js and Dependencies
         run: npm install
       - name: Rebuild Site
-        run: hugo
+        run: npm run rebuild
