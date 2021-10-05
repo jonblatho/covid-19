@@ -8,12 +8,6 @@ disableKinds = ["sitemap", "RSS", "taxonomy", "section", "term"]
   [[module.mounts]]
   source = "assets"
   target = "assets"
-  [[module.mounts]]
-  source = "node_modules/chart.js/dist/chart.min.js"
-  target = "assets/js/chart.min.js"
-  [[module.mounts]]
-  source = "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"
-  target = "assets/js/chartjs-plugin-annotation.min.js"
 
 [deployment]
   [[deployment.targets]]
