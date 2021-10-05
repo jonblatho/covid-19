@@ -70,12 +70,14 @@ jobs:
       # If the archive was successful, add the archive URL to the data
       - name: Add Archive URL to Data
         if: steps.archive.outcome == 'success' && steps.archive.outputs.wayback_url != ''
+        id: add_archive_url
         run: python add-source-url.py ${{ steps.archive.outputs.wayback_url }}
 
       - name: Commit and Push (Archive)
         uses: EndBug/add-and-commit@v7
+        if: steps.add_archive_url.outcome == 'success' && steps.archive.outputs.wayback_url != ''
         with:
-          add: 'assets/ content/ daily-data/ data/'
+          add: 'daily-data/'
           default_author: github_actions
           message: 'chore: add archive URL'
           branch: main
