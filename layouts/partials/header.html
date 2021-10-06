@@ -4,24 +4,29 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-        <a href="{{ .Site.BaseURL }}">
-            <header role="banner">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark shadow fixed-top">
                 <div class="container-fluid">
-                    <h1 class="mb-0">COVID-19 in Howell County</h1>
-                    <p id="last-updated" class="mb-0">as of {{ dateFormat "January 2, 2006" $date }}</p>
+                <div>
+                    <a class="navbar-brand fw-bold" href="#">COVID-19 in Howell County</a>
+                    <p id="last-updated" class="mb-1 opacity-75 small">as of {{ dateFormat "January 2, 2006" $date }}</p>
                 </div>
-            </header>
-        </a>
-        <nav id="site-nav" {{ if or (ne .Params.layout "table") $.IsHome }}style="position:sticky !important;top:0 !important;"{{ end }}>
-            <ul class="container-fluid">
-                {{ $currentPage := . }}
-                {{ range .Site.Menus.main }}
-                <li class="nav-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}nav-item-active{{ end }}">
-                    <a class="nav-link p-0" href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        </nav>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        {{ $currentPage := . }}
+                        {{ range .Site.Menus.main }}
+                        <li class="nav-item">
+                            <a class="nav-link {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}" {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+                </div>
+            </nav>
+        </header>
         <div id="top">
             {{ if eq .Params.layout "time-machine" }}
             <div class="message-info" style="text-align:center;">

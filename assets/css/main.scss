@@ -14,48 +14,11 @@ body {
 }
 
 header {
-    padding: 20px 10px;
-    background: $secondary;
-    color: #fff;
-
-    a {
-        display: inline-block;
-    }
-
-    h1 {
-        margin-bottom: 6px;
-        color: #fff;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    #last-updated {
-        color: rgba(255,255,255,0.6);
-        font-size: 14px;
-    }
+    margin-bottom: 64px;
 }
 
-#site-nav {
-    position: sticky;
-    height: 44px;
-    background: $primary;
-    font-size: 16px;
-    z-index: 1000;
-
-    .nav-item {
-        display: inline-block;
-        padding: 0 10px;
-        line-height: 44px;
-
-        a {
-            color: rgba(255,255,255,0.75);
-        }
-
-        &-active, &-active a {
-            color: #fff;
-            font-weight: bold;
-        }
-    }
+nav {
+    background: $secondary;
 }
 
 .left {
