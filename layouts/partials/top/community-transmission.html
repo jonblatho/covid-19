@@ -4,7 +4,7 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.community_transmission }}
-<div class="row risk-category">
+<div class="risk-category">
     <div class="category-name"><span class="category-indicator ct-bg-{{ . }}" aria-hidden="true"></span>{{ humanize . }} Community Transmission</div>
     <div class="category-value">
         Based on PCR and antigen tests, Howell County&rsquo;s community transmission rate is <strong>{{ . }}</strong>.

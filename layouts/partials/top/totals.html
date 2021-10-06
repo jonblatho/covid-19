@@ -3,10 +3,10 @@
 {{ $date = .Params.date }}
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
-<div id="totals" role="list" aria-label="Cumulative data">
-    <div class="total" role="listitem" aria-label="Total cases">
-        <div class="value">{{ lang.NumFmt 0 (index (index (index (index $.Site.Data.relative (dateFormat "2006-01-02" $date)) 4).totals) 0) }}</div>
-        <div class="label">cases</div>
+<div id="totals" role="list" class="row no-gutters" aria-label="Cumulative data">
+    <div class="item col" role="listitem" aria-label="Total cases">
+        <div class="highlight">{{ lang.NumFmt 0 (index (index (index (index $.Site.Data.relative (dateFormat "2006-01-02" $date)) 4).totals) 0) }}</div>
+        <div class="description">cases</div>
         <div class="context">
             {{ if isset $data.new_cases_7d "value" }}
             {{ if gt $data.new_cases_7d.value 0 }}
@@ -17,9 +17,9 @@
             {{ end }}
         </div>
     </div>
-    <div class="total" role="listitem" aria-label="Total deaths">
-        <div class="value">{{ lang.NumFmt 0 ($data.deaths.value) }}</div>
-        <div class="label">deaths</div>
+    <div class="item col" role="listitem" aria-label="Total deaths">
+        <div class="highlight">{{ lang.NumFmt 0 ($data.deaths.value) }}</div>
+        <div class="description">deaths</div>
         <div class="context">
             {{ if isset $data.deaths_change "value" }}
             {{ if gt $data.deaths_change.value 0 }}

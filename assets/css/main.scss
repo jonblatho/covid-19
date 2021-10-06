@@ -327,37 +327,12 @@ a {
     }
 }
 
-#totals {
+#totals, #dashboard-grid-container {
     margin-top: 20px;
     text-align: center;
 
-    .total {
-        margin: 15px 0;
-
-        .value {
-            margin: 6px 0;
-            font-size: 36px;
-            font-weight: bold;
-        }
-    
-        .label {
-            font-size: 16px;
-        }
-
-        .context {
-            margin-top: 8px;
-            color: #888;
-            font-size: 14px;
-        }
-    }
-}
-
-#dashboard-grid-container {
-    margin: 20px 0;
-    text-align: center;
-
     .item {
-        padding: 15px 0;
+        margin: 15px 0;
     }
 
     .highlight {
@@ -365,13 +340,13 @@ a {
         font-size: 36px;
         font-weight: bold;
     }
-
+    
     .description {
         color: #555;
         font-size: 15px;
         line-height: 18px;
     }
-
+    
     .context {
         margin-top: 6px;
         color: #888;

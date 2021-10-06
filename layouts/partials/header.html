@@ -7,8 +7,8 @@
         <a href="{{ .Site.BaseURL }}">
             <header role="banner">
                 <div class="container-fluid">
-                    <h1>COVID-19 in Howell County</h1>
-                    <p id="last-updated">as of {{ dateFormat "January 2, 2006" $date }}</p>
+                    <h1 class="mb-0">COVID-19 in Howell County</h1>
+                    <p id="last-updated" class="mb-0">as of {{ dateFormat "January 2, 2006" $date }}</p>
                 </div>
             </header>
         </a>
@@ -17,7 +17,7 @@
                 {{ $currentPage := . }}
                 {{ range .Site.Menus.main }}
                 <li class="nav-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}nav-item-active{{ end }}">
-                <a class="nav-link" href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
+                    <a class="nav-link p-0" href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
                 </li>
                 {{ end }}
             </ul>
