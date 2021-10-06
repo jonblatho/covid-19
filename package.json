@@ -1,8 +1,4 @@
 {
-  "dependencies": {
-    "chart.js": "^3.0.0",
-    "chartjs-plugin-annotation": "github:jonblatho/chartjs-plugin-annotation#master"
-  },
   "scripts": {
     "rebuild": "mkdir data; python process.py; hugo -e production"
   }

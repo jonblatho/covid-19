@@ -22,11 +22,9 @@
             chartContainer.appendChild(chartElement);
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" defer></script>
-        {{ $chartJS := resources.Get "js/chart.min.js" | resources.Fingerprint "sha512" }}
-        <script src="{{ $chartJS.Permalink }}" integrity="{{ $chartJS.Data.Integrity }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js" integrity="sha256-bC3LCZCwKeehY6T4fFi9VfOU0gztUa+S4cnkIhVPZ5E=" crossorigin="anonymous" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.2/dist/chartjs-adapter-moment.min.js" integrity="sha256-mJm4oz+jkEuyR3VN2HVsm8bM3cMWU7Zot+JMClIi0sY=" crossorigin="anonymous" defer></script>
-        {{ $annotation := resources.Get "js/chartjs-plugin-annotation.min.js" | resources.Fingerprint "sha512" }}
-        <script src="{{ $annotation.Permalink }}" integrity="{{ $annotation.Data.Integrity }}" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js" integrity="sha512-FuXN8O36qmtA+vRJyRoAxPcThh/1KJJp7WSRnjCpqA+13HYGrSWiyzrCHalCWi42L5qH1jt88lX5wy5JyFxhfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js" async defer></script>
         <script>
             var end_date = {{ dateFormat "2006-01-02" $date }};
