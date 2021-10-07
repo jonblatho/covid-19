@@ -41,27 +41,24 @@
         }
     }
 
-    #chart-select {
-        #dropdown-menu {
-            background: #222;
-            border: 1px solid #444;
+    .dropdown-menu {
+        background: #222 !important;
+    }
+
+    .dropdown-item {
+        color: #ffffff !important;
+
+        &:focus, &:hover {
+            background: #333 !important;
         }
+    }
 
-        .dropdown-item {
-            color: #ccc;
+    .btn-toggle {
+        background: #292929;
+        color: #fff;
 
-            &-selected {
-                color: #fff;
-            }
-
-            &:hover {
-                background: #333;
-            }
-        }
-
-        .button {
-            background: #292929;
-            color: #fff;
+        &:hover {
+            color: currentColor !important;
         }
     }
 

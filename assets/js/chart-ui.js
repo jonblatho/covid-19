@@ -10,7 +10,7 @@ var positivityRateButton = document.getElementById("positivity-rate");
 var vaccineDosesButton = document.getElementById("vaccine-doses");
 var vaccineResidentsButton = document.getElementById("vaccine-residents");
 var dateMarkersButton = document.getElementById("date-markers");
-let selectedClassName = "dropdown-item-selected";
+let selectedClassName = "active";
 var activeChartType = 'new';
 var prefersDateMarkersOn = false;
 
@@ -48,16 +48,6 @@ function riskLevelGradientColor(ctx, chartArea) {
     }
     
     return riskLevelGradient;    
-}
-
-function showDropdownMenu() {
-    if(dropdownMenu.classList.contains("hidden")) {
-        dropdownButton.classList.add("dropdown-selected-active")
-        dropdownMenu.classList.remove("hidden")
-    } else {
-        dropdownButton.classList.remove("dropdown-selected-active")
-        dropdownMenu.classList.add("hidden")
-    }
 }
 
 function changeChart(c, type, data) {
@@ -99,10 +89,14 @@ function changeChart(c, type, data) {
         selectedChartName.innerHTML = 'Vaccinated Residents'
         vaccineResidentsButton.classList.add(selectedClassName);
     } else if(type == 'date_markers') {
-        if(dateMarkersButton.classList.contains("button-selected")) {
-            dateMarkersButton.classList.remove("button-selected");
+        if(dateMarkersButton.classList.contains("bg-primary")) {
+            dateMarkersButton.classList.remove("bg-primary");
+            dateMarkersButton.classList.remove("text-light");
+            dateMarkersButton.classList.remove("fw-bold");
         } else {
-            dateMarkersButton.classList.add("button-selected");
+            dateMarkersButton.classList.add("bg-primary");
+            dateMarkersButton.classList.add("text-light");
+            dateMarkersButton.classList.add("fw-bold");
         }
         if(prefersDateMarkersOn == true) {
             prefersDateMarkersOn = false;
@@ -111,10 +105,6 @@ function changeChart(c, type, data) {
             prefersDateMarkersOn = true;
             addDateMarkers();
         }
-    }
-
-    if(!dropdownMenu.classList.contains("hidden")) {
-        showDropdownMenu()
     }
 
     if(type != 'date_markers') {
