@@ -30,3 +30,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **August 12, 2021:** Redesigned and expanded All Data table with support for new cases by town for all towns, vaccination data, and a new CDC Level of Community Transmission column.
 * **September 13, 2021:** Migrated the site from GitHub Pages to AWS using S3 and CloudFront.
 * **October 3, 2021:** Added an automation to pull in state DHSS data daily.
+* **October 6, 2021:** Monthly case tables were split up by year in an accordion format, with the current year expanded and past year(s) collapsed by default.
