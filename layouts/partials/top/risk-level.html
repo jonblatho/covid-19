@@ -4,7 +4,7 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.risk_category }}
-<div class="row risk-category">
+<div class="risk-category">
     <div class="category-name"><span class="category-indicator risk-bg-{{ $data.risk_category }}" aria-hidden="true"></span>{{ humanize $data.risk_category }} Risk</div>
     <div class="category-value">
     {{ if eq $data.risk_category "low" }}

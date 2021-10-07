@@ -2,9 +2,9 @@
 {{ if isset .Params "date" }}
 {{ $date = .Params.date }}
 {{ end }}
-<section id="case-tables">
+<section id="case-tables" class="lh-1">
     <h3>New cases</h3>
-    <table class="totals" role="grid">
+    <table class="totals mb-4" role="grid">
         <thead>
             <tr>
                 <th aria-hidden="true"></th>
@@ -34,6 +34,56 @@
         </tr>
         {{ end }}
     </table>
+    {{ if gt (len (index $.Site.Data.monthly_new (dateFormat "2006-01-02" $date))) 1 }}
+    <div class="accordion text-center accordion-flush">
+        {{ range index $.Site.Data.monthly_new (dateFormat "2006-01-02" $date) }}
+        <div class="accordion-item border-0 bg-transparent">
+            <h4 class="accordion-header bg-transparent">
+                <button class="accordion-button fs-5 large bg-transparent shadow-none p-2 {{ if ne .year (substr $date 0 4) }}collapsed{{ end }}" type="button" data-bs-toggle="collapse" data-bs-target="#monthly-cases-{{ .year }}">
+                    <div class="text-center w-100">
+                        {{ .year }}
+                    </div>
+                </button>
+            </h4>
+            <div id="monthly-cases-{{ .year }}" class="accordion-collapse collapse {{ if eq .year (substr $date 0 4) }}show{{ end }}">
+                <div class="accordion-body p-2">
+                    <table class="totals">
+                        <thead>
+                            <tr>
+                                <th aria-hidden="true"></th>
+                                <th class="town-label-dark county" aria-label="Total">
+                                    <div class="abbreviation" aria-hidden="true">Total</div>
+                                </th>
+                                <th class="town-label-dark" aria-label="West Plains">
+                                    <div class="abbreviation" aria-hidden="true">W.P.</div>
+                                </th>
+                                <th class="town-label-dark" aria-label="Willow Springs">
+                                    <div class="abbreviation" aria-hidden="true">W.S.</div>
+                                </th>
+                                <th class="town-label-dark" aria-label="Mountain View">
+                                    <div class="abbreviation" aria-hidden="true">M.V.</div>
+                                </th>
+                                <th class="town-label-dark"><span aria-hidden="true">Other</span></th>
+                            </tr>
+                        </thead>
+                        {{ range .data }}
+                        <tr>
+                            <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
+                            <td class="county">{{ lang.NumFmt 0 (index .totals 0) }}</td>
+                            <td>{{ lang.NumFmt 0 (index .totals 1) }}</td>
+                            <td>{{ lang.NumFmt 0 (index .totals 2) }}</td>
+                            <td>{{ lang.NumFmt 0 (index .totals 3) }}</td>
+                            <td>{{ lang.NumFmt 0 (index .totals 4) }}</td>
+                        </tr>
+                        {{ end }}
+                    </table>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ else }}
+    {{ range index $.Site.Data.monthly_new (dateFormat "2006-01-02" $date) }}
     <table class="totals">
         <thead>
             <tr>
@@ -53,7 +103,7 @@
                 <th class="town-label-dark"><span aria-hidden="true">Other</span></th>
             </tr>
         </thead>
-        {{ range index $.Site.Data.monthly (dateFormat "2006-01-02" $date) }}
+        {{ range .data }}
         <tr>
             <th class="row-head">{{ replace (dateFormat "Jan. 2006" (print .month "-01")) "May." "May" }}</th>
             <td class="county">{{ lang.NumFmt 0 (index .totals 0) }}</td>
@@ -64,4 +114,6 @@
         </tr>
         {{ end }}
     </table>
+    {{ end }}
+    {{ end }}
 </section>
