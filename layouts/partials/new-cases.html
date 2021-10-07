@@ -34,9 +34,9 @@
         </tr>
         {{ end }}
     </table>
-    {{ if gt (len (index $.Site.Data.monthly_new (dateFormat "2006-01-02" $date))) 1 }}
+    {{ if gt (len (index $.Site.Data.monthly (dateFormat "2006-01-02" $date))) 1 }}
     <div class="accordion text-center accordion-flush">
-        {{ range index $.Site.Data.monthly_new (dateFormat "2006-01-02" $date) }}
+        {{ range index $.Site.Data.monthly (dateFormat "2006-01-02" $date) }}
         <div class="accordion-item border-0 bg-transparent">
             <h4 class="accordion-header bg-transparent">
                 <button class="accordion-button fs-5 large bg-transparent shadow-none p-2 {{ if ne .year (substr $date 0 4) }}collapsed{{ end }}" type="button" data-bs-toggle="collapse" data-bs-target="#monthly-cases-{{ .year }}">
@@ -83,7 +83,7 @@
         {{ end }}
     </div>
     {{ else }}
-    {{ range index $.Site.Data.monthly_new (dateFormat "2006-01-02" $date) }}
+    {{ range index $.Site.Data.monthly (dateFormat "2006-01-02" $date) }}
     <table class="totals">
         <thead>
             <tr>
