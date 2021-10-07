@@ -42,7 +42,12 @@ if __name__ == "__main__":
         ]
 
         # Calculate monthly totals
-        monthly[d] = [{'month': month, 'totals': __case_sum_list__(utilities.calc.case_sums(utilities.data.data_for_month(month, d)))} for month in __months_list__(d)]
+        years = utilities.unique([month[:4] for month in __months_list__(d)])
+        yearly_monthly_data = []
+        for year in years:
+            year_months = [month for month in __months_list__(d) if month[:4] == year]
+            yearly_monthly_data.append({'year': year, 'data': [{'month': month, 'totals': __case_sum_list__(utilities.calc.case_sums(utilities.data.data_for_month(month, d)))} for month in year_months]})
+        monthly[d] = yearly_monthly_data
 
         # Calculate estimated active cases by town
         active_by_town_estimates = utilities.calc.active_cases_by_town(d)
