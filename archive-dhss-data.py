@@ -45,7 +45,8 @@ if __name__ == "__main__":
         print('Could not find all four files in their expected locations. Exiting.')
         exit(1)
 
-    s3_key = f'mo-dhss-data/{date}.zip'
+    s3_prefix = 'public/covid-19/dhss-archives/'
+    s3_key = f'{s3_prefix}{date}.zip'
     
     with NamedTemporaryFile('w+') as temp, ZipFile(temp.name, 'w', compression=ZIP_DEFLATED) as zip:
         for path in paths:
@@ -53,16 +54,16 @@ if __name__ == "__main__":
             zip.write(path, filename)
         zip.close()
         # Get existing S3 keys to check whether we would be overwriting an existing key
-        objects = s3_client.list_objects_v2(Bucket='covid.jonblatho.com', Prefix=f"mo-dhss-data/{date[:4]}")
+        objects = s3_client.list_objects_v2(Bucket='data.jonblatho.com', Prefix=f"{s3_prefix}{date[:4]}")
         keys = [o["Key"] for o in objects["Contents"]]
         if s3_key not in keys or args.force:
             # Only upload if the key is not already present
-            s3_client.upload_file(temp.name, 'covid.jonblatho.com', s3_key)
+            s3_client.upload_file(temp.name, 'data.jonblatho.com', s3_key)
 
     # Check for the completed upload and, if successful, add the URL as a source URL
     try:
-        s3_client.get_object(Bucket='covid.jonblatho.com', Key=s3_key)
-        url = f"https://s3.us-west-2.amazonaws.com/covid.jonblatho.com/{s3_key}"
+        s3_client.get_object(Bucket='data.jonblatho.com', Key=s3_key)
+        url = f"https://data.jonblatho.com/{s3_key}"
         os.system(f"python add-source-url.py {url} -d {date}")
 
         # Unless told not to, delete the original data files.
@@ -71,3 +72,4 @@ if __name__ == "__main__":
                 os.remove(path)
     except s3_client.exceptions.NoSuchKey:
         print(f"Expected key {s3_key} was not found in S3 bucket. Try again.")
+        exit(1)
