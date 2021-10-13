@@ -41,4 +41,4 @@ jobs:
       - name: Rebuild Site
         run: npm run rebuild
       - name: Deploy to AWS
-        run: hugo deploy --maxDeletes 0
+        run: hugo deploy
