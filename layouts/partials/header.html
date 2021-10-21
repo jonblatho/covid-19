@@ -41,7 +41,7 @@
             {{ end }}
         </div>
         {{ if eq .Params.layout "time-machine" }}
-        <nav id="time-machine-nav" class="wrap">
+        <nav id="time-machine-nav" class="wrap lh-1">
             {{ if isset $data "prev_date" }}
             <a href="{{ .Site.BaseURL }}time-machine/{{ $data.prev_date }}" class="left">&larr; {{ dateFormat "1/2/06" $data.prev_date }}</a>
             {{ end }}
