@@ -243,7 +243,7 @@ def community_transmission(d):
     if new_cases_100k_7d >= 100 or positivity_rate_7d >= 10:
         return 'high'
     elif new_cases_100k_7d >= 50 or positivity_rate_7d >= 8:
-        return 'considerable'
+        return 'substantial'
     elif new_cases_100k_7d >= 10 or positivity_rate_7d >= 5:
         return 'moderate'
     else:

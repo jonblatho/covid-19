@@ -4,15 +4,14 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.community_transmission }}
-<div class="risk-category">
-    <div class="category-name"><span class="category-indicator ct-bg-{{ . }}" aria-hidden="true"></span>{{ humanize . }} Community Transmission</div>
-    <div class="category-value">
-        Based on PCR and antigen tests, Howell County&rsquo;s community transmission rate is <strong>{{ . }}</strong>.
-        {{ if or (eq . "high") (eq . "considerable") }}
-        All individuals should wear masks in indoor public settings.
-        {{ else }}
-        Vaccinated individuals do not need to wear masks indoors.
-        {{ end }}
+<div class="risk-category d-flex flex-direction-column">
+    <div class="category-indicator ct-bg-{{ . }} bg-gradient" aria-hidden="true"></div>
+    <div class="ms-2 flex-grow-1">
+        <div class="category-type text-uppercase mb-1" aria-hidden="true">Community Transmission Level</div>
+        <div class="category-name">{{ humanize . }} <span class="visually-hidden">CDC Community Transmission Level</span></div>
+        <div class="category-value">
+            (Based on PCR and antigen tests.)
+        </div>
     </div>
 </div>
 {{ end }}

@@ -4,20 +4,24 @@
 {{ end }}
 {{ $data := index .Site.Data.summary (dateFormat "2006-01-02" $date) }}
 {{ with $data.risk_category }}
-<div class="risk-category">
-    <div class="category-name"><span class="category-indicator risk-bg-{{ $data.risk_category }}" aria-hidden="true"></span>{{ humanize $data.risk_category }} Risk</div>
-    <div class="category-value">
-    {{ if eq $data.risk_category "low" }}
-        Data indicates that COVID-19 poses a limited risk at this time,
-    {{ else if eq $data.risk_category "moderate" }}
-        There is some risk of a COVID-19 outbreak,
-    {{ else if eq $data.risk_category "high" }}
-        There is a significant risk of a COVID-19 outbreak,
-    {{ else if eq $data.risk_category "critical" }}
-        A COVID-19 outbreak is imminent or ongoing,
-    {{ else if eq $data.risk_category "extreme" }}
-        A severe outbreak of COVID-19 is ongoing,
-    {{ end }} with <strong>{{ lang.NumFmt 1 $data.new_cases_14d_100k }}</strong> average daily new cases per 100K population over the past two weeks.
+<div class="risk-category d-flex flex-direction-column">
+    <div class="category-indicator risk-bg-{{ . }} bg-gradient" aria-hidden="true"></div>
+    <div class="ms-2 flex-grow-1">
+        <div class="category-type text-uppercase mb-1" aria-hidden="true">Risk Level</div>
+        <div class="category-name">{{ humanize . }} <span class="visually-hidden">Risk Level</span></div>
+        <div class="category-value">
+        {{ if eq $data.risk_category "low" }}
+            COVID-19 poses a limited risk at this time.
+        {{ else if eq $data.risk_category "moderate" }}
+            There is some risk of a COVID-19 outbreak.
+        {{ else if eq $data.risk_category "high" }}
+            There is a significant risk of a COVID-19 outbreak.
+        {{ else if eq $data.risk_category "critical" }}
+            A COVID-19 outbreak is imminent or ongoing.
+        {{ else if eq $data.risk_category "extreme" }}
+            A severe outbreak of COVID-19 is ongoing.
+        {{ end }}
+        </div>
     </div>
 </div>
 {{ end }}

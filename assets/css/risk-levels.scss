@@ -5,7 +5,7 @@ $risk-color-critical: #8A2B2B;
 $risk-color-extreme: #DF1995;
 $ct-color-low: #1D8AFF;
 $ct-color-moderate: #FFF70e;
-$ct-color-considerable: #FF7134;
+$ct-color-substantial: #FF7134;
 $ct-color-high: #FF0000;
 
 @mixin risk-rule($level, $color) {
@@ -43,5 +43,5 @@ $ct-color-high: #FF0000;
 @include risk-rule(extreme, $risk_color-extreme);
 @include ct-rule(low, $ct_color-low);
 @include ct-rule(moderate, $ct_color-moderate);
-@include ct-rule(considerable, $ct_color-considerable);
+@include ct-rule(substantial, $ct_color-substantial);
 @include ct-rule(high, $ct_color-high);

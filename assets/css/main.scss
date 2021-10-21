@@ -135,8 +135,8 @@ a {
 }
 
 #chart {
-    height: 500px;
-    max-height: 500px;
+    height: 400px;
+    max-height: 400px;
 }
 
 #vaccine-button {
@@ -151,29 +151,36 @@ a {
 
 .risk-category {
     margin: 15px auto 0;
-    text-align: center;
+
+    .category-type {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        opacity: 50%;
+    }
 
     .category-name {
-        display: block;
         width: 100%;
         margin-bottom: 6px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
     .category-indicator {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        margin-right: 12px;
+        min-width: 24px;
+        max-width: 24px;
+        min-height: 24px;
+        max-height: 24px;
+        margin-top: 6px;
+        border: 0.5px solid rgba(0, 0, 0, 0.5);
         border-radius: 12px;
     }
 
     .category-value {
         margin: 10px 0 0;
         color: #666;
-        line-height: 20px;
-        font-size: 14px;
+        line-height: 18px;
+        font-size: 12px;
     }
 }
 
