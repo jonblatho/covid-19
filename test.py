@@ -207,7 +207,7 @@ class TestCalculationMethods(unittest.TestCase):
     def test_community_transmission(self):
         assert utilities.calc.community_transmission('2020-05-20') == 'low'
         assert utilities.calc.community_transmission('2020-08-14') == 'moderate'
-        assert utilities.calc.community_transmission('2020-08-24') == 'considerable'
+        assert utilities.calc.community_transmission('2020-08-24') == 'substantial'
         assert utilities.calc.community_transmission('2020-08-30') == 'high'
 
     def test_table_data(self):
