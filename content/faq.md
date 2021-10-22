@@ -1,9 +1,9 @@
 ---
-title: FAQ
-menu: main
+title: Frequently Asked Questions
+menu:
+  main:
+    name: "FAQ"
 ---
-
-## Frequently Asked Questions
 
 ### Where does this data come from?
 Most data here comes from daily reports published by the Howell County Health Department (HCHD) on their [dashboard](https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/) and their [Facebook page](https://www.facebook.com/Howell-County-Health-Department-170310842983730). Vaccination and testing data comes from the Missouri Department of Health and Senior Services (DHSS) [vaccine metrics](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download-vaccine.php) and [public health metrics](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download.php) pages. Sources corresponding to data, when available, are linked in the [All Data](../all-data) table.

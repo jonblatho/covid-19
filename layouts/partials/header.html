@@ -19,7 +19,13 @@
                         {{ $currentPage := . }}
                         {{ range .Site.Menus.main }}
                         <li class="nav-item">
-                            <a class="nav-link {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}" {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}href="{{ .URL }}" title="{{ .Name }}">{{ .Title }}</a>
+                            <a class="nav-link {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}" {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}href="{{ .URL }}" title="{{ .Title }}">
+                                {{ with .Params.menu_title }}
+                                {{ . }}
+                                {{ else }}
+                                {{ .Name }}
+                                {{ end }}
+                            </a>
                         </li>
                         {{ end }}
                     </ul>
@@ -56,4 +62,4 @@
         </nav>
         <div class="clear"></div>
         {{ end }}
-        <main {{ if or .IsHome (eq .Params.layout "time-machine") }}id="home"{{ end }}>
+        <main {{ if or .IsHome (eq .Params.layout "time-machine") }}id="home"{{ end }} class="flex-grow-1">
