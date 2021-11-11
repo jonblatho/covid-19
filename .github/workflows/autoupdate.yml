@@ -3,7 +3,7 @@ name: Auto-Update
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 3,4,15 * * *"
+    - cron: "30 4,5,16 * * *"
 
 permissions:
   contents: write
