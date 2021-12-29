@@ -1,123 +1,12 @@
-            <section id="table" class="text-center lh-1">
-                <div class="container-fluid">
+            <div id="table" class="text-center lh-1">
+                <div id="all-data-wrapper">
                     <table class="all-data">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">Date</th>
-                                <th colspan="16">Total Cases (<a href="#abbreviations">Abbreviations</a>)</th>
-                                <th rowspan="2">New<br />Cases</th>
-                                <th rowspan="2">Active<br />Cases</th>
-                                <th colspan="2">Tests</th>
-                                <th rowspan="2" aria-label="14-day Positivity Rate">14-day<br />Pos.&nbsp;Rate</th>
-                                <th rowspan="2" aria-label="Hospitalizations">Hosp.</th>
-                                <th rowspan="2">Deaths</th>
-                                <th colspan="3">Vaccinations</th>
-                                <th rowspan="2">Risk Level</th>
-                                <th rowspan="2">Community<br aria-hidden="true" />Transmission</th>
-                                <th rowspan="2">Sources</th>
-                            </tr>
-                            <tr>
-                                <th aria-label="County total">Total</th>
-                                <th aria-label="West Plains">WP</th>
-                                <th aria-label="Willow Springs">WS</th>
-                                <th aria-label="Mountain View">MV</th>
-                                <th aria-label="Bakersfield">Bk</th>
-                                <th aria-label="Brandsville">Bv</th>
-                                <th aria-label="Cabool">Cb</th>
-                                <th aria-label="Caulfield">Cf</th>
-                                <th aria-label="Dora">D</th>
-                                <th aria-label="Koshkonong">K</th>
-                                <th aria-label="Moody">M</th>
-                                <th aria-label="Peace Valley">PV</th>
-                                <th aria-label="Pomona">Pm</th>
-                                <th aria-label="Pottersville">Pt</th>
-                                <th aria-label="Summersville">S</th>
-                                <th aria-label="Unknown Town">?</th>
-                                <th>Total</th>
-                                <th>New</th>
-                                <th>Doses</th>
-                                <th>Initiated</th>
-                                <th>Completed</th>
-                            </tr>
+                        <thead class="scroll-sync">
+                            {{ partial "table-header.html" . }}
                         </thead>
-                        <tbody>
+                        <tbody class="scroll-sync">
                             {{ range .Site.Data.daily }}
-                            <tr>
-                                <th class="date prominent-right-border"><a href="{{ $.Site.BaseURL }}time-machine/{{ .date }}">{{ dateFormat "1/2/06" .date }}</a></th>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.howell_county }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.west_plains }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.willow_springs }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.mountain_view }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.bakersfield }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.brandsville }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.cabool }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.caulfield }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.dora }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.koshkonong }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.moody }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.peace_valley }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.pomona }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.pottersville }}</td>
-                                <td {{ if .estimates.cases }}class="estimate"{{ end }}>{{ lang.NumFmt 0 .total_cases.summersville }}</td>
-                                <td class="prominent-right-border{{ if .estimates.cases }} estimate{{ end }}">{{ lang.NumFmt 0 .total_cases.unknown }}</td>
-                                <td class="prominent-right-border{{ if .estimates.cases }} estimate{{ end }}">{{ lang.NumFmt 0 .new_cases }}</td>
-                                <td class="prominent-right-border {{ if .estimates.active }}estimate{{ end }}">{{ lang.NumFmt 0 .active_cases }}</td>
-                                {{ if isset .tests "total" }}
-                                <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.total }}</td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                                {{ if isset .tests "new" }}
-                                <td{{ if .estimates.tests }} class="estimate"{{ end }}>{{ lang.NumFmt 0 .tests.new }}</td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                                {{ if isset . "positivity_rate" }}
-                                <td{{ if .positivity_rate.estimate }} class="estimate"{{ end }}>{{ lang.NumFmt 1 .positivity_rate.value }}%</td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                                {{ if isset . "hospitalizations" }}
-                                <td class="{{ if .estimates.hospitalizations }}estimate{{ end }}">{{ lang.NumFmt 0 .hospitalizations }}</td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                                <td class="prominent-right-border{{ if .estimates.deaths }} estimate{{ end }}">{{ lang.NumFmt 0 .deaths }}</td>
-                                {{ if isset . "doses" }}
-                                <td>{{ lang.NumFmt 0 .doses }}</td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                                {{ if isset . "initiated" }}
-                                <td>{{ lang.NumFmt 0 .initiated }}</td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                                {{ if isset . "completed" }}
-                                <td class="prominent-right-border">{{ lang.NumFmt 0 .completed }}</td>
-                                {{ else }}
-                                <td class="na prominent-right-border">N/A</td>
-                                {{ end }}
-                                {{ if isset . "risk_level" }}
-                                <td class="risk-level"><span class="risk-bg-{{ .risk_level }}"></span>{{ humanize .risk_level }}</td>
-                                {{ else }}
-                                <td class="na" style="text-align: center;">N/A</td>
-                                {{ end }}
-                                {{ if isset . "community_transmission" }}
-                                <td class="ct prominent-right-border"><span class="ct-bg-{{ .community_transmission }}"></span>{{ humanize .community_transmission }}</td>
-                                {{ else }}
-                                <td class="na prominent-right-border" style="text-align: center;">N/A</td>
-                                {{ end }}
-                                {{ with .sources }}
-                                <td class="sources">
-                                    {{ range . }}
-                                    <a href="{{ .url }}">[{{ .number }}]</a>
-                                    {{ end }}
-                                </td>
-                                {{ else }}
-                                <td class="na">N/A</td>
-                                {{ end }}
-                            </tr>
+                                {{ partial "table-row.html" . }}
                             {{ end }}
                         </tbody>
                     </table>
@@ -152,4 +41,4 @@
                         </div>
                     </ul>
                 </div>
-            </section>
+            </div>
