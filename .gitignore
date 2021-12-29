@@ -10,3 +10,4 @@ node_modules/
 public/
 data/
 assets/js/chart-data.json
+.hugo_build.lock
