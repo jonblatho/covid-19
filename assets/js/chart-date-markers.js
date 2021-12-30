@@ -119,6 +119,21 @@ markers = {
                 position: "start",
                 rotation: 90,
             }
+        },
+        {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x",
+            value: "2021-12-20",
+            borderWidth: 1,
+            borderColor: '#ff0000',
+            label: {
+                content: "Omicron detected",
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                enabled: true,
+                position: "start",
+                rotation: 90,
+            }
         }
     ]
 }
