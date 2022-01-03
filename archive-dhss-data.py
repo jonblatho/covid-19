@@ -55,7 +55,7 @@ if __name__ == "__main__":
         zip.close()
         # Get existing S3 keys to check whether we would be overwriting an existing key
         objects = s3_client.list_objects_v2(Bucket='data.jonblatho.com', Prefix=f"{s3_prefix}{date[:4]}")
-        keys = [o["Key"] for o in objects["Contents"]]
+        keys = [o["Key"] for o in objects["Contents"]] if objects["KeyCount"] > 0 else []
         if s3_key not in keys or args.force:
             # Only upload if the key is not already present
             s3_client.upload_file(temp.name, 'data.jonblatho.com', s3_key)
