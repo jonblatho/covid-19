@@ -35,9 +35,8 @@ Data by town is based on ZIP Code, not city limits. Therefore, for example, whil
 * The HCHD did not begin providing an active case count until April 23, 2020. Active cases before that date are estimated by assuming that cases were considered active for 10 days following the report date.
 * The HCHD published updates only to its dashboard, which I was unable to archive at the time, for several days in late November 2020. All data is estimated for that period.
 * Vaccination data is unavailable prior to December 15, 2020.
-* Due to a prolonged and intense winter weather event, the HCHD was closed for several days in mid-February 2021, so testing data is estimated for that period.
 * Due to an Internet Archive error, the HCHD dashboard for March 5, 2021, could not be archived, so its source link is unavailable.
 * There are two Howell County cases for which, after a thorough review of publicly available data, I have been unable to conclusively identify a corresponding town.
 
 ### Why are antigen tests included here?
-Many entities do not report COVID-19 antigen tests, but HCHD does. In Howell County, antigen tests have been abnormally common compared to much of the rest of the country. As a result, excluding these tests results the elimination of a significant share of tests and cases. For consistency across datasets, and after carefully considering all variables, I have made the judgment that including antigen tests offers a more realistic picture of the spread of COVID-19 in Howell County.
+Many entities do not report COVID-19 antigen tests, but HCHD does. In Howell County, antigen tests have been abnormally common compared to much of the rest of the country. As a result, excluding these tests results in the elimination of a significant share of tests and cases. For consistency across datasets, and after carefully considering all variables, I have made the judgment that including antigen tests offers a more realistic picture of the spread of COVID-19 in Howell County.
