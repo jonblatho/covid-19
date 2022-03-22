@@ -44,7 +44,7 @@ jobs:
 
       # Archive the HCHD dashboard to the Wayback Machine
       - name: Archive HCHD Dashboard
-        uses: jonblatho/wayback@1.3.7
+        uses: JamieMagee/wayback@v1.3.18
         id: archive
         if: steps.changed_files.outputs.files_changed == 'true'
         continue-on-error: true
