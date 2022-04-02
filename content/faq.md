@@ -6,20 +6,13 @@ menu:
 ---
 
 ### Where does this data come from?
-Most data here comes from daily reports published by the Howell County Health Department (HCHD) on their [dashboard](https://allthingsmissouri.org/county-covid-19-dashboards/howell-county/) and their [Facebook page](https://www.facebook.com/Howell-County-Health-Department-170310842983730). Vaccination and testing data comes from the Missouri Department of Health and Senior Services (DHSS) [vaccine metrics](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download-vaccine.php) and [public health metrics](https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/data/data-download.php) pages. Sources corresponding to data, when available, are linked in the [All Data](../all-data) table.
+Most data here comes from daily reports published by the Howell County Health Department (HCHD) on their [dashboard](https://archive.ph/Cu8QP) and their [Facebook page](https://www.facebook.com/Howell-County-Health-Department-170310842983730). Vaccination and testing data comes from the Missouri Department of Health and Senior Services (DHSS) [vaccine metrics](https://archive.ph/IK6UZ) and [public health metrics](https://archive.ph/mfLxI) pages. Sources corresponding to data, when available, are linked in the [All Data](../all-data) table.
 
 ### Why don't daily case counts here match the HCHD dashboard?
 Since case data on this dashboard is stored by town and the HCHD only reports the total number of cases per town each day, cases fall under the report date here, while on the HCHD dashboard dates cases correspond to the test date. Usually, the difference is within a few days.
 
 ### When is this site updated?
-Subject to the availability of new data, the site is updated three times a day, twice automatically and once manually:
-* **Automatic update #1:** Every day, data on cases, hospitalizations, and deaths is pulled in from the HCHD dashboard automatically. To allow for possible failures, three attempts are made to pull in data automatically, the first of which occurs around 10:35 PM CDT.
-* **Automatic update #2:** Overnight each day, data on testing and vaccinations is pulled in from the state DHSS website automatically. This occurs shortly after 5 AM CDT or 4 AM CST.
-* **Manual update:** By each non-holiday weekday evening, the site is updated to add a link to the HCHD Facebook post corresponding to the most recent automatic updates, if available.
-
-I am a human, so sometimes I must run late or miss a day on manual updates. If I do, I will catch things up as soon as I can.
-
-You can always confirm the time the site was most recently updated by checking the "Site last updated" line in the footer on the homepage.
+Due to changes in data reporting as of Friday, April 1, 2022, this site is no longer updated. All data is frozen as of that date.
 
 ### What data is estimated, and how?
 Testing data is estimated on automatic updates because the actual test count is not published until the following weekday. In the absense of an actual test count, the number of new tests is estimated by holding the 14-day positivity rate as close to constant as possible.
@@ -29,7 +22,7 @@ When there is a gap in data reporting, such as a weekend, I may apply estimates 
 Data for active cases by town is estimated by normalizing the 7-day total new cases for the county and categories (cities and “other”) and multiplying the county total active cases by those normalized values. Rounding may cause the sum of the by-town values not to exactly equal the county total. Estimates for active cases by town are hidden when there are few active cases in the county.
 
 ### How does data by town work?
-Data by town is based on ZIP Code, not city limits. Therefore, for example, while the population of the city of West Plains is about 12,000, its ZIP Code population is actually 24,554 based on 2010 Census data (for the sections of the 65775 ZIP code within Howell County). For Willow Springs and Mountain View, these populations are 5,414 and 5,382, respectively, by [my calculations](https://gist.github.com/jonblatho/003174508c09c2001d38e386a95fe9cd).
+Data by town is based on ZIP Code, not city limits. Therefore, for example, while the population of the city of West Plains is about 12,000, its ZIP Code population is actually 24,554 based on 2010 Census data (for the sections of the 65775 ZIP code within Howell County). For Willow Springs and Mountain View, these populations are 5,414 and 5,382, respectively, by [my calculations](https://archive.ph/z65K5).
 
 ### Is there any missing or unavailable data?
 * The HCHD did not begin providing an active case count until April 23, 2020. Active cases before that date are estimated by assuming that cases were considered active for 10 days following the report date.
