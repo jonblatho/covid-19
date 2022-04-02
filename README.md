@@ -1,4 +1,8 @@
 # COVID-19 in Howell County, Missouri
+**Note:** Due to data reporting changes, daily updates for this project were suspended following the Friday, April 1, 2022, update. Data will remain frozen as of that date, but the project and its source code will remain available indefinitely.
+
+----
+
 This repository contains the daily data files used to generate my [COVID-19 dashboard](https://covid.jonblatho.com/) for Howell County, Missouri, as well as the [Hugo](https://gohugo.io/) source files needed to generate the page, and the Python source files for processing and updating the daily data files.
 
 ## How it works
@@ -31,3 +35,4 @@ This repository contains the daily data files used to generate my [COVID-19 dash
 * **September 13, 2021:** Migrated the site from GitHub Pages to AWS using S3 and CloudFront.
 * **October 3, 2021:** Added an automation to pull in state DHSS data daily.
 * **October 6, 2021:** Monthly case tables were split up by year in an accordion format, with the current year expanded and past year(s) collapsed by default.
+* **April 1, 2022**: Final regular data update due to data reporting changes.
