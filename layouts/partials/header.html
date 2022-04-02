@@ -34,11 +34,16 @@
             </nav>
         </header>
         <div id="top">
+            <div class="message-end container-fluid">
+                <p>
+                    Due to changes in data reporting, the final regular update to this website was on Friday, April 1, 2022. Data will remain frozen as of that date while final archival changes are being made.
+                </p>
+            </div>
             {{ if eq .Params.layout "time-machine" }}
             <div class="message-info" style="text-align:center;">
                 <div class="container-fluid">
                     {{ if ne (dateFormat "2006-01-02" $date) .Site.Data.summary.last_updated }}
-                    Below is the homepage as it would have appeared on {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to return to current data.
+                    Below is the homepage as it would have appeared on {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to return to the latest available data.
                     {{ else }}
                     This page is a permanent link to the homepage with data as of {{ dateFormat "January 2, 2006" $date }}. Click <a href="{{ .Site.BaseURL }}">here</a> to go home.
                     {{ end }}

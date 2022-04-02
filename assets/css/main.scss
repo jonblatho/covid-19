@@ -27,7 +27,7 @@ nav {
 
 #time-machine-nav {
     position: relative;
-    max-width: 300px;
+    width: 300px;
     height: 34px;
     margin: 10px auto;
     padding: 0;
@@ -82,6 +82,16 @@ a {
         padding: 10px;
         font-size: 14px;
         line-height: 20px;
+
+        &-end {
+            @extend .message;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px 10px;
+            color: #888;
+            font-size: 16px;
+            text-align: center;
+        }
 
         &-info {
             @extend .message;
