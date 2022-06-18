@@ -114,7 +114,7 @@ function changeChart(c, type, data) {
     }
 }
 
-function reloadChart(c, type, data) {
+function reloadChart(c, type, data, date) {
     c.destroy();
 
     if(type == 'new') {
@@ -164,6 +164,9 @@ function reloadChart(c, type, data) {
             animation: false
         }
     });
+
+    // filter data to only that before the chart date
+    data = data.filter((day) => { return day.d <= date })
 
     chart.data.labels = chartLabels(type, data);
     chart.data.datasets = chartData(type, data);

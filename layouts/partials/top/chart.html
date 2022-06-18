@@ -1,5 +1,8 @@
-
-<div id="chart-container" class="col-md-8">
+{{ $date := .Site.Data.summary.last_updated }}
+{{ if isset .Params "date" }}
+{{ $date = .Params.date }}
+{{ end }}
+<div id="chart-container" class="col-md-8" data-chart-date="{{ dateFormat "2006-01-02" $date }}">
     <div id="chart-select">
         <div class="d-flex flex-direction-column">
             <div id="dropdown" aria-hidden="true">
@@ -27,14 +30,6 @@
             </div>
             <div class="flex-grow-1"></div>
             <div class="btn btn-toggle" id="date-markers" onclick="changeChart(chart, 'date_markers', json);" aria-hidden="true">Events</div>
-            <div>
-
-            </div>
         </div>
-        <div class="left">
-        </div>
-        <div class="right">
-        </div>
-        <div class="clear"></div>
     </div>
 </div>
